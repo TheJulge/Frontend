@@ -1,0 +1,11 @@
+//font mixins
+@mixin body1-regular($color) {
+  color: var($color);
+
+  /* The julge/body 1 - regular */
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px; /* 162.5% */
+}
