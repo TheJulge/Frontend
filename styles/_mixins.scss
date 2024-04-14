@@ -1,11 +1,85 @@
 //font mixins
-@mixin body1-regular($color) {
+@mixin h1($color) {
+  color: var($color);
+  /* The julge/h1 */
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.56px;
+}
+
+@mixin h2($color) {
   color: var($color);
 
+  /* The julge/h2 */
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.48px;
+}
+
+@mixin h3($color) {
+  color: var($color);
+
+  /* The julge/h3 */
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+@mixin body1-regular($color) {
+  color: var($color);
   /* The julge/body 1 - regular */
   font-family: 'Spoqa Han Sans Neo';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 26px; /* 162.5% */
+}
+
+@mixin body1-bold($color) {
+  color: var($color);
+
+  /* The julge/body 1 - bold */
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 125% */
+}
+
+@mixin body2-regular($color) {
+  color: var($color);
+  /* The julge/body 2 - regular */
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+@mixin body2-bold($color) {
+  color: var($color);
+  /* The julge/body 2 - bold */
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+@mixin caption($color) {
+  color: var($color);
+  /* The julge/caption */
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
 }
