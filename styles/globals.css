@@ -30,6 +30,7 @@ iframe {
 
 /* color */
 :root {
+  --primary: #ea3c12;
   --black: #111322;
   --gray50: #7d7986;
   --gray40: #a4a1aa;
