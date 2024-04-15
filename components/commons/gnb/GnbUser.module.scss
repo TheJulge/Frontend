@@ -1,0 +1,38 @@
+.headerMenu {
+  display: flex;
+  margin-left: auto;
+  gap: 40px;
+  &:has(.notification) {
+    @media screen and (max-width: 1024px) {
+      gap: 12px;
+    }
+    @media screen and (max-width: 768px) {
+      gap: 16px;
+    }
+  }
+}
+.headerMenu a {
+  color: #111322;
+  font-weight: 700;
+  line-height: 20px;
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+.notification {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  @media screen and (max-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
+}
