@@ -1,0 +1,24 @@
+@import url('/styles/_mixins.scss');
+
+.filterTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  h3 {
+    @include h3(--black);
+  }
+  button {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

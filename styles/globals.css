@@ -4,6 +4,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Spoqa Han Sans Neo', sans-serif; /*글꼴 추가*/
+  color: var(--black);
 }
 :after,
 :before {
