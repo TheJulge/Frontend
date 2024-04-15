@@ -1,0 +1,62 @@
+.buttonBox{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.button{
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  &.completeButton{
+    color:var(--blue20);
+    background: var(--blue10);
+  }
+  &.refuseButton{
+    background: var(--red40);
+    color:var(--white);
+
+  }
+  &.waitingButton{
+    background: var(--green10);
+    color:var(--green20)
+  }
+}
+
+.actionButtonBox{
+  display: flex;
+  gap: 0.8rem;
+
+
+}
+.actionButton {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: var(--white);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+
+  @media (480px<width<=768px) {
+    padding: 8px 12px;
+  }
+
+  @media (max-width: 480px){
+    padding: 8px 12px;
+  }
+
+  &.refuse {
+    border:1px solid var(--primary);
+    color: var(--primary);
+  }
+
+  &.accept {
+    border:1px solid var(--blue20);
+    color: var(--blue20);
+  }
+}
