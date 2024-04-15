@@ -1,0 +1,28 @@
+.searchForm {
+  position: relative;
+  max-width: 450px;
+  width: 100%;
+  margin-left: 40px;
+}
+.searchForm input {
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  line-height: 20px;
+  padding: 10px 40px;
+  background-color: var(--gray10);
+  font-size: 14px;
+}
+.searchForm input::placeholder {
+  color: var(--gray40);
+  font-size: 14px;
+}
+.searchForm label {
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  border: none;
+}
