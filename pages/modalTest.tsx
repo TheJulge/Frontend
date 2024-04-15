@@ -12,7 +12,11 @@ export default function modalTest() {
     // <InfoModal showModal={true} handleClose={handleClose}>
     //   가게 정보를 등록해주세요
     // </InfoModal>
-    <ChooseModal showModal={true} handleClose={handleClose}>
+    <ChooseModal
+      showModal={true}
+      handleNo={handleClose}
+      handleYes={() => console.log('yes!!!')}
+    >
       신청을 거절하시겠어요?
     </ChooseModal>
   );
