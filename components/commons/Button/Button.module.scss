@@ -1,0 +1,38 @@
+@mixin basicButton($cololr, $backgroundColor, $border: none) {
+  cursor: pointer;
+  display: block;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  width: 100%;
+  border-radius: 6px;
+  color: $cololr;
+  background-color: $backgroundColor;
+  border: $border;
+  @media screen and (max-width: 1024px) {
+    padding: 10px;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 8px;
+  }
+}
+
+// 색 있는 버튼
+@mixin fillButton {
+  @include basicButton($cololr: var(--white), $backgroundColor: #ea3c12);
+}
+
+// 색 없는 버튼
+@mixin emptyButton {
+  @include basicButton(
+    $cololr: #ea3c12,
+    $backgroundColor: var(--white),
+    $border: 1px solid #ea3c12
+  );
+}
+
+// disabled 버튼
+@mixin disabledButton {
+  @include basicButton($cololr: var(--white), $backgroundColor: var(--gray40));
+}
