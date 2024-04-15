@@ -1,5 +1,3 @@
-import BasicInput from '@/components/commons/inputs/basicInput/BasicInput.tsx';
-import MoneyInput from '@/components/commons/inputs/moneyInput/MoneyInput.tsx';
 import Head from 'next/head';
 
 export default function Home() {

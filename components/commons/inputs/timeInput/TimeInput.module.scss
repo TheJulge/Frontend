@@ -1,4 +1,4 @@
-.moneyInputLabel {
+.timeInputLabel {
   display: flex;
   width: 350px;
   flex-direction: column;
@@ -33,7 +33,7 @@
     -moz-appearance: textfield;
   }
 
-  .won {
+  .time {
     position: absolute;
     bottom: 16px;
     right: 20px;

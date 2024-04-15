@@ -20,7 +20,7 @@ export default function MoneyInput({ labelName }: MoneyInputProps) {
   };
 
   return (
-    <label className={styles.basicInputLabel} htmlFor={labelName}>
+    <label className={styles.moneyInputLabel} htmlFor={labelName}>
       <span>{labelName}</span>
       <input
         id={labelName}

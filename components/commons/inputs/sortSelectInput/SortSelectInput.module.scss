@@ -1,0 +1,41 @@
+.container {
+  @include body2-bold(--black);
+  width: 105px;
+  height: 30px;
+  border-radius: 5px;
+  background: var(--gray10);
+  border: none;
+  position: relative;
+
+  button {
+    @include body2-bold(--black);
+    border-radius: 5px;
+    background: var(--gray10);
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: flex;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+
+    .upIcon,
+    .downIcon {
+      width: 10px;
+      height: 10px;
+    }
+
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      background: var(--gray10);
+      @include body2-bold(--black);
+
+      &::placeholder {
+        @include body2-bold(--black);
+      }
+    }
+  }
+}
