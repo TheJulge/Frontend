@@ -7,11 +7,11 @@ import React, { useEffect } from 'react';
  * @param {Function} setShowModal 모달의 상태를 관리하는 함수
  * @param {React.RefObject} modalRef 모달에 대한 참조 객체
  */
-const useCloseModal = (
+export default function useCloseModal(
   showModal: boolean,
   handleClose: () => void,
   modalRef: React.RefObject<HTMLDivElement>,
-) => {
+) {
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
@@ -34,6 +34,4 @@ const useCloseModal = (
       document.removeEventListener('keydown', handleEscapeKey);
     };
   }, [showModal, handleClose, modalRef]);
-};
-
-export default useCloseModal;
+}

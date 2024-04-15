@@ -2,10 +2,8 @@ import Head from 'next/head';
 
 export default function Home() {
   return (
-    <>
-      <Head>
-        <title>theJulge</title>
-      </Head>
-    </>
+    <Head>
+      <title>theJulge</title>
+    </Head>
   );
 }

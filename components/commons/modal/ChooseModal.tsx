@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import React, { ReactNode, useRef } from 'react';
 import useCloseModal from '@/hooks/useCloseModal';
+import CheckIcon from '@/public/images/ modal/check.svg';
 import Portal from './Portal';
 import styles from './Modal.module.scss';
 
@@ -28,12 +28,7 @@ export default function Modal({
     <Portal>
       <div className={styles.wrapper}>
         <div className={styles.inner} ref={modalRef}>
-          <Image
-            src="/images/modal/check.png"
-            alt="modal information icon"
-            width={24}
-            height={24}
-          />
+          <CheckIcon viewBox="0 0 24 24" />
           {children}
           <div className={styles.buttonGroup}>
             <button

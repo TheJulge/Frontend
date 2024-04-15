@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 interface PortalProps {
   children: ReactNode;
 }
-const Portal = ({ children }: PortalProps) => {
+export default function Portal({ children }: PortalProps) {
   const [container, setContainer] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -25,6 +25,4 @@ const Portal = ({ children }: PortalProps) => {
   }
 
   return ReactDOM.createPortal(children, container);
-};
-
-export default Portal;
+}

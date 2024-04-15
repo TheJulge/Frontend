@@ -1,3 +1,5 @@
+@import '../Button/Button.module.scss';
+
 .wrapper {
   display: flex;
   position: fixed;
@@ -18,15 +20,23 @@
   background-color: var(--white);
   border-radius: 12px;
   padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
 }
 .buttonGroup {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
 }
 .emptyButton {
-  @include emptyButton;
+  @include emptyButton();
+  width: 80px;
 }
 .fillButton {
-  @include fillButton;
+  @include fillButton();
+  width: 80px;
 }
