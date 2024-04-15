@@ -14,7 +14,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    // 모듈 import 오류 해결
     "allowImportingTsExtensions": true,
     "paths": {
       "@/*": ["./*"]
