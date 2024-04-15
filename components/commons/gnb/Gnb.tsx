@@ -1,18 +1,18 @@
 import LogoIcon from '@/public/images/logo.svg';
 import Link from 'next/link';
 import styles from './Gnb.module.scss';
-import SearchHeader from './SearchHeader.tsx';
-// import HeaderUser from "./headerUser";
+import GnbSearch from './GnbSearch.tsx';
+import GnbUser from './GnbUser.tsx';
 
 export default function Gnb() {
   return (
     <header>
       <div className={styles.headerContainer}>
-        <Link href="/">
-          <LogoIcon />
+        <Link className={styles.logo} href="/">
+          <LogoIcon viewBox="0 0 112 40" />
         </Link>
-        <SearchHeader />
-        {/* <HeaderUser /> */}
+        <GnbSearch />
+        <GnbUser />
       </div>
     </header>
   );

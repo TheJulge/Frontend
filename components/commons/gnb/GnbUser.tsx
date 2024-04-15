@@ -1,38 +1,23 @@
 import Link from 'next/link';
 import NotiIcon from '@/public/images/notification.svg';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import NotiActiveIcon from '@/public/images/notification-active.svg';
 import styles from './GnbUser.module.scss';
 
 export default function GnbUser() {
-  const [type, setType] = useState();
-  async function apiGet() {
-    try {
-      const response = await axios.post(
-        'https://bootcamp-api.codeit.kr/api/4-17/the-julge/token',
-        {
-          email: 'test1414@naver.com',
-          password: 'test1234',
-        },
-      );
-      const user = response.data;
-      setType(user.item.user.item.type);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  useEffect(() => {
-    apiGet();
-  }, []);
-  if (!type) return null;
+  let type = 'employee';
+  let notification = false;
   return (
     <div className={styles.headerMenu}>
       {type === 'employee' && (
         <>
           <Link href="/">내 프로필</Link>
           <Link href="/">로그아웃</Link>
-          <button type="button">
-            <NotiIcon />
+          <button type="button" className={styles.notification}>
+            {notification ? (
+              <NotiActiveIcon viewBox="0 0 24 24" />
+            ) : (
+              <NotiIcon viewBox="0 0 24 24" />
+            )}
           </button>
         </>
       )}
@@ -40,8 +25,12 @@ export default function GnbUser() {
         <>
           <Link href="/">내 가게</Link>
           <Link href="/">로그아웃</Link>
-          <button type="button">
-            <NotiIcon />
+          <button type="button" className={styles.notification}>
+            {notification ? (
+              <NotiActiveIcon viewBox="0 0 24 24" />
+            ) : (
+              <NotiIcon viewBox="0 0 24 24" />
+            )}
           </button>
         </>
       )}
