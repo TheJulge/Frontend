@@ -3,7 +3,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Spoqa Han Sans Neo', sans-serif;
+  font-family: 'Spoqa Han Sans Neo', sans-serif; /*글꼴 추가*/
 }
 :after,
 :before {
@@ -31,6 +31,7 @@ iframe {
 
 /* color */
 :root {
+  --primary: #ea3c12;
   --black: #111322;
   --gray50: #7d7986;
   --gray40: #a4a1aa;
@@ -39,7 +40,6 @@ iframe {
   --gray10: #f2f2f3;
   --gray5: #fafafa;
   --white: #ffffff;
-  --primary: #EA3C12;
   --red40: #ff4040;
   --red30: #ff8d72;
   --red20: #ffaf9b;
