@@ -6,11 +6,13 @@ import CloseIcon from '@/public/images/filter/close.svg';
 export default function FilterLocation() {
   const [selectLocation, setSelectLocation] = useState<string[]>([]);
   const location = LOCATION_FILTER;
+
   const handleLocation = (location: string) => {
     if (!selectLocation.includes(location)) {
       setSelectLocation(prev => [...prev, location]);
     }
   };
+  console.log(selectLocation);
   const handleLocationDelete = (location: string) => {
     setSelectLocation(prev => prev.filter(item => item !== location));
   };
@@ -31,21 +33,24 @@ export default function FilterLocation() {
         </ul>
       </div>
 
-      <ul className={styles.selectLocation}>
-        {selectLocation.map((location, index) => {
-          return (
-            <li key={index}>
-              {location}
-              <button
-                type="button"
-                onClick={() => handleLocationDelete(location)}
-              >
-                <CloseIcon viewBox="0 0 16 16" />
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+      {selectLocation.length > 0 ? (
+        <ul className={styles.selectLocation}>
+          {selectLocation.map((location, index) => {
+            return (
+              <li key={index}>
+                {location}
+                <button
+                  type="button"
+                  aria-label="삭제"
+                  onClick={() => handleLocationDelete(location)}
+                >
+                  <CloseIcon viewBox="0 0 16 16" />
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
     </div>
   );
 }

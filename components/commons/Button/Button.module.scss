@@ -21,6 +21,9 @@
 // 색 있는 버튼
 @mixin fillButton {
   @include basicButton($cololr: var(--white), $backgroundColor: #ea3c12);
+  &:hover {
+    background-color: #c03614;
+  }
 }
 
 // 색 없는 버튼
@@ -30,6 +33,13 @@
     $backgroundColor: var(--white),
     $border: 1px solid #ea3c12
   );
+  padding: 13px;
+  &:hover {
+    // padding: 14px;
+    background-color: #f0f0f0;
+    // border: none;
+    // color: #fff;
+  }
 }
 
 // disabled 버튼

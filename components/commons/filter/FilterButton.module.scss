@@ -1,0 +1,17 @@
+@import '/components/commons/Button/Button.module.scss';
+
+.filterButton {
+  display: flex;
+  margin-top: 40px;
+  gap: 8px;
+  button {
+    &:nth-of-type(1) {
+      @include emptyButton();
+      width: 84px;
+    }
+    &:nth-of-type(2) {
+      @include fillButton();
+      width: 260px;
+    }
+  }
+}
