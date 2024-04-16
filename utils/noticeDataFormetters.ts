@@ -1,12 +1,11 @@
 /**
- * @function formatNoticeTime 공고 Card 컴포넌트의 time 에 들어갈 문자열을 포매팅하는 함수
+ * @function formatNoticeTime 공고 Card 컴포넌트의 time 에 들어갈 문자열을 포매팅
  * @param startsAt   "2023-07-20T15:00:00.000Z" 형식의 문자열
  * @param workHours 일하는 시간의 숫자형값
+ *
+ * @function formatWage 공고 Card 컴포넌트의 pay에 들어갈 문자열을 포매팅
  */
-export default function formatNoticeTime(
-  startsAt: string,
-  workHours: number,
-): string {
+export function formatNoticeTime(startsAt: string, workHours: number): string {
   const date = new Date(startsAt);
   const year = date.getFullYear().toString().slice(-2);
   const month = ('0' + (date.getMonth() + 1)).slice(-2);
@@ -29,4 +28,11 @@ export default function formatNoticeTime(
   }
 
   return formattedString;
+}
+
+export function formatWage(wage: number): string {
+  // 숫자를 세 자리마다 쉼표로 구분하여 문자열로 변환
+  const formattedWage = wage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  // 변환된 문자열에 "원"을 추가하여 반환
+  return `${formattedWage} 원`;
 }

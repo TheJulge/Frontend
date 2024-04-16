@@ -4,7 +4,7 @@ import styles from './Card.module.scss';
 import ClockIcon from '@/public/images/clockIcon.svg';
 import LocationIcon from '@/public/images/locationIcon.svg';
 import Link from 'next/link';
-import formatNoticeTime from '@/utils/timeFormatter';
+import { formatNoticeTime, formatWage } from '@/utils/noticeDataFormetters';
 
 /**
  * @param {Object} props
@@ -42,7 +42,7 @@ export default function Card({ noticeInfo }: CardProp) {
           </div>
         </div>
         <div className={styles.payInfo}>
-          <span className={styles.pay}>{noticeData.hourlyPay}</span>
+          <span className={styles.pay}>{formatWage(noticeData.hourlyPay)}</span>
         </div>
       </div>
     </Link>
