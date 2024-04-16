@@ -6,6 +6,7 @@ interface LinkType {
   description: string;
   method: string;
   href: string;
+  body?: Record<string, unknown>;
 }
 
 //가게의 특정 공고를 조회할때 "item" 내부에 currentUserApplication 데이터 타입

@@ -1,6 +1,8 @@
+import Image from 'next/image';
 import { CardNoticeType } from '@/types/noticeTypes';
 import styles from './Card.module.scss';
-import Image from 'next/image';
+import ClockIcon from '@/public/images/clockIcon.svg';
+import LocationIcon from '@/public/images/locationIcon.svg';
 
 /**
  * @param {Object} props
@@ -12,17 +14,31 @@ interface CardProp {
 }
 
 export default function Card({ noticeInfo }: CardProp) {
+  const noticeData = noticeInfo.item;
+  const shopData = noticeInfo.item.shop.item;
   return (
     <div className={styles.cardContainer}>
       <Image
-        className={styles.image}
         src={noticeInfo.item.shop.item.imageUrl}
-        fill
         alt={noticeInfo.item.shop.item.name}
+        fill
       />
+
       <div className={styles.contents}>
-        <div className={styles.shopInfo}></div>
-        <div className={styles.payInfo}></div>
+        <div className={styles.notice}>
+          <p className={styles.shopName}>{shopData.name}</p>
+          <div className={styles.time}>
+            <ClockIcon />
+            <span>시간~시간</span>
+          </div>
+          <div className={styles.location}>
+            <LocationIcon />
+            <span>{shopData.address1}</span>
+          </div>
+        </div>
+        <div className={styles.payInfo}>
+          <span className={styles.pay}>{noticeData.hourlyPay}</span>
+        </div>
       </div>
     </div>
   );
