@@ -1,0 +1,28 @@
+{
+  "offset": 0,
+  "limit": 10,
+  "address": [],
+  "count": 0,
+  "hasNext": false,
+  "items": [],
+  "links": [
+    {
+      "rel": "self",
+      "description": "현재 페이지",
+      "method": "GET",
+      "href": "/api/4-17/the-julge/notices?offset=0&limit=10"
+    },
+    {
+      "rel": "prev",
+      "description": "이전 페이지",
+      "method": "GET",
+      "href": "/api/4-17/the-julge/notices?offset=0&limit=10"
+    },
+    {
+      "rel": "next",
+      "description": "다음 페이지",
+      "method": "GET",
+      "href": "/api/4-17/the-julge/notices?offset=10&limit=10"
+    }
+  ]
+}
