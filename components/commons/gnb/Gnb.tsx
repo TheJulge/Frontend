@@ -1,8 +1,8 @@
 import LogoIcon from '@/public/images/logo.svg';
 import Link from 'next/link';
 import styles from './Gnb.module.scss';
-import GnbSearch from './GnbSearch.tsx';
-import GnbUser from './GnbUser.tsx';
+import GnbUser from './GnbUser';
+import GnbSearch from './GnbSearch';
 
 export default function Gnb() {
   return (

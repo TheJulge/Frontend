@@ -6,6 +6,7 @@ export default function Home() {
       <Head>
         <title>theJulge</title>
       </Head>
+      <div>{/* fragment eslint 에러 방지용 태그 */}</div>
     </>
   );
 }
