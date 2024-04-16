@@ -31,6 +31,9 @@
       gap: 8px;
       .shopName {
         @include h3(--black);
+        @include mobile {
+          @include body1-bold(--black);
+        }
       }
       .time {
         display: flex;
@@ -38,6 +41,9 @@
         gap: 6px;
         span {
           @include body2-regular(--gray50);
+          @include mobile {
+            @include caption(--gray50);
+          }
         }
       }
       .location {
@@ -46,6 +52,9 @@
         gap: 6px;
         span {
           @include body2-regular(--gray50);
+          @include mobile {
+            @include caption(--gray50);
+          }
         }
       }
     }
@@ -56,6 +65,9 @@
       align-self: stretch;
       .pay {
         @include h2(--black);
+        @include mobile {
+          @include h4-bold(--black);
+        }
       }
     }
   }
