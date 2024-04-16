@@ -1,4 +1,4 @@
-import SearchIcon from '@/public/images/search.svg';
+import SearchIcon from '@/public/images/gnb/search.svg';
 import styles from './GnbSearch.module.scss';
 
 export default function GnbSearch() {

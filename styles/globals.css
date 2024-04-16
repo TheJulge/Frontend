@@ -51,3 +51,17 @@ iframe {
   --green10: #d4f7d4;
   --kakao: #fee500;
 }
+
+/* datepicker 라이브러리 */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+.react-datepicker__header {
+  background-color: var(--white) !important;
+}
+.react-datepicker__day--outside-month {
+  color: #a8a8a8 !important;
+}
+.react-datepicker__day--keyboard-selected {
+  background: none !important;
+}

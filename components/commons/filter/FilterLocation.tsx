@@ -1,20 +1,19 @@
 import { LOCATION_FILTER } from '@/utils/constants/toastConstants';
-import styles from './FilterLocation.module.scss';
 import { useState } from 'react';
 import CloseIcon from '@/public/images/filter/close.svg';
+import styles from './FilterLocation.module.scss';
 
 export default function FilterLocation() {
   const [selectLocation, setSelectLocation] = useState<string[]>([]);
   const location = LOCATION_FILTER;
 
-  const handleLocation = (location: string) => {
-    if (!selectLocation.includes(location)) {
-      setSelectLocation(prev => [...prev, location]);
+  const handleLocation = (name: string) => {
+    if (!selectLocation.includes(name)) {
+      setSelectLocation(prev => [...prev, name]);
     }
   };
-  console.log(selectLocation);
-  const handleLocationDelete = (location: string) => {
-    setSelectLocation(prev => prev.filter(item => item !== location));
+  const handleLocationDelete = (name: string) => {
+    setSelectLocation(prev => prev.filter(item => item !== name));
   };
   return (
     <div className={styles.filterLocation}>
@@ -35,14 +34,14 @@ export default function FilterLocation() {
 
       {selectLocation.length > 0 ? (
         <ul className={styles.selectLocation}>
-          {selectLocation.map((location, index) => {
+          {selectLocation.map((item, index) => {
             return (
               <li key={index}>
-                {location}
+                {item}
                 <button
                   type="button"
                   aria-label="삭제"
-                  onClick={() => handleLocationDelete(location)}
+                  onClick={() => handleLocationDelete(item)}
                 >
                   <CloseIcon viewBox="0 0 16 16" />
                 </button>

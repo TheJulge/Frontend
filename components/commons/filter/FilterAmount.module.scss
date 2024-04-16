@@ -1,0 +1,7 @@
+.filterAmount {
+  padding: 24px 0;
+  h6 {
+    @include body1-regular(--black);
+    margin-bottom: 8px;
+  }
+}
