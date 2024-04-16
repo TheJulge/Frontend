@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="51495c7d-a173-40e1-a11d-ddc50e9c8988" name="Changes" comment="[#6]style: 스타일수정" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="develop" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feat-table" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2f5DymrVPzdNKalmSdytx4KpbDj" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "HTTP Request.All in table.executor": "Run",
+    "HTTP Request.table | #1.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "develop",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/janyong/Documents/study/프로젝트/Frontend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\janyong\\Documents\\study\\프로젝트\\Frontend\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\janyong\Documents\study\프로젝트\Frontend\public\images" />
+      <recent name="C:\Users\janyong\Documents\study\프로젝트\Frontend\pages\test" />
+      <recent name="C:\Users\janyong\Documents\study\프로젝트\Frontend\types" />
+    </key>
+  </component>
+  <component name="RunManager" selected="HTTP 요청.All in table">
+    <configuration name="All in table" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/components/table/table.http">
+      <method v="2" />
+    </configuration>
+    <configuration name="table | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/components/table/table.http" requestIdentifier="#1">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP 요청.table | #1" />
+        <item itemvalue="HTTP 요청.All in table" />
+        <item itemvalue="HTTP 요청.table | #1" />
+        <item itemvalue="HTTP 요청.All in table" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="51495c7d-a173-40e1-a11d-ddc50e9c8988" name="Changes" comment="" />
+      <created>1713082302164</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1713082302164</updated>
+      <workItem from="1713082303557" duration="2421000" />
+      <workItem from="1713084760982" duration="17505000" />
+      <workItem from="1713149986878" duration="7901000" />
+      <workItem from="1713159238021" duration="446000" />
+      <workItem from="1713159693417" duration="1109000" />
+      <workItem from="1713160826932" duration="14954000" />
+      <workItem from="1713234407340" duration="8083000" />
+      <workItem from="1713248510055" duration="56000" />
+      <workItem from="1713248574807" duration="243000" />
+      <workItem from="1713248837641" duration="196000" />
+    </task>
+    <task id="LOCAL-00001" summary="style: 기본 설정 및 데이터 적용">
+      <option name="closed" value="true" />
+      <created>1713158629096</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713158629096</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: table컴포넌트 구현">
+      <option name="closed" value="true" />
+      <created>1713158660481</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713158660481</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[#6]feat: 페이지네이션 기본구현">
+      <option name="closed" value="true" />
+      <created>1713248395087</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713248395087</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[#6]fix: 테이블 수정">
+      <option name="closed" value="true" />
+      <created>1713248415122</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713248415122</updated>
+    </task>
+    <task id="LOCAL-00005" summary="[#6]feat: 상태버튼">
+      <option name="closed" value="true" />
+      <created>1713248444593</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713248444593</updated>
+    </task>
+    <task id="LOCAL-00006" summary="[#6]style: 스타일수정">
+      <option name="closed" value="true" />
+      <created>1713248465789</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1713248465789</updated>
+    </task>
+    <task id="LOCAL-00007" summary="[#6]style: 스타일수정">
+      <option name="closed" value="true" />
+      <created>1713248930192</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1713248930192</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="feat-table" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="style: 기본 설정 및 데이터 적용" />
+    <MESSAGE value="feat: table컴포넌트 구현" />
+    <MESSAGE value="[#6]feat: 페이지네이션 기본구현" />
+    <MESSAGE value="[#6]fix: 테이블 수정" />
+    <MESSAGE value="[#6]feat: 상태버튼" />
+    <MESSAGE value="[#6]style: 스타일수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="[#6]style: 스타일수정" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
