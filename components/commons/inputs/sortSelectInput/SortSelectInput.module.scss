@@ -7,7 +7,7 @@
   border: none;
   position: relative;
 
-  button {
+  .button {
     @include body2-bold(--black);
     border-radius: 5px;
     background: var(--gray10);
@@ -25,13 +25,12 @@
       height: 10px;
     }
 
-    input {
+    .input {
+      @include body2-bold(--black);
       width: 100%;
       border: none;
       outline: none;
-      border-radius: 5px;
       background: var(--gray10);
-      @include body2-bold(--black);
 
       &::placeholder {
         @include body2-bold(--black);
