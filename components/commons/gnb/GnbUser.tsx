@@ -4,8 +4,10 @@ import NotiActiveIcon from '@/public/images/notification-active.svg';
 import styles from './GnbUser.module.scss';
 
 export default function GnbUser() {
-  let type = 'employee';
-  let notification = false;
+  // type과 notification은 추후에 유저데이터 (전역상태) 로 바꿔줍니다
+  const type = 'employee';
+  const notification = false;
+
   return (
     <div className={styles.headerMenu}>
       {type === 'employee' && (
@@ -21,7 +23,8 @@ export default function GnbUser() {
           </button>
         </>
       )}
-      {type === 'employer' && (
+      {/* 아래 행의 employee 는 employer로 추후에 변경합니다 (지금 변경하면 ts에러) */}
+      {type === 'employee' && (
         <>
           <Link href="/">내 가게</Link>
           <Link href="/">로그아웃</Link>
