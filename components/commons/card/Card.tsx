@@ -3,6 +3,8 @@ import { CardNoticeType } from '@/types/noticeTypes';
 import styles from './Card.module.scss';
 import ClockIcon from '@/public/images/clockIcon.svg';
 import LocationIcon from '@/public/images/locationIcon.svg';
+import Link from 'next/link';
+import formatNoticeTime from '@/utils/timeFormatter';
 
 /**
  * @param {Object} props
@@ -15,9 +17,10 @@ interface CardProp {
 
 export default function Card({ noticeInfo }: CardProp) {
   const noticeData = noticeInfo.item;
-  const shopData = noticeInfo.item.shop.item;
+  const shopData = noticeData.shop.item;
+  const link = noticeData.shop.href;
   return (
-    <div className={styles.cardContainer}>
+    <Link className={styles.cardContainer} href={link}>
       <Image
         src={noticeInfo.item.shop.item.imageUrl}
         alt={noticeInfo.item.shop.item.name}
@@ -29,7 +32,9 @@ export default function Card({ noticeInfo }: CardProp) {
           <p className={styles.shopName}>{shopData.name}</p>
           <div className={styles.time}>
             <ClockIcon />
-            <span>시간~시간</span>
+            <span>
+              {formatNoticeTime(noticeData.startsAt, noticeData.workhour)}
+            </span>
           </div>
           <div className={styles.location}>
             <LocationIcon />
@@ -40,6 +45,6 @@ export default function Card({ noticeInfo }: CardProp) {
           <span className={styles.pay}>{noticeData.hourlyPay}</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
