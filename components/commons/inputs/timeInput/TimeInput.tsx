@@ -1,5 +1,4 @@
 import styles from '@/components/commons/inputs/timeInput/TimeInput.module.scss';
-import React, { useState } from 'react';
 
 export default function TimeInput() {
   return (

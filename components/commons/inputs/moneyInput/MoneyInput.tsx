@@ -5,7 +5,7 @@ type MoneyInputProps = {
   labelName: string;
 };
 
-const MINIMUM_WAGE = 9860;
+const MINIMUM_WAGE = '9860';
 
 export default function MoneyInput({ labelName }: MoneyInputProps) {
   const [money, setMoney] = useState<number>(0);
@@ -13,9 +13,10 @@ export default function MoneyInput({ labelName }: MoneyInputProps) {
     setMoney(Number(event.currentTarget.value));
   };
   const handleFocusOut = (event: React.FormEvent<HTMLInputElement>) => {
-    if (money < MINIMUM_WAGE) {
-      setMoney(MINIMUM_WAGE);
-      event.currentTarget.value = MINIMUM_WAGE;
+    if (money < Number(MINIMUM_WAGE)) {
+      setMoney(Number(MINIMUM_WAGE));
+      const temp = event;
+      temp.currentTarget.value = MINIMUM_WAGE;
     }
   };
 
