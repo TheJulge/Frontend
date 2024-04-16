@@ -30,18 +30,20 @@ export function WaitingButton() {
   );
 }
 
-export function PendingButton() {
+export function PendingButton({ onStatusChange }) {
   return (
     <div className={styles.actionButtonBox}>
       <button
         type="button"
         className={`${styles.actionButton} ${styles.refuse}`}
+        onClick={() => onStatusChange('rejected')}
       >
         거절하기
       </button>
       <button
         type="button"
         className={`${styles.actionButton} ${styles.accept}`}
+        onClick={() => onStatusChange('accepted')}
       >
         승인하기
       </button>
