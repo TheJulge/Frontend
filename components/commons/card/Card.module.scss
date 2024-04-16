@@ -1,6 +1,5 @@
 .cardContainer {
-  width: 100%;
-  max-width: 312px;
+  width: 312px;
   display: inline-flex;
   padding: 16px;
   flex-direction: column;
@@ -10,6 +9,8 @@
   border: 1px solid var(--gray20);
   background: var(--white);
   .image {
+    width: 100%;
+    border-radius: 12px;
   }
 
   .contents {

@@ -1,5 +1,6 @@
 import { CardNoticeType } from '@/types/noticeTypes';
 import styles from './Card.module.scss';
+import Image from 'next/image';
 
 /**
  * @param {Object} props
@@ -13,7 +14,12 @@ interface CardProp {
 export default function Card({ noticeInfo }: CardProp) {
   return (
     <div className={styles.cardContainer}>
-      <div className={styles.image}></div>
+      <Image
+        className={styles.image}
+        src={noticeInfo.item.shop.item.imageUrl}
+        fill
+        alt={noticeInfo.item.shop.item.name}
+      />
       <div className={styles.contents}>
         <div className={styles.shopInfo}></div>
         <div className={styles.payInfo}></div>
