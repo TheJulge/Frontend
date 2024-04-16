@@ -1,5 +1,4 @@
-import React, { ReactNode, useRef } from 'react';
-import useCloseModal from '@/hooks/useCloseModal';
+import React, { ReactNode } from 'react';
 import CheckIcon from '@/public/images/ modal/check.svg';
 import styles from './Modal.module.scss';
 import Modal from './Modal';
@@ -25,8 +24,6 @@ export default function ChooseModal({
   handleYes,
   handleNo,
 }: ModalProps) {
-  const modalRef = useRef<HTMLDivElement>(null);
-  useCloseModal(showModal, handleNo, modalRef);
   return (
     <Modal showModal={showModal} handleClose={handleNo}>
       <CheckIcon viewBox="0 0 24 24" alt="check icon" />

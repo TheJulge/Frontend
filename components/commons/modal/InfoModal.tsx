@@ -1,5 +1,4 @@
-import React, { ReactNode, useRef } from 'react';
-import useCloseModal from '@/hooks/useCloseModal';
+import React, { ReactNode } from 'react';
 import InfoIcon from '@/public/images/ modal/info.svg';
 import styles from './Modal.module.scss';
 import Modal from './Modal';
@@ -21,8 +20,6 @@ export default function InfoModal({
   showModal,
   handleClose,
 }: ModalProps) {
-  const modalRef = useRef<HTMLDivElement>(null);
-  useCloseModal(showModal, handleClose, modalRef);
   return (
     <Modal showModal={showModal} handleClose={handleClose}>
       <InfoIcon viewBox="0 0 24 24" alt="infomation icon" />

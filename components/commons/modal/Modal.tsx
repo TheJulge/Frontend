@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import useCloseModal from '@/hooks/useCloseModal';
 import Portal from './Portal';
 import styles from './Modal.module.scss';
@@ -23,6 +23,11 @@ export default function Modal({
 }: ModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   useCloseModal(showModal, handleClose, modalRef);
+  useEffect(() => {
+    if (showModal) {
+      document.body.classList.add(styles['body-scroll-lock']);
+    }
+  }, [showModal]);
   return (
     <Portal>
       <div className={styles.wrapper}>
