@@ -1,34 +1,41 @@
-
+.container{
+  width: 100%;
+  background: #cce6ff;
+  padding: 60px 32px;
+}
 .outerContainer {
   width: 100%;
   border-radius: 10px;
   border: 1px solid var(--gray20);
   max-width: 964px;
   background: var(--white);
-  margin: 20px ;
   overflow: hidden;
 
 }
 
 .gridContainer {
-
+  width: 100%;
   display: grid;
   grid-template-columns: 228px 300px 200px 236px;
-  min-width: 600px;
-  @media (max-width: 768px) {
-    overflow-x: auto;
-  }
+  overflow-x: auto;
 
   :first-child {
-
     position: sticky;
     z-index: 1;
     left: 0;
+
+    @media (max-width: 768px) {
+      width: 186px;
+    }
+
   }
 }
 
-.gridHeader {
+.gridContainer::-webkit-scrollbar{
+  display:none;
+}
 
+.gridHeader {
   background-color: var(--red10);
   padding: 14px 12px;
   font-size: 14px;
@@ -37,30 +44,25 @@
 
 }
 
-//.gridRow {
-//  display: contents;
-//}
-
 .gridCell {
   display: flex;
   align-items: center;
   padding: 20px 12px;
   border-bottom: 1px solid var(--gray20);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
+  background: var(--white);
+
+  @include body1-regular(var(--black))
+}
+
+.gridCellFirst{
+
+    position: sticky;
+    z-index: 1;
+    left: 0;
 
 
 
 }
-
-//.gridCellFirst{
-//
-//    position: sticky;
-//    z-index: 1;
-//    left: 0;
-//
-//}
 
 .actionButton {
   padding: 0.3rem 0.5rem;
@@ -81,15 +83,15 @@
 }
 
 /*모바일용 레이아웃*/
-@media (max-width: 480px) {
-  .mobileHide {
-    display: none;
-  }
-  .gridContainer {
-    grid-template-columns: 1fr 1fr;
-  }
-  .gridContainer {
-    min-width: unset;
-  }
+//@media (max-width: 768px) {
+//
+//  .outerContainer {
+//    width: 801px;
+//  }
+  //.gridContainer {
+  //  min-width: unset;
+  //}
 
-}
+//}
+
+
