@@ -16,13 +16,12 @@ interface Location {
   name: string;
 }
 
-export default function Filter({
-  isOpen,
-  setIsOpen,
-}: {
+interface FilterProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+}
+
+export default function Filter({ isOpen, setIsOpen }: FilterProps) {
   const [selectLocation, setSelectLocation] = useState<Location[]>([]);
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [money, setMoney] = useState<string>('');

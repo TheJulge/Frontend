@@ -11,13 +11,16 @@ interface Location {
   id: number;
   name: string;
 }
+
+interface LocationProps {
+  selectLocation: Location[];
+  setSelectLocation: React.Dispatch<React.SetStateAction<Location[]>>;
+}
+
 export default function FilterLocation({
   selectLocation,
   setSelectLocation,
-}: {
-  selectLocation: Location[];
-  setSelectLocation: React.Dispatch<React.SetStateAction<Location[]>>;
-}) {
+}: LocationProps) {
   const location = LOCATION_FILTER;
 
   // 위치를 클릭하면 해당 id와 vqlue가 저장됩니다.

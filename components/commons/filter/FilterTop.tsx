@@ -6,11 +6,11 @@ import styles from './FilterTop.module.scss';
  * @param {function} props.setIsOpen 모달 보임 유무 결정
  */
 
-export default function FilterTop({
-  setIsOpen,
-}: {
+interface TopProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+}
+
+export default function FilterTop({ setIsOpen }: TopProps) {
   // 닫기 버튼 클릭시 filter가 사라집니다.
   const handleClose = () => {
     setIsOpen(false);

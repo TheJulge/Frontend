@@ -6,11 +6,11 @@ import styles from './Calendar.module.scss';
  * @param {function} props.increaseMonth 다음 달로 넘어가는 함수
  */
 
-type CustomHeaderProps = {
+interface CustomHeaderProps {
   date: Date;
   decreaseMonth: () => void;
   increaseMonth: () => void;
-};
+}
 
 export default function CustomHeader({
   date,

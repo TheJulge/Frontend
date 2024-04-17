@@ -10,13 +10,12 @@ import styles from './Calendar.module.scss';
  * @param {function} props.setStartDate 시작일 값 결정
  */
 
-export default function Calendar({
-  startDate,
-  setStartDate,
-}: {
+export interface CalendarProps {
   startDate: Date;
   setStartDate: React.Dispatch<React.SetStateAction<Date>>;
-}) {
+}
+
+export default function Calendar({ startDate, setStartDate }: CalendarProps) {
   return (
     <DatePicker
       className={styles.filterCalendar}

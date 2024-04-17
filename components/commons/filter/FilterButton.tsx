@@ -12,15 +12,17 @@ interface Location {
   name: string;
 }
 
+interface ButtonProps {
+  setSelectLocation: React.Dispatch<React.SetStateAction<Location[]>>;
+  setStartDate: React.Dispatch<React.SetStateAction<Date>>;
+  setMoney: React.Dispatch<React.SetStateAction<string>>;
+}
+
 export default function FilterButton({
   setSelectLocation,
   setStartDate,
   setMoney,
-}: {
-  setSelectLocation: React.Dispatch<React.SetStateAction<Location[]>>;
-  setStartDate: React.Dispatch<React.SetStateAction<Date>>;
-  setMoney: React.Dispatch<React.SetStateAction<string>>;
-}) {
+}: ButtonProps) {
   // 초기화 버튼을 누르면 위치, 시작일,금액의 값이 초기화 됩니다.
   const handleInitialization = () => {
     setSelectLocation([]);
