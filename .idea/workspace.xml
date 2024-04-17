@@ -4,7 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51495c7d-a173-40e1-a11d-ddc50e9c8988" name="Changes" comment="[#6]style: 스타일수정" />
+    <list default="true" id="51495c7d-a173-40e1-a11d-ddc50e9c8988" name="Changes" comment="[#6]style: 스타일수정">
+      <change afterPath="$PROJECT_DIR$/components/table/EmployeeTable.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/table/EmployerTable.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/table/ssr/employee.ssr.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/table/ssr/employer.ssr.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/shop/[id]/[notice]/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/shop/[id]/detail/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/rightButtonOn.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/applicationTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/commons/pagination/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/commons/pagination/Pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/table/StatusButton.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/table/StatusButton.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/table/Table.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/table/Table.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/table/Table.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/table/mock.data.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/table/table.http" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/usePagination.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_document.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/test/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/test/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/rightButton.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/rightButton.svg" afterDir="false" />
+    </list>
+    <list id="f96a02de-60a6-436f-be5d-cf7bc4ede9a7" name="ichanghun 님이 변경한 내용" comment="">
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/commons/pagination/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/commons/pagination/Pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/table/StatusButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/table/StatusButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/test/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/test/index.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +44,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -38,6 +69,41 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/components/commons/pagination/Pagination.tsx">
+      <ranges>
+        <range start1="0" end1="0" start2="0" end2="2" changelist="51495c7d-a173-40e1-a11d-ddc50e9c8988" />
+        <range start1="2" end1="2" start2="4" end2="5" changelist="51495c7d-a173-40e1-a11d-ddc50e9c8988" />
+        <range start1="3" end1="7" start2="6" end2="6" changelist="51495c7d-a173-40e1-a11d-ddc50e9c8988" />
+        <range start1="9" end1="12" start2="8" end2="18" changelist="51495c7d-a173-40e1-a11d-ddc50e9c8988" />
+        <range start1="13" end1="28" start2="19" end2="25" changelist="f96a02de-60a6-436f-be5d-cf7bc4ede9a7" />
+        <range start1="29" end1="34" start2="26" end2="32" changelist="f96a02de-60a6-436f-be5d-cf7bc4ede9a7" />
+        <range start1="35" end1="36" start2="33" end2="44" changelist="f96a02de-60a6-436f-be5d-cf7bc4ede9a7" />
+        <range start1="41" end1="42" start2="49" end2="50" changelist="51495c7d-a173-40e1-a11d-ddc50e9c8988" />
+        <range start1="44" end1="47" start2="52" end2="56" changelist="51495c7d-a173-40e1-a11d-ddc50e9c8988" />
+        <range start1="49" end1="50" start2="58" end2="59" changelist="51495c7d-a173-40e1-a11d-ddc50e9c8988" />
+        <range start1="61" end1="62" start2="70" end2="78" changelist="51495c7d-a173-40e1-a11d-ddc50e9c8988" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/pages/test/index.tsx">
+      <ranges>
+        <range start1="0" end1="1" start2="0" end2="0" changelist="51495c7d-a173-40e1-a11d-ddc50e9c8988" />
+        <range start1="2" end1="2" start2="1" end2="5" changelist="f96a02de-60a6-436f-be5d-cf7bc4ede9a7" />
+        <range start1="3" end1="4" start2="6" end2="13" changelist="f96a02de-60a6-436f-be5d-cf7bc4ede9a7" />
+        <range start1="6" end1="7" start2="15" end2="27" changelist="f96a02de-60a6-436f-be5d-cf7bc4ede9a7" />
+        <range start1="9" end1="10" start2="29" end2="32" changelist="f96a02de-60a6-436f-be5d-cf7bc4ede9a7" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/.eslintrc.json">
+      <ranges>
+        <range start1="12" end1="12" start2="12" end2="13" changelist="f96a02de-60a6-436f-be5d-cf7bc4ede9a7" />
+        <range start1="13" end1="13" start2="14" end2="15" changelist="51495c7d-a173-40e1-a11d-ddc50e9c8988" />
+      </ranges>
+    </file>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -49,32 +115,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "HTTP Request.All in table.executor": "Run",
-    "HTTP Request.table | #1.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/janyong/Documents/study/프로젝트/Frontend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\janyong\\Documents\\study\\프로젝트\\Frontend\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP Request.All in table.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.table | #1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat-table&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/janyong/Documents/study/프로젝트/Frontend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\janyong\\Documents\\study\\프로젝트\\Frontend\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\janyong\\Documents\\study\\프로젝트\\Frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\janyong\Documents\study\프로젝트\Frontend\pages\shop\[id]" />
+      <recent name="C:\Users\janyong\Documents\study\프로젝트\Frontend\components\table" />
       <recent name="C:\Users\janyong\Documents\study\프로젝트\Frontend\public\images" />
       <recent name="C:\Users\janyong\Documents\study\프로젝트\Frontend\pages\test" />
       <recent name="C:\Users\janyong\Documents\study\프로젝트\Frontend\types" />
@@ -122,6 +190,7 @@
       <workItem from="1713248510055" duration="56000" />
       <workItem from="1713248574807" duration="243000" />
       <workItem from="1713248837641" duration="196000" />
+      <workItem from="1713320706833" duration="22166000" />
     </task>
     <task id="LOCAL-00001" summary="style: 기본 설정 및 데이터 적용">
       <option name="closed" value="true" />
