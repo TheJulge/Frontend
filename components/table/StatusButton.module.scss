@@ -4,20 +4,17 @@
   display: flex;
 }
 .button{
-  padding: 6px 18px;
+  padding: 6px 10px;
   border-radius: 20px;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+  @include body2-bold(var(--black));
 
   &.completeButton{
     color:var(--blue20);
     background: var(--blue10);
   }
   &.refuseButton{
-    background: var(--red40);
-    color:var(--white);
+    background: var(--red10);
+    color:var(--red40);
 
   }
   &.waitingButton{
