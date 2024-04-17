@@ -14,9 +14,6 @@ type TimeInputProps = {
 };
 
 export default function TimeInput({ value, setValue }: TimeInputProps) {
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setValue(Number(event.target.value));
-  // };
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     const inputValue = event.currentTarget.value;
     const numericValue = inputValue.replace(/\D/g, '');
