@@ -20,12 +20,15 @@ export default function FilterLocation({
 }) {
   const location = LOCATION_FILTER;
 
+  // 위치를 클릭하면 해당 id와 vqlue가 저장됩니다.
+  // 저장되어있는 value를 클릭시 저장이 안 됩니다.
   const handleLocation = (id: number, name: string) => {
     if (!selectLocation.some(item => item.id === id)) {
       setSelectLocation(prev => [...prev, { id, name }]);
     }
   };
 
+  // x 버튼 클릭시 해당 위치 value가 배열에서 사라집니다.
   const handleLocationDelete = (id: number) => {
     setSelectLocation(prev => prev.filter(item => item.id !== id));
   };

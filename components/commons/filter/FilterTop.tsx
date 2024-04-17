@@ -11,9 +11,11 @@ export default function FilterTop({
 }: {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  // 닫기 버튼 클릭시 filter가 사라집니다.
   const handleClose = () => {
     setIsOpen(false);
   };
+
   return (
     <div className={styles.filterTop}>
       <h3>상세 필터</h3>

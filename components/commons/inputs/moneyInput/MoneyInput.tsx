@@ -29,8 +29,12 @@ export default function MoneyInput({
     const formattedValue = numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     setValue(formattedValue);
   };
-  const handleFocusOut = () => {
-    if (Number(value) < Number(MINIMUM_WAGE)) {
+
+  const handleFocusOut = (event: React.FormEvent<HTMLInputElement>) => {
+    const numericValue = event.currentTarget.value.replace(/\D/g, '');
+    const numericMinimumWage = MINIMUM_WAGE.replace(/\D/g, '');
+
+    if (Number(numericValue) < Number(numericMinimumWage)) {
       setValue(MINIMUM_WAGE);
     }
   };

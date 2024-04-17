@@ -7,8 +7,8 @@ import { useState } from 'react';
 
 export default function InputTest() {
   const [aaa, setAaa] = useState<string>('');
-  const [bbb, setBbb] = useState<number>(0);
-  const [ccc, setCcc] = useState<number>(0);
+  const [bbb, setBbb] = useState<string>('');
+  const [ccc, setCcc] = useState<string>('');
   const [ddd, setDdd] = useState<string>('');
   const [eee, setEee] = useState<string>('');
 
@@ -36,7 +36,7 @@ export default function InputTest() {
       />
       <BasicInput labelName="가게*" setValue={setAaa} />
       <MoneyInput labelName="시급*" value={bbb} setValue={setBbb} />
-      <TimeInput setValue={setCcc} />
+      <TimeInput value={ccc} setValue={setCcc} />
       <SortSelectInput value={eee} setValue={setEee} />
       <div>분류*: {ddd}</div>
       <div>가게*: {aaa}</div>

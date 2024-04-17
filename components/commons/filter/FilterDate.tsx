@@ -3,7 +3,7 @@ import Calendar from '../calendar/Calendar';
 import styles from './FilterDate.module.scss';
 
 /**
- * @param {Object | null} props.startDate 시작일 값
+ * @param {Object} props.startDate 시작일 값
  * @param {function} props.setStartDate 시작일 값 결정
  */
 
@@ -11,8 +11,8 @@ export default function FilterDate({
   startDate,
   setStartDate,
 }: {
-  startDate: Date | null;
-  setStartDate: React.Dispatch<React.SetStateAction<Date | null>>;
+  startDate: Date;
+  setStartDate: React.Dispatch<React.SetStateAction<Date>>;
 }) {
   return (
     <div className={styles.filterDate}>

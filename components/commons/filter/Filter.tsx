@@ -24,9 +24,11 @@ export default function Filter({
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [selectLocation, setSelectLocation] = useState<Location[]>([]);
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
+  const [startDate, setStartDate] = useState<Date>(new Date());
   const [money, setMoney] = useState<string>('');
 
+  // isOpen이 true면 filter가 나옵니다.
+  // selectLocation, startDate, money는 위치, 시작일, 금액의 값입니다.
   if (!isOpen) return null;
   return (
     <div className={styles.filter}>

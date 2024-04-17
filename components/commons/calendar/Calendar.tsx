@@ -6,7 +6,7 @@ import CustomHeader from './CustomHeader';
 import styles from './Calendar.module.scss';
 
 /**
- * @param {Object | null} props.startDate 시작일 값
+ * @param {Object} props.startDate 시작일 값
  * @param {function} props.setStartDate 시작일 값 결정
  */
 
@@ -14,8 +14,8 @@ export default function Calendar({
   startDate,
   setStartDate,
 }: {
-  startDate: Date | null;
-  setStartDate: React.Dispatch<React.SetStateAction<Date | null>>;
+  startDate: Date;
+  setStartDate: React.Dispatch<React.SetStateAction<Date>>;
 }) {
   return (
     <DatePicker
@@ -31,7 +31,7 @@ export default function Calendar({
       }
       locale={ko}
       selected={startDate}
-      onChange={date => setStartDate(date)}
+      onChange={date => setStartDate(date!)}
       dateFormat="yyyy년 MM월 dd일"
       renderCustomHeader={({ date, decreaseMonth, increaseMonth }) => (
         <CustomHeader

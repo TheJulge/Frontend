@@ -18,9 +18,10 @@ export default function FilterButton({
   setMoney,
 }: {
   setSelectLocation: React.Dispatch<React.SetStateAction<Location[]>>;
-  setStartDate: React.Dispatch<React.SetStateAction<Date | null>>;
+  setStartDate: React.Dispatch<React.SetStateAction<Date>>;
   setMoney: React.Dispatch<React.SetStateAction<string>>;
 }) {
+  // 초기화 버튼을 누르면 위치, 시작일,금액의 값이 초기화 됩니다.
   const handleInitialization = () => {
     setSelectLocation([]);
     setStartDate(new Date());
