@@ -1,0 +1,12 @@
+.flexContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.text {
+  @include body2-regular(--black);
+}
+.time {
+  @include caption(--gray40);
+}
