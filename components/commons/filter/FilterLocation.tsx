@@ -4,10 +4,8 @@ import CloseIcon from '@/public/images/filter/close.svg';
 import styles from './FilterLocation.module.scss';
 
 /**
- *
- * @param {Object} props
  * @param {Select[]} props.selectLocation 주소 값
- * @param {React.Dispatch<React.SetStateAction<Location[]>>} props.setSelectLocation 주소 값 결정
+ * @param {function} props.setSelectLocation 주소 값 결정
  */
 interface Location {
   id: number;

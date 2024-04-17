@@ -2,10 +2,8 @@ import React from 'react';
 import styles from './FilterButton.module.scss';
 
 /**
- *
- * @param {Object} props
- * @param {React.Dispatch<React.SetStateAction<Location[]>>} props.setSelectLocation 주소 값 결정
- * @param {React.Dispatch<React.SetStateAction<Date | null>>} props.setStartDate 시작일 값 결정
+ * @param {function} props.setSelectLocation 주소 값 결정
+ * @param {function} props.setStartDate 시작일 값 결정
  */
 
 interface Location {

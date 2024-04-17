@@ -7,10 +7,8 @@ import FilterAmount from './FilterAmount';
 import FilterButton from './FilterButton';
 
 /**
- *
- * @param {Object} props
  * @param {boolean} props.isOpen 모달 보임 유무
- * @param {React.Dispatch<React.SetStateAction<boolean>>} props.setIsOpen 모달 보임 유무 결정
+ * @param {function} props.setIsOpen 모달 보임 유무 결정
  */
 
 interface Location {

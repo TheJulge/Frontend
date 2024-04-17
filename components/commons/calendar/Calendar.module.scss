@@ -1,13 +1,3 @@
-.filterDate {
-  padding: 24px 0;
-  border-bottom: 2px solid var(--gray10);
-  label {
-    @include body1-regular(--black);
-    display: block;
-    margin-bottom: 8px;
-  }
-}
-
 .customHeader {
   padding: 0 16px;
   display: flex;

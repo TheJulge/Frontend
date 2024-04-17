@@ -1,9 +1,10 @@
 import styles from './FilterAmount.module.scss';
+import MoneyInput from '../inputs/moneyInput/MoneyInput';
 
 export default function FilterAmount() {
   return (
     <div className={styles.filterAmount}>
-      <h6>금액</h6>
+      <MoneyInput labelName="금액" />
     </div>
   );
 }

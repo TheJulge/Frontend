@@ -10,12 +10,6 @@
   color: $cololr;
   background-color: $backgroundColor;
   border: $border;
-  @media screen and (max-width: 1024px) {
-    padding: 10px;
-  }
-  @media screen and (max-width: 768px) {
-    padding: 8px;
-  }
 }
 
 // 색 있는 버튼
@@ -35,10 +29,7 @@
   );
   padding: 13px;
   &:hover {
-    // padding: 14px;
     background-color: #f0f0f0;
-    // border: none;
-    // color: #fff;
   }
 }
 

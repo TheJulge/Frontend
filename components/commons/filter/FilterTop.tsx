@@ -2,6 +2,10 @@ import React from 'react';
 import CloseIcon from '@/public/images/close.svg';
 import styles from './FilterTop.module.scss';
 
+/**
+ * @param {function} props.setIsOpen 모달 보임 유무 결정
+ */
+
 export default function FilterTop({
   setIsOpen,
 }: {
