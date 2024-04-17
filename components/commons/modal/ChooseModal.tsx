@@ -1,8 +1,7 @@
-import React, { ReactNode, useRef } from 'react';
-import useCloseModal from '@/hooks/useCloseModal';
+import React, { ReactNode } from 'react';
 import CheckIcon from '@/public/images/ modal/check.svg';
-import Portal from './Portal';
 import styles from './Modal.module.scss';
+import Modal from './Modal';
 
 /**
  *
@@ -19,38 +18,24 @@ interface ModalProps {
   handleYes: () => void;
   handleNo: () => void;
 }
-export default function Modal({
+export default function ChooseModal({
   children,
   showModal,
   handleYes,
   handleNo,
 }: ModalProps) {
-  const modalRef = useRef<HTMLDivElement>(null);
-  useCloseModal(showModal, handleNo, modalRef);
   return (
-    <Portal>
-      <div className={styles.wrapper}>
-        <div className={styles.inner} ref={modalRef}>
-          <CheckIcon viewBox="0 0 24 24" alt="check icon" />
-          {children}
-          <div className={styles.buttonGroup}>
-            <button
-              className={styles.emptyButton}
-              type="button"
-              onClick={handleNo}
-            >
-              아니오
-            </button>
-            <button
-              className={styles.fillButton}
-              type="button"
-              onClick={handleYes}
-            >
-              예
-            </button>
-          </div>
-        </div>
+    <Modal showModal={showModal} handleClose={handleNo}>
+      <CheckIcon viewBox="0 0 24 24" alt="check icon" />
+      {children}
+      <div className={styles.buttonGroup}>
+        <button className={styles.emptyButton} type="button" onClick={handleNo}>
+          아니오
+        </button>
+        <button className={styles.fillButton} type="button" onClick={handleYes}>
+          예
+        </button>
       </div>
-    </Portal>
+    </Modal>
   );
 }

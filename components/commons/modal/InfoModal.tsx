@@ -1,9 +1,7 @@
-import React, { ReactNode, useRef } from 'react';
-import useCloseModal from '@/hooks/useCloseModal';
+import React, { ReactNode } from 'react';
 import InfoIcon from '@/public/images/ modal/info.svg';
-import Portal from './Portal';
 import styles from './Modal.module.scss';
-
+import Modal from './Modal';
 /**
  *
  * @param {Object} props
@@ -17,28 +15,22 @@ interface ModalProps {
   showModal: boolean;
   handleClose: () => void;
 }
-export default function Modal({
+export default function InfoModal({
   children,
   showModal,
   handleClose,
 }: ModalProps) {
-  const modalRef = useRef<HTMLDivElement>(null);
-  useCloseModal(showModal, handleClose, modalRef);
   return (
-    <Portal>
-      <div className={styles.wrapper}>
-        <div className={styles.inner} ref={modalRef}>
-          <InfoIcon viewBox="0 0 24 24" alt="infomation icon" />
-          {children}
-          <button
-            className={styles.emptyButton}
-            type="button"
-            onClick={handleClose}
-          >
-            확인
-          </button>
-        </div>
-      </div>
-    </Portal>
+    <Modal showModal={showModal} handleClose={handleClose}>
+      <InfoIcon viewBox="0 0 24 24" alt="infomation icon" />
+      {children}
+      <button
+        className={styles.emptyButton}
+        type="button"
+        onClick={handleClose}
+      >
+        확인
+      </button>
+    </Modal>
   );
 }

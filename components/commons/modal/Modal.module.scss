@@ -40,3 +40,6 @@
   @include fillButton();
   width: 80px;
 }
+.body-scroll-lock {
+  overflow: hidden;
+}
