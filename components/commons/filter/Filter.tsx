@@ -25,6 +25,7 @@ export default function Filter({
 }) {
   const [selectLocation, setSelectLocation] = useState<Location[]>([]);
   const [startDate, setStartDate] = useState<Date | null>(new Date());
+  const [money, setMoney] = useState<string>('');
 
   if (!isOpen) return null;
   return (
@@ -35,10 +36,11 @@ export default function Filter({
         setSelectLocation={setSelectLocation}
       />
       <FilterDate startDate={startDate} setStartDate={setStartDate} />
-      <FilterAmount />
+      <FilterAmount money={money} setMoney={setMoney} />
       <FilterButton
         setSelectLocation={setSelectLocation}
         setStartDate={setStartDate}
+        setMoney={setMoney}
       />
     </div>
   );
