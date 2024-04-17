@@ -1,9 +1,9 @@
-import styles from './PayIncrease.module.scss';
 import {
   formatWage,
   calculatePayIncreaseRate,
 } from '@/utils/noticeDataFormetters';
 import ArrowUpIcon from '@/public/images/card/arrowUpIcon.svg';
+import styles from './PayIncrease.module.scss';
 
 interface PayIncreaseProps {
   hourlyPay: number;

@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import classNames from 'classnames';
+import { formatNoticeTime } from '@/utils/noticeDataFormetters';
 import { CardNoticeType } from '@/types/noticeTypes';
-import styles from './Card.module.scss';
 import ClockIcon from '@/public/images/card/clockIcon.svg';
 import LocationIcon from '@/public/images/card/locationIcon.svg';
-import { formatNoticeTime } from '@/utils/noticeDataFormetters';
 import PayIncrease from './payIncrease/PayIncrease';
+import styles from './Card.module.scss';
 
 /**
  * @param {Object} props
