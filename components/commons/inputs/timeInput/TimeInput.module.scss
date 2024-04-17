@@ -1,0 +1,42 @@
+.container {
+  @include body1-regular(--black);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+
+  .input {
+    @include body1-regular(--black);
+    width: 100%;
+    height: 58px;
+    padding: 16px 20px;
+    border-radius: 6px;
+    border: 1px solid var(--gray30);
+    background: var(--white);
+    outline: none;
+
+    &::placeholder {
+      color: var(--gray40);
+    }
+
+    // input type: number의 화살표 제거 Chrome, Safari, Edge, Opera
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  // input type: number의 화살표 제거 Firefox
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  .time {
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+  }
+}

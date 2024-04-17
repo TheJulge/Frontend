@@ -1,0 +1,42 @@
+.container {
+  width: 100%;
+  position: relative;
+
+  .select {
+    @include body1-regular(--black);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+
+    .button {
+      width: 100%;
+      border: none;
+      background: var(--white);
+      position: relative;
+
+      .upIcon,
+      .downIcon {
+        position: absolute;
+        top: 21px;
+        right: 20px;
+      }
+
+      .input {
+        @include body1-regular(--black);
+        width: 100%;
+        height: 58px;
+        padding: 16px 20px;
+        border-radius: 6px;
+        border: 1px solid var(--gray30);
+        background: var(--white);
+        outline: none;
+
+        &::placeholder {
+          color: var(--gray40);
+        }
+      }
+    }
+  }
+}
