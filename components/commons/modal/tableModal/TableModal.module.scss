@@ -1,0 +1,80 @@
+.tableModal {
+  width: 600px;
+  padding: 40px;
+  border-radius: 12px;
+  background-color: var(--white);
+  @media screen and (max-width: 768px) {
+    width: 350px;
+  }
+}
+
+.modalTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gray20);
+  p {
+    display: flex;
+    flex-direction: column;
+    strong {
+      font-size: 20px;
+    }
+    span {
+      margin-top: 4px;
+      @include body2-regular(--gray40);
+    }
+  }
+  button {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.tableModalText {
+  padding-top: 16px;
+  p {
+    height: 240px;
+    overflow-y: scroll;
+    font-size: 18px;
+    line-height: 27px;
+    padding-right: 10px;
+    color: var(--gray50);
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--gray50);
+      border-radius: 40px;
+    }
+  }
+}
+
+.tableButton {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+  button {
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: var(--white);
+    &:nth-of-type(1) {
+      border: 1px solid var(--primary);
+      @include body2-bold(--primary);
+    }
+    &:nth-of-type(2) {
+      border: 1px solid var(--blue20);
+      @include body2-bold(--blue20);
+    }
+  }
+}
