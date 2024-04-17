@@ -31,9 +31,7 @@ export default function Modal({
   return (
     <Portal>
       <div className={styles.wrapper}>
-        <div className={styles.inner} ref={modalRef}>
-          {children}
-        </div>
+        <div ref={modalRef}>{children}</div>
       </div>
     </Portal>
   );

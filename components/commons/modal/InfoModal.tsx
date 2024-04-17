@@ -22,15 +22,17 @@ export default function InfoModal({
 }: ModalProps) {
   return (
     <Modal showModal={showModal} handleClose={handleClose}>
-      <InfoIcon viewBox="0 0 24 24" alt="infomation icon" />
-      {children}
-      <button
-        className={styles.emptyButton}
-        type="button"
-        onClick={handleClose}
-      >
-        확인
-      </button>
+      <div className={styles.modalInner}>
+        <InfoIcon viewBox="0 0 24 24" alt="infomation icon" />
+        {children}
+        <button
+          className={styles.emptyButton}
+          type="button"
+          onClick={handleClose}
+        >
+          확인
+        </button>
+      </div>
     </Modal>
   );
 }

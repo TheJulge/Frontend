@@ -26,15 +26,25 @@ export default function ChooseModal({
 }: ModalProps) {
   return (
     <Modal showModal={showModal} handleClose={handleNo}>
-      <CheckIcon viewBox="0 0 24 24" alt="check icon" />
-      {children}
-      <div className={styles.buttonGroup}>
-        <button className={styles.emptyButton} type="button" onClick={handleNo}>
-          아니오
-        </button>
-        <button className={styles.fillButton} type="button" onClick={handleYes}>
-          예
-        </button>
+      <div className={styles.modalInner}>
+        <CheckIcon viewBox="0 0 24 24" alt="check icon" />
+        {children}
+        <div className={styles.buttonGroup}>
+          <button
+            className={styles.emptyButton}
+            type="button"
+            onClick={handleNo}
+          >
+            아니오
+          </button>
+          <button
+            className={styles.fillButton}
+            type="button"
+            onClick={handleYes}
+          >
+            예
+          </button>
+        </div>
       </div>
     </Modal>
   );
