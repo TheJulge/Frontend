@@ -1,11 +1,23 @@
 .flexContainer {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  gap: 4px;
+  background-color: var(--white);
+  margin: 8px 0;
+  border-radius: 5px;
+  border: 1px solid var(--gray20);
+  padding: 16px 12px;
 }
 .text {
   @include body2-regular(--black);
+}
+.approveText {
+  color: var(--blue20);
+}
+.rejectText {
+  color: var(--red40);
 }
 .time {
   @include caption(--gray40);

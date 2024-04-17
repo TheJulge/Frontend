@@ -6,7 +6,6 @@ export default function modalTest() {
   const [showModal, setShowModal] = useState(false);
   const handleClose = () => {
     setShowModal(false);
-    console.log(showModal);
   };
   const handleClick = () => {
     setShowModal(true);
