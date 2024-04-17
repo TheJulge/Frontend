@@ -33,6 +33,10 @@
         background-color: var(--gray20);
       }
 
+      &:focus {
+        background-color: var(--gray20);
+      }
+
       &:active {
         background-color: var(--gray30);
       }

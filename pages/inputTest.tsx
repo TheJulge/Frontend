@@ -12,7 +12,6 @@ export default function InputTest() {
     '일식',
     '간식',
     '조식',
-    '중식',
     '석식',
     '천식',
     '편의점',

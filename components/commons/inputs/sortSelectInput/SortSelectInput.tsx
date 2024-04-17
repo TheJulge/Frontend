@@ -1,6 +1,6 @@
 import styles from '@/components/commons/inputs/sortSelectInput/SortSelectInput.module.scss';
 import DropDown from '@/components/commons/dropDown/Dropdown';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import PolygonUpIcon from '@/public/inputs/polygonUp.svg';
 import PolygonDownIcon from '@/public/inputs/polygonDown.svg';
 
@@ -12,6 +12,7 @@ export default function SortSelectInput() {
   const OPTIONS = ['마감임박순', '시급많은순', '시간적은순', '가나다순'];
   const [value, setValue] = useState<string>('');
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
+  const buttonRef = useRef(null);
   const handleSelectInputClick = () => {
     setShowDropDown(!showDropDown);
   };
@@ -20,10 +21,14 @@ export default function SortSelectInput() {
     setValue(selectedValue);
     setShowDropDown(!showDropDown);
   };
+  const handleClose = () => {
+    setShowDropDown(false);
+  };
 
   return (
     <div className={styles.container}>
       <button
+        ref={buttonRef}
         className={styles.button}
         onClick={handleSelectInputClick}
         type="button"
@@ -43,7 +48,13 @@ export default function SortSelectInput() {
         )}
       </button>
       {showDropDown ? (
-        <DropDown options={OPTIONS} handleClick={handleDropDownClick} />
+        <DropDown
+          buttonRef={buttonRef}
+          options={OPTIONS}
+          showDropDown={showDropDown}
+          handleClick={handleDropDownClick}
+          handleClose={handleClose}
+        />
       ) : null}
     </div>
   );

@@ -1,6 +1,6 @@
 import styles from '@/components/commons/inputs/selectInput/SelectInput.module.scss';
 import DropDown from '@/components/commons/dropDown/Dropdown';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import DropDownUpIcon from '@/public/inputs/dropDownUp.svg';
 import DropDownDownIcon from '@/public/inputs/dropDownDown.svg';
 
@@ -18,6 +18,7 @@ type SelectInputProps = {
 export default function SelectInput({ labelName, options }: SelectInputProps) {
   const [value, setValue] = useState<string>('');
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
+  const buttonRef = useRef(null);
   const handleSelectInputClick = () => {
     setShowDropDown(!showDropDown);
   };
@@ -26,12 +27,16 @@ export default function SelectInput({ labelName, options }: SelectInputProps) {
     setValue(selectedValue);
     setShowDropDown(!showDropDown);
   };
+  const handleClose = () => {
+    setShowDropDown(false);
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.select}>
         <label htmlFor={labelName}>{labelName}</label>
         <button
+          ref={buttonRef}
           className={styles.button}
           onClick={handleSelectInputClick}
           type="button"
@@ -52,7 +57,13 @@ export default function SelectInput({ labelName, options }: SelectInputProps) {
         </button>
       </div>
       {showDropDown ? (
-        <DropDown options={options} handleClick={handleDropDownClick} />
+        <DropDown
+          buttonRef={buttonRef}
+          options={options}
+          showDropDown={showDropDown}
+          handleClick={handleDropDownClick}
+          handleClose={handleClose}
+        />
       ) : null}
     </div>
   );
