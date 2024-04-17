@@ -16,7 +16,7 @@ type MoneyInputProps = {
   setValue: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const MINIMUM_WAGE = '9860';
+const MINIMUM_WAGE = '9,860';
 
 export default function MoneyInput({
   labelName,
@@ -25,17 +25,13 @@ export default function MoneyInput({
 }: MoneyInputProps) {
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     const inputValue = event.currentTarget.value;
-    // Remove non-numeric characters
     const numericValue = inputValue.replace(/\D/g, '');
-    // Format the number with commas for every three digits
     const formattedValue = numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     setValue(formattedValue);
   };
-  const handleFocusOut = (event: React.FormEvent<HTMLInputElement>) => {
+  const handleFocusOut = () => {
     if (Number(value) < Number(MINIMUM_WAGE)) {
-      setValue(MINIMUM_WAGE.replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-      const temp = event;
-      temp.currentTarget.value = MINIMUM_WAGE;
+      setValue(MINIMUM_WAGE);
     }
   };
 
