@@ -7,14 +7,14 @@ import LocationIcon from '@/public/images/card/locationIcon.svg';
 import PayIncrease from './payIncrease/PayIncrease';
 import styles from './Card.module.scss';
 
-/**
- * @param {Object} props
- * @param {Object} props.noticeInfo "/notices" GET 리스폰스의 "items" 배열속성의 낱개 데이터
- */
-
 interface CardProp {
   noticeInfo: CardNoticeType;
 }
+/**
+ * 각각의 공고를 표시하는 Card 컴포넌트
+ * 페이지에서 "/notices"로 요청한 데이터에서 "items" 배열의 각각 요소들을 map해서 사용
+ * @param {object} noticeInfo  "items"의 각각 요소 객체
+ */
 
 export default function Card({ noticeInfo }: CardProp) {
   const noticeData = noticeInfo.item;

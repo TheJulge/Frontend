@@ -1,9 +1,8 @@
 /**
- * @function formatNoticeTime 공고 Card 컴포넌트의 time 에 들어갈 문자열을 포매팅
+ * 공고 Card 컴포넌트의 time 에 들어갈 문자열을 포매팅하는 함수
  * @param startsAt   "2023-07-20T15:00:00.000Z" 형식의 문자열
  * @param workHours 일하는 시간의 숫자형값
- *
- * @function formatWage 공고 Card 컴포넌트의 pay에 들어갈 문자열을 포매팅
+ * @returns 날짜 "24.04.18 " 형식 , 일하는시간 "15:00~18:00 (3시간)" 형식으로 두개 문자열 반환
  */
 export function formatNoticeTime(
   startsAt: string,
@@ -36,6 +35,12 @@ export function formatNoticeTime(
   ];
 }
 
+/**
+ * 공고 Card 컴포넌트의 pay에 들어갈 문자열을 포매팅하는 함수
+ * @param {number} wage 시급을 나타내는 숫자
+ * @returns {string} "30,000원" 형식으로 반환
+ */
+
 export function formatWage(wage: number): string {
   // 숫자를 세 자리마다 쉼표로 구분하여 문자열로 변환
   const formattedWage = wage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -43,6 +48,12 @@ export function formatWage(wage: number): string {
   return `${formattedWage}원`;
 }
 
+/**
+ * 시급 인상률을 일의자리까지 계산해서 포매팅하는 함수
+ * @param hourlyPay 공고의 시급 숫자형
+ * @param originalHourlyPay 가게의 원래 시급 숫자형
+ * @returns "기존 시급보다 15%" 형식으로 반환
+ */
 export function calculatePayIncreaseRate(
   hourlyPay: number,
   originalHourlyPay: number,
