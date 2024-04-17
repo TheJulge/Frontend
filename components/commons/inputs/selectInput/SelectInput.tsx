@@ -56,7 +56,7 @@ export default function SelectInput({ labelName, options }: SelectInputProps) {
           )}
         </button>
       </div>
-      {showDropDown ? (
+      {showDropDown && (
         <DropDown
           buttonRef={buttonRef}
           options={options}
@@ -64,7 +64,7 @@ export default function SelectInput({ labelName, options }: SelectInputProps) {
           handleClick={handleDropDownClick}
           handleClose={handleClose}
         />
-      ) : null}
+      )}
     </div>
   );
 }
