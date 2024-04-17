@@ -24,10 +24,9 @@
     z-index: 1;
     left: 0;
 
-    @media (max-width: 768px) {
-      width: 186px;
-    }
-
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 186px 270px 180px 165px;
   }
 }
 
@@ -38,9 +37,11 @@
 .gridHeader {
   background-color: var(--red10);
   padding: 14px 12px;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+
+
+  h6{
+    @include body2-regular(var(--black));
+  }
 
 }
 
@@ -50,8 +51,8 @@
   padding: 20px 12px;
   border-bottom: 1px solid var(--gray20);
   background: var(--white);
+  @include body1-regular(var(--black));
 
-  @include body1-regular(var(--black))
 }
 
 .gridCellFirst{
@@ -60,8 +61,11 @@
     z-index: 1;
     left: 0;
 
+}
 
-
+.clickDiv{
+  text-decoration: underline #ffaf9b;
+  cursor: pointer;
 }
 
 .actionButton {
@@ -82,16 +86,6 @@
   }
 }
 
-/*모바일용 레이아웃*/
-//@media (max-width: 768px) {
-//
-//  .outerContainer {
-//    width: 801px;
-//  }
-  //.gridContainer {
-  //  min-width: unset;
-  //}
 
-//}
 
 
