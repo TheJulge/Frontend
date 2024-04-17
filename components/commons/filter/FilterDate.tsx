@@ -1,8 +1,18 @@
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
 import { ko } from 'date-fns/locale';
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './FilterDate.module.scss';
+
+/**
+ *
+ * @param {Object} props
+ * @param {Date} props.date 캘린더 날짜
+ * @param {() => void} props.decreaseMonth 이전 달로 넘어가는 함수
+ * @param {() => void} props.increaseMonth 다음 달로 넘어가는 함수
+ * @param {Date | null} props.startDate 시작일 값
+ * @param {React.Dispatch<React.SetStateAction<Date | null>>} props.setStartDate 시작일 값 결정
+ */
 
 type CustomHeaderProps = {
   date: Date;
@@ -30,9 +40,13 @@ function CustomHeader({
   );
 }
 
-export default function FilterDate() {
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
-
+export default function FilterDate({
+  startDate,
+  setStartDate,
+}: {
+  startDate: Date | null;
+  setStartDate: React.Dispatch<React.SetStateAction<Date | null>>;
+}) {
   return (
     <div className={styles.filterDate}>
       <h6>시작일</h6>
@@ -49,7 +63,7 @@ export default function FilterDate() {
         locale={ko}
         selected={startDate}
         onChange={date => setStartDate(date)}
-        dateFormat="yyyy.MM.dd"
+        dateFormat="yyyy년 MM월 dd일"
         renderCustomHeader={({ date, decreaseMonth, increaseMonth }) => (
           <CustomHeader
             date={date}

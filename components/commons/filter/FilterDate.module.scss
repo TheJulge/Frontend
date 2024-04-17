@@ -32,15 +32,13 @@
 }
 .selectedDay {
   background-color: var(--primary);
-  border-radius: 50%;
   color: var(--white) !important;
   &:hover {
     background-color: var(--primary);
-    border-radius: 50%;
   }
 }
-.unselectedDay {
-  &:hover {
-    border-radius: 50%;
-  }
-}
+// .unselectedDay {
+//   &:hover {
+//     // border-radius: 50%;
+//   }
+// }

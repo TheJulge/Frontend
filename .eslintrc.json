@@ -20,7 +20,6 @@
         "ts": "never",
         "tsx": "never"
       }
-    ],
-    "react/no-array-index-key": "off"
+    ]
   }
 }

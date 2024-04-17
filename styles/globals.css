@@ -65,3 +65,6 @@ iframe {
 .react-datepicker__day--keyboard-selected {
   background: none !important;
 }
+.react-datepicker-popper[data-placement^='bottom'] .react-datepicker__triangle {
+  display: none !important;
+}
