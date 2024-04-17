@@ -8,15 +8,23 @@ import DropDownDownIcon from '@/public/inputs/dropDownDown.svg';
  * 클릭하면 드롭박스가 나오는 셀렉트 형식의 인풋입니다.
  * @param {labelName} props label로 사용할 input의 이름을 적어주면 됩니다.
  * @param {options} props 드롭박스에 들어갈 옵션을 넣어주면 됩니다.
+ * @param {value} props 해당 인풋에서 사용할 State
+ * @param {setValue} props 해당 인풋에서 사용할 state를 변경할 seter 함수
  */
 
 type SelectInputProps = {
   labelName: string;
   options: string[];
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export default function SelectInput({ labelName, options }: SelectInputProps) {
-  const [value, setValue] = useState<string>('');
+export default function SelectInput({
+  labelName,
+  options,
+  value,
+  setValue,
+}: SelectInputProps) {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const buttonRef = useRef(null);
   const handleSelectInputClick = () => {
@@ -48,6 +56,7 @@ export default function SelectInput({ labelName, options }: SelectInputProps) {
             placeholder="선택"
             type="text"
             value={value}
+            tabIndex={-1}
           />
           {showDropDown ? (
             <DropDownUpIcon alt="arrowUpIcon" className={styles.upIcon} />
