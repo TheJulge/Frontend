@@ -34,5 +34,12 @@ export function formatWage(wage: number): string {
   // 숫자를 세 자리마다 쉼표로 구분하여 문자열로 변환
   const formattedWage = wage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   // 변환된 문자열에 "원"을 추가하여 반환
-  return `${formattedWage} 원`;
+  return `${formattedWage}원`;
+}
+
+export function calculatePayIncreaseRate(
+  hourlyPay: number,
+  originalHourlyPay: number,
+): string {
+  return '';
 }

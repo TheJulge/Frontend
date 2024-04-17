@@ -1,0 +1,21 @@
+.payIncrease {
+  display: flex;
+  height: 36px;
+  padding: 12px;
+  align-items: center;
+  gap: 6px;
+  border-radius: 20px;
+  background: var(--red30);
+  @include mobile {
+    gap: 2px;
+    background: none;
+  }
+  span {
+    color: var(--The-julge-white, #fff);
+    text-align: center;
+    @include body2-bold(--white);
+    @include mobile {
+      @include caption(--red40);
+    }
+  }
+}

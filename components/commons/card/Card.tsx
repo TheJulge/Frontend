@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import { CardNoticeType } from '@/types/noticeTypes';
 import styles from './Card.module.scss';
-import ClockIcon from '@/public/images/clockIcon.svg';
-import LocationIcon from '@/public/images/locationIcon.svg';
-import Link from 'next/link';
-import { formatNoticeTime, formatWage } from '@/utils/noticeDataFormetters';
+import ClockIcon from '@/public/images/card/clockIcon.svg';
+import LocationIcon from '@/public/images/card/locationIcon.svg';
+import { formatNoticeTime } from '@/utils/noticeDataFormetters';
+import PayIncrease from './payIncrease/PayIncrease';
 
 /**
  * @param {Object} props
@@ -18,14 +18,16 @@ interface CardProp {
 export default function Card({ noticeInfo }: CardProp) {
   const noticeData = noticeInfo.item;
   const shopData = noticeData.shop.item;
-  const link = noticeData.shop.href;
+
   return (
-    <Link className={styles.cardContainer} href={link}>
-      <Image
-        src={noticeInfo.item.shop.item.imageUrl}
-        alt={noticeInfo.item.shop.item.name}
-        fill
-      />
+    <div className={styles.cardContainer}>
+      <div className={styles.cardImg}>
+        <Image
+          src={noticeInfo.item.shop.item.imageUrl}
+          alt={noticeInfo.item.shop.item.name}
+          layout="fill"
+        />
+      </div>
 
       <div className={styles.contents}>
         <div className={styles.notice}>
@@ -41,10 +43,11 @@ export default function Card({ noticeInfo }: CardProp) {
             <span>{shopData.address1}</span>
           </div>
         </div>
-        <div className={styles.payInfo}>
-          <span className={styles.pay}>{formatWage(noticeData.hourlyPay)}</span>
-        </div>
+        <PayIncrease
+          hourlyPay={noticeData.hourlyPay}
+          originalHourlyPay={shopData.originalHourlyPay}
+        />
       </div>
-    </Link>
+    </div>
   );
 }
