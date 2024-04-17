@@ -1,13 +1,22 @@
 import styles from '@/components/commons/inputs/signInput/SignInput.module.scss';
 import React, { useState } from 'react';
 
-type SignInputProps = {
+/**
+ * 로그인 / 회원가입용 공통 인풋
+ * @param {labelName} props label로 사용할 input의 이름
+ * @param {inputType} props 사용할 input의 종류 선택
+ * @param {value} props 해당 input에서 사용할 State
+ * @param {setValue} props 해당 input에서 사용할 state를 변경할 seter 함수
+ * @param {anotherValue} props 비밀번호 확인 input에서 정규식 체크를 위한 비밀번호 값
+ */
+
+interface SignInputProps {
   labelName: string;
   inputType: 'email' | 'password' | 'passwordCheck';
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
   anotherValue?: string;
-};
+}
 
 const emailRegex: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
