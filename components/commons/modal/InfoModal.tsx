@@ -28,7 +28,7 @@ export default function Modal({
     <Portal>
       <div className={styles.wrapper}>
         <div className={styles.inner} ref={modalRef}>
-          <InfoIcon viewBox="0 0 24 24" />
+          <InfoIcon viewBox="0 0 24 24" alt="infomation icon" />
           {children}
           <button
             className={styles.emptyButton}

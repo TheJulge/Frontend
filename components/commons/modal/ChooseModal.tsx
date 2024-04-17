@@ -31,7 +31,7 @@ export default function Modal({
     <Portal>
       <div className={styles.wrapper}>
         <div className={styles.inner} ref={modalRef}>
-          <CheckIcon viewBox="0 0 24 24" />
+          <CheckIcon viewBox="0 0 24 24" alt="check icon" />
           {children}
           <div className={styles.buttonGroup}>
             <button
