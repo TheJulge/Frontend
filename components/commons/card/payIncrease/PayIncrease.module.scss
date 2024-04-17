@@ -1,21 +1,39 @@
-.payIncrease {
+.payInfo {
   display: flex;
-  height: 36px;
-  padding: 12px;
+  justify-content: space-between;
   align-items: center;
-  gap: 6px;
-  border-radius: 20px;
-  background: var(--red30);
+  align-self: stretch;
   @include mobile {
-    gap: 2px;
-    background: none;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  span {
-    color: var(--The-julge-white, #fff);
-    text-align: center;
-    @include body2-bold(--white);
+  .pay {
+    @include h2(--black);
     @include mobile {
-      @include caption(--red40);
+      @include h4-bold(--black);
+    }
+  }
+  .payIncrease {
+    display: flex;
+    height: 36px;
+    padding: 12px;
+    align-items: center;
+    gap: 6px;
+    border-radius: 20px;
+    background: var(--red30);
+    @include mobile {
+      height: auto;
+      padding: 0;
+      gap: 2px;
+      background: none;
+    }
+    span {
+      color: var(--The-julge-white, #fff);
+      text-align: center;
+      @include body2-bold(--white);
+      @include mobile {
+        @include caption(--red40);
+      }
     }
   }
 }

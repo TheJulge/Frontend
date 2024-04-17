@@ -5,7 +5,10 @@
  *
  * @function formatWage 공고 Card 컴포넌트의 pay에 들어갈 문자열을 포매팅
  */
-export function formatNoticeTime(startsAt: string, workHours: number): string {
+export function formatNoticeTime(
+  startsAt: string,
+  workHours: number,
+): string[] {
   const date = new Date(startsAt);
   const year = date.getFullYear().toString().slice(-2);
   const month = ('0' + (date.getMonth() + 1)).slice(-2);
@@ -20,14 +23,17 @@ export function formatNoticeTime(startsAt: string, workHours: number): string {
   const endHours = ('0' + endDate.getHours()).slice(-2);
   const endMinutes = ('0' + endDate.getMinutes()).slice(-2);
 
-  let formattedString = `${year}.${month}.${day} ${hours}:${minutes}`;
+  const startDateString = `${year}.${month}.${day} `;
+  let startTimeString = `${hours}:${minutes}`;
+  let endTimeString = `${endHours}:${endMinutes}`;
   if (endDate.getDate() !== date.getDate()) {
-    formattedString += `~${endYear}.${endMonth}.${endDay} ${endHours}:${endMinutes} (${workHours}시간)`;
-  } else {
-    formattedString += `~${endHours}:${endMinutes} (${workHours}시간)`;
+    endTimeString = `${endYear}.${endMonth}.${endDay} ${endHours}:${endMinutes}`;
   }
 
-  return formattedString;
+  return [
+    startDateString,
+    `${startTimeString}~${endTimeString} (${workHours}시간)`,
+  ];
 }
 
 export function formatWage(wage: number): string {
@@ -41,5 +47,8 @@ export function calculatePayIncreaseRate(
   hourlyPay: number,
   originalHourlyPay: number,
 ): string {
-  return '';
+  const increaseRate =
+    ((hourlyPay - originalHourlyPay) / originalHourlyPay) * 100;
+  const roundedIncreaseRate = Math.round(increaseRate); //소수점 반올림
+  return `기존 시급보다 ${roundedIncreaseRate}%`;
 }

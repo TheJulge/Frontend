@@ -16,11 +16,16 @@
   @include mobile {
     width: 100%;
     height: 261px;
+    display: flex;
+    padding: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 
   .cardImg {
     width: 100%;
-    height: 50%;
+    height: 100%;
     position: relative !important;
     overflow: hidden;
     border-radius: 12px;
@@ -32,11 +37,17 @@
     align-items: flex-start;
     gap: 16px;
     align-self: stretch;
+    @include mobile {
+      gap: 12px;
+    }
     .notice {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 8px;
+      @include mobile {
+        gap: 6px;
+      }
       .shopName {
         @include h3(--black);
         @include mobile {
@@ -47,10 +58,18 @@
         display: flex;
         align-items: center;
         gap: 6px;
+
         span {
           @include body2-regular(--gray50);
           @include mobile {
             @include caption(--gray50);
+            display: block;
+          }
+          &.date {
+            white-space: nowrap;
+          }
+          &.time {
+            white-space: normal;
           }
         }
       }
@@ -63,22 +82,6 @@
           @include mobile {
             @include caption(--gray50);
           }
-        }
-      }
-    }
-    .payInfo {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      align-self: stretch;
-      @include mobile {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .pay {
-        @include h2(--black);
-        @include mobile {
-          @include h4-bold(--black);
         }
       }
     }

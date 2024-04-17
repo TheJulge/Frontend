@@ -19,7 +19,10 @@ interface CardProp {
 export default function Card({ noticeInfo }: CardProp) {
   const noticeData = noticeInfo.item;
   const shopData = noticeData.shop.item;
-
+  const [startDate, workHour] = formatNoticeTime(
+    noticeData.startsAt,
+    noticeData.workhour,
+  );
   return (
     <div
       className={classNames(styles.cardContainer, {
@@ -42,9 +45,10 @@ export default function Card({ noticeInfo }: CardProp) {
           <p className={styles.shopName}>{shopData.name}</p>
           <div className={styles.time}>
             <ClockIcon />
-            <span>
-              {formatNoticeTime(noticeData.startsAt, noticeData.workhour)}
-            </span>
+            <div>
+              <span className={styles.data}>{startDate}</span>
+              <span className={styles.hour}>{workHour}</span>
+            </div>
           </div>
           <div className={styles.location}>
             <LocationIcon />
