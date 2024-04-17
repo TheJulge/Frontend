@@ -35,5 +35,11 @@
         @include caption(--red40);
       }
     }
+    svg {
+      fill: var(--white);
+      @include mobile {
+        fill: var(--red40);
+      }
+    }
   }
 }
