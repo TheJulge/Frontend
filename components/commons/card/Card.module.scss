@@ -9,6 +9,7 @@
   border-radius: 12px;
   border: 1px solid var(--gray20);
   background: var(--white);
+
   @include tablet {
     width: 100%;
   }
@@ -81,5 +82,25 @@
         }
       }
     }
+  }
+}
+
+.closed {
+  .closedMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* 다른 요소 위에 표시되도록 설정 */
+    text-align: center;
+    @include h1(--gray30);
+  }
+  .contents {
+    filter: grayscale(100%);
   }
 }

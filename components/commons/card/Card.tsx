@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import classNames from 'classnames';
 import { CardNoticeType } from '@/types/noticeTypes';
 import styles from './Card.module.scss';
 import ClockIcon from '@/public/images/card/clockIcon.svg';
@@ -20,8 +21,15 @@ export default function Card({ noticeInfo }: CardProp) {
   const shopData = noticeData.shop.item;
 
   return (
-    <div className={styles.cardContainer}>
+    <div
+      className={classNames(styles.cardContainer, {
+        [styles.closed]: noticeData.closed,
+      })}
+    >
       <div className={styles.cardImg}>
+        {noticeData.closed && (
+          <div className={styles.closedMessage}>마감 완료</div>
+        )}
         <Image
           src={noticeInfo.item.shop.item.imageUrl}
           alt={noticeInfo.item.shop.item.name}
