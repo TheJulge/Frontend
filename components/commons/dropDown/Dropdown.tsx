@@ -9,13 +9,13 @@ import React, { MouseEventHandler, useRef } from 'react';
  * @param {React.RefObject} buttonRef 모달을 여는 버튼에 대한 참조 객체
  */
 
-type DropDownProps = {
+interface DropDownProps {
   showDropDown: boolean;
   options: string[];
   buttonRef: React.RefObject<HTMLElement>;
   handleClick: MouseEventHandler;
   handleClose: () => void;
-};
+}
 
 export default function DropDown({
   showDropDown,

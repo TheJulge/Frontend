@@ -8,11 +8,11 @@ import React from 'react';
  * @param {setValue} props 해당 인풋에서 사용할 state를 변경할 seter 함수
  */
 
-type BasicInputProps = {
+interface BasicInputProps {
   labelName: string;
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
-};
+}
 
 export default function BasicInput({
   labelName,
