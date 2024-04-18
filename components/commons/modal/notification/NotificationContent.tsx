@@ -6,12 +6,10 @@ import styles from './NotificationContent.module.scss';
 interface NotificationContentProps {
   data: any;
 }
-function NotificationContent(data: NotificationContentProps) {
-  const {
-    data: { item: noticeData },
-  } = data;
+function NotificationContent({ data }: NotificationContentProps) {
+  const noticeData = data.data.item;
   const noticeName = noticeData.notice.item.description;
-  const isApprove = noticeData.result === 'accepted' ? 1 : 0;
+  const isApprove = noticeData.result === 'accepted';
   const time = noticeData.createdAt;
 
   return (
