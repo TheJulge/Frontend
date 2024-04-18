@@ -1,22 +1,23 @@
 import styles from './Calendar.module.scss';
 
 /**
+ * 캘린더 커스텀 헤더 컴포넌트 입니다.
  * @param {Object} props.date 캘린더 날짜 값
  * @param {function} props.decreaseMonth 이전 달로 넘어가는 함수
  * @param {function} props.increaseMonth 다음 달로 넘어가는 함수
  */
 
-interface CustomHeaderProps {
+interface CalendarHeaderProps {
   date: Date;
   decreaseMonth: () => void;
   increaseMonth: () => void;
 }
 
-export default function CustomHeader({
+export default function CalendarHeader({
   date,
   decreaseMonth,
   increaseMonth,
-}: CustomHeaderProps) {
+}: CalendarHeaderProps) {
   const year = date.getFullYear();
   const month = date.toLocaleString('default', { month: 'long' });
   return (

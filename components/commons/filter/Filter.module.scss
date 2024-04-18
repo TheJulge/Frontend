@@ -15,4 +15,14 @@
     padding: 24px 12px;
     padding-bottom: 123px;
   }
+  .gapBox {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .gapContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
 }
