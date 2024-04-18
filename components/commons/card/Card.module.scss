@@ -1,0 +1,109 @@
+.cardContainer {
+  width: 312px;
+  height: 349px;
+  display: inline-flex;
+  padding: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--gray20);
+  background: var(--white);
+
+  @include tablet {
+    width: 100%;
+  }
+  @include mobile {
+    width: 100%;
+    height: 261px;
+    display: flex;
+    padding: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cardImg {
+    width: 100%;
+    height: 100%;
+    position: relative !important;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .contents {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+    @include mobile {
+      gap: 12px;
+    }
+    .notice {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      @include mobile {
+        gap: 6px;
+      }
+      .shopName {
+        @include h3(--black);
+        @include mobile {
+          @include body1-bold(--black);
+        }
+      }
+      .time {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        span {
+          @include body2-regular(--gray50);
+          @include mobile {
+            @include caption(--gray50);
+            display: block;
+          }
+          &.date {
+            white-space: nowrap;
+          }
+          &.time {
+            white-space: normal;
+          }
+        }
+      }
+      .location {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        span {
+          @include body2-regular(--gray50);
+          @include mobile {
+            @include caption(--gray50);
+          }
+        }
+      }
+    }
+  }
+}
+
+.closed {
+  .closedMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* 다른 요소 위에 표시되도록 설정 */
+    text-align: center;
+    @include h1(--gray30);
+  }
+  .contents {
+    filter: grayscale(100%);
+  }
+}

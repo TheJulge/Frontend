@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import NotiIcon from '@/public/images/notification.svg';
-import NotiActiveIcon from '@/public/images/notification-active.svg';
+import NotiIcon from '@/public/images/gnb/notification.svg';
+import NotiActiveIcon from '@/public/images/gnb/notification-active.svg';
 import styles from './GnbUser.module.scss';
 
 export default function GnbUser() {
