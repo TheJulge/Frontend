@@ -1,4 +1,21 @@
-.wrapper {
+@import '../Modal.module.scss';
+
+.notiInner {
+  @include inner(--red10);
+  width: 368px;
+  padding: 24px 20px;
+  border-radius: 10px;
 }
-.inner {
+.modalHeader {
+  span {
+    @include h3(--black);
+  }
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.closeIcon {
+  cursor: pointer;
 }

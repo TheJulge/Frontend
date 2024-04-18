@@ -1,37 +1,39 @@
-import React, { ReactNode, useRef } from 'react';
-import useCloseModal from '@/hooks/useCloseModal';
-import CloseIcon from '@/public/images/ modal/close.svg';
-import Portal from '../Portal';
-import styles from './NotificationModal.module.scss';
+import React from 'react';
+import ApproveIcon from '@/public/images/ modal/approve.svg';
+import RejectIcon from '@/public/images/ modal/reject.svg';
+import styles from './NotificationContent.module.scss';
 
-/**
- *
- * @param {Object} props
- * @param {React.Node} props.children 모달 description
- * @param {boolean} props.showModal 모달 보임 유뮤 결정
- * @param {Function} props.handleClose  모달 닫을 때 실행할 함수
- */
-
-interface ModalProps {
-  children: ReactNode;
-  showModal: boolean;
-  handleClose: () => void;
+interface NotificationContentProps {
+  data: any;
 }
-export default function Modal({
-  children,
-  showModal,
-  handleClose,
-}: ModalProps) {
-  const modalRef = useRef<HTMLDivElement>(null);
-  useCloseModal(showModal, handleClose, modalRef);
+function NotificationContent({ data }: NotificationContentProps) {
+  const noticeData = data.data.item;
+  const noticeName = noticeData.notice.item.description;
+  const isApprove = noticeData.result === 'accepted';
+  const time = noticeData.createdAt;
+
   return (
-    <Portal>
-      <div className={styles.wrapper}>
-        <div className={styles.inner} ref={modalRef}>
-          <CloseIcon viewBox="0 0 24 24" alt="close icon" />
-          {children}
-        </div>
-      </div>
-    </Portal>
+    <div className={styles.flexContainer}>
+      {isApprove ? (
+        <>
+          <ApproveIcon viewBox="0 0 5 5" alt="approve icon" />
+          <div className={styles.text}>
+            {noticeName} 공고 지원이{' '}
+            <span className={styles.approveText}>승인</span>되었어요.
+          </div>
+        </>
+      ) : (
+        <>
+          <RejectIcon viewBox="0 0 5 5" alt="reject icon" />
+          <div className={styles.text}>
+            {noticeName} 공고 지원이{' '}
+            <span className={styles.rejectText}>거절</span>되었어요.
+          </div>
+        </>
+      )}
+      <div className={styles.time}>{time}</div>
+    </div>
   );
 }
+
+export default NotificationContent;

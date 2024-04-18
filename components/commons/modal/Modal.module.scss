@@ -1,5 +1,14 @@
 @import '../Button/Button.module.scss';
 
+@mixin inner($backgroundColor) {
+  width: 100%;
+  height: 100%;
+  background-color: var($backgroundColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .wrapper {
   display: flex;
   position: fixed;
@@ -14,16 +23,14 @@
   align-items: center;
   justify-content: center;
 }
-.inner {
+
+// chooseModal, infoModal inner
+.modalInner {
+  @include inner(--white);
   width: 298px;
   height: 183px;
-  background-color: var(--white);
   border-radius: 12px;
   padding: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   gap: 30px;
 }
 .buttonGroup {
