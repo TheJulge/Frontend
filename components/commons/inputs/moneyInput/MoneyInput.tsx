@@ -40,6 +40,7 @@ export default function MoneyInput({
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     setValue(formatWage(event.currentTarget.value));
   };
+
   const handleFocusOut = (event: React.FormEvent<HTMLInputElement>) => {
     if (Number(removeComma(event.currentTarget.value)) < MINIMUM_WAGE) {
       setValue(formatWage(String(MINIMUM_WAGE)));

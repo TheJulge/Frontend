@@ -4,6 +4,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Spoqa Han Sans Neo', sans-serif; /*글꼴 추가*/
+  color: var(--black);
 }
 :after,
 :before {
@@ -49,4 +50,21 @@ iframe {
   --green20: #20a81e;
   --green10: #d4f7d4;
   --kakao: #fee500;
+}
+
+/* datepicker 라이브러리 */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+.react-datepicker__header {
+  background-color: var(--white) !important;
+}
+.react-datepicker__day--outside-month {
+  color: #a8a8a8 !important;
+}
+.react-datepicker__day--keyboard-selected {
+  background: none !important;
+}
+.react-datepicker-popper[data-placement^='bottom'] .react-datepicker__triangle {
+  display: none !important;
 }
