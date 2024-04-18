@@ -10,10 +10,10 @@ import PolygonDownIcon from '@/public/inputs/polygonDown.svg';
  * @param {setValue} props 해당 인풋에서 사용할 state를 변경할 seter 함수
  */
 
-type SortSelectInputProps = {
+interface SortSelectInputProps {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
-};
+}
 
 const OPTIONS = ['마감임박순', '시급많은순', '시간적은순', '가나다순'];
 
