@@ -1,10 +1,14 @@
 .tableModal {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   width: 600px;
   padding: 40px;
   border-radius: 12px;
   background-color: var(--white);
   @media screen and (max-width: 768px) {
     width: 350px;
+    padding: 25px;
   }
 }
 
@@ -18,11 +22,11 @@
   p {
     display: flex;
     flex-direction: column;
+    gap: 4px;
     strong {
       font-size: 20px;
     }
     span {
-      margin-top: 4px;
       @include body2-regular(--gray40);
     }
   }
@@ -62,7 +66,6 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 24px;
   button {
     border-radius: 6px;
     cursor: pointer;

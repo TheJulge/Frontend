@@ -4,6 +4,11 @@ import TableModalText from './TableModalText';
 import TableModalButton from './TableModalButton';
 import styles from './TableModal.module.scss';
 
+/**
+ * tableModal 컴포넌트 입니다.
+ * @param {boolean} props.showModal 모달 상태 값
+ * @param {function} props.handleClose 모달 닫는 함수
+ */
 interface TableModalProps {
   showModal: boolean;
   handleClose: () => void;
@@ -15,11 +20,12 @@ export default function TableModal({
   return (
     <Modal showModal={showModal} handleClose={handleClose}>
       <div className={styles.tableModal}>
-        <TableModalTop handleClose={handleClose} />
-        <TableModalText />
-        <TableModalButton />
+        <div>
+          <TableModalTop handleClose={handleClose} />
+          <TableModalText />
+        </div>
+        <TableModalButton handleClose={handleClose} />
       </div>
-      {/* 신청자, 소개, 전화번호, 상태, 닫기 버튼 */}
     </Modal>
   );
 }
