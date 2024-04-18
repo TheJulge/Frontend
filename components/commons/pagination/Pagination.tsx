@@ -7,10 +7,10 @@ import RightButton from '@/public/images/rightButton.svg';
 import styles from './Pagination.module.scss';
 
 /**
- *
- * @param totalCount   api로 받아온 전체 아이템 카운터 갯수
- * @param itemCount  한번에 출력할 아이템 갯수
- * @function handlePageClick 페이지 선택시 선택한 숫자로 쿼리가 바뀌고 해당 페이지로 넘어가는 함수
+ * @param {Object} prop
+ * @param {number} prop.totalCount  api로 받아온 전체 아이템 카운터 갯수
+ * @param {number} prop.itemCount 한번에 출력할 아이템 갯수
+ * @param {function} prop.handlePageClick 페이지 선택시 선택한 숫자로 쿼리가 바뀌고 해당 페이지로 넘어가는 함수
  */
 
 interface PageNationProps {

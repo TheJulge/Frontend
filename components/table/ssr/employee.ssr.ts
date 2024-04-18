@@ -16,11 +16,15 @@ const fetchData = async ({
   limit,
 }: FetchParams): Promise<FetchData> => {
   const teamId = '4-17';
-  const userId = 'a4f2df9f-7d1a-4857-847c-068189f953f5';
+  const userId = '88879132-0eb8-4c79-a43e-b18b06a06654';
   const noticeListUrl = `https://bootcamp-api.codeit.kr/api/${teamId}/the-julge/users/${userId}/applications`;
   return axios(noticeListUrl, {
     method: 'GET',
     params: { offset, limit },
+    headers: {
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4ODg3OTEzMi0wZWI4LTRjNzktYTQzZS1iMThiMDZhMDY2NTQiLCJpYXQiOjE3MTMzMzMwMjl9.N8OiyYmXVG81vwCiNhZHoHbJ8k2sTAh6J7toJhcwOGI',
+    },
   });
 };
 
@@ -30,7 +34,6 @@ export interface ApplicationPageProps {
   itemCount: number;
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export const getServerSideProps: GetServerSideProps<
   ApplicationPageProps
 > = async context => {
