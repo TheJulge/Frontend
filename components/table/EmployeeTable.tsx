@@ -34,16 +34,19 @@ function EmployeeTable({ items, totalCount, itemCount }: TableProps) {
 
           return (
             <React.Fragment key={item.id}>
-              <div className={`${styles.gridCell} ${styles.gridCellFirst}`}>
-                <p>{shop.item.name}</p>
+              <div
+                tabIndex={0}
+                className={`${styles.gridCell} ${styles.gridCellFirst}`}
+              >
+                <p> {shop.item.name}</p>
               </div>
-              <div className={`${styles.gridCell}`}>
+              <div tabIndex={0} className={`${styles.gridCell}`}>
                 <p>{notice.item.startsAt}</p>
               </div>
-              <div className={`${styles.gridCell} `}>
+              <div tabIndex={0} className={`${styles.gridCell} `}>
                 <p>{notice.item.hourlyPay}</p>
               </div>
-              <div className={`${styles.gridCell} `}>
+              <div tabIndex={0} className={`${styles.gridCell} `}>
                 <StatusButton
                   id={item.id}
                   status={item.status}

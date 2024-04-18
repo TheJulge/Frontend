@@ -62,7 +62,9 @@ function Pagination({ totalCount, itemCount }: PageNationProps) {
                 num === selectedPage ? styles.selected : ''
               }`}
               key={num}
+              role="presentation"
               onClick={() => handlePageClick(num)}
+              onKeyDown={() => handlePageClick(num)}
             >
               {num}
             </div>
