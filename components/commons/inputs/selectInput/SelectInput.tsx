@@ -12,12 +12,12 @@ import DropDownDownIcon from '@/public/inputs/dropDownDown.svg';
  * @param {setValue} props 해당 인풋에서 사용할 state를 변경할 seter 함수
  */
 
-type SelectInputProps = {
+interface SelectInputProps {
   labelName: string;
   options: string[];
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
-};
+}
 
 export default function SelectInput({
   labelName,

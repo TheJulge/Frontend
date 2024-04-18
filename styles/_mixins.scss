@@ -29,6 +29,15 @@
   font-weight: 700;
   line-height: normal;
 }
+@mixin h4-bold($color) {
+  color: var($color);
+
+  /* The julge/h4 - bold */
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
 
 @mixin body1-regular($color) {
   color: var($color);
@@ -74,4 +83,16 @@
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 133.333% */
+}
+
+@mixin tablet {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
 }

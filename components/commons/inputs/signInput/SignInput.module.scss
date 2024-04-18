@@ -1,0 +1,41 @@
+.container {
+  @include body1-regular(--black);
+  width: 100%;
+
+  .input {
+    @include body1-regular(--black);
+    width: 100%;
+    height: 58px;
+    padding: 16px 20px;
+    border-radius: 6px;
+    border: 1px solid var(--gray30);
+    background: var(--white);
+    outline: none;
+    margin-top: 8px;
+
+    &::placeholder {
+      color: var(--gray40);
+    }
+  }
+
+  .errorInput {
+    @include body1-regular(--black);
+    width: 100%;
+    height: 58px;
+    padding: 16px 20px;
+    border-radius: 6px;
+    border: 1px solid var(--red40);
+    background: var(--white);
+    outline: none;
+    margin-top: 8px;
+
+    &::placeholder {
+      color: var(--gray40);
+    }
+  }
+
+  .errorMessage {
+    @include caption(--red40);
+    margin-top: 8px;
+  }
+}

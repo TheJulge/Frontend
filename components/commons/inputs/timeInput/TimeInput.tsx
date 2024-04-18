@@ -8,17 +8,23 @@ import React from 'react';
  * @param {setValue} props 해당 인풋에서 사용할 state를 변경할 seter 함수
  */
 
-type TimeInputProps = {
+interface TimeInputProps {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const formatNumber = (InputValue: string): string => {
+  // 숫자를 제외한 모든 문자를 공백으로 변환, 숫자 입력만 허용하기 위한 정규식
+  const numericValue = InputValue.replace(/\D/g, '');
+  // 숫자 3자리 마다 콤마 삽입
+  const formattedValue = numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+  return formattedValue;
 };
 
 export default function TimeInput({ value, setValue }: TimeInputProps) {
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
-    const inputValue = event.currentTarget.value;
-    const numericValue = inputValue.replace(/\D/g, '');
-    const formattedValue = numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    setValue(formattedValue);
+    setValue(formatNumber(event.currentTarget.value));
   };
 
   return (
