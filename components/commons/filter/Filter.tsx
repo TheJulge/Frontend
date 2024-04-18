@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import styles from './Filter.module.scss';
 import FilterTop from './FilterTop';
 import FilterLocation from './FilterLocation';
 import FilterDate from './FilterDate';
 import FilterAmount from './FilterAmount';
 import FilterButton from './FilterButton';
+import styles from './Filter.module.scss';
 
 /**
+ * filter 컴포넌트 입니다.
  * @param {boolean} props.isOpen 모달 보임 유무
  * @param {function} props.setIsOpen 모달 보임 유무 결정
  */
@@ -31,18 +32,22 @@ export default function Filter({ isOpen, setIsOpen }: FilterProps) {
   if (!isOpen) return null;
   return (
     <div className={styles.filter}>
-      <FilterTop setIsOpen={setIsOpen} />
-      <FilterLocation
-        selectLocation={selectLocation}
-        setSelectLocation={setSelectLocation}
-      />
+      <div className={styles.gapBox}>
+        <FilterTop setIsOpen={setIsOpen} />
+        <FilterLocation
+          selectLocation={selectLocation}
+          setSelectLocation={setSelectLocation}
+        />
+      </div>
       <FilterDate startDate={startDate} setStartDate={setStartDate} />
-      <FilterAmount money={money} setMoney={setMoney} />
-      <FilterButton
-        setSelectLocation={setSelectLocation}
-        setStartDate={setStartDate}
-        setMoney={setMoney}
-      />
+      <div className={styles.gapContainer}>
+        <FilterAmount money={money} setMoney={setMoney} />
+        <FilterButton
+          setSelectLocation={setSelectLocation}
+          setStartDate={setStartDate}
+          setMoney={setMoney}
+        />
+      </div>
     </div>
   );
 }

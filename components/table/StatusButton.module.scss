@@ -1,0 +1,56 @@
+.buttonBox{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.button{
+  padding: 6px 10px;
+  border-radius: 20px;
+  @include body2-bold(var(--black));
+
+  &.completeButton{
+    color:var(--blue20);
+    background: var(--blue10);
+  }
+  &.refuseButton{
+    background: var(--red10);
+    color:var(--red40);
+
+  }
+  &.waitingButton{
+    background: var(--green10);
+    color:var(--green20)
+  }
+}
+
+.actionButtonBox{
+  display: flex;
+  gap: 0.8rem;
+}
+
+.actionButton {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: var(--white);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+
+  @media (480px<width<=768px) {
+    font-size: 12px;
+  }
+
+  
+
+  &.refuse {
+    border:1px solid var(--primary);
+    color: var(--primary);
+  }
+
+  &.accept {
+    border:1px solid var(--blue20);
+    color: var(--blue20);
+  }
+}

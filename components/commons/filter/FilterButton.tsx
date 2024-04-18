@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './FilterButton.module.scss';
 
 /**
+ * 초기화, 적용하기 버튼에 대한 컴포넌트 입니다.
  * @param {function} props.setSelectLocation 주소 값 결정
  * @param {function} props.setStartDate 시작일 값 결정
  * @param {function} props.setMoney 금액 값 설정

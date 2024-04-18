@@ -2,11 +2,10 @@
 // import ChooseModal from '@/components/commons/modal/ChooseModal';
 // import { useState } from 'react';
 
-// export default function modalTest() {
+// export default function ModalTest() {
 //   const [showModal, setShowModal] = useState(false);
 //   const handleClose = () => {
 //     setShowModal(false);
-//     console.log(showModal);
 //   };
 //   const handleClick = () => {
 //     setShowModal(true);

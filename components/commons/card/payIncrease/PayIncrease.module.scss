@@ -1,0 +1,45 @@
+.payInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .pay {
+    @include h2(--black);
+    @include mobile {
+      @include h4-bold(--black);
+    }
+  }
+  .payIncrease {
+    display: flex;
+    height: 36px;
+    padding: 12px;
+    align-items: center;
+    gap: 6px;
+    border-radius: 20px;
+    background: var(--red30);
+    @include mobile {
+      height: auto;
+      padding: 0;
+      gap: 2px;
+      background: none;
+    }
+    span {
+      color: var(--The-julge-white, #fff);
+      text-align: center;
+      @include body2-bold(--white);
+      @include mobile {
+        @include caption(--red40);
+      }
+    }
+    svg {
+      fill: var(--white);
+      @include mobile {
+        fill: var(--red40);
+      }
+    }
+  }
+}

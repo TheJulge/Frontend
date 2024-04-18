@@ -4,6 +4,7 @@ import CloseIcon from '@/public/images/filter/close.svg';
 import styles from './FilterLocation.module.scss';
 
 /**
+ * filter 위치에 대한 컴포넌트 입니다.
  * @param {Select[]} props.selectLocation 주소 값
  * @param {function} props.setSelectLocation 주소 값 결정
  */
@@ -21,8 +22,6 @@ export default function FilterLocation({
   selectLocation,
   setSelectLocation,
 }: LocationProps) {
-  const location = LOCATION_FILTER;
-
   // 위치를 클릭하면 해당 id와 vqlue가 저장됩니다.
   // 저장되어있는 value를 클릭시 저장이 안 됩니다.
   const handleLocation = (id: number, name: string) => {
@@ -41,7 +40,7 @@ export default function FilterLocation({
       <h6>위치</h6>
       <div className={styles.locationBox}>
         <ul className={styles.locationContainer}>
-          {location.map(({ id, name }) => {
+          {LOCATION_FILTER.map(({ id, name }) => {
             return (
               <li key={id}>
                 <button type="button" onClick={() => handleLocation(id, name)}>
@@ -53,7 +52,7 @@ export default function FilterLocation({
         </ul>
       </div>
 
-      {selectLocation.length > 0 ? (
+      {selectLocation.length > 0 && (
         <ul className={styles.selectLocation}>
           {selectLocation.map(({ id, name }) => {
             return (
@@ -70,7 +69,7 @@ export default function FilterLocation({
             );
           })}
         </ul>
-      ) : null}
+      )}
     </div>
   );
 }

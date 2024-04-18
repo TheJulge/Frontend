@@ -3,6 +3,7 @@ import CloseIcon from '@/public/images/close.svg';
 import styles from './FilterTop.module.scss';
 
 /**
+ * filter의 상단 부분 컴포넌트 입니다.
  * @param {function} props.setIsOpen 모달 보임 유무 결정
  */
 

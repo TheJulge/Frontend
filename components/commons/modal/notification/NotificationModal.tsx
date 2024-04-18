@@ -2,7 +2,7 @@ import React from 'react';
 import CloseIcon from '@/public/images/ modal/close.svg';
 import styles from './NotificationModal.module.scss';
 import Modal from '../Modal';
-// import NotificationContent from './NotificationContent';
+import NotificationContent from './NotificationContent';
 /**
  *
  * @param {Object} props
@@ -17,23 +17,29 @@ interface ModalProps {
   showModal: boolean;
   handleClose: () => void;
   count: number;
+  notiDatas: any;
 }
 export default function NotificationModal({
   showModal,
   handleClose,
   count,
-  // notiDatas,
+  notiDatas,
 }: ModalProps) {
   return (
     <Modal showModal={showModal} handleClose={handleClose}>
       <div className={styles.notiInner}>
         <div className={styles.modalHeader}>
           <span>알림 {count}개</span>
-          <CloseIcon viewBox="0 0 24 24" alt="close icon" />
+          <CloseIcon
+            viewBox="0 0 24 24"
+            alt="close icon"
+            onClick={handleClose}
+            className={styles.closeIcon}
+          />
         </div>
-        {/* {notiDatas.map(data => {
-          <NotificationContent data={data}/>;
-        })} */}
+        {notiDatas.map((data: any) => {
+          return <NotificationContent key={data.item.id} data={data} />;
+        })}
       </div>
     </Modal>
   );
