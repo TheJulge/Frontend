@@ -1,0 +1,41 @@
+.container{
+  display: flex;
+  justify-content: center;
+  height: 64px;
+  width: 100%;
+  margin: 0 auto;
+  align-items: center;
+  padding: 8px 12px;
+}
+
+.pageBox{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 40px;
+
+  a{
+    height: 20px;
+  }
+}
+
+.pageNumberBox {
+  display: flex;
+  color:var(--black);
+}
+
+.pageNumber{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 12px;
+  text-align: center;
+}
+
+.selected{
+  color:var(--white);
+  background: var(--red30);
+  border-radius:4px ;
+}

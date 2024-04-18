@@ -1,0 +1,20 @@
+GET https://bootcamp-api.codeit.kr/api/4-17/the-julge/notices
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-04-14T180200.200.json
+
+###
+
+GET https://bootcamp-api.codeit.kr/api/4-17/notices
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-04-14T180058.404.json
+
+###
+
