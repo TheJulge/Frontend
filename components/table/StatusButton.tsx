@@ -1,3 +1,9 @@
+import {
+  WaitingBadge,
+  CompleteBadge,
+  RefuseBadge,
+} from '@/components/table/StatusBadge';
+
 import styles from './StatusButton.module.scss';
 
 type TypestateChangeFunction = (
@@ -10,32 +16,6 @@ interface StatusButtonProps {
   onStatusChange?: TypestateChangeFunction;
   status: 'pending' | 'accepted' | 'rejected' | 'canceled';
   type: string;
-}
-
-export function CompleteButton() {
-  return (
-    <div className={styles.buttonBox}>
-      <div className={`${styles.button} ${styles.completeButton}`}>
-        승인 완료
-      </div>
-    </div>
-  );
-}
-
-export function RefuseButton() {
-  return (
-    <div className={styles.buttonBox}>
-      <div className={`${styles.button} ${styles.refuseButton}`}>거절</div>
-    </div>
-  );
-}
-
-export function WaitingButton() {
-  return (
-    <div className={styles.buttonBox}>
-      <div className={`${styles.button} ${styles.waitingButton}`}>대기중</div>
-    </div>
-  );
 }
 
 export function PendingButton({
@@ -73,17 +53,17 @@ export function StatusButton({
 }: StatusButtonProps) {
   switch (status) {
     case 'accepted':
-      return <CompleteButton />;
+      return <CompleteBadge />;
     case 'pending':
       // 사장이면 승인/거절이 떠야하고, 알바생이면 대기중이 떠야
       //  로그인한 회원이 사장인지, 알바생인지 zustand 전역변수로 저장해서 분기로 나눠야함
       return type === 'employer' ? (
         <PendingButton onStatusChange={onStatusChange} id={id} />
       ) : (
-        <WaitingButton />
+        <WaitingBadge />
       );
     case 'rejected':
-      return <RefuseButton />;
+      return <RefuseBadge />;
 
     default:
       return <div>오류</div>;

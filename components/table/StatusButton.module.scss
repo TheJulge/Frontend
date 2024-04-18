@@ -39,12 +39,10 @@
   font-weight: 700;
 
   @media (480px<width<=768px) {
-    padding: 8px 12px;
+    font-size: 12px;
   }
 
-  @media (max-width: 480px){
-    padding: 8px 12px;
-  }
+  
 
   &.refuse {
     border:1px solid var(--primary);

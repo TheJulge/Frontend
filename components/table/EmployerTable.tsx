@@ -7,10 +7,10 @@ import { ApplicationPageProps } from '@/components/table/ssr/employer.ssr';
 import axios from 'axios';
 
 /**
- * @function EmployerTable 고용인 table컴포넌트구현
+ * @param function EmployerTable 고용인 table컴포넌트구현
  * @param items   받아오는 데이터
- * @param itemCount 보여지는 리스트 개수
- * @param totalCount 총 데이터수
+ * @param {number}itemCount 보여지는 리스트 개수
+ * @param {number}totalCount 총 데이터수
  * @function handleStatusChange 승인 | 거절 버튼클릭시 상태 변화를 api로 PUT 리퀘스트 보내고 replace 시키는 함수
  */
 
@@ -19,7 +19,7 @@ interface TableProps extends ApplicationPageProps {}
 function EmployerTable({ items, itemCount, totalCount }: TableProps) {
   const router = useRouter();
   const { pathname, query } = router;
-  console.log('>>', items);
+
   // api보내고 바로 또 쿼리 날려서 데이터 재조회
   const handleStatusChange = async (
     status: 'pending' | 'accepted' | 'rejected' | 'canceled',
@@ -81,28 +81,31 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
           <h6>상태</h6>
         </div>
 
-        {items.map(list => (
-          <React.Fragment key={list.item.id}>
-            <div className={`${styles.gridCell} ${styles.gridCellFirst}`}>
-              <p>{list.item.user.item?.name ?? '이름없음'}</p>
-            </div>
-            <div className={`${styles.gridCell} ${styles.clickDiv}`}>
-              {list.item.user.item.bio}
-            </div>
-            <div className={`${styles.gridCell} `}>
-              <p>{list.item.user.item.phone}</p>
-            </div>
-            <div className={`${styles.gridCell} `}>
-              <StatusButton
-                id={list.item.id}
-                // status={list.item.status as any}
-                status={list.item.status as any}
-                onStatusChange={handleStatusChange}
-                type="employer"
-              />
-            </div>
-          </React.Fragment>
-        ))}
+        {items.map(list => {
+          const { item } = list;
+          const { user } = item;
+          return (
+            <React.Fragment key={item.id}>
+              <div className={`${styles.gridCell} ${styles.gridCellFirst}`}>
+                <p>{user.item?.name ?? '이름없음'}</p>
+              </div>
+              <div className={`${styles.gridCell} ${styles.clickDiv}`}>
+                {user.item.bio}
+              </div>
+              <div className={`${styles.gridCell} `}>
+                <p>{user.item.phone}</p>
+              </div>
+              <div className={`${styles.gridCell} `}>
+                <StatusButton
+                  id={item.id}
+                  status={item.status}
+                  onStatusChange={handleStatusChange}
+                  type="employer"
+                />
+              </div>
+            </React.Fragment>
+          );
+        })}
       </div>
       <Pagination itemCount={itemCount} totalCount={totalCount} />
     </div>

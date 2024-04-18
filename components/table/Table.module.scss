@@ -1,8 +1,4 @@
-.container{
-  width: 100%;
-  background: #cce6ff;
-  padding: 60px 32px;
-}
+
 .outerContainer {
   width: 100%;
   border-radius: 10px;
@@ -19,14 +15,8 @@
   grid-template-columns: 228px 300px 200px 236px;
   overflow-x: auto;
 
-  :first-child {
-    position: sticky;
-    z-index: 1;
-    left: 0;
-
-  }
   @media (max-width: 768px) {
-    grid-template-columns: 186px 270px 180px 165px;
+    grid-template-columns: 186px 270px 180px 180px;
   }
 }
 
@@ -37,7 +27,6 @@
 .gridHeader {
   background-color: var(--red10);
   padding: 14px 12px;
-
 
   h6{
     @include body2-regular(var(--black));
@@ -51,18 +40,17 @@
   padding: 20px 12px;
   border-bottom: 1px solid var(--gray20);
   background: var(--white);
-  @include body1-regular(var(--black));
+  @include body1-regular( --black);
 
 }
 
 .gridCellFirst{
-
     position: sticky;
     z-index: 1;
     left: 0;
-
 }
 
+//모달 확인용 임시파일
 .clickDiv{
   text-decoration: underline #ffaf9b;
   cursor: pointer;
