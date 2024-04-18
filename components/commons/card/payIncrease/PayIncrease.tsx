@@ -12,8 +12,8 @@ interface PayIncreaseProps {
 
 /**
  * 시급과 시급 인상을 표시하는 컴포넌트 - Card에서 사용
- * @param {number} hourlyPay 시급 (숫자형)
- * @param {number} originalHourlyPay 가게의 원래 시급(숫자형)
+ * @param {number} hourlyPay 시급
+ * @param {number} originalHourlyPay 가게의 원래 시급
  * @returns
  */
 
