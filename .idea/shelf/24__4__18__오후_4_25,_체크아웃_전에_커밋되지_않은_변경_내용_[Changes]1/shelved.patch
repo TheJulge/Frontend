@@ -1,0 +1,127 @@
+Index: pages/modalTest.tsx
+===================================================================
+diff --git a/pages/modalTest.tsx b/pages/modalTest.tsx
+deleted file mode 100644
+--- a/pages/modalTest.tsx	
++++ /dev/null	
+@@ -1,23 +0,0 @@
+-// import InfoModal from '@/components/commons/modal/InfoModal';
+-import ChooseModal from '@/components/commons/modal/ChooseModal';
+-import { useState } from 'react';
+-
+-export default function modalTest() {
+-  const [showModal, setShowModal] = useState(true);
+-  const handleClose = () => {
+-    setShowModal(false);
+-    console.log(showModal);
+-  };
+-  return (
+-    // <InfoModal showModal={true} handleClose={handleClose}>
+-    //   가게 정보를 등록해주세요
+-    // </InfoModal>
+-    <ChooseModal
+-      showModal={true}
+-      handleNo={handleClose}
+-      handleYes={() => console.log('yes!!!')}
+-    >
+-      신청을 거절하시겠어요?
+-    </ChooseModal>
+-  );
+-}
+Index: pages/index.tsx
+===================================================================
+diff --git a/pages/index.tsx b/pages/index.tsx
+deleted file mode 100644
+--- a/pages/index.tsx	
++++ /dev/null	
+@@ -1,12 +0,0 @@
+-import Head from 'next/head';
+-
+-export default function Home() {
+-  return (
+-    <>
+-      <Head>
+-        <title>theJulge</title>
+-      </Head>
+-      <div>{/* fragment eslint 에러 방지용 태그 */}</div>
+-    </>
+-  );
+-}
+Index: pages/_app.tsx
+===================================================================
+diff --git a/pages/_app.tsx b/pages/_app.tsx
+deleted file mode 100644
+--- a/pages/_app.tsx	
++++ /dev/null	
+@@ -1,6 +0,0 @@
+-import '@/styles/globals.css';
+-import type { AppProps } from 'next/app';
+-
+-export default function App({ Component, pageProps }: AppProps) {
+-  return <Component {...pageProps} />;
+-}
+Index: pages/_document.tsx
+===================================================================
+diff --git a/pages/_document.tsx b/pages/_document.tsx
+deleted file mode 100644
+--- a/pages/_document.tsx	
++++ /dev/null	
+@@ -1,19 +0,0 @@
+-import { Html, Head, Main, NextScript } from 'next/document';
+-
+-export default function Document() {
+-  return (
+-    <Html lang="ko">
+-      <Head>
+-        <link
+-          href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+-          rel="stylesheet"
+-          type="text/css"
+-        />
+-      </Head>
+-      <body>
+-        <Main />
+-        <NextScript />
+-      </body>
+-    </Html>
+-  );
+-}
+Index: pages/test/index.tsx
+===================================================================
+diff --git a/pages/test/index.tsx b/pages/test/index.tsx
+deleted file mode 100644
+--- a/pages/test/index.tsx	
++++ /dev/null	
+@@ -1,32 +0,0 @@
+-// import styles from '@/components/table/Table.module.scss';
+-// import { NextPage } from 'next';
+-// import { ApplicationPageProps } from '@/components/table/ssr/employer.ssr';
+-// // import EmployeeTable from '@/components/table/EmployeeTable';
+-// import EmployerTable from '@/components/table/EmployerTable';
+-//
+-// export { getServerSideProps } from '@/components/table/ssr/employer.ssr';
+-//
+-// const Test: NextPage<ApplicationPageProps> = ({
+-//   totalCount,
+-//   itemCount,
+-//   items,
+-// }) => {
+-//   return (
+-//     <div className={styles.container}>
+-//       <h2>신청자 목록</h2>
+-//       <EmployerTable
+-//         totalCount={totalCount}
+-//         itemCount={itemCount}
+-//         items={items}
+-//       />
+-//       {/* <h2>알바신청내역</h2> */}
+-//       {/* <EmployeeTable */}
+-//       {/*  totalCount={totalCount} */}
+-//       {/*  itemCount={itemCount} */}
+-//       {/*  items={items} */}
+-//       {/* /> */}
+-//     </div>
+-//   );
+-// };
+-//
+-// export default Test;
