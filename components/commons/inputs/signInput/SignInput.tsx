@@ -1,4 +1,8 @@
 import styles from '@/components/commons/inputs/signInput/SignInput.module.scss';
+import {
+  SIGN_ERROR_MESSAGE,
+  SIGN_REGEX,
+} from '@/utils/constants/signConstants';
 import React, { useState } from 'react';
 
 /**
@@ -18,8 +22,6 @@ interface SignInputProps {
   anotherValue?: string;
 }
 
-const emailRegex: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
 export default function SignInput({
   labelName,
   inputType,
@@ -34,7 +36,7 @@ export default function SignInput({
   };
   const handleFocusOut = () => {
     if (inputType === 'email') {
-      setIsValidation(emailRegex.test(value));
+      setIsValidation(SIGN_REGEX.email.test(value));
     }
 
     if (inputType === 'password') {
@@ -59,15 +61,15 @@ export default function SignInput({
         onBlur={handleFocusOut}
       />
       {inputType === 'email' && !isValidation && (
-        <div className={styles.errorMessage}>
-          이메일 형식으로 작성해 주세요.
-        </div>
+        <div className={styles.errorMessage}>{SIGN_ERROR_MESSAGE.email}</div>
       )}
       {inputType === 'password' && !isValidation && (
-        <div className={styles.errorMessage}>8자 이상 작성해 주세요.</div>
+        <div className={styles.errorMessage}>{SIGN_ERROR_MESSAGE.password}</div>
       )}
       {inputType === 'passwordCheck' && !isValidation && (
-        <div className={styles.errorMessage}>비밀번호가 일치하지 않습니다.</div>
+        <div className={styles.errorMessage}>
+          {SIGN_ERROR_MESSAGE.passwordCheck}
+        </div>
       )}
     </div>
   );

@@ -13,16 +13,16 @@ interface TimeInputProps {
   setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
+const formatNumber = (InputValue: string): string => {
+  // 숫자를 제외한 모든 문자를 공백으로 변환, 숫자 입력만 허용하기 위한 정규식
+  const numericValue = InputValue.replace(/\D/g, '');
+  // 숫자 3자리 마다 콤마 삽입
+  const formattedValue = numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+  return formattedValue;
+};
+
 export default function TimeInput({ value, setValue }: TimeInputProps) {
-  const formatNumber = (InputValue: string): string => {
-    // 숫자를 제외한 모든 문자를 공백으로 변환, 숫자 입력만 허용하기 위한 정규식
-    const numericValue = InputValue.replace(/\D/g, '');
-    // 숫자 3자리 마다 콤마 삽입
-    const formattedValue = numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
-    return formattedValue;
-  };
-
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     setValue(formatNumber(event.currentTarget.value));
   };
