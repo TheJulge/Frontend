@@ -48,9 +48,10 @@ function Pagination({ totalCount, itemCount }: PageNationProps) {
     <div className={styles.container}>
       <div className={styles.pageBox}>
         {isFirstPage ? (
-          <LeftButton className={styles.icon} />
+          <LeftButton className={styles.icon} tabindex={0} />
         ) : (
           <LeftButtonOn
+            tabindex={0}
             className={styles.icon}
             onClick={() => !isFirstPage && handlePageClick(selectedPage - 1)}
           />
@@ -58,6 +59,7 @@ function Pagination({ totalCount, itemCount }: PageNationProps) {
         <div className={styles.pageNumberBox}>
           {Array.from({ length: totalPages }, (_, i) => i + 1).map(num => (
             <div
+              tabindex={0}
               className={`${styles.pageNumber} ${
                 num === selectedPage ? styles.selected : ''
               }`}
@@ -71,9 +73,10 @@ function Pagination({ totalCount, itemCount }: PageNationProps) {
           ))}
         </div>
         {isLastPage ? (
-          <RightButton className={styles.icon} />
+          <RightButton className={styles.icon} tabindex={0} />
         ) : (
           <RightButtonOn
+            tabindex={0}
             className={styles.icon}
             onClick={() => !isLastPage && handlePageClick(selectedPage + 1)}
           />

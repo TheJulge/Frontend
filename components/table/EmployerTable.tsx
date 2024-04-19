@@ -86,10 +86,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
           const { user } = item;
           return (
             <React.Fragment key={item.id}>
-              <div
-                tabIndex={0}
-                className={`${styles.gridCell} ${styles.gridCellFirst}`}
-              >
+              <div className={`${styles.gridCell} ${styles.gridCellFirst}`}>
                 <p>{user.item?.name ?? '이름없음'}</p>
               </div>
               <div
@@ -98,7 +95,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
               >
                 <p>{user.item.bio}</p>
               </div>
-              <div tabIndex={0} className={`${styles.gridCell} `}>
+              <div className={`${styles.gridCell} `}>
                 <p>{user.item.phone}</p>
               </div>
               <div className={`${styles.gridCell} ${styles.lastCell}`}>
