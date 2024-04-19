@@ -1,0 +1,21 @@
+.container {
+  // margin: 0 auto;
+}
+.wrapper {
+  margin: 0 auto;
+}
+
+.profile {
+  position: relative;
+  max-width: 964px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 60px 0;
+
+  h2 {
+    @include h1(--black);
+    text-align: start;
+  }
+  gap: 150px;
+  display: flex;
+}
