@@ -59,7 +59,7 @@ function Pagination({ totalCount, itemCount }: PageNationProps) {
         <div className={styles.pageNumberBox}>
           {Array.from({ length: totalPages }, (_, i) => i + 1).map(num => (
             <div
-              tabindex={0}
+              tabIndex={0}
               className={`${styles.pageNumber} ${
                 num === selectedPage ? styles.selected : ''
               }`}
