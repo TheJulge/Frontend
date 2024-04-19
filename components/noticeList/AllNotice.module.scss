@@ -9,6 +9,12 @@
     .allNoticeTop {
       display: flex;
       justify-content: space-between;
+      h2 {
+        @include h1(--black);
+        strong {
+          @include h1(--primary);
+        }
+      }
     }
     .cardContainer {
       display: grid;
