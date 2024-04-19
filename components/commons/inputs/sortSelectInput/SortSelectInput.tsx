@@ -1,8 +1,8 @@
 import styles from '@/components/commons/inputs/sortSelectInput/SortSelectInput.module.scss';
 import DropDown from '@/components/commons/dropDown/Dropdown';
 import React, { useRef, useState } from 'react';
-import PolygonUpIcon from '@/public/inputs/polygonUp.svg';
-import PolygonDownIcon from '@/public/inputs/polygonDown.svg';
+import PolygonUpIcon from '@/public/images/inputs/polygonUp.svg';
+import PolygonDownIcon from '@/public/images/inputs/polygonDown.svg';
 
 /**
  * 클릭하면 드롭박스가 나오는 셀렉트 형식의 인풋입니다. 공고의 정렬 기준을 선택합니다.
