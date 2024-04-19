@@ -1,0 +1,69 @@
+@import '@/components/commons/Button/Button.module.scss';
+@import '@/styles/_mixins.scss';
+
+.background {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+
+    .logoIcon {
+      @include mobile {
+        width: 208px;
+        height: 38px;
+        flex-shrink: 0;
+      }
+
+      width: 248px;
+      height: 45px;
+      flex-shrink: 0;
+    }
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      @include mobile {
+        gap: 16px;
+      }
+
+      .signForm {
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+
+        .submitButton {
+          @include fillButton;
+        }
+      }
+      .text {
+        color: var(--black);
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+
+        a {
+          color: #5534da;
+          text-decoration-line: underline;
+        }
+      }
+    }
+  }
+}
