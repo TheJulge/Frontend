@@ -1,0 +1,47 @@
+@import '@/components/commons/Button/Button.module.scss';
+
+.container {
+  position: relative;
+  padding: 32px;
+  width: 665px;
+  background-color: var(--red10);
+  border-radius: 12px;
+}
+
+// .informationBox {
+//   width: 392px;
+// }
+
+.nameTitle {
+  @include body1-bold(--primary);
+  margin-bottom: 8px;
+}
+.nameData {
+  @include h1(--black);
+}
+
+.detailBox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  p {
+    @include body1-regular(--gray50);
+  }
+}
+
+.bio {
+  @include body1-regular(--black);
+  margin-top: 28px;
+}
+.buttonBox {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  width: 169px;
+}
+
+.button {
+  @include basicButton(var(--primary), var(--white), 1px solid var(--primary));
+  padding: 14px 136px;
+}
