@@ -24,7 +24,7 @@ export default function GnbUser() {
         </>
       )}
       {/* 아래 행의 employee 는 employer로 추후에 변경합니다 (지금 변경하면 ts에러) */}
-      {type === 'employee' && (
+      {/* {type === 'employee' && (
         <>
           <Link href="/">내 가게</Link>
           <Link href="/">로그아웃</Link>
@@ -36,7 +36,7 @@ export default function GnbUser() {
             )}
           </button>
         </>
-      )}
+      )} */}
       {type !== 'employee' && type !== 'employer' && (
         <>
           <Link href="/">로그인</Link>

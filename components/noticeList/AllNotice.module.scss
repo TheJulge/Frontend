@@ -1,0 +1,19 @@
+.allNotice {
+  padding: 60px 32px;
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 964px;
+    margin: 0 auto;
+    .allNoticeTop {
+      display: flex;
+      justify-content: space-between;
+    }
+    .cardContainer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 31px 14px;
+    }
+  }
+}
