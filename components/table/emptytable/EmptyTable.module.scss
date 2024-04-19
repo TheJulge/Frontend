@@ -20,4 +20,8 @@
 .button {
   @include fillButton;
   max-width: 346px;
+
+  a {
+    color: var(--white);
+  }
 }
