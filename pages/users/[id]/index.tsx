@@ -27,12 +27,15 @@ const Mypage: NextPage<ApplicationPageProps> = ({
         <div className={styles.tableWrraper}>
           <div className={styles.table}>
             <h2>신청 내역</h2>
-            <EmployeeTable
-              totalCount={totalCount}
-              itemCount={itemCount}
-              items={items}
-            />
-            <EmptyTable />
+            {items ? (
+              <EmployeeTable
+                totalCount={totalCount}
+                itemCount={itemCount}
+                items={items}
+              />
+            ) : (
+              <EmptyTable />
+            )}
           </div>
         </div>
       </div>

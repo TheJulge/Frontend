@@ -19,10 +19,6 @@
   }
 }
 
-// .informationBox {
-//   width: 392px;
-// }
-
 .nameTitle {
   @include body1-bold(--primary);
   margin-bottom: 8px;
@@ -55,14 +51,24 @@
   @include body1-regular(--black);
   margin-top: 28px;
   max-height: 150px;
-  overflow: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  overflow: hidden;
+  transition: max-height 0.25s ease-in;
+  position: relative;
+
   @include mobile {
     margin-top: 20px;
   }
+
+  span {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffebe7);
+  }
 }
+
 .buttonBox {
   position: absolute;
   top: 32px;
