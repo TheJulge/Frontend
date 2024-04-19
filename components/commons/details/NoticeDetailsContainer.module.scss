@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  padding: 60px 238px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  background-color: var(--gray5);
+  @include tablet {
+    padding: 60px 32px;
+  }
+  @include mobile {
+    padding: 40px 12px;
+    gap: 12px;
+  }
+
+  h1 {
+    @include h1(--black);
+    span {
+      @include body1-bold(--primary);
+    }
+    @include mobile {
+      @include h3(--black);
+      span {
+        @include body2-bold(--primary);
+      }
+    }
+  }
+}
