@@ -6,6 +6,17 @@
   width: 665px;
   background-color: var(--red10);
   border-radius: 12px;
+
+  @include tablet {
+    width: 100%;
+  }
+
+  @include mobile {
+    padding: 20px;
+    p {
+      font-size: 14px;
+    }
+  }
 }
 
 // .informationBox {
@@ -18,6 +29,9 @@
 }
 .nameData {
   @include h1(--black);
+  @include mobile {
+    font-size: 24px;
+  }
 }
 
 .detailBox {
@@ -28,20 +42,48 @@
   p {
     @include body1-regular(--gray50);
   }
+
+  @include mobile {
+    margin-top: 8px;
+    p {
+      font-size: 14px;
+    }
+  }
 }
 
 .bio {
   @include body1-regular(--black);
   margin-top: 28px;
+  max-height: 150px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @include mobile {
+    margin-top: 20px;
+  }
 }
 .buttonBox {
   position: absolute;
   top: 32px;
   right: 32px;
   width: 169px;
+
+  @include mobile {
+    right: 20px;
+    top: 20px;
+    width: 108px;
+  }
 }
 
 .button {
   @include basicButton(var(--primary), var(--white), 1px solid var(--primary));
-  padding: 14px 136px;
+  padding: 14px 30px;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  @include mobile {
+    padding: 10px 20px;
+  }
 }
