@@ -24,17 +24,28 @@ export default function Footer() {
             href="https://mail.google.com"
             target="_brank"
             title="메일로 이동"
+            aria-label="메일로 이동"
           >
             <EmailIcon viewBox="0 0 25 25" />
           </Link>
         </li>
         <li>
-          <Link href="/" target="_brank" title="페이스북으로 이동">
+          <Link
+            href="/"
+            target="_brank"
+            title="페이스북으로 이동"
+            aria-label="페이스북으로 이동"
+          >
             <FacebookIcon viewBox="0 0 25 25" />
           </Link>
         </li>
         <li>
-          <Link href="/" target="_brank" title="인스타그램으로 이동">
+          <Link
+            href="/"
+            target="_brank"
+            title="인스타그램으로 이동"
+            aria-label="인스타그램으로 이동"
+          >
             <InstagramIcon viewBox="0 0 25 25" />
           </Link>
         </li>
