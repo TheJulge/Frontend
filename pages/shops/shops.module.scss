@@ -1,0 +1,7 @@
+.main {
+  background-color: var(--gray5);
+
+  .title {
+    @include h1(--black);
+  }
+}
