@@ -6,7 +6,7 @@
   padding: 40px;
   border-radius: 12px;
   background-color: var(--white);
-  @media screen and (max-width: 768px) {
+  @include mobile {
     width: 350px;
     padding: 25px;
   }
@@ -62,22 +62,7 @@
   }
 }
 
-.tableButton {
+.tableModalButton {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  button {
-    border-radius: 6px;
-    cursor: pointer;
-    padding: 10px 20px;
-    background-color: var(--white);
-    &:nth-of-type(1) {
-      border: 1px solid var(--primary);
-      @include body2-bold(--primary);
-    }
-    &:nth-of-type(2) {
-      border: 1px solid var(--blue20);
-      @include body2-bold(--blue20);
-    }
-  }
 }

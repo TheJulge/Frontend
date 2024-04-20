@@ -5,7 +5,7 @@ import EmployeeTable from '@/components/table/EmployeeTable';
 import EmployerTable from '@/components/table/EmployerTable';
 
 export { getServerSideProps } from '@/components/table/ssr/employer.ssr';
-
+// eslint-disable-next-line react/function-component-definition
 const Test: NextPage<ApplicationPageProps> = ({
   totalCount,
   itemCount,
