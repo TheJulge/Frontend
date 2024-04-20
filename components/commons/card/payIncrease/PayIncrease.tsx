@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import {
   formatWage,
   calculatePayIncreaseRate,
@@ -8,6 +9,7 @@ import styles from './PayIncrease.module.scss';
 interface PayIncreaseProps {
   hourlyPay: number;
   originalHourlyPay: number;
+  closed: boolean;
 }
 
 /**
@@ -20,10 +22,15 @@ interface PayIncreaseProps {
 export default function PayIncrease({
   hourlyPay,
   originalHourlyPay,
+  closed,
 }: PayIncreaseProps) {
   const increaseRate = calculatePayIncreaseRate(hourlyPay, originalHourlyPay);
   return (
-    <div className={styles.payInfo}>
+    <div
+      className={classNames(styles.payInfo, {
+        [styles.closed]: closed,
+      })}
+    >
       <span className={styles.pay}>{formatWage(hourlyPay)}</span>
       {hourlyPay > originalHourlyPay && (
         <div className={styles.payIncrease}>
