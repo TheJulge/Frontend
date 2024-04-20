@@ -42,7 +42,7 @@ export default function Card({ noticeInfo }: CardProp) {
 
       <div className={styles.contents}>
         <div className={styles.notice}>
-          <p className={styles.shopName}>{shopData.name}</p>
+          <span className={styles.shopName}>{shopData.name}</span>
           <div className={styles.time}>
             <ClockIcon />
             <div>
@@ -58,6 +58,7 @@ export default function Card({ noticeInfo }: CardProp) {
         <PayIncrease
           hourlyPay={noticeData.hourlyPay}
           originalHourlyPay={shopData.originalHourlyPay}
+          closed={noticeData.closed}
         />
       </div>
     </div>
