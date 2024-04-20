@@ -1,49 +1,26 @@
 import styles from '@/pages/signin/signin.module.scss';
 import Link from 'next/link';
-import SignInput from '@/components/commons/inputs/signInput/SignInput';
 import LogoIcon from '@/public/images/sign/mainlogo.svg';
-import React, { useState } from 'react';
+import SignInForm from '@/components/sign/SignInForm';
 
 export default function SignIn() {
-  const [emailValue, setEmailValue] = useState<string>('');
-  const [passwordValue, setPasswordValue] = useState<string>('');
-
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    console.log(emailValue, passwordValue);
-  };
-
   return (
-    <div className={styles.background}>
+    <main className={styles.background}>
       <div className={styles.container}>
-        <LogoIcon className={styles.logoIcon} alt="더 줄게 로고" />
+        <Link
+          title="공고리스트로 이동"
+          aria-label="the julge logo"
+          href="/noticeList"
+        >
+          <LogoIcon className={styles.logoIcon} />
+        </Link>
         <div className={styles.box}>
-          <form className={styles.signForm}>
-            <SignInput
-              labelName="이메일"
-              inputType="email"
-              value={emailValue}
-              setValue={setEmailValue}
-            />
-            <SignInput
-              labelName="비밀번호"
-              inputType="password"
-              value={passwordValue}
-              setValue={setPasswordValue}
-            />
-            <button
-              className={styles.submitButton}
-              type="submit"
-              onClick={handleSubmit}
-            >
-              로그인 하기
-            </button>
-          </form>
+          <SignInForm />
           <div className={styles.text}>
-            회원이 아니신가요? <Link href="/signUp">회원가입하기</Link>
+            회원이 아니신가요? <Link href="/signup">회원가입하기</Link>
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
