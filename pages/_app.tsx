@@ -1,6 +1,17 @@
+import Footer from '@/components/commons/footer/Footer';
+import Gnb from '@/components/commons/gnb/Gnb';
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  const router = useRouter();
+  const hide = router.pathname === '/signin' || router.pathname === '/signup';
+  return (
+    <>
+      {!hide && <Gnb />}
+      <Component {...pageProps} />
+      {!hide && <Footer />}
+    </>
+  );
 }
