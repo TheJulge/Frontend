@@ -59,9 +59,15 @@ export default function SelectInput({
             tabIndex={-1}
           />
           {showDropDown ? (
-            <DropDownUpIcon alt="arrowUpIcon" className={styles.upIcon} />
+            <DropDownUpIcon
+              aria-label="arrowUpIcon"
+              className={styles.upIcon}
+            />
           ) : (
-            <DropDownDownIcon alt="arrowDownIcon" className={styles.downIcon} />
+            <DropDownDownIcon
+              aria-label="arrowDownIcon"
+              className={styles.downIcon}
+            />
           )}
         </button>
       </div>

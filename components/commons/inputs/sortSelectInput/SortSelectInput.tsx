@@ -53,9 +53,12 @@ export default function SortSelectInput({
           tabIndex={-1}
         />
         {showDropDown ? (
-          <PolygonUpIcon alt="arrowUpIcon" className={styles.upIcon} />
+          <PolygonUpIcon aria-label="arrowUpIcon" className={styles.upIcon} />
         ) : (
-          <PolygonDownIcon alt="arrowDownIcon" className={styles.downIcon} />
+          <PolygonDownIcon
+            aria-label="arrowDownIcon"
+            className={styles.downIcon}
+          />
         )}
       </button>
       {showDropDown && (
