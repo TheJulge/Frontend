@@ -68,13 +68,13 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
   return (
     <div className={styles.outerContainer}>
       <div className={styles.gridContainer}>
-        <div className={styles.gridHeader}>
+        <div className={`${styles.gridHeader} ${styles.gridCellFirst}`}>
           <h6>신청자</h6>
         </div>
-        <div className={`${styles.gridHeader} ${styles.mobileHide}`}>
+        <div className={`${styles.gridHeader}`}>
           <h6>소개</h6>
         </div>
-        <div className={`${styles.gridHeader} ${styles.mobileHide}`}>
+        <div className={`${styles.gridHeader}`}>
           <h6>전화번호</h6>
         </div>
         <div className={`${styles.gridHeader}`}>
@@ -89,13 +89,16 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
               <div className={`${styles.gridCell} ${styles.gridCellFirst}`}>
                 <p>{user.item?.name ?? '이름없음'}</p>
               </div>
-              <div className={`${styles.gridCell} ${styles.clickDiv}`}>
-                {user.item.bio}
+              <div
+                tabIndex={0}
+                className={`${styles.gridCell} ${styles.clickDiv}`}
+              >
+                <p>{user.item.bio}</p>
               </div>
               <div className={`${styles.gridCell} `}>
                 <p>{user.item.phone}</p>
               </div>
-              <div className={`${styles.gridCell} `}>
+              <div className={`${styles.gridCell} ${styles.lastCell}`}>
                 <StatusButton
                   id={item.id}
                   status={item.status}

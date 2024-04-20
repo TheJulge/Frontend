@@ -1,12 +1,14 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './CustomizationNotice.module.scss';
-// import Card from '../commons/card/Card';
 
 export default function CustomizationNotice() {
   return (
     <article className={styles.noticeTop}>
       <section>
         <h2>맞춤 공고</h2>
-        {/* <Card /> */}
+        <Swiper spaceBetween={50} slidesPerView={3}>
+          <SwiperSlide></SwiperSlide>
+        </Swiper>
       </section>
     </article>
   );
