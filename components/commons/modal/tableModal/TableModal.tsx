@@ -1,3 +1,4 @@
+import { ItemType } from '@/types/applicationTypes';
 import Modal from '../Modal';
 import TableModalTop from './TableModalTop';
 import TableModalText from './TableModalText';
@@ -12,17 +13,26 @@ import styles from './TableModal.module.scss';
 interface TableModalProps {
   showModal: boolean;
   handleClose: () => void;
+  items: ItemType;
 }
 export default function TableModal({
   showModal,
   handleClose,
+  items,
 }: TableModalProps) {
+  const { item } = items;
+  const { user } = item;
+  console.log(item, user.item);
   return (
     <Modal showModal={showModal} handleClose={handleClose}>
       <div className={styles.tableModal}>
         <div>
-          <TableModalTop handleClose={handleClose} />
-          <TableModalText />
+          <TableModalTop
+            name={user.item.name!}
+            phone={user.item.phone!}
+            handleClose={handleClose}
+          />
+          <TableModalText text={user.item.bio!} />
         </div>
         <TableModalButton handleClose={handleClose} />
       </div>
