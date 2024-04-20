@@ -1,0 +1,180 @@
+Index: pages/modalTest.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/modalTest.tsx b/pages/modalTest.tsx
+deleted file mode 100644
+--- a/pages/modalTest.tsx	
++++ /dev/null	
+@@ -1,23 +0,0 @@
+-// import InfoModal from '@/components/commons/modal/InfoModal';
+-import ChooseModal from '@/components/commons/modal/ChooseModal';
+-import { useState } from 'react';
+-
+-export default function modalTest() {
+-  const [showModal, setShowModal] = useState(true);
+-  const handleClose = () => {
+-    setShowModal(false);
+-    console.log(showModal);
+-  };
+-  return (
+-    // <InfoModal showModal={true} handleClose={handleClose}>
+-    //   가게 정보를 등록해주세요
+-    // </InfoModal>
+-    <ChooseModal
+-      showModal={true}
+-      handleNo={handleClose}
+-      handleYes={() => console.log('yes!!!')}
+-    >
+-      신청을 거절하시겠어요?
+-    </ChooseModal>
+-  );
+-}
+Index: pages/index.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/index.tsx b/pages/index.tsx
+deleted file mode 100644
+--- a/pages/index.tsx	
++++ /dev/null	
+@@ -1,12 +0,0 @@
+-import Head from 'next/head';
+-
+-export default function Home() {
+-  return (
+-    <>
+-      <Head>
+-        <title>theJulge</title>
+-      </Head>
+-      <div>{/* fragment eslint 에러 방지용 태그 */}</div>
+-    </>
+-  );
+-}
+Index: pages/_app.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/_app.tsx b/pages/_app.tsx
+deleted file mode 100644
+--- a/pages/_app.tsx	
++++ /dev/null	
+@@ -1,6 +0,0 @@
+-import '@/styles/globals.css';
+-import type { AppProps } from 'next/app';
+-
+-export default function App({ Component, pageProps }: AppProps) {
+-  return <Component {...pageProps} />;
+-}
+Index: pages/_document.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/_document.tsx b/pages/_document.tsx
+deleted file mode 100644
+--- a/pages/_document.tsx	
++++ /dev/null	
+@@ -1,20 +0,0 @@
+-import { Html, Head, Main, NextScript } from 'next/document';
+-import Link from 'next/link';
+-
+-export default function Document() {
+-  return (
+-    <Html lang="ko">
+-      <Head>
+-        <Link
+-          href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+-          rel="stylesheet"
+-          type="text/css"
+-        />
+-      </Head>
+-      <body>
+-        <Main />
+-        <NextScript />
+-      </body>
+-    </Html>
+-  );
+-}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"51495c7d-a173-40e1-a11d-ddc50e9c8988\" name=\"Changes\" comment=\"[#6]style: 스타일수정\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"TypeScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <favorite-branches>\r\n      <branch-storage>\r\n        <map>\r\n          <entry type=\"LOCAL\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"develop\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n        </map>\r\n      </branch-storage>\r\n    </favorite-branches>\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"feat-table\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2f5DymrVPzdNKalmSdytx4KpbDj\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"HTTP Request.All in table.executor\": \"Run\",\r\n    \"HTTP Request.table | #1.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"develop\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/janyong/Documents/study/프로젝트/Frontend\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.standard\": \"true\",\r\n    \"node.js.detected.package.stylelint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.standard\": \"\",\r\n    \"node.js.selected.package.stylelint\": \"\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"prettierjs.PrettierConfiguration.Package\": \"C:\\\\Users\\\\janyong\\\\Documents\\\\study\\\\프로젝트\\\\Frontend\\\\node_modules\\\\prettier\",\r\n    \"settings.editor.selected.configurable\": \"settings.javascript.prettier\",\r\n    \"ts.external.directory.path\": \"C:\\\\Program Files\\\\JetBrains\\\\IntelliJ IDEA 2024.1\\\\plugins\\\\javascript-impl\\\\jsLanguageServicesImpl\\\\external\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\janyong\\Documents\\study\\프로젝트\\Frontend\\public\\images\" />\r\n      <recent name=\"C:\\Users\\janyong\\Documents\\study\\프로젝트\\Frontend\\pages\\test\" />\r\n      <recent name=\"C:\\Users\\janyong\\Documents\\study\\프로젝트\\Frontend\\types\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"HTTP 요청.All in table\">\r\n    <configuration name=\"All in table\" type=\"HttpClient.HttpRequestRunConfigurationType\" factoryName=\"HTTP Request\" temporary=\"true\" path=\"$PROJECT_DIR$/components/table/table.http\">\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"table | #1\" type=\"HttpClient.HttpRequestRunConfigurationType\" factoryName=\"HTTP Request\" temporary=\"true\" nameIsGenerated=\"true\" path=\"$PROJECT_DIR$/components/table/table.http\" requestIdentifier=\"#1\">\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"HTTP 요청.table | #1\" />\r\n        <item itemvalue=\"HTTP 요청.All in table\" />\r\n        <item itemvalue=\"HTTP 요청.table | #1\" />\r\n        <item itemvalue=\"HTTP 요청.All in table\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240\" />\r\n        <option value=\"bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"51495c7d-a173-40e1-a11d-ddc50e9c8988\" name=\"Changes\" comment=\"\" />\r\n      <created>1713082302164</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1713082302164</updated>\r\n      <workItem from=\"1713082303557\" duration=\"2421000\" />\r\n      <workItem from=\"1713084760982\" duration=\"17505000\" />\r\n      <workItem from=\"1713149986878\" duration=\"7901000\" />\r\n      <workItem from=\"1713159238021\" duration=\"446000\" />\r\n      <workItem from=\"1713159693417\" duration=\"1109000\" />\r\n      <workItem from=\"1713160826932\" duration=\"14954000\" />\r\n      <workItem from=\"1713234407340\" duration=\"8083000\" />\r\n      <workItem from=\"1713248510055\" duration=\"56000\" />\r\n      <workItem from=\"1713248574807\" duration=\"243000\" />\r\n      <workItem from=\"1713248837641\" duration=\"196000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"style: 기본 설정 및 데이터 적용\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713158629096</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713158629096</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"feat: table컴포넌트 구현\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713158660481</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713158660481</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"[#6]feat: 페이지네이션 기본구현\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713248395087</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713248395087</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"[#6]fix: 테이블 수정\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713248415122</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713248415122</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"[#6]feat: 상태버튼\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713248444593</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713248444593</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"[#6]style: 스타일수정\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713248465789</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713248465789</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"[#6]style: 스타일수정\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713248930192</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713248930192</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"8\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"feat-table\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"style: 기본 설정 및 데이터 적용\" />\r\n    <MESSAGE value=\"feat: table컴포넌트 구현\" />\r\n    <MESSAGE value=\"[#6]feat: 페이지네이션 기본구현\" />\r\n    <MESSAGE value=\"[#6]fix: 테이블 수정\" />\r\n    <MESSAGE value=\"[#6]feat: 상태버튼\" />\r\n    <MESSAGE value=\"[#6]style: 스타일수정\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"[#6]style: 스타일수정\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,7 +4,13 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="51495c7d-a173-40e1-a11d-ddc50e9c8988" name="Changes" comment="[#6]style: 스타일수정" />
++    <list default="true" id="51495c7d-a173-40e1-a11d-ddc50e9c8988" name="Changes" comment="[#6]style: 스타일수정">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/pages/_document.tsx" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/pages/modalTest.tsx" beforeDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -49,30 +55,30 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "HTTP Request.All in table.executor": "Run",
+-    "HTTP Request.table | #1.executor": "Run",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "develop",
+-    "ignore.virus.scanning.warn.message": "true",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "C:/Users/janyong/Documents/study/프로젝트/Frontend",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.standard": "true",
+-    "node.js.detected.package.stylelint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.standard": "",
+-    "node.js.selected.package.stylelint": "",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\janyong\\Documents\\study\\프로젝트\\Frontend\\node_modules\\prettier",
+-    "settings.editor.selected.configurable": "settings.javascript.prettier",
+-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;HTTP Request.All in table.executor&quot;: &quot;Run&quot;,
++    &quot;HTTP Request.table | #1.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/janyong/Documents/study/프로젝트/Frontend&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
++    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\janyong\\Documents\\study\\프로젝트\\Frontend\\node_modules\\prettier&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
++    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Users\janyong\Documents\study\프로젝트\Frontend\public\images" />
