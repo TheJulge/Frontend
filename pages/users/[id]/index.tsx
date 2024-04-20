@@ -1,4 +1,3 @@
-import Gnb from '@/components/commons/gnb/Gnb';
 import EmployeeTable from '@/components/table/EmployeeTable';
 import ProfileCard from '@/components/profilecard/ProfileCard';
 import { NextPage } from 'next';
@@ -33,7 +32,10 @@ const Mypage: NextPage<ApplicationPageProps> = ({
                 items={items}
               />
             ) : (
-              <EmptyTable />
+              <EmptyTable
+                text="아직 신청 내역이 없어요."
+                buttonText="공고 보러가기"
+              />
             )}
           </div>
         </div>
