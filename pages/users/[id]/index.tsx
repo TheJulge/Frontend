@@ -16,7 +16,6 @@ const Mypage: NextPage<ApplicationPageProps> = ({
 }) => {
   return (
     <div className={styles.container}>
-      <Gnb />
       <div className={styles.wrapper}>
         <div className={styles.profileWrraper}>
           <div className={styles.profile}>
