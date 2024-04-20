@@ -3,6 +3,7 @@ import DropDown from '@/components/commons/dropDown/Dropdown';
 import React, { useRef, useState } from 'react';
 import PolygonUpIcon from '@/public/inputs/polygonUp.svg';
 import PolygonDownIcon from '@/public/inputs/polygonDown.svg';
+import { useRouter } from 'next/router';
 
 /**
  * 클릭하면 드롭박스가 나오는 셀렉트 형식의 인풋입니다. 공고의 정렬 기준을 선택합니다.
@@ -23,13 +24,29 @@ export default function SortSelectInput({
 }: SortSelectInputProps) {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const buttonRef = useRef(null);
+  const router = useRouter();
   const handleSelectInputClick = () => {
     setShowDropDown(!showDropDown);
+  };
+  const optionQuery = (option: string) => {
+    switch (option) {
+      case '마감임박순':
+        return 'time';
+      case '시급많은순':
+        return 'pay';
+      case '시간적은순':
+        return 'hour';
+      case '가나다순':
+        return 'shop';
+      default:
+        return undefined;
+    }
   };
   const handleDropDownClick = (event: React.MouseEvent) => {
     const selectedValue = (event.target as HTMLLIElement).innerText;
     setValue(selectedValue);
     setShowDropDown(!showDropDown);
+    router.push(`?sort=${optionQuery(selectedValue)}`);
   };
   const handleClose = () => {
     setShowDropDown(false);

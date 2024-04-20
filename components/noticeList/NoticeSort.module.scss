@@ -8,6 +8,7 @@
     cursor: pointer;
     @include body2-bold(--white);
     background-color: var(--red30);
+    line-height: 17px;
     border-radius: 5px;
     border: none;
     padding: 6.5px 12px;

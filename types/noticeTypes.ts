@@ -58,4 +58,11 @@ export interface NoticesType {
   count: number;
   hasNext: boolean;
   //아직 타입 미완성
+  address: string[];
+  keyword?: string;
+  items: {
+    item: NoticeBaseType;
+    links: LinkType[];
+  }[];
+  links: LinkType[];
 }

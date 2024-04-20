@@ -1,10 +1,20 @@
-import { CardNoticeType } from '@/types/noticeTypes';
 import { useRouter } from 'next/router';
-import styles from './AllNotice.module.scss';
-import Card from '../commons/card/Card';
+import { CardNoticeType } from '@/types/noticeTypes';
+import Pagination from '@/components/commons/pagination/Pagination';
 import NoticeSort from './NoticeSort';
+import AllNoticeCard from './AllNoticeCard';
+import styles from './AllNotice.module.scss';
 
-export default function AllNotice({ noticeData }: any) {
+interface NoticeProps {
+  noticeData: CardNoticeType[];
+  itemCount: number;
+  totalCount: number;
+}
+export default function AllNotice({
+  noticeData,
+  totalCount,
+  itemCount,
+}: NoticeProps) {
   const router = useRouter();
   const keyword = router.query.searchKeyword;
   return (
@@ -20,15 +30,8 @@ export default function AllNotice({ noticeData }: any) {
           )}
           <NoticeSort />
         </div>
-        <ul className={styles.cardContainer}>
-          {noticeData.map((items: CardNoticeType) => {
-            return (
-              <li key={items.item.id}>
-                <Card noticeInfo={items} />
-              </li>
-            );
-          })}
-        </ul>
+        <AllNoticeCard noticeData={noticeData} />
+        <Pagination totalCount={totalCount} itemCount={itemCount} />
       </section>
     </article>
   );
