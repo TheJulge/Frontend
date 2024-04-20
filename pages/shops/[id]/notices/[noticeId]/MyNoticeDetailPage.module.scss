@@ -1,0 +1,49 @@
+.wrapper {
+  margin: 0 auto;
+  h2 {
+    @include h1(--black);
+    margin-bottom: 32px;
+  }
+}
+
+.profileWrraper {
+  min-height: 376px;
+}
+.profile {
+  max-width: 964px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 60px 0;
+  flex-direction: column;
+  display: flex;
+
+  @include tablet {
+    gap: 0;
+    padding: 60px 32px;
+    width: 100%;
+  }
+  @include mobile {
+    padding: 40px 12px;
+  }
+}
+
+.tableWrraper {
+  background-color: var(--gray5);
+  padding-bottom: 60px;
+}
+
+.table {
+  position: relative;
+  max-width: 964px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 60px 0;
+
+  @include tablet {
+    padding: 60px 32px;
+  }
+
+  @include mobile {
+    padding: 40px 12px;
+  }
+}
