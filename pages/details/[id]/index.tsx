@@ -1,4 +1,4 @@
-import NoticeDetails from '@/components/commons/details/NoticeDetailsContainer';
+import NoticeDetailsContainer from '@/components/commons/details/NoticeDetailsContainer';
 
 const MOCK = {
   item: {
@@ -42,5 +42,5 @@ const MOCK = {
 export async function getSeverSideProps() {}
 
 export default function NoticeDetailsPage() {
-  return <NoticeDetails details={MOCK} />;
+  return <NoticeDetailsContainer details={MOCK} />;
 }

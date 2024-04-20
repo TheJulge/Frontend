@@ -1,11 +1,11 @@
 import { CardNoticeType } from '@/types/noticeTypes';
-import styles from './NoticeDetailsContainer.module.scss';
 import NoticeDetailsCard from './detailCard/NoticeDetailsCard';
+import styles from './NoticeDetailsContainer.module.scss';
 
 interface DetailsProp {
   details: CardNoticeType;
 }
-export default function NoticeDetails({ details }: DetailsProp) {
+export default function NoticeDetailsContainer({ details }: DetailsProp) {
   const noticeDetails = details.item;
   const shopDetails = details.item.shop.item;
   return (
