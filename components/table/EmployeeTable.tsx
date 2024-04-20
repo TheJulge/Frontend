@@ -35,7 +35,7 @@ function EmployeeTable({ items, totalCount, itemCount }: TableProps) {
           return (
             <React.Fragment key={item.id}>
               <div className={`${styles.gridCell} ${styles.gridCellFirst}`}>
-                <p>{shop.item.name}</p>
+                <p> {shop.item.name}</p>
               </div>
               <div className={`${styles.gridCell}`}>
                 <p>{notice.item.startsAt}</p>

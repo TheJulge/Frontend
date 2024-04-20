@@ -1,4 +1,7 @@
-import { ApplicationResponse, ItemsType } from '@/types/applicationTypes';
+import {
+  ApplicationResponse,
+  ItemsType,
+} from '@/components/table/applicationTypes';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
 

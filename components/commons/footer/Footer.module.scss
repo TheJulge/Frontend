@@ -1,0 +1,50 @@
+.footer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 37px;
+  background-color: var(--gray10);
+  address {
+    @include mobile {
+      position: absolute;
+      left: 20px;
+      bottom: 16px;
+    }
+    span {
+      @include body1-regular(--gray50);
+      @include mobile {
+        @include caption(--gray50);
+      }
+    }
+  }
+  ul {
+    display: flex;
+    align-items: center;
+  }
+  .footerLinks {
+    gap: 30px;
+    a {
+      @include body1-regular(--gray50);
+      @include mobile {
+        @include body2-regular(--gray50);
+      }
+    }
+  }
+  .footerSns {
+    gap: 10px;
+    a {
+      display: block;
+      width: 25px;
+      height: 25px;
+      svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  @include mobile {
+    padding: 32px 20px 72px;
+  }
+}

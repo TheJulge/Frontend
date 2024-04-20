@@ -68,3 +68,12 @@ iframe {
 .react-datepicker-popper[data-placement^='bottom'] .react-datepicker__triangle {
   display: none !important;
 }
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  main {
+    flex-grow: 1;
+  }
+}
