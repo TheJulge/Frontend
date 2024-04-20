@@ -1,9 +1,9 @@
-import styles from '@/pages/signin/signin.module.scss';
+import styles from '@/pages/signup/signup.module.scss';
 import Link from 'next/link';
 import LogoIcon from '@/public/images/sign/mainlogo.svg';
-import SignInForm from '@/components/sign/SignInForm';
+import SignUpForm from '@/components/sign/SignUpForm';
 
-export default function SignIn() {
+export default function SignUp() {
   return (
     <main className={styles.background}>
       <div className={styles.container}>
@@ -15,9 +15,9 @@ export default function SignIn() {
           <LogoIcon className={styles.logoIcon} />
         </Link>
         <div className={styles.box}>
-          <SignInForm />
+          <SignUpForm />
           <div className={styles.text}>
-            회원이 아니신가요?<Link href="/signup">회원가입하기</Link>
+            이미 가입하셨나요?<Link href="/signin">로그인하기</Link>
           </div>
         </div>
       </div>

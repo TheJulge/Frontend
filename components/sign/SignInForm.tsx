@@ -11,7 +11,6 @@ export default function SignInForm() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>({ mode: 'onBlur' });
 
@@ -19,13 +18,10 @@ export default function SignInForm() {
     try {
       // TO DO: 1. Axios 사용 로그인 전송 2.로그인 버튼 disabled 3.성공 시 response 쿠키에 저장 4.공고리스트로 redirect
       console.log(data);
-      console.log(watch());
     } catch (error) {
-      // TO DO: 1. 없는 이메일일 경우 모달 띄우고 확인 누르면 redirect 회원가입 2. 비밀번호 틀린 경우 모달 띄우고 확인 누르면 꺼짐
-      console.log(watch());
+      // TO DO: 로그인 요청 에러처리 모달 띄우고 확인 누르면 꺼짐
     } finally {
       // TO DO: 로그인 버튼 disabled 해제
-      console.log(watch());
     }
   };
 
