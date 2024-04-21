@@ -15,7 +15,7 @@ export const getNotices = () => {
 };
 
 /**
- * 공고 조회
+ * 맞춤 공고 조회
  * @param {string} address
  * @returns
  */
