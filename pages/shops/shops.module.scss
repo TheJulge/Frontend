@@ -1,7 +1,70 @@
+@import '../../components/commons/Button/Button.module.scss';
+
 .main {
   background-color: var(--gray5);
+  .container {
+    max-width: 964px;
+    padding: 60px 32px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    @include tablet {
+      width: 100%;
+    }
+    @include mobile {
+      width: 100%;
+      padding: 40px 12px;
+    }
 
-  .title {
-    @include h1(--black);
+    .title {
+      @include h1(--black);
+    }
+
+    .gridContainer {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      @include mobile {
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .imageInput {
+        .inputTitle {
+          @include body1-regular(--black);
+        }
+
+        .shopImage {
+          cursor: pointer;
+          max-width: 483px;
+          height: 276px;
+          margin-top: 8px;
+          border: 1px solid var(--gray30);
+          border-radius: 10px;
+          background-color: var(--gray10);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          @include mobile {
+            max-width: 351px;
+            max-height: 200px;
+            margin: 8px auto;
+          }
+        }
+      }
+    }
+
+    .flexContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .submitButton {
+        @include disabledButton();
+        width: 351px;
+      }
+    }
   }
 }
