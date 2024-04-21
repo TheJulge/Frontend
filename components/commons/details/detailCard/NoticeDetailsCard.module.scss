@@ -33,11 +33,17 @@
   }
 
   .cardImg {
-    width: 100%;
+    width: 539px;
     height: 100%;
     position: relative !important;
     overflow: hidden;
     border-radius: 12px;
+    @include tablet {
+      width: 100%;
+    }
+    @include mobile {
+      width: 100%;
+    }
   }
 
   .contents {
@@ -63,6 +69,10 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 12px;
+
+      @include mobile {
+        gap: 6px;
+      }
       .pay {
         width: 100%;
         display: flex;
@@ -72,6 +82,9 @@
         p {
           width: 100%;
           @include body1-bold(--primary);
+          @include mobile {
+            @include body2-bold(--primary);
+          }
         }
       }
       .time,
@@ -81,6 +94,9 @@
         gap: 6px;
         p {
           @include body1-regular(--gray50);
+          @include mobile {
+            @include body2-regular(--gray50);
+          }
         }
         svg {
           fill: var(--red30);
@@ -89,6 +105,9 @@
       .description {
         p {
           @include body1-regular(--black);
+          @include mobile {
+            @include body2-regular(--gray50);
+          }
         }
       }
     }
