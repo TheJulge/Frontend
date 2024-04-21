@@ -15,6 +15,15 @@ export const getNotices = () => {
 };
 
 /**
+ * 맞춤 공고 조회
+ * @param {string} address
+ * @returns
+ */
+export const getCustomNotices = (address: string) => {
+  return instance.get(`${API.notice}?address=${address}`);
+};
+
+/**
  * 가게의 공고 목록 조회
  * @param {string} shopId
  * @returns

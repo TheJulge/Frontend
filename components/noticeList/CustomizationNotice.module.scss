@@ -4,5 +4,12 @@
   section {
     max-width: 964px;
     margin: 0 auto;
+    h2 {
+      @include h1(--black);
+      margin-bottom: 31px;
+    }
+    .swiperNotice {
+      width: 312px;
+    }
   }
 }

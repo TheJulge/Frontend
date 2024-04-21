@@ -1,5 +1,4 @@
 import { CardNoticeType } from '@/types/noticeTypes';
-import { useRouter } from 'next/router';
 import Card from '../commons/card/Card';
 import styles from './AllNoticeCard.module.scss';
 
@@ -8,8 +7,6 @@ interface NoticeProps {
 }
 
 export default function AllNoticeCard({ noticeData }: NoticeProps) {
-  const q = useRouter();
-  console.log(q.query);
   return (
     <ul className={styles.cardContainer}>
       {noticeData.map((items: CardNoticeType) => {
