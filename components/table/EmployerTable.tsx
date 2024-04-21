@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '@/components/table/Table.module.scss';
 import { StatusButton } from '@/components/table/StatusButton';
 import Pagination from '@/components/commons/pagination/Pagination';
 import { ApplicationPageProps } from '@/components/table/ssr/employer.ssr';
 import axios from 'axios';
+import TableModal from '../commons/modal/tableModal/TableModal';
 
 /**
  * @param function EmployerTable 고용인 table컴포넌트구현
@@ -17,6 +18,15 @@ import axios from 'axios';
 interface TableProps extends ApplicationPageProps {}
 
 function EmployerTable({ items, itemCount, totalCount }: TableProps) {
+  const [showModal, setShowModal] = useState(false);
+  const [selectIndex, setSelectIndex] = useState<number>(0);
+  const handleClose = () => {
+    setShowModal(false);
+  };
+  const handleClick = (index: number) => {
+    setSelectIndex(index);
+    setShowModal(true);
+  };
   const router = useRouter();
   const { pathname, query } = router;
 
@@ -81,7 +91,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
           <h6>상태</h6>
         </div>
 
-        {items.map(list => {
+        {items.map((list, index) => {
           const { item } = list;
           const { user } = item;
           return (
@@ -91,6 +101,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
               </div>
               <div
                 tabIndex={0}
+                onClick={() => handleClick(index)}
                 className={`${styles.gridCell} ${styles.clickDiv}`}
               >
                 <p>{user.item.bio}</p>
@@ -111,6 +122,13 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
         })}
       </div>
       <Pagination itemCount={itemCount} totalCount={totalCount} />
+      {showModal && (
+        <TableModal
+          items={items[selectIndex]}
+          showModal
+          handleClose={handleClose}
+        />
+      )}
     </div>
   );
 }

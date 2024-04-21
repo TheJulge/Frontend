@@ -1,0 +1,68 @@
+.tableModal {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 600px;
+  padding: 40px;
+  border-radius: 12px;
+  background-color: var(--white);
+  @include mobile {
+    width: 350px;
+    padding: 25px;
+  }
+}
+
+.modalTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gray20);
+  p {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    strong {
+      font-size: 20px;
+    }
+    span {
+      @include body2-regular(--gray40);
+    }
+  }
+  button {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.tableModalText {
+  padding-top: 16px;
+  p {
+    height: 240px;
+    overflow-y: scroll;
+    font-size: 18px;
+    line-height: 27px;
+    padding-right: 10px;
+    color: var(--gray50);
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--gray50);
+      border-radius: 40px;
+    }
+  }
+}
+
+.tableModalButton {
+  display: flex;
+  justify-content: center;
+}
