@@ -1,8 +1,9 @@
 .container {
   display: flex;
-  padding: 60px 238px;
+  padding: 60px;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   gap: 24px;
   background-color: var(--gray5);
   @include tablet {
@@ -14,6 +15,9 @@
   }
 
   h1 {
+    width: 100%;
+    max-width: 960px;
+
     @include h1(--black);
     span {
       @include body1-bold(--primary);
