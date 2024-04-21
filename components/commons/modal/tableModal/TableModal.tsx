@@ -26,13 +26,16 @@ export default function TableModal({
   items,
 }: TableModalProps) {
   const { item } = items;
-  const { user } = item;
+  const {
+    item: { user },
+  } = items;
   const router = useRouter();
   const { pathname, query } = router;
   // type = 사장인지, 알바생인지 전역변수로 관리
   const type = 'employer';
 
   // api보내고 바로 또 쿼리 날려서 데이터 재조회
+  // 로그인 기능 구현 후 수정
   const handleStatusChange = async (
     status: 'pending' | 'accepted' | 'rejected' | 'canceled',
     id: string,
