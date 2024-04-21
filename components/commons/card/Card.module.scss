@@ -22,7 +22,6 @@
     align-items: flex-start;
     gap: 12px;
   }
-
   .cardImg {
     width: 100%;
     height: 100%;
@@ -37,10 +36,12 @@
     align-items: flex-start;
     gap: 16px;
     align-self: stretch;
+
     @include mobile {
       gap: 12px;
     }
     .notice {
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -49,6 +50,11 @@
         gap: 6px;
       }
       .shopName {
+        width: 100%;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         @include h3(--black);
         @include mobile {
           @include body1-bold(--black);
@@ -58,7 +64,9 @@
         display: flex;
         align-items: center;
         gap: 6px;
-
+        svg {
+          fill: var(--red30);
+        }
         span {
           @include body2-regular(--gray50);
           @include mobile {
@@ -77,6 +85,9 @@
         display: flex;
         align-items: center;
         gap: 6px;
+        svg {
+          fill: var(--red30);
+        }
         span {
           @include body2-regular(--gray50);
           @include mobile {
@@ -104,6 +115,36 @@
     @include h1(--gray30);
   }
   .contents {
-    filter: grayscale(100%);
+    .notice {
+      .shopName {
+        @include h3(--gray30);
+        @include mobile {
+          @include body1-bold(--gray30);
+        }
+      }
+      .time {
+        svg {
+          fill: var(--gray20);
+        }
+        .data,
+        .hour {
+          @include body2-regular(--gray30);
+          @include mobile {
+            @include caption(--gray30);
+          }
+        }
+      }
+      .location {
+        svg {
+          fill: var(--gray20);
+        }
+        span {
+          @include body2-regular(--gray30);
+          @include mobile {
+            @include caption(--gray30);
+          }
+        }
+      }
+    }
   }
 }
