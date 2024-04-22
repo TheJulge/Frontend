@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '@/components/table/Table.module.scss';
 import { StatusButton } from '@/components/table/StatusButton';
 import Pagination from '@/components/commons/pagination/Pagination';
 import { ApplicationPageProps } from '@/components/table/ssr/employer.ssr';
 import axios from 'axios';
+import Testmodal from '../commons/modal/TestModal';
+import { Application } from './applicationTypes';
 
 /**
  * @param function EmployerTable 고용인 table컴포넌트구현
@@ -26,8 +28,12 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
     id: string,
   ) => {
     const teamId = '4-17';
-    const shopId = '42a97127-18ef-4514-9211-e4d9c45e2761';
-    const noticeId = 'cdb13a7a-dc72-4d5e-b60d-238dc97ccd19';
+    const shopId = query.id as string;
+    const noticeId = query.noticeId as string;
+    // 마라봉 2번
+    const employerToken =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNmRkODA2ZC1mZTNkLTQ1NTYtOTI1YS03Y2JjYWI0MzZiMDQiLCJpYXQiOjE3MTMzMzI3NTV9.XCtgxs6TvkP8zdkleZjgXHLehvNf4hqJgYkAlPsYPLk';
+
     const noticeListUrl = `https://bootcamp-api.codeit.kr/api/${teamId}/the-julge/shops/${shopId}/notices/${noticeId}/applications/${id}`;
     try {
       if (window === undefined) {
@@ -39,8 +45,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
         const fetch = await axios(noticeListUrl, {
           method: 'PUT',
           headers: {
-            Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NDUxOTVkOC05ZjI5LTQ2ZDQtYjAzNy1iZmI4ODA3ODU5NTEiLCJpYXQiOjE3MTMzMzI3ODR9.72oFn8s8qwwGSVtVlhrdOv3Ia_jZVQx2gkM2UF2_8S8',
+            Authorization: `Bearer ${employerToken}`,
           },
           data: {
             status,
@@ -65,6 +70,15 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
     }
   };
 
+  const [selectItem, setSelectItem] = useState<Application | null>(null);
+
+  const handleModalOpenWithSelectApplicaiton = (select: Application) => {
+    setSelectItem({ ...select });
+  };
+  const handleModalClose = () => {
+    setSelectItem(null);
+  };
+  console.log(selectItem);
   return (
     <div className={styles.outerContainer}>
       <div className={styles.gridContainer}>
@@ -102,7 +116,9 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
                 <StatusButton
                   id={item.id}
                   status={item.status}
-                  onStatusChange={handleStatusChange}
+                  onStatusChange={() =>
+                    handleModalOpenWithSelectApplicaiton(item)
+                  }
                   type="employer"
                 />
               </div>
@@ -111,6 +127,14 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
         })}
       </div>
       <Pagination itemCount={itemCount} totalCount={totalCount} />
+      {selectItem && (
+        <Testmodal
+          showModal={!!selectItem}
+          applicaitonItem={selectItem}
+          handleClose={() => handleModalClose()}
+          handleStatusChange={handleStatusChange}
+        />
+      )}
     </div>
   );
 }

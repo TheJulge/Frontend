@@ -51,7 +51,6 @@ function Pagination({ totalCount, itemCount }: PageNationProps) {
           <LeftButton className={styles.icon} tabindex={0} />
         ) : (
           <LeftButtonOn
-            tabindex={0}
             className={styles.icon}
             onClick={() => !isFirstPage && handlePageClick(selectedPage - 1)}
           />
