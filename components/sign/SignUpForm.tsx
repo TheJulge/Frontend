@@ -1,4 +1,5 @@
 import styles from '@/components/sign/SignUpForm.module.scss';
+import useSignUp from '@/hooks/useSignUp';
 import CheckedIcon from '@/public/images/sign/checked.svg';
 import { SIGN_ERROR_MESSAGE, SIGN_REGEX } from '@/utils/constants/SIGN';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -26,16 +27,15 @@ export default function SignUpForm() {
       type: 'employee',
     },
   });
+  const { status, successModal, errorModal, signUp } = useSignUp();
 
-  const onSubmit: SubmitHandler<Inputs> = async data => {
-    try {
-      // TO DO: 1. Axios 사용 회원가입 전송 2.가입하기 버튼 disabled 3.성공 시 가입완료 모달 열기 4.유저가 닫으면 로그인 페이지로 redirect
-      console.log(data);
-    } catch (error) {
-      // TO DO: 회원가입 요청 에러처리 "이미 사용중인 이메일 입니다" 모달 띄우고 확인 누르면 꺼짐
-    } finally {
-      // TO DO: 회원가입 버튼 disabled 해제
-    }
+  const onSubmit: SubmitHandler<Inputs> = data => {
+    const createAuthData = {
+      email: data.email,
+      password: data.password,
+      type: data.type,
+    };
+    signUp(createAuthData);
   };
 
   return (
@@ -159,9 +159,16 @@ export default function SignUpForm() {
         </div>
       </div>
 
-      <button className={styles.submitButton} type="submit">
+      <button
+        disabled={status === 'fetching'}
+        className={styles.submitButton}
+        type="submit"
+      >
         가입하기
       </button>
+
+      {successModal}
+      {errorModal}
     </form>
   );
 }

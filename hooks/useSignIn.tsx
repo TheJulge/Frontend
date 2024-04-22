@@ -1,4 +1,5 @@
 import SignModal from '@/components/sign/SignModal';
+import axios from 'axios';
 import { postSignIn } from '@/libs/user';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -27,8 +28,12 @@ export default function useSignIn() {
       document.cookie = `userId=${response.data.item.user.item.id}; secure`;
       router.push('/noticeList');
     } catch (error) {
-      setStatus('error');
-      setShowModal(true);
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status === 404) {
+          setStatus('error');
+          setShowModal(true);
+        }
+      }
     }
   };
 

@@ -26,8 +26,6 @@ export default function SignInForm() {
       onSubmit={handleSubmit(onSubmit)}
       noValidate
     >
-      <div>status: {status}</div>
-
       <div className={styles.container}>
         <label htmlFor="email">이메일</label>
         <input
