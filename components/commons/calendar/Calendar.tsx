@@ -12,11 +12,14 @@ import styles from './Calendar.module.scss';
  */
 
 export interface CalendarProps {
-  startDate: Date;
-  setStartDate: React.Dispatch<React.SetStateAction<Date>>;
+  startDate: Date | undefined;
+  setStartDate: React.Dispatch<React.SetStateAction<Date | undefined>>;
 }
 
 export default function Calendar({ startDate, setStartDate }: CalendarProps) {
+  // 내일 날짜를 생성합니다.
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
   return (
     <DatePicker
       className={styles.filterCalendar}
@@ -33,6 +36,7 @@ export default function Calendar({ startDate, setStartDate }: CalendarProps) {
       selected={startDate}
       onChange={date => setStartDate(date!)}
       dateFormat="yyyy년 MM월 dd일"
+      placeholderText="입력"
       renderCustomHeader={({ date, decreaseMonth, increaseMonth }) => (
         <CalendarHeader
           date={date}
@@ -40,6 +44,9 @@ export default function Calendar({ startDate, setStartDate }: CalendarProps) {
           increaseMonth={increaseMonth}
         />
       )}
+      autoComplete="off"
+      // 오늘 이전의 날짜 선택 금지
+      minDate={tomorrow}
     />
   );
 }

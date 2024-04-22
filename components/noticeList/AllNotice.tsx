@@ -30,8 +30,14 @@ export default function AllNotice({
           )}
           <NoticeSort />
         </div>
-        <AllNoticeCard noticeData={noticeData} />
-        <Pagination totalCount={totalCount} itemCount={itemCount} />
+        {noticeData.length === 0 ? (
+          <div className={styles.noNotice}>등록된 게시물이 없습니다.</div>
+        ) : (
+          <>
+            <AllNoticeCard noticeData={noticeData} />
+            <Pagination totalCount={totalCount} itemCount={itemCount} />
+          </>
+        )}
       </section>
     </article>
   );

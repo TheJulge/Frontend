@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { getCustomNotices } from '@/libs/notice';
 import { Autoplay } from 'swiper/modules';
 import { CardNoticeType } from '@/types/noticeTypes';
+import Link from 'next/link';
 import styles from './CustomizationNotice.module.scss';
 import Card from '../commons/card/Card';
 import 'swiper/css';
@@ -39,7 +40,9 @@ export default function CustomizationNotice() {
           {contents.map((items: CardNoticeType) => {
             return (
               <SwiperSlide className={styles.swiperNotice} key={items.item.id}>
-                <Card noticeInfo={items} />
+                <Link href={items.item.shop.href}>
+                  <Card noticeInfo={items} />
+                </Link>
               </SwiperSlide>
             );
           })}

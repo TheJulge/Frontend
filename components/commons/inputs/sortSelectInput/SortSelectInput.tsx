@@ -46,7 +46,20 @@ export default function SortSelectInput({
     const selectedValue = (event.target as HTMLLIElement).innerText;
     setValue(selectedValue);
     setShowDropDown(!showDropDown);
-    router.push(`?sort=${optionQuery(selectedValue)}`);
+
+    const currentUrl = router.asPath; // 현재 URL 가져오기
+    const sortQuery = optionQuery(selectedValue);
+
+    let newUrl: string;
+
+    // router.query.sort가 존재하는 경우 기존의 sort를 변경, 없는 경우 새로 추가
+    if (router.query.sort) {
+      newUrl = currentUrl.replace(/sort=[^&]*/, `sort=${sortQuery}`);
+    } else {
+      newUrl = `${currentUrl}${currentUrl.includes('?') ? '&' : '?'}sort=${sortQuery}`;
+    }
+
+    router.push(newUrl);
   };
   const handleClose = () => {
     setShowDropDown(false);
