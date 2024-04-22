@@ -2,7 +2,6 @@
   margin: 0 auto;
   h2 {
     @include h1(--black);
-    margin-bottom: 32px;
   }
 }
 
@@ -26,7 +25,18 @@
     padding: 40px 12px;
   }
 }
+.descriptionBox {
+  background-color: var(--gray20);
+  border-radius: 12px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 
+  p {
+    @include body1-bold(--black);
+  }
+}
 .tableWrraper {
   background-color: var(--gray5);
   padding-bottom: 60px;
