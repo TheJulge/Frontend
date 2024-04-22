@@ -23,7 +23,6 @@ export default function useSignIn() {
     try {
       const response = await postSignIn(authData);
       setStatus('success');
-      document.cookie = 'isLogin=isLogin; secure';
       document.cookie = `accessToken=${response.data.item.token}; secure`;
       document.cookie = `userId=${response.data.item.user.item.id}; secure`;
       router.push('/noticeList');
