@@ -22,6 +22,10 @@ export default function Shops() {
   const onSubmit = (data): any => {
     console.log(data);
   };
+  const handleImageUpload = event => {
+    const file = event.target.files[0];
+    // 파일을 업로드하는 로직을 추가합니다.
+  };
   return (
     <FormProvider {...methods}>
       <Head>
@@ -40,8 +44,18 @@ export default function Shops() {
             <div className={styles.imageInput}>
               <div className={styles.inputTitle}>가게 이미지</div>
               <div className={styles.shopImage}>
+                <div
+                  className={styles.imagePreview}
+                  style={{ backgroundImage: `url(${imageUrl})` }}
+                />
                 <AddImage viewBox="0 0 110 63" />
               </div>
+              <input
+                id="imageUpload"
+                type="file"
+                style={{ display: 'none' }}
+                onChange={handleImageUpload}
+              />
             </div>
             <div />
             <BasicInput labelName="가게 설명" defaultValue="" />
