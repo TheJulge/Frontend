@@ -54,6 +54,10 @@
 
   .submitButton {
     @include fillButton;
+
+    &:disabled {
+      @include disabledButton;
+    }
   }
 }
 

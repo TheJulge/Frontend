@@ -5,12 +5,17 @@ interface UserProps {
   userId: string;
 }
 
+interface AuthProps {
+  email: string;
+  password: string;
+}
+
 /**
  * 로그인
  * @returns
  */
-export const postSignIn = () => {
-  return instance.post(`${API.auth}`);
+export const postSignIn = (authData: AuthProps) => {
+  return instance.post(`${API.auth}`, authData);
 };
 
 /**

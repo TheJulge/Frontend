@@ -1,4 +1,5 @@
 import styles from '@/components/sign/SignInForm.module.scss';
+import useSignIn from '@/hooks/useSignIn';
 import { SIGN_ERROR_MESSAGE, SIGN_REGEX } from '@/utils/constants/SIGN';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
@@ -13,16 +14,10 @@ export default function SignInForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>({ mode: 'onBlur' });
+  const { status, errorModal, signIn } = useSignIn();
 
-  const onSubmit: SubmitHandler<Inputs> = async data => {
-    try {
-      // TO DO: 1. Axios 사용 로그인 전송 2.로그인 버튼 disabled 3.성공 시 response 쿠키에 저장 4.공고리스트로 redirect
-      console.log(data);
-    } catch (error) {
-      // TO DO: 로그인 요청 에러처리 모달 띄우고 확인 누르면 꺼짐
-    } finally {
-      // TO DO: 로그인 버튼 disabled 해제
-    }
+  const onSubmit: SubmitHandler<Inputs> = data => {
+    signIn(data);
   };
 
   return (
@@ -31,6 +26,8 @@ export default function SignInForm() {
       onSubmit={handleSubmit(onSubmit)}
       noValidate
     >
+      <div>status: {status}</div>
+
       <div className={styles.container}>
         <label htmlFor="email">이메일</label>
         <input
@@ -44,6 +41,7 @@ export default function SignInForm() {
           <div className={styles.errorMessage}>{SIGN_ERROR_MESSAGE.email}</div>
         )}
       </div>
+
       <div className={styles.container}>
         <label htmlFor="password">비밀번호</label>
         <input
@@ -59,9 +57,16 @@ export default function SignInForm() {
           </div>
         )}
       </div>
-      <button className={styles.submitButton} type="submit">
+
+      <button
+        disabled={status === 'fetching'}
+        className={styles.submitButton}
+        type="submit"
+      >
         로그인 하기
       </button>
+
+      {errorModal}
     </form>
   );
 }
