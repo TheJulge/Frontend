@@ -5,20 +5,31 @@ interface UserProps {
   userId: string;
 }
 
+interface AuthProps {
+  email: string;
+  password: string;
+}
+
+interface CreateAuthProps {
+  email: string;
+  password: string;
+  type: 'employee' | 'employer';
+}
+
 /**
  * 로그인
  * @returns
  */
-export const postSignIn = () => {
-  return instance.post(`${API.auth}`);
+export const postSignIn = (authData: AuthProps) => {
+  return instance.post(`${API.auth}`, authData);
 };
 
 /**
  * 회원가입
  * @returns
  */
-export const postSignUp = () => {
-  return instance.get(`${API.user}`);
+export const postSignUp = (createAuthData: CreateAuthProps) => {
+  return instance.post(`${API.user}`, createAuthData);
 };
 
 /**
