@@ -22,6 +22,7 @@ export default function SelectInput({ labelName, options }: SelectInputProps) {
     register,
     setValue,
     formState: { errors },
+    watch,
   } = useFormContext();
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const buttonRef = useRef(null);
@@ -30,13 +31,14 @@ export default function SelectInput({ labelName, options }: SelectInputProps) {
     setShowDropDown(!showDropDown);
   };
   const handleDropDownClick = (selectedValue: string) => {
-    setValue(labelName, selectedValue);
-    setShowDropDown(!showDropDown);
+    // console.log(selectedValue);
+    setValue(labelName, selectedValue, { shouldValidate: true });
+    setShowDropDown(false);
   };
   const handleClose = () => {
     setShowDropDown(false);
   };
-  // console.log(errors);
+
   return (
     <div className={styles.container}>
       <div className={styles.select}>
@@ -54,6 +56,7 @@ export default function SelectInput({ labelName, options }: SelectInputProps) {
             placeholder="선택"
             type="text"
             tabIndex={-1}
+            value={watch(labelName) || ''}
             {...register(labelName, { required: '필수 선택 값 입니다' })}
           />
           {showDropDown ? (

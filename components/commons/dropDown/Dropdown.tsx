@@ -27,6 +27,11 @@ export default function DropDown({
   const dropDownRef = useRef<HTMLDivElement>(null);
   useCloseDropDown(showDropDown, handleClose, dropDownRef, buttonRef);
 
+  const handleOptionClick = (option: string) => {
+    handleClick(option);
+    handleClose();
+  };
+
   return (
     <div ref={dropDownRef}>
       <ul className={styles.optionList}>
@@ -36,7 +41,7 @@ export default function DropDown({
               <li className={styles.optionItem} key={option}>
                 <button
                   className={styles.optionButton}
-                  onClick={() => handleClick(option)}
+                  onClick={() => handleOptionClick(option)}
                   type="button"
                 >
                   {option}
