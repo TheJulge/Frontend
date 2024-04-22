@@ -1,39 +1,45 @@
 .container {
   @include body1-regular(--black);
   width: 100%;
-  position: relative;
 
-  .input {
-    @include body1-regular(--black);
-    width: 100%;
-    height: 58px;
-    padding: 16px 60px 16px 20px;
-    margin-top: 8px;
-    border-radius: 6px;
-    border: 1px solid var(--gray30);
-    background: var(--white);
-    outline: none;
+  .position {
+    position: relative;
+    .input {
+      @include body1-regular(--black);
+      width: 100%;
+      height: 58px;
+      padding: 16px 60px 16px 20px;
+      margin-top: 8px;
+      border-radius: 6px;
+      border: 1px solid var(--gray30);
+      background: var(--white);
+      outline: none;
 
-    &::placeholder {
-      color: var(--gray40);
+      &::placeholder {
+        color: var(--gray40);
+      }
+
+      // input type: number의 화살표 제거 Chrome, Safari, Edge, Opera
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
     }
 
-    // input type: number의 화살표 제거 Chrome, Safari, Edge, Opera
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
+    // input type: number의 화살표 제거 Firefox
+    input[type='number'] {
+      -moz-appearance: textfield;
+    }
+
+    .won {
+      position: absolute;
+      bottom: 16px;
+      right: 20px;
     }
   }
-
-  // input type: number의 화살표 제거 Firefox
-  input[type='number'] {
-    -moz-appearance: textfield;
-  }
-
-  .won {
-    position: absolute;
-    bottom: 16px;
-    right: 20px;
+  .error {
+    font-size: 13px;
+    color: var(--red40);
   }
 }

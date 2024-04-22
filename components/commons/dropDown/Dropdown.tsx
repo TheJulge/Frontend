@@ -13,7 +13,7 @@ interface DropDownProps {
   showDropDown: boolean;
   options: string[];
   buttonRef: React.RefObject<HTMLElement>;
-  handleClick: MouseEventHandler;
+  handleClick: (option: string) => void;
   handleClose: () => void;
 }
 
@@ -36,7 +36,7 @@ export default function DropDown({
               <li className={styles.optionItem} key={option}>
                 <button
                   className={styles.optionButton}
-                  onClick={handleClick}
+                  onClick={() => handleClick(option)}
                   type="button"
                 >
                   {option}

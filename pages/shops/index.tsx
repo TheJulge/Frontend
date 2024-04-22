@@ -1,20 +1,30 @@
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React from 'react';
 import BasicInput from '@/components/commons/inputs/basicInput/BasicInput';
 import SelectInput from '@/components/commons/inputs/selectInput/SelectInput';
 import { ADDRESS, OPTIONS } from '@/utils/constants/SELECT';
 import MoneyInput from '@/components/commons/inputs/moneyInput/MoneyInput';
 import AddImage from '@/public/images/updateShop/addImage.svg';
+import classNames from 'classnames';
+import { FormProvider, useForm } from 'react-hook-form';
 import styles from './shops.module.scss';
 
 export default function Shops() {
-  const [shopName, setShopName] = useState<string>('');
-  const [select, setSelect] = useState<string>('');
-  const [address, setAddress] = useState<string>('');
-  const [money, setMoney] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
+  const onSubmit = (data): any => {
+    console.log(data);
+  };
+
+  const methods = useForm({
+    mode: 'onBlur',
+  });
+  const {
+    /* eslint-disable-next-line */
+    handleSubmit,
+    control,
+    formState: { errors, isValid },
+  } = methods;
   return (
-    <>
+    <FormProvider {...methods}>
       <Head>
         <title>가게 정보 등록 | theJulge</title>
       </Head>
@@ -24,31 +34,23 @@ export default function Shops() {
           <div className={styles.gridContainer}>
             <BasicInput
               labelName="가게 이름*"
-              value={shopName}
-              setValue={setShopName}
+              error={errors.labelName && '가게 이름을 입력해주세요'}
             />
             <SelectInput
               labelName="분류*"
               options={OPTIONS}
-              value={select}
-              setValue={setSelect}
+              error={errors.labelName && '가게 이름을 입력해주세요'}
             />
             <SelectInput
               labelName="주소*"
               options={ADDRESS}
-              value={address}
-              setValue={setAddress}
+              error={errors.labelName && '가게 이름을 입력해주세요'}
             />
             <BasicInput
               labelName="상세 주소*"
-              value={shopName}
-              setValue={setShopName}
+              error={errors.labelName && '상세 주소를 입력해주세요'}
             />
-            <MoneyInput
-              labelName="기본 시급*"
-              value={money}
-              setValue={setMoney}
-            />
+            <MoneyInput labelName="기본 시급*" control={control} />
             <div />
             <div className={styles.imageInput}>
               <div className={styles.inputTitle}>가게 이미지</div>
@@ -59,17 +61,22 @@ export default function Shops() {
             <div />
             <BasicInput
               labelName="가게 설명"
-              value={description}
-              setValue={setDescription}
+              error={errors.labelName && '가게 이름을 입력해주세요'}
             />
           </div>
           <div className={styles.flexContainer}>
-            <button type="submit" className={styles.submitButton}>
+            <button
+              type="submit"
+              onClick={handleSubmit(onSubmit)}
+              className={classNames(styles.activeButton, {
+                [styles.disabledButton]: !isValid,
+              })}
+            >
               등록하기
             </button>
           </div>
         </div>
       </main>
-    </>
+    </FormProvider>
   );
 }

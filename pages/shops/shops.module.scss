@@ -26,10 +26,16 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
+      :last-child {
+        grid-column: span 2;
+      }
       @include mobile {
         grid-template-columns: repeat(1, 1fr);
         justify-content: center;
         align-items: center;
+        :last-child {
+          grid-column: span 1;
+        }
       }
 
       .imageInput {
@@ -61,8 +67,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      .submitButton {
+      .disabledButton {
         @include disabledButton();
+        width: 351px;
+      }
+      .activeButton {
+        @include fillButton();
         width: 351px;
       }
     }
