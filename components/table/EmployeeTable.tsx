@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusButton } from '@/components/table/StatusButton';
 import Pagination from '@/components/commons/pagination/Pagination';
-import { ApplicationPageProps } from '@/components/table/ssr/employee.ssr';
+import { ApplicationPageProps } from '@/ssr/myDetailPageSsr';
 import { formatNoticeTime } from '@/utils/noticeDataFormetters';
 import styles from './Table.module.scss';
 

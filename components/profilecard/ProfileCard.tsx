@@ -2,13 +2,17 @@ import PhoneIcon from '@/public/images/profilecard/phone.svg';
 import PointerIcon from '@/public/images/profilecard/pointer.svg';
 import { useRef, useState, useEffect } from 'react';
 import MoreIcon from '@/public/images/profilecard/downarrow.svg';
-
+import { UserBaseType } from '@/types/userTypes';
 import styles from './ProfileCard.module.scss';
 
-function ProfileCard() {
+interface CardPropsType {
+  data: UserBaseType;
+}
+
+function ProfileCard({ data }: CardPropsType) {
   const [cardOpen, setCardOpen] = useState(false);
   const divRef = useRef<HTMLDivElement>(null);
-  const [bioHeight, setBioHeight] = useState('150px');
+  const [bioHeight, setBioHeight] = useState('');
 
   const toggleBioHeight = () => {
     if (bioHeight === '150px') {
@@ -37,14 +41,14 @@ function ProfileCard() {
     <div className={styles.container}>
       <div className={styles.informationBox}>
         <p className={styles.nameTitle}>이름</p>
-        <div className={styles.nameData}>이름데이터</div>
+        <div className={styles.nameData}>{data.name}</div>
         <div className={`${styles.phoneBox} ${styles.detailBox}`}>
           <PhoneIcon />
-          <p className={styles.phone}>010-1234-4321</p>
+          <p className={styles.phone}>{data.phone}</p>
         </div>
         <div className={`${styles.regionBox} ${styles.detailBox}`}>
           <PointerIcon />
-          <p className={styles.region}>선호 지역: 서울시 도봉구</p>
+          <p className={styles.region}>선호 지역 : {data.address}</p>
         </div>
         <div
           onResize={() => handleResize()}
@@ -52,22 +56,7 @@ function ProfileCard() {
           className={styles.bio}
           style={{ maxHeight: bioHeight }}
         >
-          <p>
-            열심히 일 하겠습니다(소개데이터)열심히 일 하겠습니다열심히 일
-            하겠습니다(소개데이터)열심히 일 하겠습니다열심히 일
-            하겠습니다(소개데이터)열심히 일 하겠습니다열심히 일
-            하겠습니다(소개데이터)열심히 일 하겠습니다열심히 일
-            하겠습니다(소개데이터)열심히 일 하겠습니다열심히 일
-            하겠습니다(소개데이터)열심히 일 하겠습니다열심히 일
-            하겠습니다(소개데이터)열심히 일 하겠습니다열심히 일
-            하겠습니다(소개데이터)열심히 일 하겠습니다열심히 일
-            하겠습니다(소개데이터)열심히 일 하겠습니다열심히 일
-            하겠습니다(소개데이터)열심히 일 하겠습니다열심히 일
-            하겠습니다(소개데이터)열심히 일 하겠습니다열심히 일
-            하겠습니다(소개데이터)열심히 일 하겠습니다열심히 일
-            하겠습니다(소개데이터)열심히 일 하겠습니다열심히 일
-            하겠습니다(소개데이터)열심히 일 하겠습니다
-          </p>
+          <p>{data.bio}</p>
           <span style={{ display: bioHeight === '150px' ? 'block' : 'none' }} />
         </div>
         {cardOpen && (

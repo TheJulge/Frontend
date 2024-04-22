@@ -1,17 +1,18 @@
 import EmployeeTable from '@/components/table/EmployeeTable';
 import ProfileCard from '@/components/profilecard/ProfileCard';
 import { NextPage } from 'next';
-import { ApplicationPageProps } from '@/components/table/ssr/employee.ssr';
+import { MyDetailPageProps } from '@/ssr/myDetailPageSsr';
 import EmptyTable from '@/components/table/emptytable/EmptyTable';
 import styles from './MyPage.module.scss';
 
-export { getServerSideProps } from '@/components/table/ssr/employee.ssr';
+export { getServerSideProps } from '@/ssr/myDetailPageSsr';
 
 // eslint-disable-next-line react/function-component-definition
-const Mypage: NextPage<ApplicationPageProps> = ({
+const Mypage: NextPage<MyDetailPageProps> = ({
   totalCount,
   itemCount,
   items,
+  user,
 }) => {
   return (
     <div className={styles.container}>
@@ -19,7 +20,7 @@ const Mypage: NextPage<ApplicationPageProps> = ({
         <div className={styles.profileWrraper}>
           <div className={styles.profile}>
             <h2>내 프로필</h2>
-            <ProfileCard />
+            <ProfileCard data={user} />
           </div>
         </div>
         <div className={styles.tableWrraper}>
