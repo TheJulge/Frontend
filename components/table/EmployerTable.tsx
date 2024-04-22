@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import styles from '@/components/table/Table.module.scss';
 import { StatusButton } from '@/components/table/StatusButton';
 import Pagination from '@/components/commons/pagination/Pagination';
-import { ApplicationPageProps } from '@/components/table/ssr/employer.ssr';
+import { ApplicationPageProps } from '@/ssr/noticeDetailSsr';
 import axios from 'axios';
 import Testmodal from '../commons/modal/TestModal';
 import { Application } from './applicationTypes';

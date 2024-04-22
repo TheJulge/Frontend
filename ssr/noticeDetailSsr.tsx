@@ -9,7 +9,7 @@ import { authInstance } from '@/libs';
 import { ShopBaseType } from '@/types/shopTypes';
 import { NoticeBaseType } from '@/types/noticeTypes';
 
-export interface NoticeDeatailPageProps {
+export interface NoticeDetailPageProps {
   items: ItemsType;
   totalCount: number;
   itemCount: number;
@@ -85,11 +85,8 @@ const fetchTableData = async ({
   shopId,
   noticeId,
 }: FetchTableParams): Promise<FetchData | ErrorData> => {
-  console.log('shopId', shopId);
-  console.log('noticeId', noticeId);
-
   const url = `${API.shop}/${shopId}${API.notice}/${noticeId}${API.application}`;
-  console.log('url', url);
+
   try {
     return await authInstance.get(url, {
       params: { offset, limit },
