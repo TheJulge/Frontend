@@ -18,7 +18,7 @@ export const authInstance = axios.create({
 });
 
 // NEXT API 처리용 instance
-const nextInstance = axios.create({
+export const nextInstance = axios.create({
   baseURL: process.env.DEVELOP_BASE_URL,
   timeout: 1000 * 5,
   headers: {
