@@ -10,19 +10,18 @@ import { FormProvider, useForm } from 'react-hook-form';
 import styles from './shops.module.scss';
 
 export default function Shops() {
-  const onSubmit = (data): any => {
-    console.log(data);
-  };
-
   const methods = useForm({
     mode: 'onBlur',
   });
   const {
-    /* eslint-disable-next-line */
     handleSubmit,
     control,
-    formState: { errors, isValid },
+    formState: { isValid },
   } = methods;
+
+  const onSubmit = (data): any => {
+    console.log(data);
+  };
   return (
     <FormProvider {...methods}>
       <Head>
@@ -32,24 +31,10 @@ export default function Shops() {
         <div className={styles.container}>
           <div className={styles.title}>가게 정보</div>
           <div className={styles.gridContainer}>
-            <BasicInput
-              labelName="가게 이름*"
-              error={errors.labelName && '가게 이름을 입력해주세요'}
-            />
-            <SelectInput
-              labelName="분류*"
-              options={OPTIONS}
-              error={errors.labelName && '가게 이름을 입력해주세요'}
-            />
-            <SelectInput
-              labelName="주소*"
-              options={ADDRESS}
-              error={errors.labelName && '가게 이름을 입력해주세요'}
-            />
-            <BasicInput
-              labelName="상세 주소*"
-              error={errors.labelName && '상세 주소를 입력해주세요'}
-            />
+            <BasicInput labelName="가게 이름*" />
+            <SelectInput labelName="분류*" options={OPTIONS} />
+            <SelectInput labelName="주소*" options={ADDRESS} />
+            <BasicInput labelName="상세 주소*" />
             <MoneyInput labelName="기본 시급*" control={control} />
             <div />
             <div className={styles.imageInput}>
@@ -59,18 +44,16 @@ export default function Shops() {
               </div>
             </div>
             <div />
-            <BasicInput
-              labelName="가게 설명"
-              error={errors.labelName && '가게 이름을 입력해주세요'}
-            />
+            <BasicInput labelName="가게 설명" defaultValue="" />
           </div>
           <div className={styles.flexContainer}>
             <button
               type="submit"
               onClick={handleSubmit(onSubmit)}
-              className={classNames(styles.activeButton, {
-                [styles.disabledButton]: !isValid,
+              className={classNames(styles.disabledButton, {
+                [styles.activeButton]: isValid,
               })}
+              disabled={!isValid}
             >
               등록하기
             </button>

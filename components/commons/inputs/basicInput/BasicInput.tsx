@@ -1,16 +1,24 @@
 import styles from '@/components/commons/inputs/basicInput/BasicInput.module.scss';
 import { InputProps } from '@/types/inputTypes';
 import React from 'react';
-import { useFormContext } from 'react-hook-form';
+import { FieldError, useFormContext } from 'react-hook-form';
 
 /**
  *
  * @param {labelName} props label로 사용할 input의 이름을 적어주면 됩니다.
- * @param {string} error 에러 메세지
  */
+interface BasicInputProps extends InputProps {
+  defaultValue?: string;
+}
 
-export default function BasicInput({ labelName, error }: InputProps) {
-  const { register } = useFormContext();
+export default function BasicInput({
+  labelName,
+  defaultValue,
+}: BasicInputProps) {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   return (
     <div className={styles.container}>
@@ -18,11 +26,16 @@ export default function BasicInput({ labelName, error }: InputProps) {
       <input
         className={styles.input}
         id={labelName}
+        defaultValue={defaultValue}
         placeholder="입력"
         type="text"
-        {...register(labelName, { required: true })}
+        {...register(labelName, { required: '필수 입력 값 입니다' })}
       />
-      {error && <div className={styles.error}>{error}</div>}
+      {errors[labelName] && (
+        <div className={styles.error}>
+          {(errors[labelName] as FieldError)?.message}
+        </div>
+      )}
     </div>
   );
 }
