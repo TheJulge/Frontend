@@ -1,3 +1,6 @@
+.container {
+  min-width: 325px;
+}
 .wrapper {
   margin: 0 auto;
   h2 {
@@ -25,8 +28,11 @@
     padding: 40px 12px;
   }
 }
+.category {
+  @include body1-bold(--primary);
+}
 .descriptionBox {
-  background-color: var(--gray20);
+  background-color: var(--gray10);
   border-radius: 12px;
   padding: 32px;
   display: flex;
