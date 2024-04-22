@@ -24,6 +24,9 @@
     gap: 6px;
     border-radius: 20px;
     background: var(--red30);
+    &.highIncrease {
+      background: var(--red40);
+    }
     @include mobile {
       height: auto;
       padding: 0;

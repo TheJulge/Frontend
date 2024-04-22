@@ -120,6 +120,9 @@
       gap: 8px;
       align-self: stretch;
       @include fillButton;
+      &:disabled {
+        @include disabledButton;
+      }
     }
   }
 }
