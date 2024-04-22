@@ -26,6 +26,12 @@
     background: var(--red30);
     &.highIncrease {
       background: var(--red40);
+      @include mobile {
+        height: auto;
+        padding: 0;
+        gap: 2px;
+        background: none;
+      }
     }
     @include mobile {
       height: auto;
