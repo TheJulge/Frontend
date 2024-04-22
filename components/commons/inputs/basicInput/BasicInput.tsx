@@ -29,7 +29,9 @@ export default function BasicInput({
         defaultValue={defaultValue}
         placeholder="입력"
         type="text"
-        {...register(labelName, { required: '필수 입력 값 입니다' })}
+        {...register(labelName, {
+          required: defaultValue === undefined ? '필수 입력 값 입니다' : false,
+        })}
       />
       {errors[labelName] && (
         <div className={styles.error}>
