@@ -4,9 +4,9 @@ import styles from '@/components/table/Table.module.scss';
 import { StatusButton } from '@/components/table/StatusButton';
 import Pagination from '@/components/commons/pagination/Pagination';
 import { ApplicationPageProps } from '@/ssr/noticeDetailSsr';
-import axios from 'axios';
+import { instance } from '@/libs';
 import { API } from '@/utils/constants/API';
-import Testmodal from '../commons/modal/TestModal';
+// import Testmodal from '../commons/modal/TestModal';
 import { Application } from './applicationTypes';
 import ChooseModal from '../commons/modal/ChooseModal';
 
@@ -19,16 +19,38 @@ import ChooseModal from '../commons/modal/ChooseModal';
  */
 
 interface TableProps extends ApplicationPageProps {}
+interface SelectProps {
+  item: Application | null;
+  type: boolean; // false = reject, true = agree
+}
 
 function EmployerTable({ items, itemCount, totalCount }: TableProps) {
   const router = useRouter();
   const { pathname, query } = router;
 
   // api보내고 바로 또 쿼리 날려서 데이터 재조회
-  const handleStatusChange = async (
-    status: 'pending' | 'accepted' | 'rejected' | 'canceled',
-    id: string,
+
+  const [selectItem, setSelectItem] = useState<SelectProps>({
+    item: null,
+    type: false,
+  });
+  // const [isopen, setIsopen] = useState(false);
+
+  const handleModalOpenWithSelectApplicaiton = (
+    select: Application,
+    type: boolean,
   ) => {
+    const updateItem = { item: { ...select }, type };
+    setSelectItem({ ...updateItem });
+  };
+
+  const handleInitItemAndModalClose = () => {
+    const updateItem = { item: null, type: false };
+    setSelectItem({ ...updateItem });
+  };
+
+  const handleStatusChange = async (type: boolean, id: string) => {
+    const status = type ? 'accepted' : 'rejected';
     const shopId = query.id as string;
     const noticeId = query.noticeId as string;
     // 마라봉 2번
@@ -41,44 +63,33 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
         return;
       }
 
-      if (status === 'rejected' || status === 'accepted') {
-        const fetch = await axios(noticeListUrl, {
-          method: 'PUT',
-          headers: {
-            Authorization: `Bearer ${employerToken}`,
+      const fetch = await instance(noticeListUrl, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${employerToken}`,
+        },
+        data: {
+          status,
+        },
+      });
+      if (fetch.status === 200) {
+        await router.replace(
+          {
+            pathname,
+            query: { ...query },
           },
-          data: {
-            status,
+          undefined,
+          {
+            shallow: false, // getServerSideProps는 같은 주소(pathname)일 경우 한번만 호출되서 이 옵션을 false로 바꿔서 호출되게 변경
+            scroll: true,
           },
-        });
-        if (fetch.status === 200) {
-          await router.replace(
-            {
-              pathname,
-              query: { ...query },
-            },
-            undefined,
-            {
-              shallow: false, // getServerSideProps는 같은 주소(pathname)일 경우 한번만 호출되서 이 옵션을 false로 바꿔서 호출되게 변경
-              scroll: true,
-            },
-          );
-        }
+        );
       }
     } catch (e) {
       console.log('error', e);
+    } finally {
+      handleInitItemAndModalClose();
     }
-  };
-
-  const [selectItem, setSelectItem] = useState<Application | null>(null);
-  const [isopen, setIsopen] = useState(false);
-
-  const handleModalOpenWithSelectApplicaiton = (select: Application) => {
-    setSelectItem({ ...select });
-    setIsopen(true);
-  };
-  const handleModalClose = () => {
-    setIsopen(false);
   };
   console.log('선택', selectItem);
   return (
@@ -116,10 +127,10 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
               </div>
               <div className={`${styles.gridCell} ${styles.lastCell}`}>
                 <StatusButton
-                  id={item.id}
+                  item={item}
                   status={item.status}
-                  onStatusChange={() =>
-                    handleModalOpenWithSelectApplicaiton(item)
+                  onUpdateItemAndModalOpen={
+                    handleModalOpenWithSelectApplicaiton
                   }
                   type="employer"
                 />
@@ -137,13 +148,15 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
           handleStatusChange={handleStatusChange}
         />
       )} */}
-      {selectItem && (
+      {selectItem?.item?.id && (
         <ChooseModal
-          showModal={isopen}
-          handleNo={() => handleModalClose()}
-          handleYes={handleStatusChange}
+          showModal={!!selectItem.item}
+          handleNo={() => handleInitItemAndModalClose()}
+          handleYes={() =>
+            handleStatusChange(selectItem.type, selectItem?.item?.id as string)
+          }
         >
-          신청을 거절하시겠습니까?
+          {selectItem.type ? '승인' : '신청을 거절하시겠습니까?'}
         </ChooseModal>
       )}
     </div>
