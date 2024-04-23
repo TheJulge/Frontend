@@ -13,8 +13,8 @@ import styles from './shops.module.scss';
 
 export interface NoticeData {
   name: string;
-  category: typeof OPTIONS;
-  address1: typeof ADDRESS;
+  category: string;
+  address1: string;
   address2: string;
   description?: string;
   imageUrl?: string;
@@ -58,8 +58,18 @@ export default function Shops() {
           <div className={styles.title}>가게 정보</div>
           <div className={styles.gridContainer}>
             <BasicInput labelName="가게 이름*" id="name" />
-            <SelectInput labelName="분류*" options={OPTIONS} id="category" />
-            <SelectInput labelName="주소*" options={ADDRESS} id="address1" />
+            <SelectInput
+              labelName="분류*"
+              options={OPTIONS}
+              name="category"
+              control={control}
+            />
+            <SelectInput
+              labelName="주소*"
+              options={ADDRESS}
+              name="address1"
+              control={control}
+            />
             <BasicInput labelName="상세 주소*" id="address2" />
             <MoneyInput
               labelName="기본 시급*"
