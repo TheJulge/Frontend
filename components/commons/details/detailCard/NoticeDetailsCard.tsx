@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import ClockIcon from '@/public/images/card/clockIcon.svg';
 import LocationIcon from '@/public/images/card/locationIcon.svg';
 import { formatNoticeTime } from '@/utils/noticeDataFormetters';
 import { NoticeBaseType } from '@/types/noticeTypes';
 import PayIncrease from '../../card/payIncrease/PayIncrease';
+import InfoModal from '../../modal/InfoModal';
 import styles from './NoticeDetailsCard.module.scss';
 
 interface NoticeDetailsCardProp {
@@ -13,11 +15,24 @@ interface NoticeDetailsCardProp {
 export default function NoticeDetailsCard({
   noticeDetails,
 }: NoticeDetailsCardProp) {
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const shopDetails = noticeDetails.shop.item;
   const [startDate, workHour] = formatNoticeTime(
     noticeDetails.startsAt,
     noticeDetails.workhour,
   );
+  const profileRequestModalOpen = () => {
+    setIsProfileModalOpen(true);
+  };
+  const profileRequestModalClose = () => {
+    setIsProfileModalOpen(false);
+  };
+  const handleClickToApply = () => {
+    //1. 쿠키에서 userId 가져옴
+    //2. users/userId로 get
+    //3. name 있으면 신청하기 요청 보냄, 없으면 profileModal
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.cardImg}>
@@ -53,9 +68,18 @@ export default function NoticeDetailsCard({
           className={styles.button}
           type="button"
           disabled={noticeDetails.closed}
+          onClick={profileRequestModalOpen}
         >
           {!noticeDetails.closed ? '신청하기' : '신청불가'}
         </button>
+        {isProfileModalOpen && (
+          <InfoModal
+            showModal={isProfileModalOpen}
+            handleClose={profileRequestModalClose}
+          >
+            내 프로필을 먼저 등록해 주세요.
+          </InfoModal>
+        )}
       </div>
     </div>
   );
