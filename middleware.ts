@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * 지금은 로그인 상태일 때 로그인, 회원가입 페이지 접근만 리다이렉션 처리하고 나머지는 주석 처리함
+ * 프로젝트 완성 후 비회원 접근 불가 페이지를 PROTECTED_PAGES 배열에 추가요망
+ */
+
 // 1. protected Page 와 public Page 분류
 // const PROTECTED_PAGES = [''];  // TODO
 const PUBLIC_PAGES = ['/signin', '/signup'];
