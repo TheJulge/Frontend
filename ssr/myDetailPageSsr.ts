@@ -63,10 +63,11 @@ const fetchTableData = async ({
   userId,
 }: FetchParams): Promise<FetchData | ErrorData> => {
   const noticeListUrl = `${API.user}/${userId}${API.application}`;
+  // 토큰 형식 바꿀곳
   const employeeToken =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwNjJkM2YyOS0wZDQ1LTQ3MjMtYWY1OS03NGI1YzQxZWM0MjUiLCJpYXQiOjE3MTMzMzI5Njh9.Mrb5prS4ZjQDoZycz4CXLGk069fXXby_H26yrLYwd_I';
   try {
-    return await authInstance.get(noticeListUrl, {
+    return await instance.get(noticeListUrl, {
       params: { offset, limit },
       headers: {
         Authorization: `Bearer ${employeeToken}`,

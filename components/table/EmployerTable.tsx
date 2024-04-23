@@ -156,7 +156,9 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
             handleStatusChange(selectItem.type, selectItem?.item?.id as string)
           }
         >
-          {selectItem.type ? '승인' : '신청을 거절하시겠습니까?'}
+          {selectItem.type
+            ? '신청을 승인하시겠습니까?'
+            : '신청을 거절하시겠습니까?'}
         </ChooseModal>
       )}
     </div>

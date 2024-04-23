@@ -23,7 +23,6 @@ export function PendingButton({
   item: Application;
   onUpdateItemAndModalOpen?: TypestateChangeFunction;
 }) {
-  console.log('ITEM ', item);
   return (
     <div className={styles.actionButtonBox}>
       <button
