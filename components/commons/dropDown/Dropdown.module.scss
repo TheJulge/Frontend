@@ -24,6 +24,8 @@
     border-bottom: 1px solid var(--gray20);
 
     .optionButton {
+      // 2024-04-19 임동현 추가
+      cursor: pointer;
       width: 100%;
       border: none;
       background: var(--white);
