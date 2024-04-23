@@ -1,0 +1,141 @@
+@import '@/components/commons/Button/Button.module.scss';
+
+.signForm {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+
+  .container {
+    @include body1-regular(--black);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+
+    .input {
+      @include body1-regular(--black);
+      width: 100%;
+      height: 58px;
+      padding: 16px 20px;
+      border-radius: 6px;
+      border: 1px solid var(--gray30);
+      background: var(--white);
+      outline: none;
+
+      &::placeholder {
+        color: var(--gray40);
+      }
+    }
+
+    .errorInput {
+      @include body1-regular(--black);
+      width: 100%;
+      height: 58px;
+      padding: 16px 20px;
+      border-radius: 6px;
+      border: 1px solid var(--red40);
+      background: var(--white);
+      outline: none;
+
+      &::placeholder {
+        color: var(--gray40);
+      }
+    }
+
+    .errorMessage {
+      @include caption(--red40);
+    }
+  }
+
+  .submitButton {
+    @include fillButton;
+
+    &:disabled {
+      @include disabledButton;
+    }
+  }
+}
+
+.radioLabel {
+  padding: 13px 41px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 9px;
+  border-radius: 30px;
+  border: 1px solid var(--gray30);
+  background: var(--white);
+  cursor: pointer;
+  position: relative;
+  flex-grow: 1;
+}
+
+.checkedRadioLabel {
+  padding: 13px 41px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 9px;
+  border-radius: 30px;
+  border: 1px solid var(--primary);
+  background: var(--white);
+  cursor: pointer;
+  position: relative;
+  flex-grow: 1;
+}
+
+.checkedIcon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  position: absolute;
+  top: 16px;
+  left: 44px;
+}
+
+.radio {
+  -webkit-appearance: none; // 웹킷 브라우저에서 기본 스타일 제거
+  -moz-appearance: none; // 모질라 브라우저에서 기본 스타일 제거
+  appearance: none; // 기본 브라우저에서 기본 스타일 제거
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border: 1px solid var(--gray30);
+  background: var(--white);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.checkedRadio {
+  -webkit-appearance: none; // 웹킷 브라우저에서 기본 스타일 제거
+  -moz-appearance: none; // 모질라 브라우저에서 기본 스타일 제거
+  appearance: none; // 기본 브라우저에서 기본 스타일 제거
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--primary);
+  border: none;
+  cursor: pointer;
+}
+
+.span {
+  @include body2-regular(--black);
+}
+
+.radioContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.radioBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
