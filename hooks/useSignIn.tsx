@@ -25,6 +25,7 @@ export default function useSignIn() {
       setStatus('success');
       document.cookie = `accessToken=${response.data.item.token}; secure`;
       document.cookie = `userId=${response.data.item.user.item.id}; secure`;
+      document.cookie = `type=${response.data.item.user.item.type}; secure`;
       router.push('/');
     } catch (error) {
       if (axios.isAxiosError(error)) {
