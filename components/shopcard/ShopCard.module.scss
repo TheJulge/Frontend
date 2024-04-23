@@ -1,0 +1,89 @@
+@import '@/components/commons/Button/Button.module.scss';
+
+.container {
+  max-width: 964px;
+  min-width: 325px;
+  padding: 24px;
+  display: flex;
+  // justify-content: space-between;
+  border-radius: 12px;
+  border: 1px solid var(--gray20);
+  background-color: var(--white);
+  margin: 24px 0;
+  gap: 25px;
+
+  @include tablet {
+    flex-direction: column;
+  }
+}
+
+.imageBox {
+  width: 540px;
+  overflow: hidden;
+  border-radius: 12px;
+
+  @include tablet {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.75 / 1;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.noticeBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.notice {
+  width: 346px;
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    width: 100%;
+  }
+}
+
+.title {
+  @include body1-bold(--primary);
+}
+
+.pay {
+  display: flex;
+  gap: 8px;
+
+  h2 {
+    @include h1(--black);
+  }
+}
+
+.text {
+  display: flex;
+  gap: 6px;
+  margin: 12px 0;
+  p {
+    @include body1-regular(--gray50);
+  }
+}
+.description {
+  margin-bottom: 14px;
+
+  @include tablet {
+    margin-bottom: 30px;
+  }
+}
+.button {
+  max-width: 346px;
+  @include emptyButton;
+
+  @include tablet {
+    max-width: none;
+    width: 100%;
+  }
+}

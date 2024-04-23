@@ -17,6 +17,12 @@
   a {
     height: 20px;
   }
+
+  svg {
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 .pageNumberBox {
