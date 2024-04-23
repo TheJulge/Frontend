@@ -73,6 +73,11 @@ export type ItemsType = Array<{
   links: ApplicationLink[];
 }>;
 
+export type ItemType = {
+  item: Application;
+  links: ApplicationLink[];
+};
+
 interface PaginationLinks {
   self: Link;
   prev: Link;

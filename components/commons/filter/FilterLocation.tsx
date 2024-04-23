@@ -1,4 +1,4 @@
-import { LOCATION_FILTER } from '@/utils/constants/toastConstants';
+import { LOCATION_FILTER } from '@/utils/constants/TOAST';
 import React from 'react';
 import CloseIcon from '@/public/images/filter/close.svg';
 import styles from './FilterLocation.module.scss';
