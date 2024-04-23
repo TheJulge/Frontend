@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getNoticesFromLocalStorage } from '@/utils/watchedListStoreFunctions';
+import { getNoticesFromLocalStorage } from '@/utils/watchedListFunctions';
 import { SingleNoticeType } from '@/types/noticeTypes';
 import Card from '../card/Card';
 import styles from './RecentViewedContainer.module.scss';

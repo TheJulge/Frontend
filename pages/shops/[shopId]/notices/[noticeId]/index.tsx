@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import NoticeDetailsContainer from '@/components/commons/details/NoticeDetailsContainer';
 import RecentViewedContainer from '@/components/commons/recent/RecentViewedContainer';
 import { SingleNoticeType } from '@/types/noticeTypes';
-import { addNoticeToLocalStorage } from '@/utils/watchedListStoreFunctions';
+import { addNoticeToLocalStorage } from '@/utils/watchedListFunctions';
 
 const MOCK = {
   item: {

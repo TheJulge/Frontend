@@ -20,7 +20,7 @@ export const addNoticeToLocalStorage = (noticeData: SingleNoticeType) => {
     return;
   }
 
-  // 로컬 스토리지 데이터가 있을 경우 중복 제거
+  // 중복 제거
   // const currentId = noticeData.item.id;
   // const mappedStoreId = storageData.map(storageData => storageData.item.id);
 
