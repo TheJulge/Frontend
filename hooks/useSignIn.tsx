@@ -1,4 +1,4 @@
-import SignModal from '@/components/sign/SignModal';
+import CompletionModal from '@/components/commons/modal/completionModal/CompletionModal';
 import axios from 'axios';
 import { postSignIn } from '@/libs/user';
 import { useRouter } from 'next/router';
@@ -37,9 +37,9 @@ export default function useSignIn() {
   };
 
   const errorModal = showModal && (
-    <SignModal showModal={showModal} handleClose={handleClose}>
+    <CompletionModal showModal={showModal} handleClose={handleClose}>
       비밀번호가 일치하지 않습니다.
-    </SignModal>
+    </CompletionModal>
   );
 
   return { status, errorModal, signIn };
