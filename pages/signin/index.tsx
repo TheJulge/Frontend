@@ -17,7 +17,7 @@ export default function SignIn() {
         <div className={styles.box}>
           <SignInForm />
           <div className={styles.text}>
-            회원이 아니신가요?<Link href="/signup">회원가입하기</Link>
+            회원이 아니신가요? <Link href="/signup">회원가입하기</Link>
           </div>
         </div>
       </div>
