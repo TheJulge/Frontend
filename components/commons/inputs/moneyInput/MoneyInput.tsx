@@ -34,11 +34,15 @@ const formatWage = (InputValue: string): string => {
 
 const MINIMUM_WAGE = 9860;
 
-export default function MoneyInput({ labelName, control }: MoneyInputProps) {
+export default function MoneyInput({
+  labelName,
+  control,
+  id,
+}: MoneyInputProps) {
   const {
     field: { ref, ...inputProps },
   } = useController({
-    name: labelName,
+    name: id,
     control,
     defaultValue: '',
     rules: { required: true },
@@ -62,7 +66,7 @@ export default function MoneyInput({ labelName, control }: MoneyInputProps) {
       <label htmlFor={labelName}>{labelName}</label>
       <div className={styles.position}>
         <input
-          id={labelName}
+          id={id}
           className={styles.input}
           type="text"
           placeholder="입력"

@@ -14,6 +14,7 @@ interface BasicInputProps extends InputProps {
 export default function BasicInput({
   labelName,
   defaultValue,
+  id,
 }: BasicInputProps) {
   const {
     register,
@@ -25,17 +26,17 @@ export default function BasicInput({
       <label htmlFor={labelName}>{labelName}</label>
       <input
         className={styles.input}
-        id={labelName}
+        id={id}
         defaultValue={defaultValue}
         placeholder="입력"
         type="text"
-        {...register(labelName, {
+        {...register(id, {
           required: defaultValue === undefined ? '필수 입력 값 입니다' : false,
         })}
       />
-      {errors[labelName] && (
+      {errors[id] && (
         <div className={styles.error}>
-          {(errors[labelName] as FieldError)?.message}
+          {(errors[id] as FieldError)?.message}
         </div>
       )}
     </div>

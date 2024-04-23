@@ -1,6 +1,6 @@
 import styles from '@/components/commons/dropDown/Dropdown.module.scss';
 import useCloseDropDown from '@/hooks/useCloseDropDown';
-import React, { MouseEventHandler, useRef } from 'react';
+import React, { useRef } from 'react';
 
 /**
  * SelectInput, SortSelectInput과 함께 사용합니다.

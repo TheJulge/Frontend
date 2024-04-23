@@ -17,7 +17,11 @@ interface SelectInputProps extends InputProps {
   options: string[];
 }
 
-export default function SelectInput({ labelName, options }: SelectInputProps) {
+export default function SelectInput({
+  labelName,
+  options,
+  id,
+}: SelectInputProps) {
   const {
     register,
     setValue,
@@ -32,7 +36,7 @@ export default function SelectInput({ labelName, options }: SelectInputProps) {
   };
   const handleDropDownClick = (selectedValue: string) => {
     // console.log(selectedValue);
-    setValue(labelName, selectedValue, { shouldValidate: true });
+    setValue(id, selectedValue, { shouldValidate: true });
     setShowDropDown(false);
   };
   const handleClose = () => {
@@ -51,13 +55,13 @@ export default function SelectInput({ labelName, options }: SelectInputProps) {
         >
           <input
             className={styles.input}
-            id={labelName}
+            id={id}
             readOnly
             placeholder="선택"
             type="text"
             tabIndex={-1}
-            value={watch(labelName) || ''}
-            {...register(labelName, { required: '필수 선택 값 입니다' })}
+            value={watch(id) || ''}
+            {...register(id, { required: '필수 선택 값 입니다' })}
           />
           {showDropDown ? (
             <DropDownUpIcon alt="arrowUpIcon" className={styles.upIcon} />
@@ -65,9 +69,9 @@ export default function SelectInput({ labelName, options }: SelectInputProps) {
             <DropDownDownIcon alt="arrowDownIcon" className={styles.downIcon} />
           )}
         </button>
-        {errors[labelName] && (
+        {errors[id] && (
           <div className={styles.error}>
-            {(errors[labelName] as FieldError)?.message}
+            {(errors[id] as FieldError)?.message}
           </div>
         )}
       </div>
