@@ -29,8 +29,13 @@ export default function CustomizationNotice() {
       <section>
         <h2>맞춤 공고</h2>
         <Swiper
-          spaceBetween={14}
+          spaceBetween={4}
           slidesPerView="auto"
+          breakpoints={{
+            768: {
+              spaceBetween: 14,
+            },
+          }}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,

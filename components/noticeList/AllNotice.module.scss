@@ -1,16 +1,29 @@
 .allNotice {
   padding: 60px 32px;
+  @include mobile {
+    padding: 40px 12px;
+  }
   section {
     display: flex;
     flex-direction: column;
     gap: 30px;
     max-width: 964px;
     margin: 0 auto;
+    @include mobile {
+      gap: 15px;
+    }
     .allNoticeTop {
       display: flex;
       justify-content: space-between;
+      @include mobile {
+        flex-direction: column;
+        gap: 16px;
+      }
       h2 {
         @include h1(--black);
+        @include mobile {
+          @include h3(--black);
+        }
         strong {
           @include h1(--primary);
         }
