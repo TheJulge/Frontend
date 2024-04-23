@@ -11,7 +11,7 @@ const MOCK = {
     startsAt: '2023-07-07T18:00:00.000Z',
     workhour: 2,
     description: '도와주세요',
-    closed: false,
+    closed: true,
     shop: {
       item: {
         id: '4490151c-5217-4157-b072-9c37b05bed47',

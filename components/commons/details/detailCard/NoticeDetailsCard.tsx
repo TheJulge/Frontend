@@ -21,6 +21,9 @@ export default function NoticeDetailsCard({
   return (
     <div className={styles.container}>
       <div className={styles.cardImg}>
+        {noticeDetails.closed && (
+          <div className={styles.closedMessage}>마감 완료</div>
+        )}
         <Image src={shopDetails.imageUrl} alt="shop image" fill />
       </div>
       <div className={styles.contents}>
@@ -46,8 +49,12 @@ export default function NoticeDetailsCard({
           </div>
           <div className={styles.description}>{shopDetails.description}</div>
         </div>
-        <button className={styles.button} type="button">
-          신청하기
+        <button
+          className={styles.button}
+          type="button"
+          disabled={noticeDetails.closed}
+        >
+          {!noticeDetails.closed ? '신청하기' : '신청불가'}
         </button>
       </div>
     </div>
