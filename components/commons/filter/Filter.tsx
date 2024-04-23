@@ -17,14 +17,16 @@ interface Location {
   name: string;
 }
 
-interface FilterProps {
+interface OpenProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Filter({ isOpen, setIsOpen }: FilterProps) {
+export default function Filter({ isOpen, setIsOpen }: OpenProps) {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
   const [selectLocation, setSelectLocation] = useState<Location[]>([]);
-  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [startDate, setStartDate] = useState<Date | undefined>(undefined);
   const [money, setMoney] = useState<string>('');
 
   // isOpen이 true면 filter가 나옵니다.
@@ -43,9 +45,13 @@ export default function Filter({ isOpen, setIsOpen }: FilterProps) {
       <div className={styles.gapContainer}>
         <FilterAmount money={money} setMoney={setMoney} />
         <FilterButton
+          selectLocation={selectLocation}
           setSelectLocation={setSelectLocation}
+          startDate={startDate}
           setStartDate={setStartDate}
+          money={money}
           setMoney={setMoney}
+          setIsOpen={setIsOpen}
         />
       </div>
     </div>

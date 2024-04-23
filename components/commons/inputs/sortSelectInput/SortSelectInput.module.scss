@@ -8,6 +8,8 @@
   position: relative;
 
   .button {
+    // 2024-04-19 임동현 추가
+    cursor: pointer;
     @include body2-bold(--black);
     border-radius: 5px;
     background: var(--gray10);
@@ -26,6 +28,8 @@
     }
 
     .input {
+      // 2024-04-19 임동현 추가
+      cursor: pointer;
       @include body2-bold(--black);
       width: 100%;
       border: none;

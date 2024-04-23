@@ -4,6 +4,8 @@
   box-shadow: 0px 2px 8px 0px rgba(120, 116, 134, 0.25);
   border: 1px solid var(--gray20);
   background-color: var(--white);
+  // 2024-04-19 임동현 border 수정
+  border-radius: 10px;
   @media screen and (max-width: 768px) {
     position: fixed;
     top: 0;

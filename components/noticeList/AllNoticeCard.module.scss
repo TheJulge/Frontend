@@ -1,0 +1,20 @@
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 31px 14px;
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include mobile {
+    gap: 16px 8px;
+  }
+  li {
+    transition: transform 0.3s;
+    &:hover {
+      img {
+        transition: transform 0.3s;
+        transform: scale(1.1);
+      }
+    }
+  }
+}
