@@ -5,8 +5,10 @@ import { StatusButton } from '@/components/table/StatusButton';
 import Pagination from '@/components/commons/pagination/Pagination';
 import { ApplicationPageProps } from '@/ssr/noticeDetailSsr';
 import axios from 'axios';
+import { API } from '@/utils/constants/API';
 import Testmodal from '../commons/modal/TestModal';
 import { Application } from './applicationTypes';
+import ChooseModal from '../commons/modal/ChooseModal';
 
 /**
  * @param function EmployerTable 고용인 table컴포넌트구현
@@ -27,21 +29,19 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
     status: 'pending' | 'accepted' | 'rejected' | 'canceled',
     id: string,
   ) => {
-    const teamId = '4-17';
     const shopId = query.id as string;
     const noticeId = query.noticeId as string;
     // 마라봉 2번
     const employerToken =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNmRkODA2ZC1mZTNkLTQ1NTYtOTI1YS03Y2JjYWI0MzZiMDQiLCJpYXQiOjE3MTMzMzI3NTV9.XCtgxs6TvkP8zdkleZjgXHLehvNf4hqJgYkAlPsYPLk';
 
-    const noticeListUrl = `https://bootcamp-api.codeit.kr/api/${teamId}/the-julge/shops/${shopId}/notices/${noticeId}/applications/${id}`;
+    const noticeListUrl = `${API.shop}/${shopId}${API.notice}/${noticeId}${API.application}/${id}`;
     try {
       if (window === undefined) {
         return;
       }
-      // eslint-disable-next-line no-restricted-globals
-      const deleteCheck = confirm('정말 삭세하시겠습니까?');
-      if (status === 'rejected' && deleteCheck) {
+
+      if (status === 'rejected' || status === 'accepted') {
         const fetch = await axios(noticeListUrl, {
           method: 'PUT',
           headers: {
@@ -71,14 +71,16 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
   };
 
   const [selectItem, setSelectItem] = useState<Application | null>(null);
+  const [isopen, setIsopen] = useState(false);
 
   const handleModalOpenWithSelectApplicaiton = (select: Application) => {
     setSelectItem({ ...select });
+    setIsopen(true);
   };
   const handleModalClose = () => {
-    setSelectItem(null);
+    setIsopen(false);
   };
-  console.log(selectItem);
+  console.log('선택', selectItem);
   return (
     <div className={styles.outerContainer}>
       <div className={styles.gridContainer}>
@@ -127,13 +129,22 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
         })}
       </div>
       <Pagination itemCount={itemCount} totalCount={totalCount} />
-      {selectItem && (
+      {/* {selectItem && (
         <Testmodal
           showModal={!!selectItem}
           applicaitonItem={selectItem}
           handleClose={() => handleModalClose()}
           handleStatusChange={handleStatusChange}
         />
+      )} */}
+      {selectItem && (
+        <ChooseModal
+          showModal={isopen}
+          handleNo={() => handleModalClose()}
+          handleYes={handleStatusChange}
+        >
+          신청을 거절하시겠습니까?
+        </ChooseModal>
       )}
     </div>
   );
