@@ -1,8 +1,5 @@
 import styles from '@/components/commons/inputs/signInput/SignInput.module.scss';
-import {
-  SIGN_ERROR_MESSAGE,
-  SIGN_REGEX,
-} from '@/utils/constants/signConstants';
+import { SIGN_ERROR_MESSAGE, SIGN_REGEX } from '@/utils/constants/SIGN';
 import React, { useState } from 'react';
 
 /**

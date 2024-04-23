@@ -1,8 +1,8 @@
 import styles from '@/components/commons/inputs/sortSelectInput/SortSelectInput.module.scss';
 import DropDown from '@/components/commons/dropDown/Dropdown';
 import React, { useRef, useState } from 'react';
-import PolygonUpIcon from '@/public/inputs/polygonUp.svg';
-import PolygonDownIcon from '@/public/inputs/polygonDown.svg';
+import PolygonUpIcon from '@/public/images/inputs/polygonUp.svg';
+import PolygonDownIcon from '@/public/images/inputs/polygonDown.svg';
 import { useRouter } from 'next/router';
 
 /**
@@ -83,9 +83,12 @@ export default function SortSelectInput({
           tabIndex={-1}
         />
         {showDropDown ? (
-          <PolygonUpIcon alt="arrowUpIcon" className={styles.upIcon} />
+          <PolygonUpIcon aria-label="arrowUpIcon" className={styles.upIcon} />
         ) : (
-          <PolygonDownIcon alt="arrowDownIcon" className={styles.downIcon} />
+          <PolygonDownIcon
+            aria-label="arrowDownIcon"
+            className={styles.downIcon}
+          />
         )}
       </button>
       {showDropDown && (

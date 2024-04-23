@@ -2,6 +2,7 @@ import Link from 'next/link';
 import NotiIcon from '@/public/images/gnb/notification.svg';
 import NotiActiveIcon from '@/public/images/gnb/notification-active.svg';
 import styles from './GnbUser.module.scss';
+import SignOutButton from './SignOutButton';
 
 export default function GnbUser() {
   // type과 notification은 추후에 유저데이터 (전역상태) 로 바꿔줍니다
@@ -13,7 +14,7 @@ export default function GnbUser() {
       {type === 'employee' && (
         <>
           <Link href="/">내 프로필</Link>
-          <Link href="/">로그아웃</Link>
+          <SignOutButton />
           <button type="button" className={styles.notification}>
             {notification ? (
               <NotiActiveIcon viewBox="0 0 24 24" />
@@ -27,7 +28,7 @@ export default function GnbUser() {
       {/* {type === 'employee' && (
         <>
           <Link href="/">내 가게</Link>
-          <Link href="/">로그아웃</Link>
+          <SignOutButton />
           <button type="button" className={styles.notification}>
             {notification ? (
               <NotiActiveIcon viewBox="0 0 24 24" />

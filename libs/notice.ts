@@ -20,7 +20,7 @@ export const getNotices = () => {
  * @returns
  */
 export const getCustomNotices = (address: string) => {
-  return instance.get(`${API.notice}?address=${address}`);
+  return instance.get(`${API.notice}?address=${address}&limit=6`);
 };
 
 /**
