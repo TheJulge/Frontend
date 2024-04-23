@@ -1,4 +1,5 @@
 import { API } from '@/utils/constants/API';
+import { NoticeData } from '@/pages/shops';
 import { instance, authInstance } from './index';
 
 interface ShopProps {
@@ -9,8 +10,8 @@ interface ShopProps {
  * 가게 정보 등록
  * @returns
  */
-export const postShop = () => {
-  return authInstance.post(`${API.shop}`);
+export const postShop = (data: NoticeData) => {
+  return authInstance.post(`${API.shop}`, data);
 };
 
 /**

@@ -9,7 +9,7 @@
     .button {
       width: 100%;
       border: none;
-      background: var(--white);
+      background: var(--gray5);
       position: relative;
 
       .upIcon,
@@ -35,5 +35,9 @@
         }
       }
     }
+  }
+  .error {
+    font-size: 13px;
+    color: var(--red40);
   }
 }
