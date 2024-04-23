@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import styles from './FilterButton.module.scss';
 
 /**
@@ -14,28 +15,83 @@ interface Location {
 }
 
 interface ButtonProps {
+  selectLocation: Location[];
   setSelectLocation: React.Dispatch<React.SetStateAction<Location[]>>;
-  setStartDate: React.Dispatch<React.SetStateAction<Date>>;
+  startDate: Date | undefined;
+  setStartDate: React.Dispatch<React.SetStateAction<Date | undefined>>;
+  money: string;
   setMoney: React.Dispatch<React.SetStateAction<string>>;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+interface QueryProps {
+  address?: Location[];
+  hourlyPayGte?: string;
+  startsAtGte?: string;
 }
 
 export default function FilterButton({
+  selectLocation,
   setSelectLocation,
+  startDate,
   setStartDate,
+  money,
   setMoney,
+  setIsOpen,
 }: ButtonProps) {
+  const router = useRouter();
+
   // 초기화 버튼을 누르면 위치, 시작일,금액의 값이 초기화 됩니다.
   const handleInitialization = () => {
     setSelectLocation([]);
-    setStartDate(new Date());
+    setStartDate(undefined);
     setMoney('');
+  };
+
+  //
+  function buildQueryString(data: QueryProps) {
+    const queryStringArray = Object.entries(data).map(([key, value]) => {
+      if (Array.isArray(value)) {
+        return value.map(item => `${key}=${item.name}`).join('&');
+      }
+      return value ? `${key}=${value}` : '';
+    });
+    // 배열을 문자열로 변환하여 '&'로 연결하고 마지막 '&' 제거 후 반환
+    return queryStringArray.join('&').replace(/&$/, '');
+  }
+
+  const handleFilter = () => {
+    const filter: QueryProps = {
+      address: selectLocation,
+    };
+    const moneys = parseInt(money.replace(/,/g, ''), 10);
+
+    if (selectLocation.length === 0) {
+      delete filter.address;
+    }
+
+    if (startDate) {
+      filter.startsAtGte = startDate.toISOString();
+    }
+
+    if (money) {
+      filter.hourlyPayGte = String(moneys);
+    }
+    router.push(
+      buildQueryString(filter)
+        ? `?${buildQueryString(filter)}`
+        : buildQueryString(filter),
+    );
+    setIsOpen(false);
   };
   return (
     <div className={styles.filterButton}>
       <button type="button" onClick={handleInitialization}>
         초기화
       </button>
-      <button type="button">적용하기</button>
+      <button type="button" onClick={handleFilter}>
+        적용하기
+      </button>
     </div>
   );
 }

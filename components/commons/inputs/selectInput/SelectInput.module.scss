@@ -9,13 +9,13 @@
     .button {
       width: 100%;
       border: none;
-      background: var(--white);
+      background: var(--gray5);
       position: relative;
 
       .upIcon,
       .downIcon {
         position: absolute;
-        top: 21px;
+        top: 29px;
         right: 20px;
       }
 
@@ -35,5 +35,9 @@
         }
       }
     }
+  }
+  .error {
+    font-size: 13px;
+    color: var(--red40);
   }
 }

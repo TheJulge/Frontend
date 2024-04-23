@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '@/components/table/Table.module.scss';
 import { StatusButton } from '@/components/table/StatusButton';
 import Pagination from '@/components/commons/pagination/Pagination';
-import { ApplicationPageProps } from '@/components/table/ssr/employer.ssr';
+import { ApplicationPageProps } from '@/ssr/noticeDetailSsr';
 import axios from 'axios';
+import { API } from '@/utils/constants/API';
+import Testmodal from '../commons/modal/TestModal';
+import { Application } from './applicationTypes';
+import ChooseModal from '../commons/modal/ChooseModal';
 
 /**
  * @param function EmployerTable 고용인 table컴포넌트구현
@@ -25,22 +29,23 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
     status: 'pending' | 'accepted' | 'rejected' | 'canceled',
     id: string,
   ) => {
-    const teamId = '4-17';
-    const shopId = '42a97127-18ef-4514-9211-e4d9c45e2761';
-    const noticeId = 'cdb13a7a-dc72-4d5e-b60d-238dc97ccd19';
-    const noticeListUrl = `https://bootcamp-api.codeit.kr/api/${teamId}/the-julge/shops/${shopId}/notices/${noticeId}/applications/${id}`;
+    const shopId = query.id as string;
+    const noticeId = query.noticeId as string;
+    // 마라봉 2번
+    const employerToken =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNmRkODA2ZC1mZTNkLTQ1NTYtOTI1YS03Y2JjYWI0MzZiMDQiLCJpYXQiOjE3MTMzMzI3NTV9.XCtgxs6TvkP8zdkleZjgXHLehvNf4hqJgYkAlPsYPLk';
+
+    const noticeListUrl = `${API.shop}/${shopId}${API.notice}/${noticeId}${API.application}/${id}`;
     try {
       if (window === undefined) {
         return;
       }
-      // eslint-disable-next-line no-restricted-globals
-      const deleteCheck = confirm('정말 삭세하시겠습니까?');
-      if (status === 'rejected' && deleteCheck) {
+
+      if (status === 'rejected' || status === 'accepted') {
         const fetch = await axios(noticeListUrl, {
           method: 'PUT',
           headers: {
-            Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NDUxOTVkOC05ZjI5LTQ2ZDQtYjAzNy1iZmI4ODA3ODU5NTEiLCJpYXQiOjE3MTMzMzI3ODR9.72oFn8s8qwwGSVtVlhrdOv3Ia_jZVQx2gkM2UF2_8S8',
+            Authorization: `Bearer ${employerToken}`,
           },
           data: {
             status,
@@ -65,6 +70,17 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
     }
   };
 
+  const [selectItem, setSelectItem] = useState<Application | null>(null);
+  const [isopen, setIsopen] = useState(false);
+
+  const handleModalOpenWithSelectApplicaiton = (select: Application) => {
+    setSelectItem({ ...select });
+    setIsopen(true);
+  };
+  const handleModalClose = () => {
+    setIsopen(false);
+  };
+  console.log('선택', selectItem);
   return (
     <div className={styles.outerContainer}>
       <div className={styles.gridContainer}>
@@ -102,7 +118,9 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
                 <StatusButton
                   id={item.id}
                   status={item.status}
-                  onStatusChange={handleStatusChange}
+                  onStatusChange={() =>
+                    handleModalOpenWithSelectApplicaiton(item)
+                  }
                   type="employer"
                 />
               </div>
@@ -111,6 +129,23 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
         })}
       </div>
       <Pagination itemCount={itemCount} totalCount={totalCount} />
+      {/* {selectItem && (
+        <Testmodal
+          showModal={!!selectItem}
+          applicaitonItem={selectItem}
+          handleClose={() => handleModalClose()}
+          handleStatusChange={handleStatusChange}
+        />
+      )} */}
+      {selectItem && (
+        <ChooseModal
+          showModal={isopen}
+          handleNo={() => handleModalClose()}
+          handleYes={handleStatusChange}
+        >
+          신청을 거절하시겠습니까?
+        </ChooseModal>
+      )}
     </div>
   );
 }

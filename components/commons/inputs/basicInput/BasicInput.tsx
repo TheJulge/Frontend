@@ -1,39 +1,44 @@
 import styles from '@/components/commons/inputs/basicInput/BasicInput.module.scss';
+import { InputProps } from '@/types/inputTypes';
 import React from 'react';
+import { FieldError, useFormContext } from 'react-hook-form';
 
 /**
- * label 이름을 지정해서 TEXT를 입력 할 수 있는 기본 input 입니다!
+ *
  * @param {labelName} props label로 사용할 input의 이름을 적어주면 됩니다.
- * @param {value} props 해당 인풋에서 사용할 state
- * @param {setValue} props 해당 인풋에서 사용할 state를 변경할 seter 함수
  */
-
-interface BasicInputProps {
-  labelName: string;
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+interface BasicInputProps extends InputProps {
+  defaultValue?: string;
 }
 
 export default function BasicInput({
   labelName,
-  value,
-  setValue,
+  defaultValue,
+  id,
 }: BasicInputProps) {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-  };
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   return (
     <div className={styles.container}>
       <label htmlFor={labelName}>{labelName}</label>
       <input
         className={styles.input}
-        id={labelName}
-        value={value}
+        id={id}
+        defaultValue={defaultValue}
         placeholder="입력"
         type="text"
-        onChange={handleChange}
+        {...register(id, {
+          required: defaultValue === undefined ? '필수 입력 값 입니다' : false,
+        })}
       />
+      {errors[id] && (
+        <div className={styles.error}>
+          {(errors[id] as FieldError)?.message}
+        </div>
+      )}
     </div>
   );
 }

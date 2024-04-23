@@ -30,7 +30,7 @@ interface ShopLink {
   href: string;
 }
 
-interface NoticeItem {
+export interface NoticeItem {
   id: string;
   hourlyPay: string;
   description: string;
@@ -39,7 +39,7 @@ interface NoticeItem {
   closed: boolean;
 }
 
-interface NoticeLink {
+export interface NoticeLink {
   item: NoticeItem;
   href: string;
 }
@@ -59,7 +59,7 @@ interface ApplicationLink extends Link {
 }
 
 // 유저입장 지원 목록 GET /users/{user_id}/applications
-interface Application {
+export interface Application {
   id: string;
   status: 'pending' | 'accepted' | 'rejected' | 'canceled';
   createdAt: string;
@@ -72,6 +72,11 @@ export type ItemsType = Array<{
   item: Application;
   links: ApplicationLink[];
 }>;
+
+export type ItemType = {
+  item: Application;
+  links: ApplicationLink[];
+};
 
 interface PaginationLinks {
   self: Link;

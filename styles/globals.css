@@ -34,6 +34,7 @@ iframe {
 :root {
   --primary: #ea3c12;
   --black: #111322;
+  --gray60: #5a5a5a;
   --gray50: #7d7986;
   --gray40: #a4a1aa;
   --gray30: #cdc9cf;
@@ -63,7 +64,9 @@ iframe {
   color: #a8a8a8 !important;
 }
 .react-datepicker__day--keyboard-selected {
-  background: none !important;
+  /* 캘린더 스타일 변경 2024-04-23 임동현 */
+  background-color: var(--primary) !important;
+  color: var(--white) !important;
 }
 .react-datepicker-popper[data-placement^='bottom'] .react-datepicker__triangle {
   display: none !important;
