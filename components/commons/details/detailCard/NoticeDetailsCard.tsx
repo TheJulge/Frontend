@@ -7,6 +7,8 @@ import { NoticeBaseType } from '@/types/noticeTypes';
 import PayIncrease from '../../card/payIncrease/PayIncrease';
 import InfoModal from '../../modal/InfoModal';
 import styles from './NoticeDetailsCard.module.scss';
+import { getCookieValue } from '@/utils/getCookieDataFunctions';
+import { postApplication } from '@/libs/application';
 
 interface NoticeDetailsCardProp {
   noticeDetails: NoticeBaseType;
@@ -21,16 +23,22 @@ export default function NoticeDetailsCard({
     noticeDetails.startsAt,
     noticeDetails.workhour,
   );
-  const profileRequestModalOpen = () => {
-    setIsProfileModalOpen(true);
-  };
+
   const profileRequestModalClose = () => {
     setIsProfileModalOpen(false);
   };
+
   const handleClickToApply = () => {
-    //1. 쿠키에서 userId 가져옴
-    //2. users/userId로 get
-    //3. name 있으면 신청하기 요청 보냄, 없으면 profileModal
+    //1. 쿠키에서 isProfile 가져옴 ( true 로 가정)
+    // const isProfile = getCookieValue('isProfile');
+    const isProfile = true;
+    //2.true면 요청 , false면 프로필 요청 모달 열기
+
+    if (isProfile) {
+      // const response = postApplication({ shopId:})
+    } else {
+      setIsProfileModalOpen(true);
+    }
   };
 
   return (
@@ -68,7 +76,7 @@ export default function NoticeDetailsCard({
           className={styles.button}
           type="button"
           disabled={noticeDetails.closed}
-          onClick={profileRequestModalOpen}
+          onClick={handleClickToApply}
         >
           {!noticeDetails.closed ? '신청하기' : '신청불가'}
         </button>
