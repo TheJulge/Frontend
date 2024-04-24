@@ -6,15 +6,15 @@ import { ADDRESS, OPTIONS } from '@/utils/constants/SELECT';
 import MoneyInput from '@/components/commons/inputs/moneyInput/MoneyInput';
 import AddImage from '@/public/images/updateShop/addImage.svg';
 import classNames from 'classnames';
-import { FormProvider, useForm } from 'react-hook-form';
+import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 // import { postShop } from '@/libs/shop';
 // import { useRouter } from 'next/router';
 import styles from './shops.module.scss';
 
 export interface NoticeData {
   name: string;
-  category: typeof OPTIONS;
-  address1: typeof ADDRESS;
+  category: string;
+  address1: string;
   address2: string;
   description?: string;
   imageUrl?: string;
@@ -22,8 +22,18 @@ export interface NoticeData {
 }
 export default function Shops() {
   // const router = useRouter();
-  const methods = useForm({
+  const methods = useForm<FieldValues>({
     mode: 'onBlur',
+    // TODO: 랜더링 전에 GET /shops/{shop_id} 이전에 작성한 정보 받아와서 기본값 설정, 없으면 빈 값
+    // defaultValues: {
+    //   name: '김기형',
+    //   category: '한정식',
+    //   address1: '서울시 길바닥',
+    //   address2: '가가가자',
+    //   description: '맛집이다',
+    //   imageUrl: '',
+    //   originalHourlyPay: 888888,
+    // },
   });
   const {
     handleSubmit,
@@ -31,8 +41,9 @@ export default function Shops() {
     formState: { isValid },
   } = methods;
 
-  const onSubmit = async (data: NoticeData) => {
+  const onSubmit = async (data: FieldValues) => {
     console.log(data);
+    // TODO 지혜님 전송할때 시급 string => number로 형 변환해야합니다!!
     // try {
     //   const result = await postShop(data);
     //   if (result.data) {
@@ -58,8 +69,18 @@ export default function Shops() {
           <div className={styles.title}>가게 정보</div>
           <div className={styles.gridContainer}>
             <BasicInput labelName="가게 이름*" id="name" />
-            <SelectInput labelName="분류*" options={OPTIONS} id="category" />
-            <SelectInput labelName="주소*" options={ADDRESS} id="address1" />
+            <SelectInput
+              labelName="분류*"
+              options={OPTIONS}
+              name="category"
+              control={control}
+            />
+            <SelectInput
+              labelName="주소*"
+              options={ADDRESS}
+              name="address1"
+              control={control}
+            />
             <BasicInput labelName="상세 주소*" id="address2" />
             <MoneyInput
               labelName="기본 시급*"
