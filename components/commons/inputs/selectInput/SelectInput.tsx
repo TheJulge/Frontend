@@ -3,37 +3,44 @@ import DropDown from '@/components/commons/dropDown/Dropdown';
 import React, { useState, useRef } from 'react';
 import DropDownUpIcon from '@/public/images/inputs/dropDownUp.svg';
 import DropDownDownIcon from '@/public/images/inputs/dropDownDown.svg';
+import { Control, useController } from 'react-hook-form';
 
 /**
- * 클릭하면 드롭박스가 나오는 셀렉트 형식의 인풋입니다.
- * @param {labelName} props label로 사용할 input의 이름을 적어주면 됩니다.
- * @param {options} props 드롭박스에 들어갈 옵션을 넣어주면 됩니다.
- * @param {value} props 해당 인풋에서 사용할 State
- * @param {setValue} props 해당 인풋에서 사용할 state를 변경할 seter 함수
+ * @param {object} props
+ * @param {string} props.labelName
+ * @param {string[]} props.options
+ * @param {string} props.name 폼에서 사용할 인풋 이름
+ * @param {Control} props.control 커스텀 제어 컴포넌트를 비제어 컴포넌트인 부모 폼에서 조작하기 위한 control 속성
  */
 
 interface SelectInputProps {
   labelName: string;
   options: string[];
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  name: string;
+  control: Control;
 }
 
 export default function SelectInput({
   labelName,
   options,
-  value,
-  setValue,
+  name,
+  control,
 }: SelectInputProps) {
+  const { field } = useController({
+    name,
+    control,
+    rules: { required: true },
+  });
+
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const buttonRef = useRef(null);
+
   const handleSelectInputClick = () => {
     setShowDropDown(!showDropDown);
   };
   const handleDropDownClick = (event: React.MouseEvent) => {
-    const selectedValue = (event.target as HTMLLIElement).innerText;
-    setValue(selectedValue);
-    setShowDropDown(!showDropDown);
+    field.onChange((event.target as HTMLLIElement).innerText);
+    setShowDropDown(false);
   };
   const handleClose = () => {
     setShowDropDown(false);
@@ -50,24 +57,18 @@ export default function SelectInput({
           type="button"
         >
           <input
-            className={styles.input}
             id={labelName}
+            className={styles.input}
             readOnly
             placeholder="선택"
             type="text"
-            value={value}
             tabIndex={-1}
+            value={field.value || ''}
           />
           {showDropDown ? (
-            <DropDownUpIcon
-              aria-label="arrowUpIcon"
-              className={styles.upIcon}
-            />
+            <DropDownUpIcon alt="arrowUpIcon" className={styles.upIcon} />
           ) : (
-            <DropDownDownIcon
-              aria-label="arrowDownIcon"
-              className={styles.downIcon}
-            />
+            <DropDownDownIcon alt="arrowDownIcon" className={styles.downIcon} />
           )}
         </button>
       </div>

@@ -16,7 +16,7 @@ interface CurrentUserApplicationItemType {
   createdAt: string;
 }
 //다양한 공고 데이터 타입의 베이스가 되는 타입
-interface NoticeBaseType {
+export interface NoticeBaseType {
   id: string;
   hourlyPay: number;
   startsAt: string;

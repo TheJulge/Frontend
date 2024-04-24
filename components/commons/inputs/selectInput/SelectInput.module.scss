@@ -9,8 +9,9 @@
     .button {
       width: 100%;
       border: none;
-      background: var(--white);
+      background: var(--gray5);
       position: relative;
+      cursor: pointer;
 
       .upIcon,
       .downIcon {
@@ -29,11 +30,16 @@
         border: 1px solid var(--gray30);
         background: var(--white);
         outline: none;
+        cursor: pointer;
 
         &::placeholder {
           color: var(--gray40);
         }
       }
     }
+  }
+  .error {
+    font-size: 13px;
+    color: var(--red40);
   }
 }

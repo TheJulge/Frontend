@@ -7,17 +7,13 @@ export default function SignUp() {
   return (
     <main className={styles.background}>
       <div className={styles.container}>
-        <Link
-          title="공고리스트로 이동"
-          aria-label="the julge logo"
-          href="/noticeList"
-        >
+        <Link title="메인으로 이동" aria-label="the julge logo" href="/">
           <LogoIcon className={styles.logoIcon} />
         </Link>
         <div className={styles.box}>
           <SignUpForm />
           <div className={styles.text}>
-            이미 가입하셨나요?<Link href="/signin">로그인하기</Link>
+            이미 가입하셨나요? <Link href="/signin">로그인하기</Link>
           </div>
         </div>
       </div>

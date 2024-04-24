@@ -6,22 +6,19 @@ export default function handler(
   response: NextApiResponse,
 ) {
   const { method, cookies } = request;
-  const { accessToken } = cookies;
+  const { accessToken, userId, type } = cookies;
 
-  // GET 요청일때는 쿠키값을 반환
+  // 로그인 안한 상태일 때는 403 인증 에러 처리!
+  if (!accessToken) {
+    response.status(403).json({ error: 'Forbidden' });
+    return;
+  }
+
+  // GET 요청일때는 쿠키의 accessToken, userId, type 객체로 반환
   if (method === 'GET') {
-    if (!accessToken) {
-      response.status(403).json({ error: 'Forbidden' });
-      return;
-    }
-
-    response.setHeader(
-      'Set-Cookie',
-      `accessToken=${accessToken}; Path=/; HttpOnly; secure`,
-    );
-
-    response.status(200).json({ accessToken });
-  } // DELETE 요청일때는 accessToken과 userId를 지워 logout
+    response.status(200).json({ accessToken, userId, type });
+  }
+  // DELETE 요청일때는 모든 인증 정보를 지워 logout
   else if (method === 'DELETE') {
     const cookieKeys = Object.keys(cookies);
     const deleteCookieStrings = cookieKeys.map(

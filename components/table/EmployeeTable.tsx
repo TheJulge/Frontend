@@ -1,7 +1,8 @@
 import React from 'react';
 import { StatusButton } from '@/components/table/StatusButton';
 import Pagination from '@/components/commons/pagination/Pagination';
-import { ApplicationPageProps } from '@/components/table/ssr/employee.ssr';
+import { ApplicationPageProps } from '@/ssr/myDetailPageSsr';
+import { formatNoticeTime } from '@/utils/noticeDataFormetters';
 import styles from './Table.module.scss';
 
 /**
@@ -31,6 +32,10 @@ function EmployeeTable({ items, totalCount, itemCount }: TableProps) {
         {items.map(list => {
           const { item } = list;
           const { shop, notice } = item;
+          const noticeTime = formatNoticeTime(
+            notice.item.startsAt,
+            Number(notice.item.workhour),
+          );
 
           return (
             <React.Fragment key={item.id}>
@@ -38,7 +43,7 @@ function EmployeeTable({ items, totalCount, itemCount }: TableProps) {
                 <p> {shop.item.name}</p>
               </div>
               <div className={`${styles.gridCell}`}>
-                <p>{notice.item.startsAt}</p>
+                <p>{noticeTime}</p>
               </div>
               <div className={`${styles.gridCell} `}>
                 <p>{notice.item.hourlyPay}</p>
