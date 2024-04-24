@@ -13,9 +13,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    images: {
-      domains: ['bootcamp-project-api.s3.ap-northeast-2.amazonaws.com'],
-    },
+    domains: ['bootcamp-project-api.s3.ap-northeast-2.amazonaws.com'],
     remotePatterns: [
       {
         protocol: 'https',
