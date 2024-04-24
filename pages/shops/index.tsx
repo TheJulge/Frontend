@@ -11,15 +11,6 @@ import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import ImageInput from '@/components/commons/inputs/imageInput/ImageInput';
 import styles from './shops.module.scss';
 
-export interface NoticeData {
-  name: string;
-  category: string;
-  address1: string;
-  address2: string;
-  description?: string;
-  imageUrl?: string;
-  originalHourlyPay: number;
-}
 export default function Shops() {
   // const router = useRouter();
   const methods = useForm<FieldValues>({
@@ -40,7 +31,7 @@ export default function Shops() {
     control,
     formState: { isValid },
   } = methods;
-
+  // const [image, setImage] = useState<string>('');
   const onSubmit = async (data: FieldValues) => {
     console.log(data);
     // TODO 지혜님 전송할때 시급 string => number로 형 변환해야합니다!!
@@ -55,9 +46,8 @@ export default function Shops() {
     //   console.log(e);
     // }
   };
-  // const handleImageUpload = event => {
-  //   const file = event.target.files[0];
-  //   // 파일을 업로드하는 로직을 추가
+  // const handleImageUpload = (imageURL: string) => {
+  //   setImage(imageURL);
   // };
   return (
     <FormProvider {...methods}>

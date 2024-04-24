@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Image from 'next/image';
+import { uploadImageToS3 } from '@/libs/image';
 import styles from './ImageInput.module.scss';
 
 export default function ImageInput() {
@@ -11,13 +12,21 @@ export default function ImageInput() {
   const handleImage = async (e: any) => {
     const file = e.target.files[0];
     if (!file) return;
-
     const reader = new FileReader();
+    const formData = new FormData();
     reader.readAsDataURL(file);
-    reader.onload = (event: any) => {
+    formData.append('name', file.name);
+
+    reader.onload = async (event: any) => {
       if (reader.readyState === 2) {
         // 파일 onLoad가 성공하면 2, 진행 중은 1, 실패는 0 반환
         setImage(event.target.result);
+        try {
+          const imageURL = await uploadImageToS3(file, formData);
+          console.log(imageURL);
+        } catch (err) {
+          console.log(err);
+        }
       }
     };
   };
