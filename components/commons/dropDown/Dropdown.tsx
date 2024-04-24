@@ -1,6 +1,6 @@
 import styles from '@/components/commons/dropDown/Dropdown.module.scss';
 import useCloseDropDown from '@/hooks/useCloseDropDown';
-import React, { useRef } from 'react';
+import React, { MouseEventHandler, useRef } from 'react';
 
 /**
  * SelectInput, SortSelectInput과 함께 사용합니다.
@@ -13,7 +13,7 @@ interface DropDownProps {
   showDropDown: boolean;
   options: string[];
   buttonRef: React.RefObject<HTMLElement>;
-  handleClick: (option: string) => void;
+  handleClick: MouseEventHandler;
   handleClose: () => void;
 }
 
@@ -27,11 +27,6 @@ export default function DropDown({
   const dropDownRef = useRef<HTMLDivElement>(null);
   useCloseDropDown(showDropDown, handleClose, dropDownRef, buttonRef);
 
-  const handleOptionClick = (option: string) => {
-    handleClick(option);
-    handleClose();
-  };
-
   return (
     <div ref={dropDownRef}>
       <ul className={styles.optionList}>
@@ -41,7 +36,7 @@ export default function DropDown({
               <li className={styles.optionItem} key={option}>
                 <button
                   className={styles.optionButton}
-                  onClick={() => handleOptionClick(option)}
+                  onClick={handleClick}
                   type="button"
                 >
                   {option}
