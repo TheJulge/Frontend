@@ -56,7 +56,6 @@ export default function FilterButton({
       }
       return value ? `${key}=${value}` : '';
     });
-    // 배열을 문자열로 변환하여 '&'로 연결하고 마지막 '&' 제거 후 반환
     return queryStringArray.join('&').replace(/&$/, '');
   }
 
@@ -77,11 +76,23 @@ export default function FilterButton({
     if (money) {
       filter.hourlyPayGte = String(moneys);
     }
-    router.push(
-      buildQueryString(filter)
-        ? `?${buildQueryString(filter)}`
-        : buildQueryString(filter),
-    );
+
+    if (router.query.keyword) {
+      if (buildQueryString(filter)) {
+        router.push(
+          `?keyword=${router.query.keyword}&${buildQueryString(filter)}`,
+        );
+      } else {
+        router.push(`?keyword=${router.query.keyword}`);
+      }
+    } else {
+      router.push(`?${buildQueryString(filter)}`);
+    }
+    // router.push(
+    //   buildQueryString(filter)
+    //     ? `?${buildQueryString(filter)}`
+    //     : buildQueryString(filter),
+    // );
     setIsOpen(false);
   };
   return (

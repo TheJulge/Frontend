@@ -1,5 +1,5 @@
-import styles from '@/components/commons/gnb/SignOutButton.module.scss';
 import { nextInstance } from '@/libs';
+import Link from 'next/link';
 
 export default function SignOutButton() {
   const handleSignOutClick = async () => {
@@ -7,12 +7,8 @@ export default function SignOutButton() {
   };
 
   return (
-    <button
-      className={styles.signOutButton}
-      onClick={handleSignOutClick}
-      type="button"
-    >
+    <Link href="/" onClick={handleSignOutClick}>
       로그아웃
-    </button>
+    </Link>
   );
 }

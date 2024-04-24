@@ -26,6 +26,9 @@
         }
         strong {
           @include h1(--primary);
+          @include mobile {
+            @include h3(--primary);
+          }
         }
       }
     }

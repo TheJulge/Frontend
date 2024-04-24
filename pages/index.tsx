@@ -1,12 +1,23 @@
-import Head from 'next/head';
+import { NoticePageProps } from '@/components/noticeList/ssr/notice.ssr';
+import CustomizationNotice from '@/components/noticeList/CustomizationNotice';
+import AllNotice from '@/components/noticeList/AllNotice';
 
-export default function Home() {
+export { getServerSideProps } from '@/components/noticeList/ssr/notice.ssr';
+
+export default function Home({
+  totalCount,
+  itemCount,
+  items,
+}: NoticePageProps) {
+  if (!items) return null;
   return (
-    <>
-      <Head>
-        <title>theJulge</title>
-      </Head>
-      <main>{/* fragment eslint 에러 방지용 태그 */}</main>
-    </>
+    <main>
+      <CustomizationNotice />
+      <AllNotice
+        noticeData={items}
+        totalCount={totalCount}
+        itemCount={itemCount}
+      />
+    </main>
   );
 }
