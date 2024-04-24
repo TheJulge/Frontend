@@ -1,4 +1,4 @@
-import SignModal from '@/components/sign/SignModal';
+import CompletionModal from '@/components/commons/modal/completionModal/CompletionModal';
 import { postSignUp } from '@/libs/user';
 import axios from 'axios';
 import { useRouter } from 'next/router';
@@ -41,18 +41,21 @@ export default function useSignUp() {
   };
 
   const successModal = showSuccessModal && (
-    <SignModal
+    <CompletionModal
       showModal={showSuccessModal}
       handleClose={handleSuccessModalClose}
     >
       가입이 완료되었습니다!
-    </SignModal>
+    </CompletionModal>
   );
 
   const errorModal = showErrorModal && (
-    <SignModal showModal={showErrorModal} handleClose={handleErrorModalClose}>
+    <CompletionModal
+      showModal={showErrorModal}
+      handleClose={handleErrorModalClose}
+    >
       이미 사용중인 이메일입니다.
-    </SignModal>
+    </CompletionModal>
   );
 
   return { status, successModal, errorModal, signUp };
