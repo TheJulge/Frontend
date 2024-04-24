@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import Modal from '@/components/commons/modal/Modal';
-import styles from '@/components/sign/SignModal.module.scss';
+import styles from '@/components/commons/modal/completionModal/CompletionModal.module.scss';
 
 /**
  * @param {Object} props
@@ -14,7 +14,7 @@ interface ModalProps {
   showModal: boolean;
   handleClose: () => void;
 }
-export default function SignModal({
+export default function CompletionModal({
   children,
   showModal,
   handleClose,

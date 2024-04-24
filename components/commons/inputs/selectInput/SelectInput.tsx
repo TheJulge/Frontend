@@ -1,42 +1,45 @@
 import styles from '@/components/commons/inputs/selectInput/SelectInput.module.scss';
 import DropDown from '@/components/commons/dropDown/Dropdown';
 import React, { useState, useRef } from 'react';
-import { FieldError, useFormContext } from 'react-hook-form';
-import DropDownUpIcon from '@/public/inputs/dropDownUp.svg';
-import DropDownDownIcon from '@/public/inputs/dropDownDown.svg';
-import { InputProps } from '@/types/inputTypes';
+import DropDownUpIcon from '@/public/images/inputs/dropDownUp.svg';
+import DropDownDownIcon from '@/public/images/inputs/dropDownDown.svg';
+import { Control, useController } from 'react-hook-form';
 
 /**
- *
- * @param {obeject} props
+ * @param {object} props
  * @param {string} props.labelName
  * @param {string[]} props.options
+ * @param {string} props.name 폼에서 사용할 인풋 이름
+ * @param {Control} props.control 커스텀 제어 컴포넌트를 비제어 컴포넌트인 부모 폼에서 조작하기 위한 control 속성
  */
 
-interface SelectInputProps extends InputProps {
+interface SelectInputProps {
+  labelName: string;
   options: string[];
+  name: string;
+  control: Control;
 }
 
 export default function SelectInput({
   labelName,
   options,
-  id,
+  name,
+  control,
 }: SelectInputProps) {
-  const {
-    register,
-    setValue,
-    formState: { errors },
-    watch,
-  } = useFormContext();
+  const { field } = useController({
+    name,
+    control,
+    rules: { required: true },
+  });
+
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const buttonRef = useRef(null);
 
   const handleSelectInputClick = () => {
     setShowDropDown(!showDropDown);
   };
-  const handleDropDownClick = (selectedValue: string) => {
-    // console.log(selectedValue);
-    setValue(id, selectedValue, { shouldValidate: true });
+  const handleDropDownClick = (event: React.MouseEvent) => {
+    field.onChange((event.target as HTMLLIElement).innerText);
     setShowDropDown(false);
   };
   const handleClose = () => {
@@ -54,14 +57,13 @@ export default function SelectInput({
           type="button"
         >
           <input
+            id={labelName}
             className={styles.input}
-            id={id}
             readOnly
             placeholder="선택"
             type="text"
             tabIndex={-1}
-            value={watch(id) || ''}
-            {...register(id, { required: '필수 선택 값 입니다' })}
+            value={field.value || ''}
           />
           {showDropDown ? (
             <DropDownUpIcon alt="arrowUpIcon" className={styles.upIcon} />
@@ -69,11 +71,6 @@ export default function SelectInput({
             <DropDownDownIcon alt="arrowDownIcon" className={styles.downIcon} />
           )}
         </button>
-        {errors[id] && (
-          <div className={styles.error}>
-            {(errors[id] as FieldError)?.message}
-          </div>
-        )}
       </div>
       {showDropDown && (
         <DropDown
