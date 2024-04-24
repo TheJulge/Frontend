@@ -85,6 +85,7 @@ export default function Profile({ userId, previewValues }: ServerSideProps) {
       if (response.status === 200) {
         setStatus('success');
         setShowModal(true);
+        document.cookie = 'isProfile=true; secure';
       }
     } catch (error) {
       setStatus('error');
