@@ -96,11 +96,11 @@ export default function Profile({ userId, previewValues }: ServerSideProps) {
       <Head>
         <title>내 프로필 등록 | theJulge</title>
       </Head>
-      <main>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div>내 프로필</div>
-          <div>
-            <div>
+      <main className={styles.main}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <div className={styles.headLine}>내 프로필</div>
+          <div className={styles.contain}>
+            <div className={styles.box}>
               <BasicInput labelName="이름*" id="name" />
               <BasicInput labelName="연락처*" id="phone" />
               <SelectInput
