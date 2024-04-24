@@ -4,11 +4,11 @@ import BasicInput from '@/components/commons/inputs/basicInput/BasicInput';
 import SelectInput from '@/components/commons/inputs/selectInput/SelectInput';
 import { ADDRESS, OPTIONS } from '@/utils/constants/SELECT';
 import MoneyInput from '@/components/commons/inputs/moneyInput/MoneyInput';
-import AddImage from '@/public/images/updateShop/addImage.svg';
 import classNames from 'classnames';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 // import { postShop } from '@/libs/shop';
 // import { useRouter } from 'next/router';
+import ImageInput from '@/components/commons/inputs/imageInput/ImageInput';
 import styles from './shops.module.scss';
 
 export interface NoticeData {
@@ -88,23 +88,7 @@ export default function Shops() {
               id="originalHourlyPay"
             />
             <div />
-            <div className={styles.imageInput}>
-              <div className={styles.inputTitle}>가게 이미지</div>
-              <div className={styles.shopImage}>
-                {/* <div
-                  className={styles.imagePreview}
-                  style={{ backgroundImage: `url(${imageUrl})` }}
-                  id="imageUrl"
-                /> */}
-                <AddImage viewBox="0 0 110 63" />
-              </div>
-              {/* <input
-                id="imageUpload"
-                type="file"
-                style={{ display: 'none' }}
-                onChange={handleImageUpload}
-              /> */}
-            </div>
+            <ImageInput />
             <div />
             <BasicInput
               labelName="가게 설명"
