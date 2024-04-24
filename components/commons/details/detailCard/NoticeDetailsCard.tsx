@@ -8,6 +8,7 @@ import PayIncrease from '../../card/payIncrease/PayIncrease';
 import InfoModal from '../../modal/InfoModal';
 import styles from './NoticeDetailsCard.module.scss';
 import { postApplication } from '@/libs/application';
+import ChooseModal from '../../modal/ChooseModal';
 
 interface NoticeDetailsCardProp {
   shopId: string;
@@ -20,16 +21,14 @@ export default function NoticeDetailsCard({
   noticeId,
   noticeDetails,
 }: NoticeDetailsCardProp) {
+  const [isApplied, setIsApplied] = useState(false);
+  const [isChooseModalOpen, setIsChooseModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const shopDetails = noticeDetails.shop.item;
   const [startDate, workHour] = formatNoticeTime(
     noticeDetails.startsAt,
     noticeDetails.workhour,
   );
-
-  const profileRequestModalClose = () => {
-    setIsProfileModalOpen(false);
-  };
 
   const handleClickToApply = () => {
     //1. 쿠키에서 isProfile 가져옴 ( true 로 가정)
@@ -38,10 +37,18 @@ export default function NoticeDetailsCard({
     //2.true면 요청 , false면 프로필 요청 모달 열기
 
     if (isProfile) {
-      //작성해야할 부분
+      //작성해야할 부분 (신청 로직-> 신청 완료되었다고 가정)
+      setIsApplied(true);
     } else {
       setIsProfileModalOpen(true);
     }
+  };
+
+  const handleClickToCancelApply = () => {
+    //신청취소로직 작성
+
+    setIsApplied(false);
+    setIsChooseModalOpen(false);
   };
 
   return (
@@ -75,21 +82,41 @@ export default function NoticeDetailsCard({
           </div>
           <div className={styles.description}>{shopDetails.description}</div>
         </div>
-        <button
-          className={styles.button}
-          type="button"
-          disabled={noticeDetails.closed}
-          onClick={handleClickToApply}
-        >
-          {!noticeDetails.closed ? '신청하기' : '신청불가'}
-        </button>
+        {isApplied ? (
+          <button
+            className={styles.cancelButton}
+            type="button"
+            onClick={() => setIsChooseModalOpen(true)}
+          >
+            신청취소
+          </button>
+        ) : (
+          <button
+            className={styles.button}
+            type="button"
+            disabled={noticeDetails.closed}
+            onClick={handleClickToApply}
+          >
+            {!noticeDetails.closed ? '신청하기' : '신청불가'}
+          </button>
+        )}
+
         {isProfileModalOpen && (
           <InfoModal
             showModal={isProfileModalOpen}
-            handleClose={profileRequestModalClose}
+            handleClose={() => setIsProfileModalOpen(false)}
           >
             내 프로필을 먼저 등록해 주세요.
           </InfoModal>
+        )}
+        {isChooseModalOpen && (
+          <ChooseModal
+            showModal={isChooseModalOpen}
+            handleNo={() => setIsChooseModalOpen(false)}
+            handleYes={handleClickToCancelApply}
+          >
+            신청을 취소하시겠어요?
+          </ChooseModal>
         )}
       </div>
     </div>
