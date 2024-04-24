@@ -4,9 +4,15 @@ import styles from './NoticeDetailsContainer.module.scss';
 import Explanation from './Explanation';
 
 interface DetailsProp {
+  shopId: string;
+  noticeId: string;
   details: SingleNoticeType;
 }
-export default function NoticeDetailsContainer({ details }: DetailsProp) {
+export default function NoticeDetailsContainer({
+  shopId,
+  noticeId,
+  details,
+}: DetailsProp) {
   const noticeDetails = details.item;
   const shopDetails = details.item.shop.item;
 
@@ -17,7 +23,11 @@ export default function NoticeDetailsContainer({ details }: DetailsProp) {
         <br />
         {shopDetails.name}
       </h1>
-      <NoticeDetailsCard noticeDetails={noticeDetails} />
+      <NoticeDetailsCard
+        shopId={shopId}
+        noticeId={noticeId}
+        noticeDetails={noticeDetails}
+      />
       <Explanation description={noticeDetails.description} />
     </main>
   );

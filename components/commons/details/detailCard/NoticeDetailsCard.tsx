@@ -7,14 +7,17 @@ import { NoticeBaseType } from '@/types/noticeTypes';
 import PayIncrease from '../../card/payIncrease/PayIncrease';
 import InfoModal from '../../modal/InfoModal';
 import styles from './NoticeDetailsCard.module.scss';
-import { getCookieValue } from '@/utils/getCookieDataFunctions';
 import { postApplication } from '@/libs/application';
 
 interface NoticeDetailsCardProp {
+  shopId: string;
+  noticeId: string;
   noticeDetails: NoticeBaseType;
 }
 
 export default function NoticeDetailsCard({
+  shopId,
+  noticeId,
   noticeDetails,
 }: NoticeDetailsCardProp) {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
@@ -35,7 +38,7 @@ export default function NoticeDetailsCard({
     //2.true면 요청 , false면 프로필 요청 모달 열기
 
     if (isProfile) {
-      // const response = postApplication({ shopId:})
+      //작성해야할 부분
     } else {
       setIsProfileModalOpen(true);
     }
