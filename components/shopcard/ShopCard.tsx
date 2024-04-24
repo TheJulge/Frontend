@@ -3,6 +3,7 @@ import ClockIcon from '@/public/images/profilecard/clockIcon.svg';
 import PinIcon from '@/public/images/profilecard/pointer.svg';
 import { formatNoticeTime } from '@/utils/noticeDataFormetters';
 import { NoticeBaseType } from '@/types/noticeTypes';
+import { useRouter } from 'next/router';
 import PayIncrease from '../commons/card/payIncrease/PayIncrease';
 import styles from './ShopCard.module.scss';
 
@@ -24,7 +25,8 @@ const ShopCard = ({ data, url, address, originalHourlyPay }: CardPropsType) => {
     closed,
   } = data;
   const date = formatNoticeTime(startsAt, workHours);
-
+  const router = useRouter();
+  console.log(router);
   const [imageStyle, setImageStyle] = useState({}); // 이미지 스타일 상태
 
   const onChangeHeight = () => {
@@ -85,7 +87,20 @@ const ShopCard = ({ data, url, address, originalHourlyPay }: CardPropsType) => {
             {description}
           </p>
         </div>
-        <button type="button" className={styles.button}>
+        <button
+          type="button"
+          className={styles.button}
+          onClick={() => {
+            router.push(
+              {
+                pathname: '/shops/[id]/notices',
+                query: { id: router.query.id, noticeId: router.query.noticeId },
+              },
+
+              '/Mynotice',
+            );
+          }}
+        >
           공고 편집하기
         </button>
       </div>

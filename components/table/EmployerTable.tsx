@@ -28,13 +28,10 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
   const router = useRouter();
   const { pathname, query } = router;
 
-  // api보내고 바로 또 쿼리 날려서 데이터 재조회
-
   const [selectItem, setSelectItem] = useState<SelectProps>({
     item: null,
     type: false,
   });
-  // const [isopen, setIsopen] = useState(false);
 
   const handleModalOpenWithSelectApplicaiton = (
     select: Application,
@@ -53,16 +50,17 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
     const status = type ? 'accepted' : 'rejected';
     const shopId = query.id as string;
     const noticeId = query.noticeId as string;
-    // 마라봉 2번
+    // 마라봉 2번 ,토큰형식 바꿀곳
     const employerToken =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNmRkODA2ZC1mZTNkLTQ1NTYtOTI1YS03Y2JjYWI0MzZiMDQiLCJpYXQiOjE3MTMzMzI3NTV9.XCtgxs6TvkP8zdkleZjgXHLehvNf4hqJgYkAlPsYPLk';
 
     const noticeListUrl = `${API.shop}/${shopId}${API.notice}/${noticeId}${API.application}/${id}`;
+
     try {
       if (window === undefined) {
         return;
       }
-
+      // api보내고 바로 또 쿼리 날려서 데이터 재조회
       const fetch = await instance(noticeListUrl, {
         method: 'PUT',
         headers: {
@@ -91,7 +89,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
       handleInitItemAndModalClose();
     }
   };
-  console.log('선택', selectItem);
+
   return (
     <div className={styles.outerContainer}>
       <div className={styles.gridContainer}>
