@@ -1,0 +1,10 @@
+@import '@/components/commons/Button/Button.module.scss';
+
+.submitButton {
+  @include fillButton;
+  cursor: pointer;
+
+  &:disabled {
+    @include disabledButton;
+  }
+}

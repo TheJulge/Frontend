@@ -16,6 +16,13 @@ interface CreateAuthProps {
   type: 'employee' | 'employer';
 }
 
+interface UserData {
+  name: 'string';
+  phone: 'string';
+  address: 'string';
+  bio?: 'string';
+}
+
 /**
  * 로그인
  * @returns
@@ -37,7 +44,7 @@ export const postSignUp = (createAuthData: CreateAuthProps) => {
  * @param {string} userId
  * @returns
  */
-export const getUser = (userId: UserProps) => {
+export const getUser = ({ userId }: UserProps) => {
   return instance.get(`${API.user}/${userId}`);
 };
 
@@ -46,6 +53,6 @@ export const getUser = (userId: UserProps) => {
  * @param {string} userId
  * @returns
  */
-export const putUser = (userId: UserProps) => {
-  return authInstance.put(`${API.user}/${userId}`);
+export const putUser = ({ userId }: UserProps, userData: UserData) => {
+  return authInstance.put(`${API.user}/${userId}`, userData);
 };
