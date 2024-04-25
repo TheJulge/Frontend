@@ -4,14 +4,14 @@ import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import BasicInput from '@/components/commons/inputs/basicInput/BasicInput';
 import MoneyInput from '@/components/commons/inputs/moneyInput/MoneyInput';
 import classNames from 'classnames';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import TimeInput from '@/components/commons/inputs/timeInput/TimeInput';
+import DateInput from '@/components/commons/inputs/dateInput/DateInput';
 import styles from './NoticeUpdatePage.module.scss';
 
 export default function NoticeUpdatePage() {
-  const router = useRouter();
-  const { id: shopId } = router.query;
-  console.log(shopId);
+  // const router = useRouter();
+  // const { id: shopId } = router.query;
   const methods = useForm<FieldValues>({
     mode: 'onBlur',
     defaultValues: {
@@ -49,7 +49,7 @@ export default function NoticeUpdatePage() {
           <div className={styles.title}>공고 등록</div>
           <div className={styles.gridContainer}>
             <MoneyInput labelName="시급*" control={control} id="hourlyPay" />
-            <BasicInput labelName="시작 일시*" defaultValue="" id="startAt" />
+            <DateInput control={control} />
             <TimeInput control={control} />
             <BasicInput
               labelName="공고 설명"

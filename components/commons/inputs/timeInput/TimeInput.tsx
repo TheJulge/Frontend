@@ -2,11 +2,8 @@ import styles from '@/components/commons/inputs/timeInput/TimeInput.module.scss'
 import React from 'react';
 import { Control, useController } from 'react-hook-form';
 /**
- * 숫자만 입력할 수 있는 input 입니다.
- * 시간 관련한 정보가 필요할 때 사용 가능하며, 기본 단위는 시간 입니다.
- * MoneyInput이랑 달리 최저시급을 자동적으로 맞추는 기능이 필요하지 않아 따로 분리 했습니다.
- * @param {setValue} props 해당 인풋에서 사용할 state를 변경할 seter 함수
- * @param {setValue} props 해당 인풋에서 사용할 state를 변경할 seter 함수
+ * 숫자만 입력 가능
+ * @param {Control} control
  */
 
 interface TimeInputProps {
