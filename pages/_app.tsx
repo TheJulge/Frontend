@@ -7,7 +7,10 @@ import { CookiesProvider } from 'react-cookie';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const hide = router.pathname === '/signin' || router.pathname === '/signup';
+  const hide =
+    router.pathname === '/signin' ||
+    router.pathname === '/signup' ||
+    router.pathname === '/404';
   return (
     <CookiesProvider>
       {!hide && <Gnb />}
