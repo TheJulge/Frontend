@@ -15,16 +15,15 @@ export default function Shops() {
   // const router = useRouter();
   const methods = useForm<FieldValues>({
     mode: 'onBlur',
-    // TODO: 랜더링 전에 GET /shops/{shop_id} 이전에 작성한 정보 받아와서 기본값 설정, 없으면 빈 값
-    // defaultValues: {
-    //   name: '김기형',
-    //   category: '한정식',
-    //   address1: '서울시 길바닥',
-    //   address2: '가가가자',
-    //   description: '맛집이다',
-    //   imageUrl: '',
-    //   originalHourlyPay: 888888,
-    // },
+    defaultValues: {
+      name: '',
+      category: '',
+      address1: '',
+      address2: '',
+      description: '',
+      imageUrl: '',
+      originalHourlyPay: '',
+    },
   });
   const {
     handleSubmit,

@@ -6,13 +6,18 @@
   flex-direction: column;
 
   .shopImage {
-    max-width: 483px;
+    max-width: 100%;
     height: 276px;
     cursor: pointer;
-    margin: 8px auto;
     border: 0;
     background-color: transparent;
     border-radius: 10px;
     overflow: hidden;
+    .image {
+      max-width: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }

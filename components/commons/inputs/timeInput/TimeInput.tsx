@@ -1,5 +1,6 @@
 import styles from '@/components/commons/inputs/timeInput/TimeInput.module.scss';
 import React from 'react';
+import { Control, useController } from 'react-hook-form';
 /**
  * 숫자만 입력할 수 있는 input 입니다.
  * 시간 관련한 정보가 필요할 때 사용 가능하며, 기본 단위는 시간 입니다.
@@ -9,8 +10,7 @@ import React from 'react';
  */
 
 interface TimeInputProps {
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  control: Control;
 }
 
 const formatNumber = (InputValue: string): string => {
@@ -22,9 +22,17 @@ const formatNumber = (InputValue: string): string => {
   return formattedValue;
 };
 
-export default function TimeInput({ value, setValue }: TimeInputProps) {
+export default function TimeInput({ control }: TimeInputProps) {
+  const {
+    field: { ref, ...inputProps },
+  } = useController({
+    name: 'workhour',
+    control,
+    defaultValue: '',
+    rules: { required: true },
+  });
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setValue(formatNumber(event.currentTarget.value));
+    inputProps.onChange(formatNumber(event.currentTarget.value));
   };
 
   return (
@@ -32,11 +40,11 @@ export default function TimeInput({ value, setValue }: TimeInputProps) {
       <label htmlFor="time">업무 시간*</label>
       <input
         className={styles.input}
-        id="time"
-        value={value}
+        id="workhour"
         type="text"
         placeholder="입력"
         onChange={handleChange}
+        value={inputProps.value}
       />
       <div className={styles.time}>시간</div>
     </div>

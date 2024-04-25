@@ -5,7 +5,7 @@ import styles from './ImageInput.module.scss';
 
 export default function ImageInput() {
   const [image, setImage] = useState<string>(
-    '/images/updateShop/uploadImage.svg',
+    '/images/updateShop/uploadImage.png',
   );
   const fileInput = useRef<HTMLInputElement>(null);
 
@@ -41,7 +41,13 @@ export default function ImageInput() {
         className={styles.shopImage}
         onClick={() => fileInput.current?.click()}
       >
-        <Image src={image} width={483} height={276} alt="가게 이미지" />
+        <Image
+          className={styles.image}
+          src={image}
+          width={483}
+          height={276}
+          alt="이미지 추가하기"
+        />
       </button>
       <input
         type="file"
