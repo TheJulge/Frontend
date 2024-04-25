@@ -20,14 +20,13 @@ export const addNoticeToLocalStorage = (noticeData: SingleNoticeType) => {
     return;
   }
 
-  // 중복 제거
-  // const currentId = noticeData.item.id;
-  // const mappedStoreId = storageData.map(storageData => storageData.item.id);
+  //중복 제거
+  const currentId = noticeData.item.id;
+  const mappedStoreId = storageData.map(storageData => storageData.item.id);
 
-  // if (!mappedStoreId.includes(currentId)) {
-  //   storageData.push(noticeData);
-  // }
-  storageData.push(noticeData);
+  if (!mappedStoreId.includes(currentId)) {
+    storageData.push(noticeData);
+  }
 
   if (storageData.length > 6) {
     storageData.shift();

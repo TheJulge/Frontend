@@ -11,12 +11,14 @@ import { postApplication } from '@/libs/application';
 import ChooseModal from '../../modal/ChooseModal';
 
 interface NoticeDetailsCardProp {
+  isProfile: boolean;
   shopId: string;
   noticeId: string;
   noticeDetails: NoticeBaseType;
 }
 
 export default function NoticeDetailsCard({
+  isProfile,
   shopId,
   noticeId,
   noticeDetails,
@@ -30,22 +32,24 @@ export default function NoticeDetailsCard({
     noticeDetails.workhour,
   );
 
-  const handleClickToApply = () => {
-    //1. 쿠키에서 isProfile 가져옴 ( true 로 가정)
-    // const isProfile = getCookieValue('isProfile');
-    const isProfile = true;
-    //2.true면 요청 , false면 프로필 요청 모달 열기
-
+  const handleClickToApply = async () => {
     if (isProfile) {
-      //작성해야할 부분 (신청 로직-> 신청 완료되었다고 가정)
-      setIsApplied(true);
+      // try {
+      //   const response = await postApplication({ shopId: shopId, noticeId: noticeId });
+      //   if (response.status) {
+      //   setIsApplied(true);
+      //   }
+      // }
+      // catch (e) {
+      //   alert("지원요청을 실패했어요!");
+      // }
     } else {
       setIsProfileModalOpen(true);
     }
   };
 
-  const handleClickToCancelApply = () => {
-    //신청취소로직 작성
+  const handleClickToCancelApply = async () => {
+    //신청취소
 
     setIsApplied(false);
     setIsChooseModalOpen(false);
