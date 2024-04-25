@@ -28,7 +28,6 @@ export const getServerSideProps: GetServerSideProps<
     },
   });
   const { items, count } = response.data;
-
   return {
     props: {
       items,

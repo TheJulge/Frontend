@@ -15,7 +15,7 @@ interface MoneyProps {
 export default function FilterAmount({ money, setMoney }: MoneyProps) {
   return (
     <div className={styles.filterAmount}>
-      <MoneyInput labelName="금액" value={money} setValue={setMoney} />
+      {/* <MoneyInput labelName="금액" value={money} setValue={setMoney} /> */}
     </div>
   );
 }

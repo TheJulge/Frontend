@@ -16,14 +16,14 @@ export default function AllNoticeCard({ noticeData }: NoticeProps) {
   return (
     <ul className={styles.cardContainer}>
       {noticeData.map((items: CardNoticeType) => {
-        const urlCutOff = items.item.shop.href.indexOf('/shops');
-        const result = items.item.shop.href.slice(urlCutOff);
+        const noticeId = items.item.id;
+        const shopId = items.item.shop.item.id;
         return (
           <li key={items.item.id} role="presentation">
             <Link
               onClick={handleLink}
               href={
-                userId ? `${result}/notices/${items.item.id}/alba` : `/signin`
+                userId ? `/shop/${shopId}/notices/${noticeId}/alba` : `/signin`
               }
             >
               <Card noticeInfo={items} />

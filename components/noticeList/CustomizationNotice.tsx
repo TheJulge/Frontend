@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { getCustomNotices } from '@/libs/notice';
+import { getCustomNotices, getPayNotices } from '@/libs/notice';
 import { Autoplay } from 'swiper/modules';
 import { CardNoticeType } from '@/types/noticeTypes';
 import { useRouter } from 'next/router';
@@ -10,28 +10,41 @@ import styles from './CustomizationNotice.module.scss';
 import Card from '../commons/card/Card';
 import 'swiper/css';
 
-export default function CustomizationNotice() {
+interface CustomProps {
+  customType: string;
+}
+
+export default function CustomizationNotice({ customType }: CustomProps) {
   const router = useRouter();
-  const customAddress = '서울시 종로구';
+  const customData = customType;
   const userId = getCookieValue('userId');
   const [contents, setContents] = useState([]);
   const handleLink = () => {
     if (!userId) alert('로그인이 필요한 서비스 입니다.');
   };
-  const customData = async () => {
+  const customGetData = async () => {
     try {
-      const response = await getCustomNotices(customAddress);
+      let response;
+      if (customData === 'pay' || !customData) {
+        response = await getPayNotices(customData);
+      } else {
+        response = await getCustomNotices(customData);
+      }
       const noticeItem = response.data.items;
       setContents(noticeItem);
     } catch (error) {
       console.log(error);
     }
   };
+
   useEffect(() => {
-    customData();
-  }, []);
+    if (customData) {
+      customGetData();
+    }
+  }, [customType]);
 
   if (!contents) return null;
+  // 검색 했을 때 렌더링 금지
   if (router.query.keyword) return null;
   return (
     <article className={styles.noticeTop}>
@@ -52,15 +65,15 @@ export default function CustomizationNotice() {
           modules={[Autoplay]}
         >
           {contents.map((items: CardNoticeType) => {
-            const urlCutOff = items.item.shop.href.indexOf('/shops');
-            const result = items.item.shop.href.slice(urlCutOff);
+            const noticeId = items.item.id;
+            const shopId = items.item.shop.item.id;
             return (
               <SwiperSlide className={styles.swiperNotice} key={items.item.id}>
                 <Link
                   onClick={handleLink}
                   href={
                     userId
-                      ? `${result}/notices/${items.item.id}/alba`
+                      ? `/shop/${shopId}/notices/${noticeId}/alba`
                       : `/signin`
                   }
                 >
