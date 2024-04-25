@@ -1,6 +1,5 @@
 import { NextPage } from 'next';
 import EmployerTable from '@/components/table/EmployerTable';
-import EmptyTable from '@/components/table/emptytable/EmptyTable';
 import ShopCard from '@/components/shopcard/ShopCard';
 import { NoticeDetailPageProps } from '@/ssr/noticeDetailSsr';
 import styles from './MyNoticeDetailPage.module.scss';
