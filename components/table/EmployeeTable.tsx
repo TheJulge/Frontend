@@ -2,7 +2,7 @@ import React from 'react';
 import { StatusButton } from '@/components/table/StatusButton';
 import Pagination from '@/components/commons/pagination/Pagination';
 import { ApplicationPageProps } from '@/ssr/myDetailPageSsr';
-import { formatNoticeTime } from '@/utils/noticeDataFormetters';
+import { formatNoticeTime, formatWage } from '@/utils/noticeDataFormetters';
 import styles from './Table.module.scss';
 
 /**
@@ -46,7 +46,7 @@ function EmployeeTable({ items, totalCount, itemCount }: TableProps) {
                 <p>{noticeTime}</p>
               </div>
               <div className={`${styles.gridCell} `}>
-                <p>{notice.item.hourlyPay}</p>
+                <p>{formatWage(Number(notice.item.hourlyPay))}</p>
               </div>
               <div className={`${styles.gridCell} `}>
                 <StatusButton

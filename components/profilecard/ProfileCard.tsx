@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import MoreIcon from '@/public/images/profilecard/downarrow.svg';
 import { UserBaseType } from '@/types/userTypes';
 import Link from 'next/link';
+import { formetPhoneNumber } from '@/utils/phoneNumberDataFormetter';
 import styles from './ProfileCard.module.scss';
 
 interface CardPropsType {
@@ -45,7 +46,7 @@ function ProfileCard({ data }: CardPropsType) {
         <div className={styles.nameData}>{data.name}</div>
         <div className={`${styles.phoneBox} ${styles.detailBox}`}>
           <PhoneIcon />
-          <p className={styles.phone}>{data.phone}</p>
+          <p className={styles.phone}>{formetPhoneNumber(data.phone!)}</p>
         </div>
         <div className={`${styles.regionBox} ${styles.detailBox}`}>
           <PointerIcon />
