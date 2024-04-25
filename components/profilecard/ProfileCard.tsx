@@ -3,6 +3,7 @@ import PointerIcon from '@/public/images/profilecard/pointer.svg';
 import { useRef, useState, useEffect } from 'react';
 import MoreIcon from '@/public/images/profilecard/downarrow.svg';
 import { UserBaseType } from '@/types/userTypes';
+import Link from 'next/link';
 import styles from './ProfileCard.module.scss';
 
 interface CardPropsType {
@@ -79,7 +80,7 @@ function ProfileCard({ data }: CardPropsType) {
 
         <div className={styles.buttonBox}>
           <button className={styles.button} type="button">
-            편집하기
+            <Link href="/profile">편집하기</Link>
           </button>
         </div>
       </div>
