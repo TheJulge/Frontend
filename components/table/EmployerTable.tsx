@@ -9,6 +9,7 @@ import { API } from '@/utils/constants/API';
 import { formatPhoneNumber } from '@/utils/phoneNumberDataFormatter';
 import { Application } from './applicationTypes';
 import ChooseModal from '../commons/modal/ChooseModal';
+import TableModal from '../commons/modal/tableModal/TableModal';
 
 /**
  * @param function EmployerTable 고용인 table컴포넌트구현
@@ -25,6 +26,8 @@ interface SelectProps {
 }
 
 function EmployerTable({ items, itemCount, totalCount }: TableProps) {
+  const [showModal, setShowModal] = useState(false);
+  const [modalIndex, setModalIndex] = useState(0);
   const router = useRouter();
   const { pathname, query } = router;
 
@@ -32,6 +35,13 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
     item: null,
     type: false,
   });
+  const handleModalOpen = (index: number) => {
+    setModalIndex(index);
+    setShowModal(true);
+  };
+  const handleClose = () => {
+    setShowModal(false);
+  };
 
   const handleModalOpenWithSelectApplicaiton = (
     select: Application,
@@ -89,6 +99,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
       handleInitItemAndModalClose();
     }
   };
+  console.log(selectItem);
 
   return (
     <div className={styles.outerContainer}>
@@ -106,7 +117,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
           <h6>상태</h6>
         </div>
 
-        {items.map(list => {
+        {items.map((list, index) => {
           const { item } = list;
           const { user } = item;
           return (
@@ -117,6 +128,15 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
               <div
                 tabIndex={0}
                 className={`${styles.gridCell} ${styles.clickDiv}`}
+                role="presentation"
+                onClick={() => {
+                  handleModalOpen(index);
+                }}
+                onKeyDown={event => {
+                  if (event.key === 'Enter') {
+                    handleModalOpen(index);
+                  }
+                }}
               >
                 <p>{user.item.bio}</p>
               </div>
@@ -146,6 +166,13 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
           handleStatusChange={handleStatusChange}
         />
       )} */}
+      {showModal && (
+        <TableModal
+          items={items[modalIndex]}
+          showModal={showModal}
+          handleClose={handleClose}
+        />
+      )}
       {selectItem?.item?.id && (
         <ChooseModal
           showModal={!!selectItem.item}
