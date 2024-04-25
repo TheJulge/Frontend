@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function ErrorPage() {
   return (
     <div className={styles.errorPage}>
-      <div>
+      <div aria-label="404 페이지 입니다.">
         <ErrorIcon />
       </div>
       <div>
