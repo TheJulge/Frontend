@@ -23,6 +23,7 @@ const ShopCard = ({ data, url, address, originalHourlyPay }: CardPropsType) => {
     startsAt,
     workhour: workHours,
     closed,
+    id,
   } = data;
   const date = formatNoticeTime(startsAt, workHours);
   const router = useRouter();
@@ -59,13 +60,15 @@ const ShopCard = ({ data, url, address, originalHourlyPay }: CardPropsType) => {
       </div>
       <div className={styles.noticeBox}>
         <div className={styles.notice} ref={divRef}>
-          <p className={styles.title}>시급</p>
-          <div className={styles.pay}>
-            <PayIncrease
-              hourlyPay={Number(pay)}
-              originalHourlyPay={originalHourlyPay}
-              closed={closed}
-            />
+          <div>
+            <p className={styles.title}>시급</p>
+            <div className={styles.pay}>
+              <PayIncrease
+                hourlyPay={Number(pay)}
+                originalHourlyPay={originalHourlyPay}
+                closed={closed}
+              />
+            </div>
           </div>
           <div className={styles.text}>
             <ClockIcon />
@@ -81,13 +84,10 @@ const ShopCard = ({ data, url, address, originalHourlyPay }: CardPropsType) => {
           type="button"
           className={styles.button}
           onClick={() => {
-            router.push(
-              {
-                pathname: '/signin',
-                query: { id: router.query.id, noticeId: router.query.noticeId },
-              },
-              // '/Mypage',
-            );
+            router.push({
+              pathname: `/shops/${id}/notices`,
+              query: { id: router.query.id, noticeId: router.query.noticeId },
+            });
           }}
         >
           공고 편집하기

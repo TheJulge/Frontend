@@ -120,7 +120,7 @@ export const getServerSideProps: GetServerSideProps<
   });
   const shopData = await fetchShopData({ shopId });
   const noticeData = await fetchNoticeData({ shopId, noticeId });
-
+  // 프로미스 데이터 처리 연습
   // const promiseData = await Promise.all([
   //   fetchTableData({
   //     offset: (page - 1) * itemCount,
