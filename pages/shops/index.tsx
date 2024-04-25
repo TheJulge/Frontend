@@ -31,7 +31,6 @@ export default function Shops() {
     control,
     formState: { isValid },
   } = methods;
-  // const [image, setImage] = useState<string>('');
   const onSubmit = async (data: FieldValues) => {
     console.log(data);
     // TODO 지혜님 전송할때 시급 string => number로 형 변환해야합니다!!
@@ -46,9 +45,7 @@ export default function Shops() {
     //   console.log(e);
     // }
   };
-  // const handleImageUpload = (imageURL: string) => {
-  //   setImage(imageURL);
-  // };
+
   return (
     <FormProvider {...methods}>
       <Head>
