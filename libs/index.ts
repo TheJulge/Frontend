@@ -26,6 +26,15 @@ export const nextInstance = axios.create({
   },
 });
 
+// getServerSideProps 전용 인스턴스
+export const ssrInstance = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  timeout: 1000 * 5,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
 // interceptors
 authInstance.interceptors.request.use(
   async config => {
