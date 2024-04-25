@@ -1,4 +1,4 @@
-export function formetPhoneNumber(phoneNumber: string) {
+export function formatPhoneNumber(phoneNumber: string) {
   const digits = phoneNumber.replace(/\D/g, '');
 
   // 숫자가 10자리 또는 11자리여야 함

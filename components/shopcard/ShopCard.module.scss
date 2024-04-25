@@ -70,6 +70,7 @@
 .text {
   display: flex;
   gap: 6px;
+  align-items: center;
 
   p {
     @include body1-regular(--gray50);

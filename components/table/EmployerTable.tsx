@@ -6,7 +6,7 @@ import Pagination from '@/components/commons/pagination/Pagination';
 import { ApplicationPageProps } from '@/ssr/noticeDetailSsr';
 import { instance } from '@/libs';
 import { API } from '@/utils/constants/API';
-// import Testmodal from '../commons/modal/TestModal';
+import { formatPhoneNumber } from '@/utils/phoneNumberDataFormatter';
 import { Application } from './applicationTypes';
 import ChooseModal from '../commons/modal/ChooseModal';
 
@@ -121,7 +121,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
                 <p>{user.item.bio}</p>
               </div>
               <div className={`${styles.gridCell} `}>
-                <p>{user.item.phone}</p>
+                <p>{formatPhoneNumber(user.item.phone!)}</p>
               </div>
               <div className={`${styles.gridCell} ${styles.lastCell}`}>
                 <StatusButton
