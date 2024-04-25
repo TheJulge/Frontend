@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import FilterTop from './FilterTop';
 import FilterLocation from './FilterLocation';
 import FilterDate from './FilterDate';
-// import FilterAmount from './FilterAmount';
+import FilterAmount from './FilterAmount';
 import FilterButton from './FilterButton';
 import styles from './Filter.module.scss';
 
@@ -47,6 +47,13 @@ export default function Filter({ isOpen, setIsOpen }: OpenProps) {
       }
     }
 
+    // 쿼리에서 money 값 받아오고 값 저장
+    if (router.query.hourlyPayGte) {
+      setMoney(
+        String(router.query.hourlyPayGte).replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+      );
+    }
+
     // 필터 리셋 조건을 확인하고 리셋
     if (resetCondition) {
       setSelectLocation([]);
@@ -69,7 +76,7 @@ export default function Filter({ isOpen, setIsOpen }: OpenProps) {
       </div>
       <FilterDate startDate={startDate} setStartDate={setStartDate} />
       <div className={styles.gapContainer}>
-        {/* <FilterAmount money={money} setMoney={setMoney} /> */}
+        <FilterAmount money={money} setMoney={setMoney} />
         <FilterButton
           selectLocation={selectLocation}
           setSelectLocation={setSelectLocation}

@@ -64,12 +64,15 @@ iframe {
   color: #a8a8a8 !important;
 }
 .react-datepicker__day--keyboard-selected {
-  /* 캘린더 스타일 변경 2024-04-23 임동현 */
   background-color: var(--primary) !important;
   color: var(--white) !important;
 }
 .react-datepicker-popper[data-placement^='bottom'] .react-datepicker__triangle {
   display: none !important;
+}
+/* 캘린더 스타일 변경 2024-04-25 임동현 */
+.react-datepicker__triangle {
+  display: none;
 }
 
 #__next {
