@@ -1,5 +1,7 @@
 import Image from 'next/image';
+import LocationIcon from '@/public/images/card/locationIcon.svg';
 import styles from './ShopDetailsCard.module.scss';
+import Link from 'next/link';
 
 const MOCK = {
   item: {
@@ -62,14 +64,38 @@ const MOCK = {
     },
   ],
 };
-export default function ShopDetailsCard() {
+interface ShopDetailsCardProps {
+  id: string;
+}
+export default function ShopDetailsCard({ id }: ShopDetailsCardProps) {
   return (
     <div className={styles.container}>
       <div className={styles.cardImg}>
         <Image src={MOCK.item.imageUrl} alt="shop image" fill />
       </div>
       <div className={styles.contents}>
-        <div className={styles.information}></div>
+        <div className={styles.information}>
+          <div className={styles.title}>
+            <p>식당</p>
+            <span>{MOCK.item.name}</span>
+          </div>
+          <div className={styles.location}>
+            <LocationIcon />
+            <p>{MOCK.item.address1}</p>
+          </div>
+          <p className={styles.description}>{MOCK.item.description}</p>
+        </div>
+        <div className={styles.links}>
+          <Link className={styles.editLink} href={`/`}>
+            편집하기
+          </Link>
+          <Link
+            className={styles.noticeEnterLink}
+            href={`/shops/${id}/notices`}
+          >
+            공고 등록하기
+          </Link>
+        </div>
       </div>
     </div>
   );

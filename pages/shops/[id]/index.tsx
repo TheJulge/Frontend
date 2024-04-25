@@ -1,23 +1,29 @@
 import EmptyTable from '@/components/table/emptytable/EmptyTable';
 import { GetServerSideProps } from 'next';
-import styles from './ShopDetails.module.scss';
 import ShopDetailsCard from '@/components/shopcard/shopDetailCard/ShopDetailsCard';
+import styles from './ShopDetails.module.scss';
+import { getShop } from '@/libs/shop';
 
-export const getSeverSideProps: GetServerSideProps = async context => {
-  const { params } = context;
-  const shopId = params?.id;
-
-  return { props: { id: shopId } };
+export const getServerSideProps: GetServerSideProps<any> = async context => {
+  const { query } = context;
+  const shopId = query.id as string;
+  const shopData = getShop({ shopId: shopId });
+  return { props: { shopId } };
 };
 
-export default function ShopDetails() {
+interface ShopDetailsProps {
+  id: string;
+}
+
+export default function ShopDetails({ id }: ShopDetailsProps) {
+  console.log(id);
   const isShopData = true;
   return (
     <main className={styles.wrapper}>
       <div className={styles.myShopContainer}>
         <h1>내 가게</h1>
         {isShopData ? (
-          <ShopDetailsCard />
+          <ShopDetailsCard id={id} />
         ) : (
           <EmptyTable
             text="내 가게를 소개하고 공고도 등록해 주세요."

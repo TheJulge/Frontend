@@ -71,21 +71,25 @@
       @include mobile {
         gap: 6px;
       }
-      .pay {
+      .title {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
         p {
-          width: 100%;
           @include body1-bold(--primary);
           @include mobile {
             @include body2-bold(--primary);
           }
         }
+        span {
+          @include h1(--black);
+          @include mobile {
+            @include h1(--black);
+          }
+        }
       }
-      .time,
       .location {
         display: flex;
         align-items: center;
@@ -101,25 +105,26 @@
         }
       }
       .description {
-        p {
-          @include body1-regular(--black);
-          @include mobile {
-            @include body2-regular(--gray50);
-          }
+        @include body1-regular(--black);
+        @include mobile {
+          @include body2-regular(--gray50);
         }
       }
     }
-    .button {
+
+    .links {
       width: 100%;
       display: flex;
-      padding: 14px 136px;
-      justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       gap: 8px;
       align-self: stretch;
-      @include fillButton;
-      &:disabled {
-        @include disabledButton;
+      .editLink {
+        text-align: center;
+        @include emptyButton;
+      }
+      .noticeEnterLink {
+        text-align: center;
+        @include fillButton;
       }
     }
   }
