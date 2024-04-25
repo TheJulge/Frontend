@@ -2,6 +2,7 @@ import styles from '@/pages/signin/signin.module.scss';
 import Link from 'next/link';
 import LogoIcon from '@/public/images/sign/mainlogo.svg';
 import SignInForm from '@/components/sign/SignInForm';
+import Login from '@/components/login/Login';
 
 export default function SignIn() {
   return (
@@ -15,6 +16,7 @@ export default function SignIn() {
           <div className={styles.text}>
             회원이 아니신가요? <Link href="/signup">회원가입하기</Link>
           </div>
+          <Login />
         </div>
       </div>
     </main>
