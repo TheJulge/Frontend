@@ -26,7 +26,7 @@ const ShopCard = ({ data, url, address, originalHourlyPay }: CardPropsType) => {
   } = data;
   const date = formatNoticeTime(startsAt, workHours);
   const router = useRouter();
-  console.log(router);
+
   const [imageStyle, setImageStyle] = useState({}); // 이미지 스타일 상태
 
   const onChangeHeight = () => {
@@ -75,17 +75,7 @@ const ShopCard = ({ data, url, address, originalHourlyPay }: CardPropsType) => {
             <PinIcon />
             <p>{address}</p>
           </div>
-          <p className={styles.description}>
-            {description}
-            {description}
-            {description}
-            {description}
-            {description}
-            {description}
-            {description}
-            {description}
-            {description}
-          </p>
+          <p className={styles.description}>{description}</p>
         </div>
         <button
           type="button"
@@ -93,11 +83,10 @@ const ShopCard = ({ data, url, address, originalHourlyPay }: CardPropsType) => {
           onClick={() => {
             router.push(
               {
-                pathname: '/shops/[id]/notices',
+                pathname: '/signin',
                 query: { id: router.query.id, noticeId: router.query.noticeId },
               },
-
-              '/Mynotice',
+              // '/Mypage',
             );
           }}
         >

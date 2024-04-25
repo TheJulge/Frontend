@@ -44,10 +44,18 @@ const MyNoticeDetailPage: NextPage<NoticeDetailPageProps> = ({
                 items={items}
               />
             ) : (
-              <EmptyTable text="신청자가 없어요." buttonText="공고 등록하기" />
+              <EmptyTable
+                link=""
+                text="신청자가 없어요."
+                buttonText="공고 등록하기"
+              />
             )}
           </div>
-          <EmptyTable text="신청자가 없어요." buttonText="공고 등록하기" />
+          <EmptyTable
+            link=""
+            text="신청자가 없어요."
+            buttonText="공고 등록하기"
+          />
         </div>
       </div>
     </div>
