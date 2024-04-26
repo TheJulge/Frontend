@@ -1,0 +1,92 @@
+@import '@/components/commons/Button/Button.module.scss';
+
+.main {
+  background: var(--gray5);
+  padding: 60px 238px;
+
+  @include tablet {
+    padding: 60px 32px;
+  }
+
+  @include mobile {
+    padding: 40px 12px 80px 12px;
+  }
+}
+
+.wrapper {
+  max-width: 1024px;
+  display: block;
+  margin: 0px auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+
+  @include mobile {
+    gap: 24px;
+  }
+}
+
+.contain {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include mobile {
+    gap: 20px;
+  }
+}
+
+.box {
+  display: flex;
+  gap: 20px;
+
+  @include tablet {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 20px;
+  }
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.headLine {
+  @include h1(--black);
+  text-align: left;
+
+  @include mobile {
+    @include h3(--black);
+  }
+}
+
+.submitButton {
+  @include fillButton;
+  cursor: pointer;
+  width: 312px;
+  display: block;
+  margin: 0px auto;
+
+  @include mobile {
+    width: 100%;
+  }
+
+  &:disabled {
+    @include disabledButton;
+    width: 312px;
+    display: block;
+    margin: 0px auto;
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+}

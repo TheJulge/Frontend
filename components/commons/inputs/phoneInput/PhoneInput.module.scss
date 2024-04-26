@@ -18,23 +18,6 @@
     }
   }
 
-  .textArea {
-    @include body1-regular(--black);
-    width: 100%;
-    height: 153px;
-    padding: 16px 20px;
-    border-radius: 6px;
-    border: 1px solid var(--gray30);
-    background: var(--white);
-    outline: none;
-    margin-top: 8px;
-    resize: none;
-
-    &::placeholder {
-      color: var(--gray40);
-    }
-  }
-
   .error {
     font-size: 13px;
     color: var(--red40);
