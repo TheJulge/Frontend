@@ -57,9 +57,9 @@ export function formatWage(wage: number): string {
 export function calculatePayIncreaseRate(
   hourlyPay: number,
   originalHourlyPay: number,
-): string {
+): number {
   const increaseRate =
     ((hourlyPay - originalHourlyPay) / originalHourlyPay) * 100;
   const roundedIncreaseRate = Math.round(increaseRate); //소수점 반올림
-  return `기존 시급보다 ${roundedIncreaseRate}%`;
+  return roundedIncreaseRate;
 }

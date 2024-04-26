@@ -5,7 +5,7 @@ import {
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
 import { API } from '@/utils/constants/API';
-import { authInstance } from '@/libs';
+import { instance } from '@/libs';
 import { ShopBaseType } from '@/types/shopTypes';
 import { NoticeBaseType } from '@/types/noticeTypes';
 
@@ -41,6 +41,7 @@ export interface ApplicationPageProps {
   totalCount: number;
   itemCount: number;
 }
+
 const fetchNoticeData = async ({
   noticeId,
   shopId,
@@ -50,7 +51,7 @@ const fetchNoticeData = async ({
 }): Promise<{ data: ItemIncludeDataType<NoticeBaseType> } | ErrorData> => {
   const url = `${API.shop}/${shopId}${API.notice}/${noticeId}`;
   try {
-    return await authInstance.get(url);
+    return await instance.get(url);
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       return {
@@ -68,7 +69,7 @@ const fetchShopData = async ({
 }): Promise<{ data: ItemIncludeDataType<ShopBaseType> } | ErrorData> => {
   const url = `${API.shop}/${shopId}`;
   try {
-    return await authInstance.get(url);
+    return await instance.get(url);
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       return {
@@ -88,7 +89,7 @@ const fetchTableData = async ({
   const url = `${API.shop}/${shopId}${API.notice}/${noticeId}${API.application}`;
 
   try {
-    return await authInstance.get(url, {
+    return await instance.get(url, {
       params: { offset, limit },
     }); // API 호출 성공
   } catch (error) {
@@ -119,7 +120,7 @@ export const getServerSideProps: GetServerSideProps<
   });
   const shopData = await fetchShopData({ shopId });
   const noticeData = await fetchNoticeData({ shopId, noticeId });
-
+  // 프로미스 데이터 처리 연습
   // const promiseData = await Promise.all([
   //   fetchTableData({
   //     offset: (page - 1) * itemCount,
