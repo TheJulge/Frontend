@@ -16,9 +16,6 @@ export function formatNoticeTime(
   const minutes = ('0' + date.getMinutes()).slice(-2);
 
   const endDate = new Date(date.getTime() + workHours * 60 * 60 * 1000);
-  const endYear = endDate.getFullYear().toString().slice(-2);
-  const endMonth = ('0' + (endDate.getMonth() + 1)).slice(-2);
-  const endDay = ('0' + endDate.getDate()).slice(-2);
   const endHours = ('0' + endDate.getHours()).slice(-2);
   const endMinutes = ('0' + endDate.getMinutes()).slice(-2);
 
@@ -26,7 +23,7 @@ export function formatNoticeTime(
   let startTimeString = `${hours}:${minutes}`;
   let endTimeString = `${endHours}:${endMinutes}`;
   if (endDate.getDate() !== date.getDate()) {
-    endTimeString = `${endYear}.${endMonth}.${endDay} ${endHours}:${endMinutes}`;
+    endTimeString = `${endHours}:${endMinutes}`;
   }
 
   return [

@@ -14,6 +14,7 @@ export default function Home({
 }: NoticePageProps) {
   const [userLocation, setUserLocation] = useState('');
   const userId = getCookieValue('userId');
+
   const getUserData = async () => {
     const response = await getUser(userId);
     const getData = response.data;

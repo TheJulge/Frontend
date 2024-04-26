@@ -13,6 +13,8 @@ export default function NoticeSort() {
   const router = useRouter();
   let addressNum = 0;
 
+  // address 쿼리가 배열이라면 address 값의 개수만큼 값을 저장
+  // address 쿼리가 배열이 아니라면 1의 값을 저장
   if (router.query.address) {
     if (Array.isArray(router.query.address)) {
       addressNum = router.query.address.length;
@@ -20,6 +22,9 @@ export default function NoticeSort() {
       addressNum = 1;
     }
   }
+
+  // 각 시급과 시작일의 쿼리 값이 있다면 1의 값 추가
+  // 모든 쿼리 값을 더한 값을 저장
   const hourlyPayGteNum = router.query.hourlyPayGte ? 1 : 0;
   const startsAtGtNum = router.query.startsAtGte ? 1 : 0;
   const sumNum = addressNum + hourlyPayGteNum + startsAtGtNum;

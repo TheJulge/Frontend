@@ -4,6 +4,11 @@ import Link from 'next/link';
 import Card from '../commons/card/Card';
 import styles from './AllNoticeCard.module.scss';
 
+/**
+ * 전체 공고의 카드 컴포넌트 입니다.
+ * @param {object} props.noticeData 전체 공고 목록
+ */
+
 interface NoticeProps {
   noticeData: CardNoticeType[];
 }
