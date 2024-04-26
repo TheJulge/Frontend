@@ -27,6 +27,10 @@ export default function Modal({
     if (showModal) {
       document.body.classList.add(styles['body-scroll-lock']);
     }
+
+    return () => {
+      document.body.className = '';
+    };
   }, [showModal]);
   return (
     <Portal>
