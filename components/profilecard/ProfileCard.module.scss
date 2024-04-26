@@ -92,4 +92,8 @@
   @include mobile {
     padding: 10px 20px;
   }
+
+  a {
+    color: var(--primary);
+  }
 }
