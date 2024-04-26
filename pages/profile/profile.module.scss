@@ -13,6 +13,12 @@
   }
 }
 
+.wrapper {
+  max-width: 1024px;
+  display: block;
+  margin: 0px auto;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -65,8 +71,22 @@
 .submitButton {
   @include fillButton;
   cursor: pointer;
+  width: 312px;
+  display: block;
+  margin: 0px auto;
+
+  @include mobile {
+    width: 100%;
+  }
 
   &:disabled {
     @include disabledButton;
+    width: 312px;
+    display: block;
+    margin: 0px auto;
+
+    @include mobile {
+      width: 100%;
+    }
   }
 }

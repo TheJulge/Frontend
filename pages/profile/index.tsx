@@ -102,29 +102,31 @@ export default function Profile({ userId, previewValues }: ServerSideProps) {
         <title>내 프로필 등록 | theJulge</title>
       </Head>
       <main className={styles.main}>
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <div className={styles.headLine}>내 프로필</div>
-          <div className={styles.contain}>
-            <div className={styles.box}>
-              <BasicInput labelName="이름*" id="name" />
-              <BasicInput labelName="연락처*" id="phone" />
-              <SelectInput
-                labelName="선호 지역*"
-                options={ADDRESS}
-                name="address"
-                control={control}
-              />
+        <div className={styles.wrapper}>
+          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+            <div className={styles.headLine}>내 프로필</div>
+            <div className={styles.contain}>
+              <div className={styles.box}>
+                <BasicInput labelName="이름*" id="name" />
+                <BasicInput labelName="연락처*" id="phone" />
+                <SelectInput
+                  labelName="선호 지역*"
+                  options={ADDRESS}
+                  name="address"
+                  control={control}
+                />
+              </div>
+              <BasicInput labelName="소개" id="bio" defaultValue="" />
             </div>
-            <BasicInput labelName="소개" id="bio" defaultValue="" />
-          </div>
-          <button
-            className={styles.submitButton}
-            disabled={!isValid || status === 'fetching'}
-            type="submit"
-          >
-            등록하기
-          </button>
-        </form>
+            <button
+              className={styles.submitButton}
+              disabled={!isValid || status === 'fetching'}
+              type="submit"
+            >
+              등록하기
+            </button>
+          </form>
+        </div>
         {showModal && status === 'success' && (
           <CompletionModal
             showModal={showModal}
