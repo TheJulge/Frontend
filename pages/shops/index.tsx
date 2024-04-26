@@ -78,7 +78,7 @@ export default function Shops() {
             <div />
             <BasicInput
               labelName="가게 설명"
-              defaultValue=""
+              type="textarea"
               id="description"
             />
           </div>

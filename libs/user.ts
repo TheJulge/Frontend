@@ -1,10 +1,6 @@
 import { API } from '@/utils/constants/API';
 import { instance, authInstance } from './index';
 
-interface UserProps {
-  userId: string;
-}
-
 interface AuthProps {
   email: string;
   password: string;
@@ -44,7 +40,7 @@ export const postSignUp = (createAuthData: CreateAuthProps) => {
  * @param {string} userId
  * @returns
  */
-export const getUser = (userId: UserProps) => {
+export const getUser = (userId: string) => {
   return instance.get(`${API.user}/${userId}`);
 };
 
@@ -54,6 +50,6 @@ export const getUser = (userId: UserProps) => {
  * @returns
  */
 
-export const putUser = (userId: UserProps, userData: UserData) => {
+export const putUser = (userId: string, userData: UserData) => {
   return authInstance.put(`${API.user}/${userId}`, userData);
 };
