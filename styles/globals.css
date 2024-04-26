@@ -91,6 +91,7 @@ iframe {
 .react-datepicker__day:hover {
   background-color: var(--red20) !important;
 }
+
 #__next {
   display: flex;
   flex-direction: column;

@@ -21,7 +21,7 @@ export default function DateInput({ control }: DateInputProps) {
   };
 
   return (
-    <div className={styles.startDate}>
+    <div>
       <label htmlFor="calendar">시작 일시*</label>
       <Controller
         control={control}
@@ -30,8 +30,8 @@ export default function DateInput({ control }: DateInputProps) {
           <DatePicker
             className={styles.calendar}
             id="startsAt"
-            selected={field.value}
-            onChange={date => field.onChange(date)}
+            selected={field.value ? new Date(field.value) : null}
+            onChange={date => field.onChange(formatDate(date as Date))}
             dateFormat="yyyy-MM-dd HH:mm"
             timeInputLabel="시간:"
             timeIntervals={15}
