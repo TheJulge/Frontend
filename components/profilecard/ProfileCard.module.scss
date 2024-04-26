@@ -84,17 +84,12 @@
 
 .button {
   padding: 14px 30px;
+  text-align: center;
   &:hover {
     background-color: #f0f0f0;
   }
 
   @include mobile {
     padding: 10px 20px;
-  }
-
-  a {
-    color: var(--primary);
-    display: block;
-    padding: 14px 30px;
   }
 }

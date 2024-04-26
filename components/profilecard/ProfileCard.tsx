@@ -80,7 +80,7 @@ function ProfileCard({ data }: CardPropsType) {
         )}
 
         <div className={styles.buttonBox}>
-          <Link href="/profile" className={styles.button}>
+          <Link className={styles.button} href="/profile">
             편집하기
           </Link>
         </div>

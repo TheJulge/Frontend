@@ -76,11 +76,7 @@ export default function Profile({ userId, previewValues }: ServerSideProps) {
   } = methods;
   const handleSuccessModalClose = () => {
     setShowModal(false);
-
-    if (previewValues.name !== '') {
-      router.push(`/users/${userId}`);
-    }
-    router.push('/');
+    router.push(`/users/${userId}`);
   };
   const handleErrorModalClose = () => {
     setShowModal(false);
