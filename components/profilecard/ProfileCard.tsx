@@ -80,9 +80,9 @@ function ProfileCard({ data }: CardPropsType) {
         )}
 
         <div className={styles.buttonBox}>
-          <button className={styles.button} type="button">
-            <Link href="/profile">편집하기</Link>
-          </button>
+          <Link className={styles.button} href="/profile">
+            편집하기
+          </Link>
         </div>
       </div>
     </div>
