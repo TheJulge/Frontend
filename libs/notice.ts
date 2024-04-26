@@ -24,6 +24,15 @@ export const getCustomNotices = (address: string) => {
 };
 
 /**
+ * 맞춤 공고 조회
+ * @param {string} pay
+ * @returns
+ */
+export const getPayNotices = (pay: string) => {
+  return instance.get(`${API.notice}?sort=${pay}&limit=6`);
+};
+
+/**
  * 가게의 공고 목록 조회
  * @param {string} shopId
  * @returns
