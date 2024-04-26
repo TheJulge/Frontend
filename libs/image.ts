@@ -1,5 +1,5 @@
 import { API } from '@/utils/constants/API';
-import { authInstance } from './index';
+import { authInstance, instance } from './index';
 
 /**
  * Presigned URL을 생성
@@ -16,6 +16,6 @@ export const getPresignedUrl = async (imageName: FormData) => {
  */
 export const uploadImageToS3 = async (file: File, imageName: FormData) => {
   const presignedUrl = await getPresignedUrl(imageName);
-  const res = await authInstance.put(presignedUrl, file);
+  const res = await instance.put(presignedUrl, file);
   return res;
 };
