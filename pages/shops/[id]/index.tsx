@@ -1,5 +1,4 @@
 import { GetServerSideProps } from 'next';
-import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { instance } from '@/libs';
@@ -36,16 +35,25 @@ export default function ShopDetails({
   shopData,
   shopNoticesData,
 }: ShopDetailsProps) {
+  const [hasNext, setHasNext] = useState(shopNoticesData.hasNext);
   const [noticeList, setNoticeList] = useState(shopNoticesData.items);
-  const [page, setPage] = useState(0);
-  const router = useRouter();
+  const [offset, setOffset] = useState(6);
   const [ref, inView] = useInView();
 
+  const getNotices = async () => {
+    if (hasNext) {
+      const noticeResponse = await instance.get(
+        `/shops/${shopId}/notices?offset=${offset}&limit=6`,
+      );
+      const notices: NoticesType = await noticeResponse.data;
+      setNoticeList([...noticeList, ...notices.items]);
+      setHasNext(notices.hasNext);
+      setOffset(offset + 6);
+    }
+  };
   useEffect(() => {
     if (inView) {
-      console.log(true);
-    } else {
-      console.log(false);
+      getNotices();
     }
   }, [inView]);
 
@@ -93,12 +101,12 @@ export default function ShopDetails({
                     </React.Fragment>
                   );
                 })}
+                <div ref={ref} />
               </div>
             </>
           )}
         </div>
       </section>
-      <div ref={ref} />
     </>
   );
 }

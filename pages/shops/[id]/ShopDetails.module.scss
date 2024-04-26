@@ -62,5 +62,21 @@
         @include h3(--black);
       }
     }
+    .noticeList {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
+      grid-column-gap: 14px;
+      grid-row-gap: 32px;
+      @include tablet {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+      }
+      @include mobile {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+      }
+    }
   }
 }
