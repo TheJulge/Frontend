@@ -28,7 +28,7 @@ export default function AllNoticeCard({ noticeData }: NoticeProps) {
             <Link
               onClick={handleLink}
               href={
-                userId ? `/shop/${shopId}/notices/${noticeId}/alba` : `/signin`
+                userId ? `/shops/${shopId}/notices/${noticeId}/alba` : `/signin`
               }
             >
               <Card noticeInfo={items} />

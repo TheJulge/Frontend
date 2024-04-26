@@ -16,7 +16,7 @@ export default function GnbUser() {
   const notification = false;
   const getUserData = async () => {
     const response = await getUser(userId);
-    const getData = response.data.item.shop.item.id;
+    const getData = response.data.item.shop?.item.id;
     setShopId(getData);
   };
   useEffect(() => {
