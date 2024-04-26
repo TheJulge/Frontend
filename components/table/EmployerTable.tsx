@@ -4,7 +4,7 @@ import styles from '@/components/table/Table.module.scss';
 import { StatusButton } from '@/components/table/StatusButton';
 import Pagination from '@/components/commons/pagination/Pagination';
 import { ApplicationPageProps } from '@/ssr/noticeDetailSsr';
-import { authInstance, ssrInstance } from '@/libs';
+import { authInstance } from '@/libs';
 import { API } from '@/utils/constants/API';
 import { formatPhoneNumber } from '@/utils/phoneNumberDataFormatter';
 import { Application } from './applicationTypes';
@@ -52,6 +52,9 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
   const handleInitItemAndModalClose = () => {
     const updateItem = { item: null, type: false };
     setSelectItem({ ...updateItem });
+    if (typeof window !== 'undefined') {
+      document.body.className = '';
+    }
   };
   /**
    *
@@ -66,9 +69,6 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
     const status = type ? 'accepted' : 'rejected';
     const shopId = query.id as string;
     const noticeId = query.noticeId as string;
-    // 마라봉 2번 ,토큰형식 바꿀곳
-    // const employerToken ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNmRkODA2ZC1mZTNkLTQ1NTYtOTI1YS03Y2JjYWI0MzZiMDQiLCJpYXQiOjE3MTMzMzI3NTV9.XCtgxs6TvkP8zdkleZjgXHLehvNf4hqJgYkAlPsYPLk';
-
     const noticeListUrl = `${API.shop}/${shopId}${API.notice}/${noticeId}${API.application}/${id}`;
 
     try {
@@ -92,7 +92,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
           undefined,
           {
             shallow: false, // getServerSideProps는 같은 주소(pathname)일 경우 한번만 호출되서 이 옵션을 false로 바꿔서 호출되게 변경
-            scroll: true,
+            scroll: false,
           },
         );
       }
@@ -102,7 +102,6 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
       handleInitItemAndModalClose();
     }
   };
-  console.log(items);
 
   return (
     <div className={styles.outerContainer}>
@@ -135,7 +134,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
                 <p>{user.item.bio}</p>
               </div>
               <div className={`${styles.gridCell} `}>
-                <p>{formatPhoneNumber(user.item.phone!)}</p>
+                <p>{formatPhoneNumber(user.item.phone)}</p>
               </div>
               <div className={`${styles.gridCell} ${styles.lastCell}`}>
                 <StatusButton

@@ -47,7 +47,7 @@ const fetchUserData = async ({
 }): Promise<{ data: ItemIncludeDataType<UserBaseType> } | ErrorData> => {
   const url = `${API.user}/${userId}`;
   try {
-    return await instance.get(url);
+    return await ssrInstance.get(url);
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       return {
