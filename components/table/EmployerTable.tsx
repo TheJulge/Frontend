@@ -9,6 +9,7 @@ import { API } from '@/utils/constants/API';
 import { formatPhoneNumber } from '@/utils/phoneNumberDataFormatter';
 import { Application } from './applicationTypes';
 import ChooseModal from '../commons/modal/ChooseModal';
+import TableModal from '../commons/modal/tableModal/TableModal';
 
 /**
  * @param function EmployerTable 고용인 table컴포넌트구현
@@ -25,6 +26,8 @@ interface SelectProps {
 }
 
 function EmployerTable({ items, itemCount, totalCount }: TableProps) {
+  const [modalItem, setModalItem] = useState<Application>();
+  const [showModal, setShowModal] = useState(false);
   const router = useRouter();
   const { pathname, query } = router;
 
@@ -32,6 +35,13 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
     item: null,
     type: false,
   });
+  const handleModalOpen = (list: Application) => {
+    setModalItem(list);
+    setShowModal(true);
+  };
+  const handleClose = () => {
+    setShowModal(false);
+  };
 
   /**
    * 모달창을 열고, 공고 데이터를 selectItem 에 넣기 위한 함수
@@ -127,6 +137,15 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
               <div
                 tabIndex={0}
                 className={`${styles.gridCell} ${styles.clickDiv}`}
+                role="presentation"
+                onClick={() => {
+                  handleModalOpen(item);
+                }}
+                onKeyDown={event => {
+                  if (event.key === 'Enter') {
+                    handleModalOpen(item);
+                  }
+                }}
               >
                 <p>{user.item.bio}</p>
               </div>
@@ -148,6 +167,14 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
         })}
       </div>
       <Pagination itemCount={itemCount} totalCount={totalCount} />
+
+      {showModal && modalItem && (
+        <TableModal
+          items={modalItem}
+          showModal={showModal}
+          handleClose={handleClose}
+        />
+      )}
       {selectItem?.item?.id && (
         <ChooseModal
           showModal={!!selectItem.item}
