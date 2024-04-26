@@ -1,7 +1,7 @@
 export const shopNoticesData = {
   offset: 0,
   limit: 10,
-  count: 0,
+  count: 31,
   hasNext: true,
   items: [
     {

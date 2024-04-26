@@ -1,3 +1,5 @@
+import { useInView } from 'react-intersection-observer';
+import { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { getShop } from '@/libs/shop';
@@ -7,6 +9,8 @@ import ShopDetailsCard from '@/components/shopcard/shopDetailCard/ShopDetailsCar
 import styles from './ShopDetails.module.scss';
 import { shopData } from './shopDetailsMocks';
 import { shopNoticesData } from './shopDetailsMocks';
+import Card from '@/components/commons/card/Card';
+import { postApplication } from '@/libs/application';
 
 // export const getServerSideProps: GetServerSideProps<any> = async context => {
 //   const { query } = context;
@@ -50,8 +54,14 @@ export default function ShopDetails(
     // shopNoticesData,
   }: ShopDetailsProps,
 ) {
+  const [page, setPage] = useState(0);
+  const [ref, inView] = useInView();
   const shopId = '4490151c-5217-4157-b072-9c37b05bed47';
 
+  useEffect(() => {
+    if (inView) {
+    }
+  }, [inView]);
   return (
     <>
       <main className={styles.wrapper}>
@@ -62,14 +72,24 @@ export default function ShopDetails(
       </main>
       <section className={styles.noticeListWrapper}>
         <div className={styles.noticesContainer}>
-          <h2>등록한 공고</h2>
           {shopNoticesData.count === 0 ? (
-            <EmptyTable
-              text="공고를 등록해 보세요."
-              buttonText="공고 등록하기"
-            />
+            <>
+              <h2>등록한 공고</h2>
+              <EmptyTable
+                text="공고를 등록해 보세요."
+                buttonText="공고 등록하기"
+              />
+            </>
           ) : (
-            <div></div>
+            <>
+              <h2>내가 등록한 공고</h2>
+              <div className={styles.noticeList}>
+                {/* {shopNoticesData.items.map(notice => (
+                  <Card noticeInfo={notice} />
+                ))} */}
+              </div>
+              <div ref={ref} />
+            </>
           )}
         </div>
       </section>
