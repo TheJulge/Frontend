@@ -3,6 +3,7 @@ import ClockIcon from '@/public/images/profilecard/clockIcon.svg';
 import PinIcon from '@/public/images/profilecard/pointer.svg';
 import { formatNoticeTime } from '@/utils/noticeDataFormetters';
 import { NoticeBaseType } from '@/types/noticeTypes';
+import { useRouter } from 'next/router';
 import PayIncrease from '../commons/card/payIncrease/PayIncrease';
 import styles from './ShopCard.module.scss';
 
@@ -22,8 +23,10 @@ const ShopCard = ({ data, url, address, originalHourlyPay }: CardPropsType) => {
     startsAt,
     workhour: workHours,
     closed,
+    id,
   } = data;
   const date = formatNoticeTime(startsAt, workHours);
+  const router = useRouter();
 
   const [imageStyle, setImageStyle] = useState({}); // 이미지 스타일 상태
 
@@ -57,13 +60,15 @@ const ShopCard = ({ data, url, address, originalHourlyPay }: CardPropsType) => {
       </div>
       <div className={styles.noticeBox}>
         <div className={styles.notice} ref={divRef}>
-          <p className={styles.title}>시급</p>
-          <div className={styles.pay}>
-            <PayIncrease
-              hourlyPay={Number(pay)}
-              originalHourlyPay={originalHourlyPay}
-              closed={closed}
-            />
+          <div>
+            <p className={styles.title}>시급</p>
+            <div className={styles.pay}>
+              <PayIncrease
+                hourlyPay={Number(pay)}
+                originalHourlyPay={originalHourlyPay}
+                closed={closed}
+              />
+            </div>
           </div>
           <div className={styles.text}>
             <ClockIcon />
@@ -73,19 +78,18 @@ const ShopCard = ({ data, url, address, originalHourlyPay }: CardPropsType) => {
             <PinIcon />
             <p>{address}</p>
           </div>
-          <p className={styles.description}>
-            {description}
-            {description}
-            {description}
-            {description}
-            {description}
-            {description}
-            {description}
-            {description}
-            {description}
-          </p>
+          <p className={styles.description}>{description}</p>
         </div>
-        <button type="button" className={styles.button}>
+        <button
+          type="button"
+          className={styles.button}
+          onClick={() => {
+            router.push({
+              pathname: `/shops/${id}/notices`,
+              query: { id: router.query.id, noticeId: router.query.noticeId },
+            });
+          }}
+        >
           공고 편집하기
         </button>
       </div>

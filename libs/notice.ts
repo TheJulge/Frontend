@@ -46,8 +46,17 @@ export const getShopNotices = (shopId: NoticeProps) => {
  * @param {string} shopId
  * @returns
  */
-export const postShopNotice = (shopId: NoticeProps) => {
-  return authInstance.get(`${API.shop}/${shopId}/${API.notice}`);
+interface PostShopNoticeProps {
+  hourlyPay: number;
+  startsAt: string;
+  workhour: number;
+  description?: string;
+}
+export const postShopNotice = (
+  shopId: NoticeProps,
+  data: PostShopNoticeProps,
+) => {
+  return authInstance.post(`${API.shop}/${shopId}/${API.notice}`, data);
 };
 
 /**

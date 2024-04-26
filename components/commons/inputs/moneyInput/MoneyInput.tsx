@@ -17,16 +17,18 @@ interface MoneyInputProps extends InputProps {
  * @param {string} formattedValue 포메팅할 값
  * @returns {string} 숫자 3자리 마다 들어간 콤마 제거된 문자열
  */
-const removeComma = (formattedValue: string): string => {
-  return formattedValue.replace(/\D/g, '');
+const removeComma = (InputValue: number): string => {
+  if (typeof InputValue !== 'number') {
+    return InputValue;
+  }
+  return String(InputValue).replace(/\D/g, '');
 };
-/**
- *
- * @param {string} InputValue 포메팅할 값
- * @returns {string} 숫자를 제외한 문자들 공백으로 변환 및 숫자 3자리마다 콤마 삽입된 문자열
- */
-const formatWage = (InputValue: string): string => {
-  const numericValue = InputValue.replace(/\D/g, '');
+
+const addComma = (InputValue: number): string => {
+  if (typeof InputValue !== 'number') {
+    return InputValue;
+  }
+  const numericValue = String(InputValue).replace(/\D/g, '');
   const formattedValue = numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
   return formattedValue;
@@ -49,15 +51,13 @@ export default function MoneyInput({
   });
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
-    const { value } = event.currentTarget;
-    const formattedValue = formatWage(value);
-    inputProps.onChange(formattedValue);
+    inputProps.onChange(removeComma(Number(event.currentTarget.value)));
   };
 
   const handleBlur = () => {
     const value = Number(removeComma(inputProps.value));
     if (value < MINIMUM_WAGE) {
-      inputProps.onChange(formatWage(String(MINIMUM_WAGE)));
+      inputProps.onChange(Number(addComma(MINIMUM_WAGE)));
     }
   };
 
@@ -72,7 +72,7 @@ export default function MoneyInput({
           placeholder="입력"
           onChange={handleChange}
           onBlur={handleBlur}
-          value={inputProps.value}
+          value={addComma(inputProps.value)}
         />
         <div className={styles.won}>원</div>
       </div>

@@ -1,5 +1,5 @@
 import { API } from '@/utils/constants/API';
-import { NoticeData } from '@/pages/shops';
+import { FieldValues } from 'react-hook-form';
 import { instance, authInstance } from './index';
 
 interface ShopProps {
@@ -10,7 +10,16 @@ interface ShopProps {
  * 가게 정보 등록
  * @returns
  */
-export const postShop = (data: NoticeData) => {
+// interface NoticeData {
+//   name: string;
+//   category: string;
+//   address1: string;
+//   address2: string;
+//   description?: string;
+//   imageUrl?: string;
+//   originalHourlyPay: number;
+// }
+export const postShop = (data: FieldValues) => {
   return authInstance.post(`${API.shop}`, data);
 };
 
