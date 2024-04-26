@@ -88,7 +88,7 @@ export default function Profile({ userId, previewValues }: ServerSideProps) {
   const onSubmit: SubmitHandler<UserData> = async (data: UserData) => {
     setStatus('fetching');
     try {
-      const response = await putUser({ userId }, data);
+      const response = await putUser(userId, data);
       if (response.status === 200) {
         setStatus('success');
         setShowModal(true);
