@@ -10,6 +10,7 @@ import CompletionModal from '@/components/commons/modal/completionModal/Completi
 import { GetServerSidePropsContext } from 'next';
 import findCookieValue from '@/utils/findCookieValue';
 import { useRouter } from 'next/router';
+import PhoneInput from '@/components/commons/inputs/phoneInput/PhoneInput';
 
 interface UserData {
   name: string;
@@ -108,7 +109,12 @@ export default function Profile({ userId, previewValues }: ServerSideProps) {
             <div className={styles.contain}>
               <div className={styles.box}>
                 <BasicInput labelName="이름*" id="name" />
-                <BasicInput labelName="연락처*" id="phone" />
+                {/* <BasicInput labelName="연락처*" id="phone" /> */}
+                <PhoneInput
+                  labelName="연락처*"
+                  name="phone"
+                  control={control}
+                />
                 <SelectInput
                   labelName="선호 지역*"
                   options={ADDRESS}

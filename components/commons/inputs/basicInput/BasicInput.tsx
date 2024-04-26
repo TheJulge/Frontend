@@ -6,7 +6,9 @@ import { FieldError, useFormContext } from 'react-hook-form';
 /**
  *
  * @param {labelName} props label로 사용할 input의 이름을 적어주면 됩니다.
+ * @param {type} props Basic input을 textarea로 사용하고싶을때만 type='textarea' 추가
  */
+
 interface BasicInputProps extends InputProps {
   type?: string;
 }
