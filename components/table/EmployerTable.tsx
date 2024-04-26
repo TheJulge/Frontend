@@ -26,7 +26,7 @@ interface SelectProps {
 }
 
 function EmployerTable({ items, itemCount, totalCount }: TableProps) {
-  const [modalItem, setModalItem] = useState('');
+  const [modalItem, setModalItem] = useState<Application>();
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
   const { pathname, query } = router;
@@ -35,8 +35,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
     item: null,
     type: false,
   });
-  const handleModalOpen = (list: any) => {
-    console.log(list);
+  const handleModalOpen = (list: Application) => {
     setModalItem(list);
     setShowModal(true);
   };

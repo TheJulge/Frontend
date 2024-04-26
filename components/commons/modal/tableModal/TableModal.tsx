@@ -1,5 +1,4 @@
-// import { StatusButton } from '@/components/table/StatusButton';
-// import { ItemType } from '@/components/table/applicationTypes';
+import { Application } from '@/components/table/applicationTypes';
 import Modal from '../Modal';
 import TableModalTop from './TableModalTop';
 import TableModalText from './TableModalText';
@@ -16,7 +15,7 @@ import styles from './TableModal.module.scss';
 interface TableModalProps {
   showModal: boolean;
   handleClose: () => void;
-  items: any;
+  items: Application;
 }
 export default function TableModal({
   showModal,
@@ -37,14 +36,6 @@ export default function TableModal({
           />
           <TableModalText text={user.item.bio!} />
         </div>
-        {/* <div className={styles.tableModalButton}>
-          <StatusButton
-            item={item}
-            status={item.status}
-            onUpdateItemAndModalOpen={handleClose}
-            type="employer"
-          />
-        </div> */}
       </div>
     </Modal>
   );
