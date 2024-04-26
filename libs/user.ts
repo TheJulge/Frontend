@@ -17,10 +17,10 @@ interface CreateAuthProps {
 }
 
 interface UserData {
-  name: 'string';
-  phone: 'string';
-  address: 'string';
-  bio?: 'string';
+  name: string;
+  phone: string;
+  address: string;
+  bio?: string;
 }
 
 /**

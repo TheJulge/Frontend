@@ -12,10 +12,10 @@ import findCookieValue from '@/utils/findCookieValue';
 import { useRouter } from 'next/router';
 
 interface UserData {
-  name: 'string';
-  phone: 'string';
-  address: 'string';
-  bio?: 'string';
+  name: string;
+  phone: string;
+  address: string;
+  bio?: string;
 }
 
 interface ServerSideProps {
@@ -73,6 +73,10 @@ export default function Profile({ userId, previewValues }: ServerSideProps) {
   } = methods;
   const handleSuccessModalClose = () => {
     setShowModal(false);
+
+    if (previewValues.name !== '') {
+      router.push(`/users/${userId}`);
+    }
     router.push('/');
   };
   const handleErrorModalClose = () => {
