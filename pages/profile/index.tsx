@@ -116,7 +116,7 @@ export default function Profile({ userId, previewValues }: ServerSideProps) {
                   control={control}
                 />
               </div>
-              <BasicInput labelName="소개" id="bio" defaultValue="" />
+              <BasicInput labelName="소개" id="bio" type="textarea" />
             </div>
             <button
               className={styles.submitButton}
