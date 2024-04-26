@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { NextResponse } from 'next/server';
 
 interface UserDataProps {
   id: number;
@@ -39,20 +40,40 @@ function Login() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const codeParam = urlParams.get('code');
-    console.log(codeParam);
+    console.log('코드', codeParam);
     if (codeParam && token === null) {
       const getAccessToken = async () => {
-        await fetch(`/api/getAccessToken?code=${codeParam}`, { method: 'GET' })
-          .then(response => {
-            return response.json();
-          })
-          .then(data => {
-            console.log(data);
-            if (data.access_token) {
-              localStorage.setItem('accessToken', data.access_token);
-              setIsRerender(!isRerender);
-            }
+        try {
+          const code = codeParam;
+
+          const baseUrl = 'https://github.com/login/oauth/access_token';
+          const config = {
+            client_id: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID || '',
+            client_secret: process.env.GITHUB_CLIENT_SECRET || '',
+            code: code || '',
+            redirect_uri: 'http://localhost:3000/signin',
+          };
+          const params = new URLSearchParams(config).toString();
+          const finalUrl = `${baseUrl}?${params}`;
+
+          const data = await axios(finalUrl, {
+            method: 'POST',
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              Accept: 'application/json',
+            },
           });
+
+          return new NextResponse(JSON.stringify(data), {
+            status: 200,
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+            },
+          });
+        } catch (error) {
+          console.log(error);
+          return new NextResponse('Internal Server Error', { status: 500 });
+        }
       };
       getAccessToken();
     }
