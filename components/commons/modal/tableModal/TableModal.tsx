@@ -1,7 +1,5 @@
-import { StatusButton } from '@/components/table/StatusButton';
-import { ItemType } from '@/components/table/applicationTypes';
-import axios from 'axios';
-import { useRouter } from 'next/router';
+// import { StatusButton } from '@/components/table/StatusButton';
+// import { ItemType } from '@/components/table/applicationTypes';
 import Modal from '../Modal';
 import TableModalTop from './TableModalTop';
 import TableModalText from './TableModalText';
@@ -18,19 +16,16 @@ import styles from './TableModal.module.scss';
 interface TableModalProps {
   showModal: boolean;
   handleClose: () => void;
-  items: ItemType;
+  items: any;
 }
 export default function TableModal({
   showModal,
   handleClose,
   items,
 }: TableModalProps) {
-  const { item } = items;
-  const {
-    item: { user },
-  } = items;
+  const { user } = items;
 
-  console.log(item);
+  // console.log(item);
   return (
     <Modal showModal={showModal} handleClose={handleClose}>
       <div className={styles.tableModal}>
@@ -42,14 +37,14 @@ export default function TableModal({
           />
           <TableModalText text={user.item.bio!} />
         </div>
-        <div className={styles.tableModalButton}>
+        {/* <div className={styles.tableModalButton}>
           <StatusButton
             item={item}
             status={item.status}
             onUpdateItemAndModalOpen={handleClose}
             type="employer"
           />
-        </div>
+        </div> */}
       </div>
     </Modal>
   );

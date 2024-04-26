@@ -26,8 +26,8 @@ interface SelectProps {
 }
 
 function EmployerTable({ items, itemCount, totalCount }: TableProps) {
+  const [modalItem, setModalItem] = useState('');
   const [showModal, setShowModal] = useState(false);
-  const [modalIndex, setModalIndex] = useState(0);
   const router = useRouter();
   const { pathname, query } = router;
 
@@ -35,8 +35,9 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
     item: null,
     type: false,
   });
-  const handleModalOpen = (index: number) => {
-    setModalIndex(index);
+  const handleModalOpen = (list: any) => {
+    console.log(list);
+    setModalItem(list);
     setShowModal(true);
   };
   const handleClose = () => {
@@ -112,7 +113,6 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
       handleInitItemAndModalClose();
     }
   };
-  console.log(selectItem);
 
   return (
     <div className={styles.outerContainer}>
@@ -130,7 +130,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
           <h6>상태</h6>
         </div>
 
-        {items.map((list, index) => {
+        {items.map(list => {
           const { item } = list;
           const { user } = item;
           return (
@@ -143,11 +143,11 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
                 className={`${styles.gridCell} ${styles.clickDiv}`}
                 role="presentation"
                 onClick={() => {
-                  handleModalOpen(index);
+                  handleModalOpen(item);
                 }}
                 onKeyDown={event => {
                   if (event.key === 'Enter') {
-                    handleModalOpen(index);
+                    handleModalOpen(item);
                   }
                 }}
               >
@@ -181,7 +181,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
       )} */}
       {showModal && (
         <TableModal
-          items={items[modalIndex]}
+          items={modalItem}
           showModal={showModal}
           handleClose={handleClose}
         />
