@@ -5,15 +5,15 @@ import styles from './EmptyTable.module.scss';
 interface EmptyTableProps {
   text: string;
   buttonText: string;
+  link: string;
 }
 
-function EmptyTable({ text, buttonText }: EmptyTableProps) {
+function EmptyTable({ text, buttonText, link }: EmptyTableProps) {
   return (
     <div className={styles.container}>
       <p>{text}</p>
-      //공고 목록 페이지로 이동
       <button className={styles.button} type="button">
-        <Link href="/">{buttonText}</Link>
+        <Link href={link}>{buttonText}</Link>
       </button>
     </div>
   );

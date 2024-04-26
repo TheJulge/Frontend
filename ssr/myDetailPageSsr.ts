@@ -5,8 +5,9 @@ import {
 import { API } from '@/utils/constants/API';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
-import { authInstance, instance } from '@/libs';
+import { ssrInstance, instance } from '@/libs';
 import { UserBaseType } from '@/types/userTypes';
+import { setServerSideCookie } from '@/utils/setServerSideCookie';
 
 export interface MyDetailPageProps {
   items: ItemsType;
@@ -46,7 +47,7 @@ const fetchUserData = async ({
 }): Promise<{ data: ItemIncludeDataType<UserBaseType> } | ErrorData> => {
   const url = `${API.user}/${userId}`;
   try {
-    return await instance.get(url);
+    return await ssrInstance.get(url);
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       return {
@@ -63,14 +64,9 @@ const fetchTableData = async ({
   userId,
 }: FetchParams): Promise<FetchData | ErrorData> => {
   const noticeListUrl = `${API.user}/${userId}${API.application}`;
-  const employeeToken =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwNjJkM2YyOS0wZDQ1LTQ3MjMtYWY1OS03NGI1YzQxZWM0MjUiLCJpYXQiOjE3MTMzMzI5Njh9.Mrb5prS4ZjQDoZycz4CXLGk069fXXby_H26yrLYwd_I';
   try {
-    return await authInstance.get(noticeListUrl, {
+    return await ssrInstance.get(noticeListUrl, {
       params: { offset, limit },
-      headers: {
-        Authorization: `Bearer ${employeeToken}`,
-      },
     }); // API 호출 성공
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
@@ -85,6 +81,7 @@ const fetchTableData = async ({
 export const getServerSideProps: GetServerSideProps<
   ApplicationPageProps
 > = async context => {
+  setServerSideCookie(context);
   const { query } = context;
   const userId = query.id as string;
   const page = parseInt(query.page as string, 10) || 1;

@@ -4,43 +4,32 @@ import BasicInput from '@/components/commons/inputs/basicInput/BasicInput';
 import SelectInput from '@/components/commons/inputs/selectInput/SelectInput';
 import { ADDRESS, OPTIONS } from '@/utils/constants/SELECT';
 import MoneyInput from '@/components/commons/inputs/moneyInput/MoneyInput';
-import AddImage from '@/public/images/updateShop/addImage.svg';
 import classNames from 'classnames';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 // import { postShop } from '@/libs/shop';
 // import { useRouter } from 'next/router';
+import ImageInput from '@/components/commons/inputs/imageInput/ImageInput';
 import styles from './shops.module.scss';
 
-export interface NoticeData {
-  name: string;
-  category: string;
-  address1: string;
-  address2: string;
-  description?: string;
-  imageUrl?: string;
-  originalHourlyPay: number;
-}
 export default function Shops() {
   // const router = useRouter();
   const methods = useForm<FieldValues>({
     mode: 'onBlur',
-    // TODO: 랜더링 전에 GET /shops/{shop_id} 이전에 작성한 정보 받아와서 기본값 설정, 없으면 빈 값
-    // defaultValues: {
-    //   name: '김기형',
-    //   category: '한정식',
-    //   address1: '서울시 길바닥',
-    //   address2: '가가가자',
-    //   description: '맛집이다',
-    //   imageUrl: '',
-    //   originalHourlyPay: 888888,
-    // },
+    defaultValues: {
+      name: '',
+      category: '',
+      address1: '',
+      address2: '',
+      description: '',
+      imageUrl: '',
+      originalHourlyPay: '',
+    },
   });
   const {
     handleSubmit,
     control,
     formState: { isValid },
   } = methods;
-
   const onSubmit = async (data: FieldValues) => {
     console.log(data);
     // TODO 지혜님 전송할때 시급 string => number로 형 변환해야합니다!!
@@ -55,10 +44,7 @@ export default function Shops() {
     //   console.log(e);
     // }
   };
-  // const handleImageUpload = event => {
-  //   const file = event.target.files[0];
-  //   // 파일을 업로드하는 로직을 추가
-  // };
+
   return (
     <FormProvider {...methods}>
       <Head>
@@ -88,27 +74,11 @@ export default function Shops() {
               id="originalHourlyPay"
             />
             <div />
-            <div className={styles.imageInput}>
-              <div className={styles.inputTitle}>가게 이미지</div>
-              <div className={styles.shopImage}>
-                {/* <div
-                  className={styles.imagePreview}
-                  style={{ backgroundImage: `url(${imageUrl})` }}
-                  id="imageUrl"
-                /> */}
-                <AddImage viewBox="0 0 110 63" />
-              </div>
-              {/* <input
-                id="imageUpload"
-                type="file"
-                style={{ display: 'none' }}
-                onChange={handleImageUpload}
-              /> */}
-            </div>
+            <ImageInput />
             <div />
             <BasicInput
               labelName="가게 설명"
-              defaultValue=""
+              type="textarea"
               id="description"
             />
           </div>

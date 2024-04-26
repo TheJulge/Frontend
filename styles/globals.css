@@ -64,12 +64,34 @@ iframe {
   color: #a8a8a8 !important;
 }
 .react-datepicker__day--keyboard-selected {
-  /* 캘린더 스타일 변경 2024-04-23 임동현 */
   background-color: var(--primary) !important;
   color: var(--white) !important;
 }
 .react-datepicker-popper[data-placement^='bottom'] .react-datepicker__triangle {
   display: none !important;
+}
+.react-datepicker__triangle {
+  display: none;
+}
+.react-datepicker__day--selected {
+  background-color: var(--primary) !important;
+}
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item--selected {
+  background-color: var(--primary) !important;
+}
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item:hover {
+  background-color: var(--red20) !important;
+}
+.react-datepicker__day:hover {
+  background-color: var(--red20) !important;
 }
 
 #__next {

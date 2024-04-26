@@ -44,8 +44,10 @@ export default function Card({ noticeInfo }: CardProp) {
         <div className={styles.notice}>
           <span className={styles.shopName}>{shopData.name}</span>
           <div className={styles.time}>
-            <ClockIcon />
-            <div>
+            <div className={styles.iconBox}>
+              <ClockIcon viewBox="0 0 20 20" />
+            </div>
+            <div className={styles.timeText}>
               <span className={styles.data}>{startDate}</span>
               <span className={styles.hour}>{workHour}</span>
             </div>

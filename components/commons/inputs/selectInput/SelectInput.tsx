@@ -3,7 +3,7 @@ import DropDown from '@/components/commons/dropDown/Dropdown';
 import React, { useState, useRef } from 'react';
 import DropDownUpIcon from '@/public/images/inputs/dropDownUp.svg';
 import DropDownDownIcon from '@/public/images/inputs/dropDownDown.svg';
-import { Control, useController } from 'react-hook-form';
+import { useController } from 'react-hook-form';
 
 /**
  * @param {object} props
@@ -17,7 +17,7 @@ interface SelectInputProps {
   labelName: string;
   options: string[];
   name: string;
-  control: Control;
+  control: any;
 }
 
 export default function SelectInput({

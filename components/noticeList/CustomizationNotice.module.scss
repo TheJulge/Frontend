@@ -9,7 +9,6 @@
     margin: 0 auto;
     h2 {
       @include h1(--black);
-      // swiper 상위 부모에 flex 넣지말아야 함
       margin-bottom: 31px;
       @include mobile {
         margin-bottom: 16px;
@@ -20,6 +19,16 @@
       width: 312px;
       @include mobile {
         width: 171px;
+      }
+      a {
+        cursor: pointer;
+        transition: transform 0.3s;
+        &:hover {
+          img {
+            transition: transform 0.3s;
+            transform: scale(1.1);
+          }
+        }
       }
     }
   }

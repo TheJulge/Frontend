@@ -1,0 +1,23 @@
+.imageInput {
+  .inputTitle {
+    @include body1-regular(--black);
+  }
+  display: flex;
+  flex-direction: column;
+
+  .shopImage {
+    max-width: 100%;
+    height: 276px;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    .image {
+      max-width: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

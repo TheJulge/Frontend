@@ -9,6 +9,7 @@
     gap: 16px 8px;
   }
   li {
+    cursor: pointer;
     transition: transform 0.3s;
     &:hover {
       img {
