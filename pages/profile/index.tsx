@@ -42,8 +42,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     address: '',
     bio: '',
   };
-  const response = await getUser({ userId });
+
   if (isProfile) {
+    const response = await getUser({ userId });
+
     previewValues.name = response.data.item.name;
     previewValues.phone = response.data.item.phone;
     previewValues.address = response.data.item.address;
