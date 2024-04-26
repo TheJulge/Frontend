@@ -5,7 +5,7 @@ import {
 import { API } from '@/utils/constants/API';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
-import { ssrInstance, instance } from '@/libs';
+import { ssrInstance } from '@/libs';
 import { UserBaseType } from '@/types/userTypes';
 import { setServerSideCookie } from '@/utils/setServerSideCookie';
 

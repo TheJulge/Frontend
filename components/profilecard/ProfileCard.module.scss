@@ -83,7 +83,6 @@
 }
 
 .button {
-  @include basicButton(var(--primary), var(--white), 1px solid var(--primary));
   padding: 14px 30px;
   &:hover {
     background-color: #f0f0f0;
@@ -95,5 +94,7 @@
 
   a {
     color: var(--primary);
+    display: block;
+    padding: 14px 30px;
   }
 }
