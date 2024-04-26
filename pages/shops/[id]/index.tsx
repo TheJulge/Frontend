@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { instance } from '@/libs';
 import EmptyTable from '@/components/table/emptytable/EmptyTable';
@@ -72,9 +72,25 @@ export default function ShopDetails({
             <>
               <h2>내가 등록한 공고</h2>
               <div className={styles.noticeList}>
-                {/* {shopNoticesData.items.map(notice => (
-                  <Card noticeInfo={notice} />
-                ))} */}
+                {noticeList.map(item => {
+                  const notice = item.item;
+                  const shop = shopData.item;
+                  return (
+                    <React.Fragment key={notice.id}>
+                      <Card
+                        hourlyPay={notice.hourlyPay}
+                        startsAt={notice.startsAt}
+                        workhour={notice.workhour}
+                        closed={notice.closed}
+                        shopName={shop.name}
+                        address={shop.address1}
+                        imageUrl={shop.imageUrl}
+                        originalHourlyPay={shop.originalHourlyPay}
+                        links={item.links}
+                      />
+                    </React.Fragment>
+                  );
+                })}
               </div>
             </>
           )}

@@ -20,11 +20,8 @@ interface CustomProps {
 
 export default function CustomizationNotice({ customType }: CustomProps) {
   const router = useRouter();
-  const userId = getCookieValue('userId');
+
   const [contents, setContents] = useState([]);
-  const handleLink = () => {
-    if (!userId) alert('로그인이 필요한 서비스 입니다.');
-  };
 
   // 맞춤 공고를 기준으로 할 type을 비교해서 데이터를 가져오는 함수입니다.
   // 타입이 pay라면 시급이 높은 순으로 정렬되어 있는 데이터를 받아옵니다.
@@ -71,21 +68,22 @@ export default function CustomizationNotice({ customType }: CustomProps) {
           }}
           modules={[Autoplay]}
         >
-          {contents.map((items: CardNoticeType) => {
-            const noticeId = items.item.id;
-            const shopId = items.item.shop.item.id;
+          {contents.map((item: CardNoticeType) => {
+            const notice = item.item;
+            const shop = item.item.shop.item;
             return (
-              <SwiperSlide className={styles.swiperNotice} key={items.item.id}>
-                <Link
-                  onClick={handleLink}
-                  href={
-                    userId
-                      ? `/shops/${shopId}/notices/${noticeId}/alba`
-                      : `/signin`
-                  }
-                >
-                  <Card noticeInfo={items} />
-                </Link>
+              <SwiperSlide className={styles.swiperNotice} key={notice.id}>
+                <Card
+                  hourlyPay={notice.hourlyPay}
+                  startsAt={notice.startsAt}
+                  workhour={notice.workhour}
+                  closed={notice.closed}
+                  shopName={shop.name}
+                  address={shop.address1}
+                  imageUrl={shop.imageUrl}
+                  originalHourlyPay={shop.originalHourlyPay}
+                  links={item.links}
+                />
               </SwiperSlide>
             );
           })}

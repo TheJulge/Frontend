@@ -1,6 +1,4 @@
 import { CardNoticeType } from '@/types/noticeTypes';
-import { getCookieValue } from '@/utils/getCookie';
-import Link from 'next/link';
 import Card from '../commons/card/Card';
 import styles from './AllNoticeCard.module.scss';
 
@@ -14,25 +12,24 @@ interface NoticeProps {
 }
 
 export default function AllNoticeCard({ noticeData }: NoticeProps) {
-  const userId = getCookieValue('userId');
-  const handleLink = () => {
-    if (!userId) alert('로그인이 필요한 서비스 입니다.');
-  };
   return (
     <ul className={styles.cardContainer}>
-      {noticeData.map((items: CardNoticeType) => {
-        const noticeId = items.item.id;
-        const shopId = items.item.shop.item.id;
+      {noticeData.map((item: CardNoticeType) => {
+        const notice = item.item;
+        const shop = item.item.shop.item;
         return (
-          <li key={items.item.id} role="presentation">
-            <Link
-              onClick={handleLink}
-              href={
-                userId ? `/shops/${shopId}/notices/${noticeId}/alba` : `/signin`
-              }
-            >
-              <Card noticeInfo={items} />
-            </Link>
+          <li key={notice.id} role="presentation">
+            <Card
+              hourlyPay={notice.hourlyPay}
+              startsAt={notice.startsAt}
+              workhour={notice.workhour}
+              closed={notice.closed}
+              shopName={shop.name}
+              address={shop.address1}
+              imageUrl={shop.imageUrl}
+              originalHourlyPay={shop.originalHourlyPay}
+              links={item.links}
+            />
           </li>
         );
       })}
