@@ -44,7 +44,7 @@ export const postSignUp = (createAuthData: CreateAuthProps) => {
  * @param {string} userId
  * @returns
  */
-export const getUser = (userId: UserProps) => {
+export const getUser = (userId: string) => {
   return instance.get(`${API.user}/${userId}`);
 };
 

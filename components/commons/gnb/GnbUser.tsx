@@ -12,6 +12,7 @@ export default function GnbUser() {
   const [shopId, setShopId] = useState();
   const type = getCookieValue('type');
   const userId = getCookieValue('userId');
+  const isProfile = getCookieValue('isProfile');
 
   const notification = false;
   const getUserData = async () => {
@@ -30,7 +31,9 @@ export default function GnbUser() {
       <div className={styles.headerMenu}>
         {type === 'employee' && (
           <>
-            <Link href={`/users/${userId}`}>내 프로필</Link>
+            <Link href={isProfile ? `/users/${userId}` : `/profile`}>
+              내 프로필
+            </Link>
             <SignOutButton />
             <button type="button" className={styles.notification}>
               {notification ? (
