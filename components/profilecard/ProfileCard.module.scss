@@ -85,15 +85,12 @@
 .button {
   @include basicButton(var(--primary), var(--white), 1px solid var(--primary));
   padding: 14px 30px;
+  text-align: center;
   &:hover {
     background-color: #f0f0f0;
   }
 
   @include mobile {
     padding: 10px 20px;
-  }
-
-  a {
-    color: var(--primary);
   }
 }
