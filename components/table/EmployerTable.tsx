@@ -4,7 +4,7 @@ import styles from '@/components/table/Table.module.scss';
 import { StatusButton } from '@/components/table/StatusButton';
 import Pagination from '@/components/commons/pagination/Pagination';
 import { ApplicationPageProps } from '@/ssr/noticeDetailSsr';
-import { instance } from '@/libs';
+import { authInstance } from '@/libs';
 import { API } from '@/utils/constants/API';
 import { formatPhoneNumber } from '@/utils/phoneNumberDataFormatter';
 import { Application } from './applicationTypes';
@@ -43,6 +43,11 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
     setShowModal(false);
   };
 
+  /**
+   * 모달창을 열고, 공고 데이터를 selectItem 에 넣기 위한 함수
+   * @param select 공고 데이터
+   * @param type 승인/거절
+   */
   const handleModalOpenWithSelectApplicaiton = (
     select: Application,
     type: boolean,
@@ -51,19 +56,29 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
     setSelectItem({ ...updateItem });
   };
 
+  /**
+   * handleInitItemAndModalClose은 모달을 끄기위해 공고 데이터를 초기화 (null)하는 함수
+   */
   const handleInitItemAndModalClose = () => {
     const updateItem = { item: null, type: false };
     setSelectItem({ ...updateItem });
+    if (typeof window !== 'undefined') {
+      document.body.className = '';
+    }
   };
+  /**
+   *
+   * @param type boolean true면 승인, false면 거절
+   * @param id 공고에 지원한 목록 아이디
+   * 마지막에 모달을 닫는 함수 handleInitItemAndModalClose가 있다.
+   * api요청이 성공하면 쿼리를 유지하면서 getServerSideProps를 다시 호출해서 데이터 상태 변경
+   * @returns
+   */
 
   const handleStatusChange = async (type: boolean, id: string) => {
     const status = type ? 'accepted' : 'rejected';
     const shopId = query.id as string;
     const noticeId = query.noticeId as string;
-    // 마라봉 2번 ,토큰형식 바꿀곳
-    const employerToken =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNmRkODA2ZC1mZTNkLTQ1NTYtOTI1YS03Y2JjYWI0MzZiMDQiLCJpYXQiOjE3MTMzMzI3NTV9.XCtgxs6TvkP8zdkleZjgXHLehvNf4hqJgYkAlPsYPLk';
-
     const noticeListUrl = `${API.shop}/${shopId}${API.notice}/${noticeId}${API.application}/${id}`;
 
     try {
@@ -71,11 +86,9 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
         return;
       }
       // api보내고 바로 또 쿼리 날려서 데이터 재조회
-      const fetch = await instance(noticeListUrl, {
+      const fetch = await authInstance(noticeListUrl, {
         method: 'PUT',
-        headers: {
-          Authorization: `Bearer ${employerToken}`,
-        },
+
         data: {
           status,
         },
@@ -89,7 +102,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
           undefined,
           {
             shallow: false, // getServerSideProps는 같은 주소(pathname)일 경우 한번만 호출되서 이 옵션을 false로 바꿔서 호출되게 변경
-            scroll: true,
+            scroll: false,
           },
         );
       }
@@ -141,7 +154,7 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
                 <p>{user.item.bio}</p>
               </div>
               <div className={`${styles.gridCell} `}>
-                <p>{formatPhoneNumber(user.item.phone!)}</p>
+                <p>{formatPhoneNumber(user.item.phone)}</p>
               </div>
               <div className={`${styles.gridCell} ${styles.lastCell}`}>
                 <StatusButton

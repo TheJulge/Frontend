@@ -1,4 +1,4 @@
-import { LOCATION_FILTER } from '@/utils/constants/TOAST';
+import { LOCATION_FILTER } from '@/utils/constants/NOTICE';
 import React from 'react';
 import CloseIcon from '@/public/images/filter/close.svg';
 import styles from './FilterLocation.module.scss';
@@ -8,14 +8,10 @@ import styles from './FilterLocation.module.scss';
  * @param {Select[]} props.selectLocation 주소 값
  * @param {function} props.setSelectLocation 주소 값 결정
  */
-interface Location {
-  id: number;
-  name: string;
-}
 
 interface LocationProps {
-  selectLocation: Location[];
-  setSelectLocation: React.Dispatch<React.SetStateAction<Location[]>>;
+  selectLocation: string[];
+  setSelectLocation: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 export default function FilterLocation({
@@ -24,15 +20,15 @@ export default function FilterLocation({
 }: LocationProps) {
   // 위치를 클릭하면 해당 id와 vqlue가 저장됩니다.
   // 저장되어있는 value를 클릭시 저장이 안 됩니다.
-  const handleLocation = (id: number, name: string) => {
-    if (!selectLocation.some(item => item.id === id)) {
-      setSelectLocation(prev => [...prev, { id, name }]);
+  const handleLocation = (name: string) => {
+    if (!selectLocation.some(location => location === name)) {
+      setSelectLocation(prev => [...prev, name]);
     }
   };
 
   // x 버튼 클릭시 해당 위치 value가 배열에서 사라집니다.
-  const handleLocationDelete = (id: number) => {
-    setSelectLocation(prev => prev.filter(item => item.id !== id));
+  const handleLocationDelete = (name: string) => {
+    setSelectLocation(prev => prev.filter(location => location !== name));
   };
 
   return (
@@ -40,10 +36,11 @@ export default function FilterLocation({
       <h6>위치</h6>
       <div className={styles.locationBox}>
         <ul className={styles.locationContainer}>
-          {LOCATION_FILTER.map(({ id, name }) => {
+          {LOCATION_FILTER.map((name, index) => {
             return (
-              <li key={id}>
-                <button type="button" onClick={() => handleLocation(id, name)}>
+              // eslint-disable-next-line react/no-array-index-key
+              <li key={index}>
+                <button type="button" onClick={() => handleLocation(name)}>
                   {name}
                 </button>
               </li>
@@ -54,14 +51,15 @@ export default function FilterLocation({
 
       {selectLocation.length > 0 && (
         <ul className={styles.selectLocation}>
-          {selectLocation.map(({ id, name }) => {
+          {selectLocation.map((address, index) => {
             return (
-              <li key={id}>
-                {name}
+              // eslint-disable-next-line react/no-array-index-key
+              <li key={index}>
+                {address}
                 <button
                   type="button"
                   aria-label="삭제"
-                  onClick={() => handleLocationDelete(id)}
+                  onClick={() => handleLocationDelete(address)}
                 >
                   <CloseIcon viewBox="0 0 16 16" />
                 </button>

@@ -39,7 +39,7 @@ function Pagination({ totalCount, itemCount }: PageNationProps) {
       undefined,
       {
         shallow: false, // getServerSideProps는 같은 주소(pathname)일 경우 한번만 호출되서 이 옵션을 false로 바꿔서 호출되게 변경
-        scroll: true,
+        scroll: false,
       },
     );
   };

@@ -33,8 +33,12 @@ export default function PayIncrease({
     >
       <span className={styles.pay}>{formatWage(hourlyPay)}</span>
       {hourlyPay > originalHourlyPay && (
-        <div className={styles.payIncrease}>
-          <span>{increaseRate}</span>
+        <div
+          className={classNames(styles.payIncrease, {
+            [styles.highIncrease]: increaseRate >= 50,
+          })}
+        >
+          <span>{`기존 시급보다 ${increaseRate}%`}</span>
           <ArrowUpIcon />
         </div>
       )}

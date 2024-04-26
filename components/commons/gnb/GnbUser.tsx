@@ -1,3 +1,6 @@
+import { getCookieValue } from '@/utils/getCookie';
+import { useEffect, useState } from 'react';
+import { getUser } from '@/libs/user';
 import Link from 'next/link';
 import NotiIcon from '@/public/images/gnb/notification.svg';
 import NotiActiveIcon from '@/public/images/gnb/notification-active.svg';
@@ -5,45 +8,62 @@ import styles from './GnbUser.module.scss';
 import SignOutButton from './SignOutButton';
 
 export default function GnbUser() {
-  // type과 notification은 추후에 유저데이터 (전역상태) 로 바꿔줍니다
-  const type = 'employee';
-  const notification = false;
+  const [mount, setMount] = useState(false);
+  const [shopId, setShopId] = useState();
+  const type = getCookieValue('type');
+  const userId = getCookieValue('userId');
+  const isProfile = getCookieValue('isProfile');
 
+  const notification = false;
+  const getUserData = async () => {
+    const response = await getUser(userId);
+    const getData = response.data.item.shop?.item.id;
+    setShopId(getData);
+  };
+  useEffect(() => {
+    if (type === 'employer') {
+      getUserData();
+    }
+    setMount(true);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
-    <div className={styles.headerMenu}>
-      {type === 'employee' && (
-        <>
-          <Link href="/">내 프로필</Link>
-          <SignOutButton />
-          <button type="button" className={styles.notification}>
-            {notification ? (
-              <NotiActiveIcon viewBox="0 0 24 24" />
-            ) : (
-              <NotiIcon viewBox="0 0 24 24" />
-            )}
-          </button>
-        </>
-      )}
-      {/* 아래 행의 employee 는 employer로 추후에 변경합니다 (지금 변경하면 ts에러) */}
-      {/* {type === 'employee' && (
-        <>
-          <Link href="/">내 가게</Link>
-          <SignOutButton />
-          <button type="button" className={styles.notification}>
-            {notification ? (
-              <NotiActiveIcon viewBox="0 0 24 24" />
-            ) : (
-              <NotiIcon viewBox="0 0 24 24" />
-            )}
-          </button>
-        </>
-      )} */}
-      {type !== 'employee' && type !== 'employer' && (
-        <>
-          <Link href="/">로그인</Link>
-          <Link href="/">회원가입</Link>
-        </>
-      )}
-    </div>
+    mount && (
+      <div className={styles.headerMenu}>
+        {type === 'employee' && (
+          <>
+            <Link href={isProfile ? `/users/${userId}` : `/profile`}>
+              내 프로필
+            </Link>
+            <SignOutButton />
+            <button type="button" className={styles.notification}>
+              {notification ? (
+                <NotiActiveIcon viewBox="0 0 24 24" />
+              ) : (
+                <NotiIcon viewBox="0 0 24 24" />
+              )}
+            </button>
+          </>
+        )}
+        {type === 'employer' && (
+          <>
+            <Link href={`/shops/${shopId}`}>내 가게</Link>
+            <SignOutButton />
+            <button type="button" className={styles.notification}>
+              {notification ? (
+                <NotiActiveIcon viewBox="0 0 24 24" />
+              ) : (
+                <NotiIcon viewBox="0 0 24 24" />
+              )}
+            </button>
+          </>
+        )}
+        {type !== 'employee' && type !== 'employer' && (
+          <>
+            <Link href="/signin">로그인</Link>
+            <Link href="/signup">회원가입</Link>
+          </>
+        )}
+      </div>
+    )
   );
 }

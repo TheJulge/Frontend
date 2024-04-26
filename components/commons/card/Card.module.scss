@@ -1,6 +1,5 @@
 .cardContainer {
   width: 312px;
-  height: 349px;
   display: inline-flex;
   padding: 16px;
   flex-direction: column;
@@ -15,7 +14,6 @@
   }
   @include mobile {
     width: 100%;
-    height: 261px;
     display: flex;
     padding: 12px;
     flex-direction: column;
@@ -24,10 +22,20 @@
   }
   .cardImg {
     width: 100%;
-    height: 100%;
+    height: 160px;
+    flex-shrink: 0;
     position: relative !important;
     overflow: hidden;
     border-radius: 12px;
+    img {
+      object-fit: cover;
+    }
+    @include tablet {
+      height: 171px;
+    }
+    @include mobile {
+      height: 84px;
+    }
   }
 
   .contents {
@@ -64,20 +72,47 @@
         display: flex;
         align-items: center;
         gap: 6px;
-        svg {
-          fill: var(--red30);
+        width: 100%;
+        @include mobile {
+          align-items: flex-start;
         }
-        span {
-          @include body2-regular(--gray50);
+        .iconBox {
+          flex-shrink: 0;
+          width: 20px;
+          height: 20px;
           @include mobile {
-            @include caption(--gray50);
+            margin-top: 2px;
+            width: 16px;
+            height: 16px;
+          }
+          svg {
             display: block;
+            width: 100%;
+            height: 100%;
+            fill: var(--red30);
           }
-          &.date {
-            white-space: nowrap;
+        }
+        .timeText {
+          width: 100%;
+          line-height: 16px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          @include mobile {
+            white-space: wrap;
+            word-break: keep-all;
           }
-          &.time {
-            white-space: normal;
+          span {
+            @include body2-regular(--gray50);
+            @include mobile {
+              @include caption(--gray50);
+            }
+            &.date {
+              white-space: nowrap;
+            }
+            &.time {
+              white-space: normal;
+            }
           }
         }
       }
@@ -123,14 +158,18 @@
         }
       }
       .time {
-        svg {
-          fill: var(--gray20);
+        .iconBox {
+          svg {
+            fill: var(--gray20);
+          }
         }
-        .data,
-        .hour {
-          @include body2-regular(--gray30);
-          @include mobile {
-            @include caption(--gray30);
+        .timeText {
+          .data,
+          .hour {
+            @include body2-regular(--gray30);
+            @include mobile {
+              @include caption(--gray30);
+            }
           }
         }
       }

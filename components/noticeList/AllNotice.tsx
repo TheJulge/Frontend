@@ -5,6 +5,13 @@ import NoticeSort from './NoticeSort';
 import AllNoticeCard from './AllNoticeCard';
 import styles from './AllNotice.module.scss';
 
+/**
+ * 전체 공고에 대한 컴포넌트 입니다.
+ * @param {object} props.noticeData 전체 공고 목록
+ * @param {number} props.itemCount 한번에 출력할 아이템 갯수
+ * @param {number} props.totalCount api로 받아온 전체 아이템 카운터 갯수
+ */
+
 interface NoticeProps {
   noticeData: CardNoticeType[];
   itemCount: number;
@@ -16,14 +23,15 @@ export default function AllNotice({
   itemCount,
 }: NoticeProps) {
   const router = useRouter();
-  const keyword = router.query.searchKeyword;
+  const searchKeyword = router.query.keyword;
+
   return (
     <article className={styles.allNotice}>
       <section>
         <div className={styles.allNoticeTop}>
-          {keyword ? (
+          {searchKeyword ? (
             <h2>
-              <strong>{keyword}</strong>에 대한 공고 목록
+              <strong>{searchKeyword}</strong>에 대한 공고 목록
             </h2>
           ) : (
             <h2>전체 공고</h2>
