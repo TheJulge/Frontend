@@ -53,7 +53,7 @@ export default function NoticeUpdatePage() {
             <TimeInput control={control} />
             <BasicInput
               labelName="공고 설명"
-              defaultValue=""
+              type="textarea"
               id="description"
             />
           </div>
