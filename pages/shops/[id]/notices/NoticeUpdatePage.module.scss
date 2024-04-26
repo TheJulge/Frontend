@@ -1,4 +1,4 @@
-@import '../../components/commons/Button/Button.module.scss';
+@import '../../../../components/commons/Button/Button.module.scss';
 
 .main {
   background-color: var(--gray5);
@@ -24,10 +24,18 @@
 
     .gridContainer {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       :last-child {
-        grid-column: span 2;
+        grid-column: span 3;
+      }
+      @include tablet {
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        align-items: center;
+        :last-child {
+          grid-column: span 2;
+        }
       }
       @include mobile {
         grid-template-columns: repeat(1, 1fr);

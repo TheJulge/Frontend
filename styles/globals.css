@@ -71,6 +71,26 @@ iframe {
 .react-datepicker-popper[data-placement^='bottom'] .react-datepicker__triangle {
   display: none !important;
 }
+.react-datepicker__day--selected {
+  background-color: var(--primary) !important;
+}
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item--selected {
+  background-color: var(--primary) !important;
+}
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item:hover {
+  background-color: var(--red20) !important;
+}
+.react-datepicker__day:hover {
+  background-color: var(--red20) !important;
+}
 
 #__next {
   display: flex;
