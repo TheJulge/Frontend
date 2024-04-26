@@ -33,6 +33,8 @@ export default function RecentViewedContainer() {
                       imageUrl={shop.imageUrl}
                       originalHourlyPay={shop.originalHourlyPay}
                       links={item.links}
+                      shopId={shop.id}
+                      noticeId={notice.id}
                     />
                   </React.Fragment>
                 );

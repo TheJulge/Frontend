@@ -29,6 +29,8 @@ export default function AllNoticeCard({ noticeData }: NoticeProps) {
               imageUrl={shop.imageUrl}
               originalHourlyPay={shop.originalHourlyPay}
               links={item.links}
+              shopId={shop.id}
+              noticeId={notice.id}
             />
           </li>
         );

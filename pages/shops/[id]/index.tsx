@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
   );
 
   const shopData = await shopResponse.data;
-  const shopNoticesData = shopNoticesResponse.data;
+  const shopNoticesData = await shopNoticesResponse.data;
 
   return { props: { shopId, shopData, shopNoticesData } };
 };
@@ -87,6 +87,8 @@ export default function ShopDetails({
                         imageUrl={shop.imageUrl}
                         originalHourlyPay={shop.originalHourlyPay}
                         links={item.links}
+                        shopId={shop.id}
+                        noticeId={notice.id}
                       />
                     </React.Fragment>
                   );

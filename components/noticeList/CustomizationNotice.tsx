@@ -83,6 +83,8 @@ export default function CustomizationNotice({ customType }: CustomProps) {
                   imageUrl={shop.imageUrl}
                   originalHourlyPay={shop.originalHourlyPay}
                   links={item.links}
+                  shopId={shop.id}
+                  noticeId={notice.id}
                 />
               </SwiperSlide>
             );

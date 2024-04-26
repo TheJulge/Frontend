@@ -4,33 +4,41 @@ import RecentViewedContainer from '@/components/commons/recent/RecentViewedConta
 import { SingleNoticeType } from '@/types/noticeTypes';
 import { addNoticeToLocalStorage } from '@/utils/watchedListFunctions';
 import { GetServerSidePropsContext } from 'next';
-import { getShopNotice } from '@/libs/notice';
 import findCookieValue from '@/utils/findCookieValue';
+import { ssrInstance } from '@/libs';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { query } = context;
   const shopId = query.id as string;
   const noticeId = query.noticeId as string;
 
+  const noticeResponse = await ssrInstance.get(
+    `/shops/${shopId}/notices/${noticeId}`,
+  );
+  const noticeData = noticeResponse.data;
+
   const cookies = context.req.headers.cookie;
   if (!cookies) {
-    return;
-  }
-  const isProfile = findCookieValue(cookies, 'isProfile') ? true : false;
+    return {
+      props: {
+        isProfile: false,
+        shopId: shopId,
+        noticeId: noticeId,
+        noticeData: noticeData,
+      },
+    };
+  } else {
+    const isProfile = findCookieValue(cookies, 'isProfile') ? true : false;
 
-  const noticeResponse = await getShopNotice({
-    shopId: shopId,
-    noticeId: noticeId,
-  });
-  const noticeData = noticeResponse.data;
-  return {
-    props: {
-      isProfile: isProfile,
-      shopId: shopId,
-      noticeId: noticeId,
-      noticeData: noticeData,
-    },
-  };
+    return {
+      props: {
+        isProfile: isProfile,
+        shopId: shopId,
+        noticeId: noticeId,
+        noticeData: noticeData,
+      },
+    };
+  }
 }
 
 interface DetailsProp {

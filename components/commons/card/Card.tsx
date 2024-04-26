@@ -20,6 +20,8 @@ interface CardProp {
   imageUrl: string;
   originalHourlyPay: number;
   links: LinkType[];
+  shopId: string;
+  noticeId: string;
 }
 /**
  * 각각의 공고를 표시하는 Card 컴포넌트
@@ -37,6 +39,8 @@ export default function Card({
   imageUrl,
   originalHourlyPay,
   links,
+  shopId,
+  noticeId,
 }: CardProp) {
   const [startDate, workHour] = formatNoticeTime(startsAt, workhour);
   return (
@@ -44,7 +48,7 @@ export default function Card({
       className={classNames(styles.cardContainer, {
         [styles.closed]: closed,
       })}
-      href={`${links[0].href}/alba`}
+      href={`/shops/${shopId}/notices/${noticeId}/alba`}
     >
       <div className={styles.cardImg}>
         {closed && <div className={styles.closedMessage}>마감 완료</div>}
