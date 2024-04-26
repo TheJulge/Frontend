@@ -1,11 +1,10 @@
+import { GetServerSidePropsContext } from 'next';
 import { useEffect } from 'react';
+import { ssrInstance } from '@/libs';
 import NoticeDetailsContainer from '@/components/commons/details/NoticeDetailsContainer';
 import RecentViewedContainer from '@/components/commons/recent/RecentViewedContainer';
-import { SingleNoticeType } from '@/types/noticeTypes';
 import { addNoticeToLocalStorage } from '@/utils/watchedListFunctions';
-import { GetServerSidePropsContext } from 'next';
-import findCookieValue from '@/utils/findCookieValue';
-import { ssrInstance } from '@/libs';
+import { SingleNoticeType } from '@/types/noticeTypes';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { query } = context;
@@ -17,39 +16,22 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   );
   const noticeData = noticeResponse.data;
 
-  const cookies = context.req.headers.cookie;
-  if (!cookies) {
-    return {
-      props: {
-        isProfile: false,
-        shopId: shopId,
-        noticeId: noticeId,
-        noticeData: noticeData,
-      },
-    };
-  } else {
-    const isProfile = findCookieValue(cookies, 'isProfile') ? true : false;
-
-    return {
-      props: {
-        isProfile: isProfile,
-        shopId: shopId,
-        noticeId: noticeId,
-        noticeData: noticeData,
-      },
-    };
-  }
+  return {
+    props: {
+      shopId: shopId,
+      noticeId: noticeId,
+      noticeData: noticeData,
+    },
+  };
 }
 
 interface DetailsProp {
-  isProfile: boolean;
   shopId: string;
   noticeId: string;
   noticeData: SingleNoticeType;
 }
 
 export default function NoticeDetailsPage({
-  isProfile,
   shopId,
   noticeId,
   noticeData,
@@ -60,7 +42,6 @@ export default function NoticeDetailsPage({
   return (
     <>
       <NoticeDetailsContainer
-        isProfile={isProfile}
         shopId={shopId}
         noticeId={noticeId}
         details={noticeData}
