@@ -36,6 +36,7 @@ const Mypage: NextPage<MyDetailPageProps> = ({
               <EmptyTable
                 text="아직 신청 내역이 없어요."
                 buttonText="공고 보러가기"
+                link="/"
               />
             )}
           </div>

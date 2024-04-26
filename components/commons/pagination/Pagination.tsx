@@ -39,7 +39,7 @@ function Pagination({ totalCount, itemCount }: PageNationProps) {
       undefined,
       {
         shallow: false, // getServerSideProps는 같은 주소(pathname)일 경우 한번만 호출되서 이 옵션을 false로 바꿔서 호출되게 변경
-        scroll: true,
+        scroll: false,
       },
     );
   };
@@ -48,7 +48,7 @@ function Pagination({ totalCount, itemCount }: PageNationProps) {
     <div className={styles.container}>
       <div className={styles.pageBox}>
         {isFirstPage ? (
-          <LeftButton className={styles.icon} tabindex={0} />
+          <LeftButton className={styles.icon} tabIndex={0} />
         ) : (
           <LeftButtonOn
             className={styles.icon}
@@ -65,17 +65,21 @@ function Pagination({ totalCount, itemCount }: PageNationProps) {
               key={num}
               role="presentation"
               onClick={() => handlePageClick(num)}
-              onKeyDown={() => handlePageClick(num)}
+              onKeyDown={event => {
+                if (event.key === 'Enter') {
+                  handlePageClick(num);
+                }
+              }}
             >
               {num}
             </div>
           ))}
         </div>
         {isLastPage ? (
-          <RightButton className={styles.icon} tabindex={0} />
+          <RightButton className={styles.icon} tabIndex={0} />
         ) : (
           <RightButtonOn
-            tabindex={0}
+            tabIndex={0}
             className={styles.icon}
             onClick={() => !isLastPage && handlePageClick(selectedPage + 1)}
           />

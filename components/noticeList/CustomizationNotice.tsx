@@ -80,7 +80,7 @@ export default function CustomizationNotice({ customType }: CustomProps) {
                   onClick={handleLink}
                   href={
                     userId
-                      ? `/shop/${shopId}/notices/${noticeId}/alba`
+                      ? `/shops/${shopId}/notices/${noticeId}/alba`
                       : `/signin`
                   }
                 >
