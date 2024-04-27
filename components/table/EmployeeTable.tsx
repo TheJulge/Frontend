@@ -50,7 +50,7 @@ function EmployeeTable({ items, totalCount, itemCount }: TableProps) {
               </div>
               <div className={`${styles.gridCell} `}>
                 <StatusButton
-                  id={item.id}
+                  item={item}
                   status={item.status}
                   type="employee"
                 />

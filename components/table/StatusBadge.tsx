@@ -25,3 +25,11 @@ export function WaitingBadge() {
     </div>
   );
 }
+
+export function CanceledBadge(){
+  return(
+    <div className={styles.buttonBox}>
+       <div className={`${styles.button} ${styles.canceledButton}`}>취소</div>
+    </div>
+  )
+}
