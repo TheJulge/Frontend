@@ -20,6 +20,10 @@
     background: var(--green10);
     color: var(--green20);
   }
+  &.canceledButton {
+    background: var(--gray60);
+    color: var(--white);
+  }
 }
 
 .actionButtonBox {
