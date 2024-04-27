@@ -4,6 +4,7 @@ export default function Document() {
   return (
     <Html lang="ko">
       <Head>
+        <link rel="icon" href="/favicon.ico" />
         <link
           href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
           rel="stylesheet"

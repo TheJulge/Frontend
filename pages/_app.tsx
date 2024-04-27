@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Footer from '@/components/commons/footer/Footer';
 import Gnb from '@/components/commons/gnb/Gnb';
 import '@/styles/globals.css';
@@ -12,10 +13,15 @@ export default function App({ Component, pageProps }: AppProps) {
     router.pathname === '/signup' ||
     router.pathname === '/404';
   return (
-    <CookiesProvider>
-      {!hide && <Gnb />}
-      <Component {...pageProps} />
-      {!hide && <Footer />}
-    </CookiesProvider>
+    <>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <CookiesProvider>
+        {!hide && <Gnb />}
+        <Component {...pageProps} />
+        {!hide && <Footer />}
+      </CookiesProvider>
+    </>
   );
 }

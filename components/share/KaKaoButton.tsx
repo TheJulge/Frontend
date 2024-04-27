@@ -9,10 +9,11 @@ declare global {
 }
 
 interface KakaoButtonProps {
+  shopName: string;
   url: string;
 }
 
-export default function KaKaoButton({ url }: KakaoButtonProps) {
+export default function KaKaoButton({ url, shopName }: KakaoButtonProps) {
   const handleClick = () => {
     if (!window.Kakao?.isInitialized()) {
       Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
@@ -22,9 +23,9 @@ export default function KaKaoButton({ url }: KakaoButtonProps) {
       objectType: 'feed',
       content: {
         title: 'The Julge',
-        description: '남들보다 더 받고 일 하세요',
+        description: `${shopName}에서 남들보다 더 받고 일 하세요`,
         imageUrl:
-          'https://bootcamp-project-api.s3.ap-northeast-2.amazonaws.com/4-17/the-julge/91af383d-3909-4706-8e37-8d652c2a99a3-logo1.png',
+          'https://bootcamp-project-api.s3.ap-northeast-2.amazonaws.com/4-17/the-julge/6909d7a1-be9b-40f5-9319-fe2c376d3e4c-Group_1_1.png',
         link: {
           mobileWebUrl: url,
           webUrl: url,
@@ -44,7 +45,9 @@ export default function KaKaoButton({ url }: KakaoButtonProps) {
 
   return (
     <button className={styles.button} type="button" onClick={handleClick}>
-      <KakaoIcon className={styles.kakaoIcon} />
+      <div>
+        <KakaoIcon className={styles.kakaoIcon} viewBox="0 0 18 18" />
+      </div>
     </button>
   );
 }

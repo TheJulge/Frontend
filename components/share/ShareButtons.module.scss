@@ -1,3 +1,24 @@
-// .buttonContainer{
+.buttonContainer {
+  display: flex;
+  gap: 20px;
+}
 
-// }
+.facebookButton {
+  cursor: pointer;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: 200px;
+  background-color: var(--blue20);
+
+  .linkIcon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+}

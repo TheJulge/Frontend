@@ -2,7 +2,11 @@ import styles from '@/components/share/ShareOpenButton.module.scss';
 import { useState } from 'react';
 import ShareModal from '@/components/share/ShareModal';
 
-export default function ShareOpenButton() {
+interface ShareOpenButtonProps {
+  shopName: string;
+}
+
+export default function ShareOpenButton({ shopName }: ShareOpenButtonProps) {
   const [showModal, setShowModal] = useState(false);
   const handleOpen = () => {
     setShowModal(true);
@@ -17,7 +21,11 @@ export default function ShareOpenButton() {
         공유하기
       </button>
       {showModal && (
-        <ShareModal showModal={showModal} handleClose={handleClose} />
+        <ShareModal
+          showModal={showModal}
+          handleClose={handleClose}
+          shopName={shopName}
+        />
       )}
     </>
   );
