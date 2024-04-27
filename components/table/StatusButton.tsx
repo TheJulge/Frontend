@@ -2,6 +2,7 @@ import {
   WaitingBadge,
   CompleteBadge,
   RefuseBadge,
+  CanceledBadge,
 } from '@/components/table/StatusBadge';
 
 import styles from './StatusButton.module.scss';
@@ -69,7 +70,8 @@ export function StatusButton({
       );
     case 'rejected':
       return <RefuseBadge />;
-
+    case 'canceled':
+      return <CanceledBadge/>;
     default:
       return <div>오류</div>;
   }
