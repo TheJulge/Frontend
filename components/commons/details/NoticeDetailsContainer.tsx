@@ -1,6 +1,7 @@
+import { SingleNoticeType } from '@/types/noticeTypes';
+import ShareOpenButton from '@/components/share/ShareOpenButton';
 import Explanation from './Explanation';
 import NoticeDetailsCard from './detailCard/NoticeDetailsCard';
-import { SingleNoticeType } from '@/types/noticeTypes';
 import styles from './NoticeDetailsContainer.module.scss';
 
 interface DetailsProp {
@@ -18,11 +19,18 @@ export default function NoticeDetailsContainer({
 
   return (
     <main className={styles.container}>
-      <h1>
-        <span>식당</span>
-        <br />
-        {shopDetails.name}
-      </h1>
+      <div className={styles.wrapper}>
+        <h1>
+          <span>식당</span>
+          <br />
+          {shopDetails.name}
+        </h1>
+        <ul>
+          <li>
+            <ShareOpenButton shopName={shopDetails.name} />
+          </li>
+        </ul>
+      </div>
       <NoticeDetailsCard
         shopId={shopId}
         noticeId={noticeId}

@@ -20,5 +20,7 @@
 
 .toast {
   position: absolute;
-  bottom: 100px;
+  bottom: 150px;
+  left: 50%;
+  transform: translateX(-50%);
 }

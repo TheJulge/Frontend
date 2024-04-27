@@ -14,23 +14,27 @@ import ShareButtons from './ShareButtons';
  */
 
 interface ShareModalProps {
+  shopName: string;
   showModal: boolean;
   handleClose: () => void;
 }
 export default function ShareModal({
+  shopName,
   showModal,
   handleClose,
 }: ShareModalProps) {
   const router = useRouter();
-  const path = router.pathname;
-  const currentUrl = `${BASE_URL}${path}`;
+  const { query } = router;
+  const { id, noticeId } = query;
+  const currentUrl = `${BASE_URL}/shops/${id}/notices/${noticeId}/alba`;
 
   return (
     <Modal showModal={showModal} handleClose={handleClose}>
       <div className={styles.modalInner}>
-        <ShareButtons url={currentUrl} />
+        <div>공유하기</div>
+        <ShareButtons url={currentUrl} shopName={shopName} />
         <button
-          className={styles.fillButton}
+          className={styles.emptyButton}
           type="button"
           onClick={handleClose}
         >
