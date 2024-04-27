@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CloseIcon from '@/public/images/close.svg';
 import { formatWage } from '@/utils/noticeDataFormetters';
 import styles from './CalculateModal.module.scss';
@@ -63,7 +63,7 @@ export default function CalculateModal({
   }, [type, weeklyWorkDay, taxPercent, overtime, additionalPay]);
 
   const handleWorkDayChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let days = parseInt(e.target.value);
+    let days = parseInt(e.target.value, 10);
     if (days > WEEK) {
       days = WEEK;
     }
@@ -138,7 +138,7 @@ export default function CalculateModal({
                   type="number"
                   min="0"
                   value={overtime}
-                  onChange={e => setOvertime(parseInt(e.target.value))}
+                  onChange={e => setOvertime(parseInt(e.target.value, 10))}
                 />
                 <span>시간</span>
               </div>

@@ -32,7 +32,6 @@ export default function RecentViewedContainer() {
                       address={shop.address1}
                       imageUrl={shop.imageUrl}
                       originalHourlyPay={shop.originalHourlyPay}
-                      links={item.links}
                       shopId={shop.id}
                       noticeId={notice.id}
                     />
