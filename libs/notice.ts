@@ -1,4 +1,5 @@
 import { API } from '@/utils/constants/API';
+import { FieldValue } from 'react-hook-form';
 import { instance, authInstance } from './index';
 
 interface NoticeProps {
@@ -53,10 +54,10 @@ interface PostShopNoticeProps {
   description?: string;
 }
 export const postShopNotice = (
-  shopId: NoticeProps,
-  data: PostShopNoticeProps,
+  shopId: string,
+  data: FieldValue<PostShopNoticeProps>,
 ) => {
-  return authInstance.post(`${API.shop}/${shopId}/${API.notice}`, data);
+  return authInstance.post(`${API.shop}/${shopId}${API.notice}`, data);
 };
 
 /**
