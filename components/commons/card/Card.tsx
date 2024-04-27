@@ -53,7 +53,9 @@ export default function Card({ noticeInfo }: CardProp) {
             </div>
           </div>
           <div className={styles.location}>
-            <LocationIcon />
+            <div className={styles.iconBox}>
+              <LocationIcon viewBox="0 0 20 20" />
+            </div>
             <span>{shopData.address1}</span>
           </div>
         </div>

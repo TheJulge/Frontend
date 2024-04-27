@@ -36,6 +36,7 @@
       }
     }
     @include mobile {
+      padding-bottom: 18px;
       position: absolute;
       bottom: 0;
       height: auto;
