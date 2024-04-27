@@ -1,0 +1,25 @@
+.button {
+  cursor: pointer;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 200px;
+  background-color: var(--red40);
+}
+
+.linkIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.toast {
+  position: absolute;
+  bottom: 100px;
+}

@@ -1,0 +1,12 @@
+@import '@/components/commons/Button/Button.module.scss';
+
+.shareButton {
+  @include body2-bold(--white);
+  @include fillButton;
+  width: 100px;
+  cursor: pointer;
+  line-height: 17px;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 12px;
+}
