@@ -1,0 +1,82 @@
+.wrapper {
+  width: 100%;
+  padding: 60px 0 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include tablet {
+    padding: 60px 32px;
+  }
+  @include mobile {
+    padding: 40px 12px;
+  }
+  .myShopContainer {
+    width: 100%;
+    max-width: 964px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    gap: 23px;
+    margin-bottom: auto;
+    h1 {
+      width: 100%;
+      align-self: start;
+      @include h1(--black);
+      @include mobile {
+        @include h3(--black);
+      }
+    }
+  }
+}
+
+.noticeListWrapper {
+  width: 100%;
+  padding: 60px 0 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--gray5);
+  @include tablet {
+    padding: 60px 32px;
+  }
+  @include mobile {
+    padding: 40px 12px;
+  }
+
+  .noticesContainer {
+    width: 100%;
+    max-width: 964px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    h2 {
+      width: 100%;
+      align-self: start;
+      @include h1(--black);
+      @include mobile {
+        @include h3(--black);
+      }
+    }
+    .noticeList {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
+      grid-column-gap: 14px;
+      grid-row-gap: 32px;
+      @include tablet {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+      }
+      @include mobile {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+      }
+    }
+  }
+}

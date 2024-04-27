@@ -1,7 +1,7 @@
 import { ShopBaseType } from './shopTypes';
 
 //links 의 각 요소의 타입
-interface LinkType {
+export interface LinkType {
   rel: string;
   description: string;
   method: string;
@@ -51,6 +51,18 @@ export interface CardNoticeType {
   links: LinkType[];
 }
 
+export interface ShopNoticeType {
+  item: {
+    id: string;
+    hourlyPay: number;
+    startsAt: string;
+    workhour: number;
+    description: string;
+    closed: boolean;
+  };
+  links: LinkType[];
+}
+
 //가게의 공고 목록을 조회할때의 데이터타입
 //GET "/shops/{shop_id}/notices" 요청 성공시 반환하는 데이터 타입
 export interface NoticesType {
@@ -58,12 +70,6 @@ export interface NoticesType {
   limit: number;
   count: number;
   hasNext: boolean;
-  //아직 타입 미완성
-  address: string[];
-  keyword?: string;
-  items: {
-    item: NoticeBaseType;
-    links: LinkType[];
-  }[];
+  items: ShopNoticeType[];
   links: LinkType[];
 }
