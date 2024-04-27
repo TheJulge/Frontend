@@ -83,7 +83,6 @@
 }
 
 .button {
-  @include basicButton(var(--primary), var(--white), 1px solid var(--primary));
   padding: 14px 30px;
   text-align: center;
   &:hover {

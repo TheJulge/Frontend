@@ -62,9 +62,6 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
   const handleInitItemAndModalClose = () => {
     const updateItem = { item: null, type: false };
     setSelectItem({ ...updateItem });
-    if (typeof window !== 'undefined') {
-      document.body.className = '';
-    }
   };
   /**
    *
@@ -170,15 +167,8 @@ function EmployerTable({ items, itemCount, totalCount }: TableProps) {
         })}
       </div>
       <Pagination itemCount={itemCount} totalCount={totalCount} />
-      {/* {selectItem && (
-        <Testmodal
-          showModal={!!selectItem}
-          applicaitonItem={selectItem}
-          handleClose={() => handleModalClose()}
-          handleStatusChange={handleStatusChange}
-        />
-      )} */}
-      {showModal && (
+
+      {showModal && modalItem && (
         <TableModal
           items={modalItem}
           showModal={showModal}
