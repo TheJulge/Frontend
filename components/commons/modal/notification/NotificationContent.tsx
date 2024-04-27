@@ -7,7 +7,7 @@ interface NotificationContentProps {
   data: any;
 }
 function NotificationContent({ data }: NotificationContentProps) {
-  const noticeData = data.data.item;
+  const noticeData = data.item;
   const noticeName = noticeData.notice.item.description;
   const isApprove = noticeData.result === 'accepted';
   const time = noticeData.createdAt;

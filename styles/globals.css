@@ -30,6 +30,14 @@ iframe {
   border: 0;
 }
 
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
 /* color */
 :root {
   --primary: #ea3c12;

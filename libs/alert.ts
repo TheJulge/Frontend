@@ -10,8 +10,8 @@ interface AlertProps {
  * 특정 사용자의 알림 목록을 조회
  * @returns
  */
-export const getAlert = (userId: AlertProps) => {
-  return authInstance.get(`${API.user}/${userId}/${API.alert}`);
+export const getAlert = (userId: string, data: any) => {
+  return authInstance.get(`${API.user}/${userId}/${API.alert}`, data);
 };
 
 /**

@@ -1,14 +1,27 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import classNames from 'classnames';
 import { formatNoticeTime } from '@/utils/noticeDataFormetters';
-import { CardNoticeType } from '@/types/noticeTypes';
+import { LinkType } from '@/types/noticeTypes';
 import ClockIcon from '@/public/images/card/clockIcon.svg';
 import LocationIcon from '@/public/images/card/locationIcon.svg';
 import PayIncrease from './payIncrease/PayIncrease';
 import styles from './Card.module.scss';
+// import { ShopBaseType } from '@/types/shopTypes';
+// import { getCookieValue } from '@/utils/getCookie';
 
 interface CardProp {
-  noticeInfo: CardNoticeType;
+  hourlyPay: number;
+  startsAt: string;
+  workhour: number;
+  closed: boolean;
+  shopName: string;
+  address: string;
+  imageUrl: string;
+  originalHourlyPay: number;
+  links: LinkType[];
+  shopId: string;
+  noticeId: string;
 }
 /**
  * 각각의 공고를 표시하는 Card 컴포넌트
@@ -16,33 +29,35 @@ interface CardProp {
  * @param {object} noticeInfo  "items"의 각각 요소 객체
  */
 
-export default function Card({ noticeInfo }: CardProp) {
-  const noticeData = noticeInfo.item;
-  const shopData = noticeData.shop.item;
-  const [startDate, workHour] = formatNoticeTime(
-    noticeData.startsAt,
-    noticeData.workhour,
-  );
+export default function Card({
+  hourlyPay,
+  startsAt,
+  workhour,
+  closed,
+  shopName,
+  address,
+  imageUrl,
+  originalHourlyPay,
+  links,
+  shopId,
+  noticeId,
+}: CardProp) {
+  const [startDate, workHour] = formatNoticeTime(startsAt, workhour);
   return (
-    <div
+    <Link
       className={classNames(styles.cardContainer, {
-        [styles.closed]: noticeData.closed,
+        [styles.closed]: closed,
       })}
+      href={`/shops/${shopId}/notices/${noticeId}/alba`}
     >
       <div className={styles.cardImg}>
-        {noticeData.closed && (
-          <div className={styles.closedMessage}>마감 완료</div>
-        )}
-        <Image
-          src={noticeInfo.item.shop.item.imageUrl}
-          alt={noticeInfo.item.shop.item.name}
-          layout="fill"
-        />
+        {closed && <div className={styles.closedMessage}>마감 완료</div>}
+        <Image src={imageUrl} alt={shopName} layout="fill" />
       </div>
 
       <div className={styles.contents}>
         <div className={styles.notice}>
-          <span className={styles.shopName}>{shopData.name}</span>
+          <span className={styles.shopName}>{shopName}</span>
           <div className={styles.time}>
             <div className={styles.iconBox}>
               <ClockIcon viewBox="0 0 20 20" />
@@ -56,15 +71,15 @@ export default function Card({ noticeInfo }: CardProp) {
             <div className={styles.iconBox}>
               <LocationIcon viewBox="0 0 20 20" />
             </div>
-            <span>{shopData.address1}</span>
+            <span>{address}</span>
           </div>
         </div>
         <PayIncrease
-          hourlyPay={noticeData.hourlyPay}
-          originalHourlyPay={shopData.originalHourlyPay}
-          closed={noticeData.closed}
+          hourlyPay={hourlyPay}
+          originalHourlyPay={originalHourlyPay}
+          closed={closed}
         />
       </div>
-    </div>
+    </Link>
   );
 }

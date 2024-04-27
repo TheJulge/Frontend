@@ -60,7 +60,7 @@
 
 .pay {
   display: flex;
-  gap: 8px;
+  // width: 100%;
 
   h2 {
     @include h1(--black);

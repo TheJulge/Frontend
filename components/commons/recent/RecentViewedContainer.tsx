@@ -18,11 +18,27 @@ export default function RecentViewedContainer() {
         <h2>최근에 본 공고</h2>
         <div className={styles.cards}>
           {notices
-            ? notices.map(notice => (
-                <React.Fragment key={notice.item.id}>
-                  <Card noticeInfo={notice} />
-                </React.Fragment>
-              ))
+            ? notices.map(item => {
+                const notice = item.item;
+                const shop = item.item.shop.item;
+                return (
+                  <React.Fragment key={notice.id}>
+                    <Card
+                      hourlyPay={notice.hourlyPay}
+                      startsAt={notice.startsAt}
+                      workhour={notice.workhour}
+                      closed={notice.closed}
+                      shopName={shop.name}
+                      address={shop.address1}
+                      imageUrl={shop.imageUrl}
+                      originalHourlyPay={shop.originalHourlyPay}
+                      links={item.links}
+                      shopId={shop.id}
+                      noticeId={notice.id}
+                    />
+                  </React.Fragment>
+                );
+              })
             : null}
         </div>
       </div>

@@ -17,10 +17,10 @@ export const getServerSideProps: GetServerSideProps<
   const queryString = Object.entries(query)
     .map(
       ([key, value]) =>
-        `?${key}=${Array.isArray(value) ? value.join(`&${key}=`) : value}`,
+        `${key}=${Array.isArray(value) ? value.join(`&${key}=`) : value}`,
     )
     .join('&');
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/notices${queryString}`;
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/notices?${queryString}`;
   const response = await axios.get(url, {
     params: {
       offset: (parseInt(query.page as string, 10) - 1) * itemCount, // 계산된 offset 추가

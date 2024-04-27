@@ -1,16 +1,14 @@
-import { SingleNoticeType } from '@/types/noticeTypes';
-import NoticeDetailsCard from './detailCard/NoticeDetailsCard';
-import styles from './NoticeDetailsContainer.module.scss';
 import Explanation from './Explanation';
+import NoticeDetailsCard from './detailCard/NoticeDetailsCard';
+import { SingleNoticeType } from '@/types/noticeTypes';
+import styles from './NoticeDetailsContainer.module.scss';
 
 interface DetailsProp {
-  isProfile: boolean;
   shopId: string;
   noticeId: string;
   details: SingleNoticeType;
 }
 export default function NoticeDetailsContainer({
-  isProfile,
   shopId,
   noticeId,
   details,
@@ -26,7 +24,6 @@ export default function NoticeDetailsContainer({
         {shopDetails.name}
       </h1>
       <NoticeDetailsCard
-        isProfile={isProfile}
         shopId={shopId}
         noticeId={noticeId}
         noticeDetails={noticeDetails}

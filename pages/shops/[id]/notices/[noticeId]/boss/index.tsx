@@ -37,7 +37,7 @@ const MyNoticeDetailPage: NextPage<NoticeDetailPageProps> = ({
           <div className={styles.tableWrraper}>
             <div className={styles.table}>
               <h2>신청자 목록</h2>
-              {items ? (
+              {items.length !== 0 ? (
                 <EmployerTable
                   totalCount={totalCount}
                   itemCount={itemCount}

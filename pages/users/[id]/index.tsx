@@ -26,7 +26,7 @@ const Mypage: NextPage<MyDetailPageProps> = ({
         <div className={styles.tableWrraper}>
           <div className={styles.table}>
             <h2>신청 내역</h2>
-            {items ? (
+            {items.length !== 0 ? (
               <EmployeeTable
                 totalCount={totalCount}
                 itemCount={itemCount}
