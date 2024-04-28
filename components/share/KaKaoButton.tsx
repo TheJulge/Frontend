@@ -1,5 +1,5 @@
 import styles from '@/components/share/KaKaoButton.module.scss';
-import KakaoIcon from '@/public/images/share/Kakaotalk.svg';
+import KakaoIcon from '@/public/images/share/Kakao.svg';
 
 declare global {
   // eslint-disable-next-line no-unused-vars
