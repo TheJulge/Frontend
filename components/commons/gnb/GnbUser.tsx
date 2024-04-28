@@ -2,7 +2,6 @@ import { getCookieValue } from '@/utils/getCookie';
 import { useEffect, useState } from 'react';
 import { getUser } from '@/libs/user';
 import { getAlert } from '@/libs/alert';
-import axios from 'axios';
 import Link from 'next/link';
 import NotiIcon from '@/public/images/gnb/notification.svg';
 import NotiActiveIcon from '@/public/images/gnb/notification-active.svg';
@@ -13,7 +12,7 @@ import NotificationModal from '../modal/notification/NotificationModal';
 export default function GnbUser() {
   const [mount, setMount] = useState(false);
   const [shopId, setShopId] = useState();
-  const [notiData, setNotiData] = useState();
+  const [notiData, setNotiData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [count, setCount] = useState<number>(0);
   const type = getCookieValue('type');
@@ -21,7 +20,6 @@ export default function GnbUser() {
   const isProfile = getCookieValue('isProfile');
   const accessToken = getCookieValue('accessToken');
 
-  const notification = false;
   const getUserData = async () => {
     const response = await getUser(userId);
     const getData = response.data.item.shop?.item.id;
@@ -35,29 +33,29 @@ export default function GnbUser() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getNotifiData = async () => {
-    const response = await axios.get(
-      `https://bootcamp-api.codeit.kr/api/4-17/the-julge/users/${userId}/alerts`,
-      {
-        headers: {
-          Authorization: `bearer ${accessToken}`,
-        },
-      },
-    );
-    const { data } = response;
-    setNotiData(data.items);
-    setCount(data.count);
+    try {
+      const response = await getAlert(userId, accessToken);
+      const { data } = response;
+      setNotiData(data.items);
+      const unreadItemCount = data.items.filter(
+        (itemData: any) => !itemData.item.read,
+      ).length;
+      setCount(unreadItemCount);
+    } catch (err) {
+      console.log(err);
+    }
   };
-  console.log(notiData);
-  console.log(count);
   const handleOpen = () => {
-    setShowModal(true);
+    setShowModal(!showModal);
   };
   const handleClose = () => {
     setShowModal(false);
   };
   useEffect(() => {
-    getNotifiData();
-  }, []);
+    if (userId) {
+      getNotifiData();
+    }
+  }, [showModal]);
   return (
     mount && (
       <div className={styles.headerMenu}>
@@ -72,25 +70,43 @@ export default function GnbUser() {
               onClick={handleOpen}
               className={styles.notification}
             >
-              {notification ? (
+              {count > 0 ? (
                 <NotiActiveIcon viewBox="0 0 24 24" />
               ) : (
                 <NotiIcon viewBox="0 0 24 24" />
               )}
             </button>
+            {showModal && (
+              <NotificationModal
+                handleClose={handleClose}
+                count={count}
+                notiDatas={notiData}
+              />
+            )}
           </>
         )}
         {type === 'employer' && (
           <>
             <Link href={shopId ? `/shops/${shopId}` : '/shops'}>내 가게</Link>
             <SignOutButton />
-            <button type="button" className={styles.notification}>
-              {notification ? (
+            <button
+              type="button"
+              onClick={handleOpen}
+              className={styles.notification}
+            >
+              {count > 0 ? (
                 <NotiActiveIcon viewBox="0 0 24 24" />
               ) : (
                 <NotiIcon viewBox="0 0 24 24" />
               )}
             </button>
+            {showModal && (
+              <NotificationModal
+                handleClose={handleClose}
+                count={count}
+                notiDatas={notiData}
+              />
+            )}
           </>
         )}
         {type !== 'employee' && type !== 'employer' && (
@@ -98,14 +114,6 @@ export default function GnbUser() {
             <Link href="/signin">로그인</Link>
             <Link href="/signup">회원가입</Link>
           </>
-        )}
-        {showModal && (
-          <NotificationModal
-            showModal={showModal}
-            handleClose={handleClose}
-            count={count}
-            notiDatas={notiData}
-          />
         )}
       </div>
     )

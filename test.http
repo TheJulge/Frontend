@@ -37,6 +37,11 @@ Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwZmE1MDk1Ni0wNjE4LTQ0YmYtYTI4Ny0yMThiY2ViZmU0ZmYiLCJpYXQiOjE3MTQxOTEzNzR9.GDbIfP9ZDuw_ZiiGpvaFRr58Cr6VY9x2sL4TrUPQEuk
 
 ###
+PUT https://bootcamp-api.codeit.kr/api/4-17/the-julge/users/0fa50956-0618-44bf-a287-218bcebfe4ff/alerts/75d1b137-5c10-4512-9c28-6d7ae7702068
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwZmE1MDk1Ni0wNjE4LTQ0YmYtYTI4Ny0yMThiY2ViZmU0ZmYiLCJpYXQiOjE3MTQxOTEzNzR9.GDbIfP9ZDuw_ZiiGpvaFRr58Cr6VY9x2sL4TrUPQEuk
+
+###
 POST https://bootcamp-api.codeit.kr/api/4-17/the-julge/shops/0ecbcfcb-1c78-4f2b-93cd-ff6267a2099a/notices/06157300-6580-4d73-b1be-69df0bcda2f4/applications
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4NGZjZjM3Ni02MTFlLTRhYmUtYTExZS03ZTVhYWRmNWE2ZDQiLCJpYXQiOjE3MTQxMzYzNjN9.Z-fIpdFaiJcCHDXmWEe2aIAZC8-KbAeoCxF5SnQkdN4

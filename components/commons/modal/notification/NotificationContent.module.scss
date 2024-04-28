@@ -5,10 +5,10 @@
   flex-direction: column;
   gap: 4px;
   background-color: var(--white);
-  margin: 8px 0;
   border-radius: 5px;
   border: 1px solid var(--gray20);
   padding: 16px 12px;
+  width: 100%;
 }
 .text {
   @include body2-regular(--black);
