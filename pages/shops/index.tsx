@@ -7,7 +7,7 @@ import MoneyInput from '@/components/commons/inputs/moneyInput/MoneyInput';
 import classNames from 'classnames';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
-import { postShop } from '@/libs/shop';
+import { postShop, putShop } from '@/libs/shop';
 import { GetServerSidePropsContext } from 'next';
 import { getUser } from '@/libs/user';
 import findCookieValue from '@/utils/findCookieValue';
@@ -51,15 +51,15 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   };
   const response = await getUser(userId);
   if (response.data.item.shop) {
-    const shop = response.data.item.shop?.item;
-    const shopId = shop.id || '';
-    defaultValues.name = shop.name || '';
-    defaultValues.category = shop.category || '';
-    defaultValues.address1 = shop.address1 || '';
-    defaultValues.address2 = shop.address2 || '';
-    defaultValues.description = shop.description || '';
-    defaultValues.imageUrl = shop.imageUrl || '';
-    defaultValues.originalHourlyPay = shop.originalHourlyPay || '';
+    const shop = response.data.item.shop.item;
+    const shopId = shop.id;
+    defaultValues.name = shop.name;
+    defaultValues.category = shop.category;
+    defaultValues.address1 = shop.address1;
+    defaultValues.address2 = shop.address2;
+    defaultValues.description = shop.description;
+    defaultValues.imageUrl = shop.imageUrl;
+    defaultValues.originalHourlyPay = shop.originalHourlyPay;
     // eslint-disable-next-line consistent-return
     return {
       props: {
@@ -121,34 +121,37 @@ export default function Shops({ shopId, defaultValues }: ServerSideProps) {
             const cutImageUrl = cutUrl(presignedUrl);
             setValue('imageUrl', cutImageUrl);
           }
-        } catch (err) {
-          console.log(err);
-        }
+          // eslint-disable-next-line
+        } catch {}
       }
     };
   };
 
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
-    if (shopId) {
-      console.log('편집', shopId);
-      // try{
-      //   const res = await putShop(data);
-      // }
+    if (!shopId) {
+      try {
+        const res = await postShop(data);
+        const newShopId = res.data.item.id;
+        if (res.data) {
+          setModalMessage('등록이 완료되었습니다.');
+          setShowModal(true);
+          router.push(`/shops/${newShopId}`);
+        }
+      } catch (e: any) {
+        setModalMessage(e.response.data.message);
+        setShowModal(true);
+      }
     }
     try {
-      const res = await postShop(data);
-      const newShopId = res.data.item.id;
+      const res = await putShop(shopId, data);
       if (res.data) {
-        console.log(data);
-        setModalMessage('등록이 완료되었습니다.');
+        setModalMessage('편집이 완료되었습니다.');
         setShowModal(true);
-        router.push(`/shops/${newShopId}`);
+        router.push(`/shops/${shopId}`);
       }
     } catch (e: any) {
       setModalMessage(e.response.data.message);
       setShowModal(true);
-      console.log(e);
     }
   };
   const handleModalClose = () => {
