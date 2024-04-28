@@ -1,0 +1,12 @@
+.container {
+  width: 700px;
+  height: 700px;
+  background-color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 12px;
+  padding: 20px;
+  gap: 30px;
+}
