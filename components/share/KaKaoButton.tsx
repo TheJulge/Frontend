@@ -22,7 +22,7 @@ export default function KaKaoButton({ url, shopName }: KakaoButtonProps) {
     Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
-        title: 'The Julge',
+        title: 'the Julge',
         description: `${shopName}에서 남들보다 더 받고 일 하세요`,
         imageUrl:
           'https://bootcamp-project-api.s3.ap-northeast-2.amazonaws.com/4-17/the-julge/6909d7a1-be9b-40f5-9319-fe2c376d3e4c-Group_1_1.png',
