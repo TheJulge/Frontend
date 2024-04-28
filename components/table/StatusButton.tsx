@@ -2,15 +2,17 @@ import {
   WaitingBadge,
   CompleteBadge,
   RefuseBadge,
+  CanceledBadge,
 } from '@/components/table/StatusBadge';
 
 import styles from './StatusButton.module.scss';
 import { Application } from './applicationTypes';
-
+// eslint-disable-next-line no-unused-vars
 type TypestateChangeFunction = (select: Application, type: boolean) => void;
 
 interface StatusButtonProps {
   item: Application;
+  // eslint-disable-next-line no-unused-vars
   onUpdateItemAndModalOpen?: (select: Application, type: boolean) => void;
   status: 'pending' | 'accepted' | 'rejected' | 'canceled';
   type: string;
@@ -69,7 +71,8 @@ export function StatusButton({
       );
     case 'rejected':
       return <RefuseBadge />;
-
+    case 'canceled':
+      return <CanceledBadge />;
     default:
       return <div>오류</div>;
   }

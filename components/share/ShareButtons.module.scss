@@ -1,0 +1,23 @@
+.buttonContainer {
+  display: flex;
+  gap: 25px;
+}
+
+.facebookButton {
+  cursor: pointer;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  padding: 1px 0px 0px 2px;
+  border: none;
+  border-radius: 200px;
+  background-color: var(--blue20);
+
+  .facebookIcon {
+    width: 19px;
+    height: 19px;
+    display: block;
+  }
+}

@@ -48,7 +48,7 @@ export default function Shops() {
   return (
     <FormProvider {...methods}>
       <Head>
-        <title>가게 정보 등록 | theJulge</title>
+        <title>가게 정보 등록 | the Julge</title>
       </Head>
       <main className={styles.main}>
         <div className={styles.container}>

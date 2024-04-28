@@ -19,7 +19,7 @@ export const authInstance = axios.create({
 
 // NEXT API 처리용 instance
 export const nextInstance = axios.create({
-  baseURL: process.env.DEVELOP_BASE_URL,
+  baseURL: process.env.NEXT_PUBLIC_DEVELOP_BASE_URL,
   timeout: 1000 * 5,
   headers: {
     'Content-Type': 'application/json',
