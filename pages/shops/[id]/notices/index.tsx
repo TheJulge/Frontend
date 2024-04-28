@@ -7,21 +7,44 @@ import classNames from 'classnames';
 import { useRouter } from 'next/router';
 import TimeInput from '@/components/commons/inputs/timeInput/TimeInput';
 import DateInput from '@/components/commons/inputs/dateInput/DateInput';
-import { getShopNotice, postShopNotice } from '@/libs/notice';
+import {
+  ShopNoticeProps,
+  getShopNotice,
+  postShopNotice,
+  putShopNotice,
+} from '@/libs/notice';
 import CompletionModal from '@/components/commons/modal/completionModal/CompletionModal';
 import { GetServerSidePropsContext } from 'next';
 import styles from './NoticeUpdatePage.module.scss';
 
+interface NoticeUpdatePageProps {
+  shopId: string;
+  noticeId: string;
+  defaultValues: ShopNoticeProps;
+}
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { query } = context;
   const { id: shopId, noticeId } = query;
+  const defaultValues = {
+    hourlyPay: '',
+    startsAt: '',
+    workhour: '',
+    description: '',
+  };
 
-  // const noticeData = await getShopNotice(shopId as string, noticeId as string);
+  const res = await getShopNotice(shopId as string, noticeId as string);
+  const noticeData = res.data.item;
+  defaultValues.hourlyPay = noticeData.hourlyPay;
+  defaultValues.startsAt = noticeData.startsAt;
+  defaultValues.workhour = noticeData.workhour;
+  defaultValues.description = noticeData.description;
+
   if (shopId && noticeId) {
     return {
       props: {
         shopId,
         noticeId,
+        defaultValues,
       },
     };
   }
@@ -31,20 +54,18 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     },
   };
 }
-export default function NoticeUpdatePage({ shopId, noticeId }) {
-  console.log(shopId, noticeId);
+
+export default function NoticeUpdatePage({
+  shopId,
+  noticeId,
+  defaultValues,
+}: NoticeUpdatePageProps) {
   const router = useRouter();
   const [showModal, setShowModal] = useState<boolean>(false);
   const [modalMessage, setModalMessage] = useState<string>('');
-  // const { id: shopId, noticeId } = router.query;
   const methods = useForm<FieldValues>({
     mode: 'onBlur',
-    defaultValues: {
-      hourlyPay: '',
-      startsAt: '',
-      workhour: '',
-      description: '',
-    },
+    defaultValues,
   });
   const {
     handleSubmit,
@@ -55,22 +76,38 @@ export default function NoticeUpdatePage({ shopId, noticeId }) {
     setShowModal(false);
   };
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
-    try {
-      const res = await postShopNotice(shopId as string, data);
-      if (res.status === 200) {
-        setModalMessage('등록이 완료되었습니다');
+    if (!noticeId) {
+      try {
+        const res = await postShopNotice(shopId as string, data);
+        if (res.status === 200) {
+          setModalMessage('등록이 완료되었습니다');
+          setShowModal(true);
+          router.push(`/shops/${shopId}`);
+        }
+      } catch (e: any) {
+        if (e.response && e.response.data && e.response.data.message) {
+          setModalMessage(e.response.data.message);
+        }
         setShowModal(true);
-        router.push(`/shops/${shopId}`);
       }
-    } catch (e: any) {
-      if (e.response && e.response.data && e.response.data.message) {
-        setModalMessage(e.response.data.message);
-      } else {
-        setModalMessage('등록에 실패했습니다');
+    } else {
+      try {
+        const res = await putShopNotice(
+          shopId as string,
+          noticeId as string,
+          data,
+        );
+        if (res.status === 200) {
+          setModalMessage('편집이 완료되었습니다');
+          setShowModal(true);
+          router.push(`/shops/${shopId}`);
+        }
+      } catch (e: any) {
+        if (e.response && e.response.data && e.response.data.message) {
+          setModalMessage(e.response.data.message);
+        }
+        setShowModal(true);
       }
-      setShowModal(true);
-      console.log(e);
     }
   };
   return (

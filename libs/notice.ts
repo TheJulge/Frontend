@@ -47,7 +47,7 @@ export const getShopNotices = (shopId: NoticeProps) => {
  * @param {string} shopId
  * @returns
  */
-interface PostShopNoticeProps {
+export interface ShopNoticeProps {
   hourlyPay: number;
   startsAt: string;
   workhour: number;
@@ -55,7 +55,7 @@ interface PostShopNoticeProps {
 }
 export const postShopNotice = (
   shopId: string,
-  data: FieldValue<PostShopNoticeProps>,
+  data: FieldValue<ShopNoticeProps>,
 ) => {
   return authInstance.post(`${API.shop}/${shopId}${API.notice}`, data);
 };
@@ -76,6 +76,13 @@ export const getShopNotice = (shopId: string, noticeId: string) => {
  * @param {string} noticeId
  * @returns
  */
-export const putShopNotice = ({ shopId, noticeId }: NoticeProps) => {
-  return authInstance.put(`${API.shop}/${shopId}/${API.notice}/${noticeId}`);
+export const putShopNotice = (
+  shopId: string,
+  noticeId: string,
+  data: FieldValue<ShopNoticeProps>,
+) => {
+  return authInstance.put(
+    `${API.shop}/${shopId}/${API.notice}/${noticeId}`,
+    data,
+  );
 };
