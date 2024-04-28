@@ -42,7 +42,7 @@ export default function NoticeUpdatePage() {
   return (
     <FormProvider {...methods}>
       <Head>
-        <title>공고 등록 | theJulge</title>
+        <title>공고 등록 | the Julge</title>
       </Head>
       <main className={styles.main}>
         <div className={styles.container}>
