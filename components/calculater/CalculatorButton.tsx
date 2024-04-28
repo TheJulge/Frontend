@@ -4,8 +4,12 @@ import CalculateModal from './CalculateModal';
 
 interface CalculatorButtonProp {
   hourlyPay: number;
+  workHour: number;
 }
-export default function CalculatorButton({ hourlyPay }: CalculatorButtonProp) {
+export default function CalculatorButton({
+  hourlyPay,
+  workHour,
+}: CalculatorButtonProp) {
   const [calculateModal, setCalculateModal] = useState(false);
   const handleOpen = () => {
     setCalculateModal(true);
@@ -25,6 +29,7 @@ export default function CalculatorButton({ hourlyPay }: CalculatorButtonProp) {
       {calculateModal && (
         <CalculateModal
           hourlyPay={hourlyPay}
+          workHour={workHour}
           showModal={calculateModal}
           handleClose={handleClose}
         />

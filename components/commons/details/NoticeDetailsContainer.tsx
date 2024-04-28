@@ -31,7 +31,10 @@ export default function NoticeDetailsContainer({
             <ShareOpenButton shopName={shopDetails.name} />
           </li>
           <li>
-            <CalculatorButton hourlyPay={details.item.hourlyPay} />
+            <CalculatorButton
+              hourlyPay={noticeDetails.hourlyPay}
+              workHour={noticeDetails.workhour}
+            />
           </li>
         </ul>
       </div>
