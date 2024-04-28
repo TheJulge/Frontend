@@ -33,6 +33,9 @@ export default function CustomizationNotice({ customType }: CustomProps) {
         response = await getPayNotices(customType);
       } else {
         response = await getCustomNotices(customType);
+        if (response.data.items.length === 0) {
+          response = await getPayNotices('pay');
+        }
       }
       const noticeItem = response.data.items;
       setContents(noticeItem);

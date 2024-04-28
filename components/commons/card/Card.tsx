@@ -1,14 +1,14 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import classNames from 'classnames';
 import { formatNoticeTime } from '@/utils/noticeDataFormetters';
-import { CardNoticeType, LinkType } from '@/types/noticeTypes';
+import { LinkType } from '@/types/noticeTypes';
 import ClockIcon from '@/public/images/card/clockIcon.svg';
 import LocationIcon from '@/public/images/card/locationIcon.svg';
 import PayIncrease from './payIncrease/PayIncrease';
 import styles from './Card.module.scss';
-import { ShopBaseType } from '@/types/shopTypes';
-import { getCookieValue } from '@/utils/getCookie';
-import Link from 'next/link';
+// import { ShopBaseType } from '@/types/shopTypes';
+// import { getCookieValue } from '@/utils/getCookie';
 
 interface CardProp {
   hourlyPay: number;
@@ -68,7 +68,9 @@ export default function Card({
             </div>
           </div>
           <div className={styles.location}>
-            <LocationIcon />
+            <div className={styles.iconBox}>
+              <LocationIcon viewBox="0 0 20 20" />
+            </div>
             <span>{address}</span>
           </div>
         </div>
