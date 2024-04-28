@@ -7,7 +7,7 @@ export default function SignIn() {
   return (
     <main className={styles.background}>
       <div className={styles.container}>
-        <Link title="메인으로 이동" aria-label="the julge logo" href="/">
+        <Link title="메인으로 이동" aria-label="the Julge logo" href="/">
           <LogoIcon className={styles.logoIcon} />
         </Link>
         <div className={styles.box}>

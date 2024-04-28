@@ -5,6 +5,7 @@ export default function Document() {
     <Html lang="ko">
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        <title>the Julge</title>
         <link
           href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
           rel="stylesheet"

@@ -98,7 +98,7 @@ export default function Profile({ userId, previewValues }: ServerSideProps) {
   return (
     <FormProvider {...methods}>
       <Head>
-        <title>내 프로필 등록 | theJulge</title>
+        <title>내 프로필 등록 | the Julge</title>
       </Head>
       <main className={styles.main}>
         <div className={styles.wrapper}>
