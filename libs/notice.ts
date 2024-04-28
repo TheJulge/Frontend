@@ -66,8 +66,8 @@ export const postShopNotice = (
  * @param {string} noticeId
  * @returns
  */
-export const getShopNotice = ({ shopId, noticeId }: NoticeProps) => {
-  return instance.get(`${API.shop}/${shopId}/${API.notice}/${noticeId}`);
+export const getShopNotice = (shopId: string, noticeId: string) => {
+  return instance.get(`${API.shop}/${shopId}${API.notice}/${noticeId}`);
 };
 
 /**
