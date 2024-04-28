@@ -7,15 +7,36 @@ import classNames from 'classnames';
 import { useRouter } from 'next/router';
 import TimeInput from '@/components/commons/inputs/timeInput/TimeInput';
 import DateInput from '@/components/commons/inputs/dateInput/DateInput';
-import { postShopNotice } from '@/libs/notice';
+import { getShopNotice, postShopNotice } from '@/libs/notice';
 import CompletionModal from '@/components/commons/modal/completionModal/CompletionModal';
+import { GetServerSidePropsContext } from 'next';
 import styles from './NoticeUpdatePage.module.scss';
 
-export default function NoticeUpdatePage() {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { query } = context;
+  const { id: shopId, noticeId } = query;
+
+  // const noticeData = await getShopNotice(shopId as string, noticeId as string);
+  if (shopId && noticeId) {
+    return {
+      props: {
+        shopId,
+        noticeId,
+      },
+    };
+  }
+  return {
+    props: {
+      shopId,
+    },
+  };
+}
+export default function NoticeUpdatePage({ shopId, noticeId }) {
+  console.log(shopId, noticeId);
   const router = useRouter();
   const [showModal, setShowModal] = useState<boolean>(false);
   const [modalMessage, setModalMessage] = useState<string>('');
-  const { id: shopId } = router.query;
+  // const { id: shopId, noticeId } = router.query;
   const methods = useForm<FieldValues>({
     mode: 'onBlur',
     defaultValues: {
@@ -30,10 +51,6 @@ export default function NoticeUpdatePage() {
     control,
     formState: { isValid },
   } = methods;
-  // const handleSuccessModalClose = () => {
-  //   setShowModal(false);
-  //   router.push(`/shops/${shopId}`);
-  // };
   const handleModalClose = () => {
     setShowModal(false);
   };
