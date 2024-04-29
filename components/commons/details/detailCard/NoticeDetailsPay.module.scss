@@ -10,7 +10,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    @include h2(--black);
+    @include h1(--black);
+    line-height: 35px;
+    @include mobile {
+      @include h2(--black);
+    }
   }
   .payIncrease {
     display: flex;

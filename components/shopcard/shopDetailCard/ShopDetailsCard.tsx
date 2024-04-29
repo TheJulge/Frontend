@@ -14,7 +14,12 @@ export default function ShopDetailsCard({
   return (
     <div className={styles.container}>
       <div className={styles.cardImg}>
-        <Image src={shopData.item.imageUrl} alt="shop image" fill />
+        <Image
+          src={shopData.item.imageUrl}
+          alt="shop image"
+          fill
+          objectFit="cover"
+        />
       </div>
       <div className={styles.contents}>
         <div className={styles.information}>
@@ -23,7 +28,7 @@ export default function ShopDetailsCard({
             <span>{shopData.item.name}</span>
           </div>
           <div className={styles.location}>
-            <LocationIcon />
+            <LocationIcon viewBox="0 0 20 20" />
             <p>{shopData.item.address1}</p>
           </div>
           <p className={styles.description}>{shopData.item.description}</p>

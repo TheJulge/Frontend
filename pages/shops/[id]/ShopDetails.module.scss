@@ -18,8 +18,11 @@
     align-items: flex-start;
     justify-content: center;
     align-items: center;
-    gap: 23px;
+    gap: 24px;
     margin-bottom: auto;
+    @include mobile {
+      gap: 16px;
+    }
     h1 {
       width: 100%;
       align-self: start;

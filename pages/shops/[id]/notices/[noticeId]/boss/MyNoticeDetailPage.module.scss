@@ -3,8 +3,12 @@
 }
 .wrapper {
   margin: 0 auto;
+  background-color: var(--gray5);
   h2 {
     @include h1(--black);
+    @include mobile {
+      @include h3(--black);
+    }
   }
 }
 
@@ -30,6 +34,9 @@
 }
 .category {
   @include body1-bold(--primary);
+  @include mobile {
+    @include body2-bold(--primary);
+  }
 }
 .descriptionBox {
   background-color: var(--gray10);
@@ -41,6 +48,19 @@
 
   p {
     @include body1-bold(--black);
+    @include mobile {
+      @include body2-bold(--black);
+    }
+  }
+  div {
+    word-break: break-all;
+    @include mobile {
+      @include body2-regular(--black);
+    }
+  }
+  @include mobile {
+    gap: 8px;
+    padding: 20px;
   }
 }
 .tableWrraper {

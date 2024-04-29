@@ -4,8 +4,8 @@ import PinIcon from '@/public/images/profilecard/pointer.svg';
 import { formatNoticeTime } from '@/utils/noticeDataFormetters';
 import { NoticeBaseType } from '@/types/noticeTypes';
 import { useRouter } from 'next/router';
-import PayIncrease from '../commons/card/payIncrease/PayIncrease';
 import styles from './ShopCard.module.scss';
+import NoticeDetailsPay from '../commons/details/detailCard/NoticeDetailsPay';
 
 interface CardPropsType {
   data: NoticeBaseType;
@@ -23,7 +23,6 @@ const ShopCard = ({ data, url, address, originalHourlyPay }: CardPropsType) => {
     startsAt,
     workhour: workHours,
     closed,
-    id,
   } = data;
   const date = formatNoticeTime(startsAt, workHours);
   const router = useRouter();
@@ -63,7 +62,7 @@ const ShopCard = ({ data, url, address, originalHourlyPay }: CardPropsType) => {
           <div>
             <p className={styles.title}>시급</p>
             <div className={styles.pay}>
-              <PayIncrease
+              <NoticeDetailsPay
                 hourlyPay={Number(pay)}
                 originalHourlyPay={originalHourlyPay}
                 closed={closed}
@@ -71,11 +70,11 @@ const ShopCard = ({ data, url, address, originalHourlyPay }: CardPropsType) => {
             </div>
           </div>
           <div className={styles.text}>
-            <ClockIcon />
+            <ClockIcon viewBox="0 0 20 20" />
             <p>{date}</p>
           </div>
           <div className={styles.text}>
-            <PinIcon />
+            <PinIcon viewBox="0 0 20 20" />
             <p>{address}</p>
           </div>
           <p className={styles.description}>{description}</p>

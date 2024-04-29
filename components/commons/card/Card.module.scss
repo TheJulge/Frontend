@@ -166,6 +166,9 @@
     z-index: 1; /* 다른 요소 위에 표시되도록 설정 */
     text-align: center;
     @include h1(--gray30);
+    @include mobile {
+      @include h3(--gray30);
+    }
   }
   .contents {
     .notice {
