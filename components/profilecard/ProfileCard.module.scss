@@ -69,27 +69,28 @@
   }
 }
 
-.buttonBox {
+.button {
   position: absolute;
   top: 32px;
   right: 32px;
   width: 169px;
+  border-radius: 6px;
+  text-align: center;
+  border: 1px solid var(--primary);
+  background: var(--white);
+  padding: 14px 20px;
+  overflow: hidden;
+  @include body1-bold(--primary);
 
   @include mobile {
     right: 20px;
     top: 20px;
     width: 108px;
+    padding: 12px 10px;
+    @include body2-bold(--primary);
   }
-}
 
-.button {
-  padding: 14px 30px;
-  text-align: center;
   &:hover {
     background-color: #f0f0f0;
-  }
-
-  @include mobile {
-    padding: 10px 20px;
   }
 }
