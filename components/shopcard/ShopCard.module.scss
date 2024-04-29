@@ -5,15 +5,22 @@
   min-width: 325px;
   padding: 24px;
   display: flex;
-  // justify-content: space-between;
+  justify-content: space-between;
+  align-items: flex-end;
   border-radius: 12px;
   border: 1px solid var(--gray20);
   background-color: var(--white);
   margin: 24px 0;
   gap: 25px;
-
   @include tablet {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  @include mobile {
+    margin-top: 16px;
+    margin-bottom: 12px;
+    padding: 20px;
   }
 }
 
@@ -25,8 +32,11 @@
 
   @include tablet {
     width: 100%;
-    height: auto;
-    aspect-ratio: 1.75 / 1;
+    height: 361px;
+  }
+  @include mobile {
+    height: 178px;
+    min-height: auto;
   }
 
   img {
@@ -37,10 +47,12 @@
 }
 
 .noticeBox {
-  padding-top: 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @include tablet {
+    width: 100%;
+  }
 }
 
 .notice {
@@ -52,35 +64,52 @@
   @include tablet {
     width: 100%;
   }
+  @include mobile {
+    gap: 8px;
+  }
 }
 
 .title {
   @include body1-bold(--primary);
+  margin-bottom: 8px;
+  @include mobile {
+    @include body2-bold(--primary);
+  }
 }
 
 .pay {
   display: flex;
-  // width: 100%;
-
-  h2 {
-    @include h1(--black);
-  }
 }
 
 .text {
   display: flex;
   gap: 6px;
   align-items: center;
-
   p {
     @include body1-regular(--gray50);
+  }
+  @include mobile {
+    gap: 3px;
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+    p {
+      @include body2-regular(--gray50);
+    }
   }
 }
 .description {
   margin-bottom: 14px;
-
+  min-height: 78px;
+  @include body1-regular(--black);
   @include tablet {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    min-height: auto;
+  }
+  @include mobile {
+    @include body2-regular(--black);
+    margin-bottom: 24px;
   }
 }
 .button {
@@ -90,5 +119,9 @@
   @include tablet {
     max-width: none;
     width: 100%;
+  }
+  @include mobile {
+    padding: 10px;
+    @include body2-bold(--primary);
   }
 }

@@ -1,4 +1,5 @@
 import styles from './Explanation.module.scss';
+
 interface ExplanationProp {
   description: string;
 }
