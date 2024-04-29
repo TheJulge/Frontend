@@ -3,6 +3,7 @@ import ShareOpenButton from '@/components/share/ShareOpenButton';
 import Explanation from './Explanation';
 import NoticeDetailsCard from './detailCard/NoticeDetailsCard';
 import styles from './NoticeDetailsContainer.module.scss';
+import CalculatorButton from '@/components/calculater/CalculatorButton';
 
 interface DetailsProp {
   shopId: string;
@@ -28,6 +29,12 @@ export default function NoticeDetailsContainer({
         <ul>
           <li>
             <ShareOpenButton shopName={shopDetails.name} />
+          </li>
+          <li>
+            <CalculatorButton
+              hourlyPay={noticeDetails.hourlyPay}
+              workHour={noticeDetails.workhour}
+            />
           </li>
         </ul>
       </div>
