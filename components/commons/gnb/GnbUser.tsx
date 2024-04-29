@@ -89,24 +89,6 @@ export default function GnbUser() {
           <>
             <Link href={shopId ? `/shops/${shopId}` : '/shops'}>내 가게</Link>
             <SignOutButton />
-            <button
-              type="button"
-              onClick={handleOpen}
-              className={styles.notification}
-            >
-              {count > 0 ? (
-                <NotiActiveIcon viewBox="0 0 24 24" />
-              ) : (
-                <NotiIcon viewBox="0 0 24 24" />
-              )}
-            </button>
-            {showModal && (
-              <NotificationModal
-                handleClose={handleClose}
-                count={count}
-                notiDatas={notiData}
-              />
-            )}
           </>
         )}
         {type !== 'employee' && type !== 'employer' && (
