@@ -1,12 +1,22 @@
 @import '@/components/commons/Button/Button.module.scss';
 
 .shareButton {
-  @include body2-bold(--white);
-  @include fillButton;
-  width: 100px;
   cursor: pointer;
-  line-height: 17px;
-  border-radius: 5px;
+  background: none;
   border: none;
-  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  &:hover {
+    svg {
+      fill: var(--primary);
+    }
+  }
+  svg {
+    width: 22px;
+    height: 22px;
+    fill: var(--gray60);
+  }
 }

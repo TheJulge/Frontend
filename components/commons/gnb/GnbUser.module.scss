@@ -21,6 +21,9 @@
     font-size: 14px;
     line-height: 18px;
   }
+  &:hover {
+    color: var(--primary);
+  }
 }
 .notification {
   width: 24px;

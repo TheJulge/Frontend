@@ -8,7 +8,6 @@
   position: relative;
 
   .button {
-    // 2024-04-19 임동현 추가
     cursor: pointer;
     @include body2-bold(--black);
     border-radius: 5px;
@@ -20,7 +19,12 @@
     padding: 12px;
     justify-content: center;
     align-items: center;
-
+    &:hover {
+      background: var(--gray20);
+      .input {
+        background: var(--gray20);
+      }
+    }
     .upIcon,
     .downIcon {
       width: 10px;
@@ -28,7 +32,6 @@
     }
 
     .input {
-      // 2024-04-19 임동현 추가
       cursor: pointer;
       @include body2-bold(--black);
       width: 100%;

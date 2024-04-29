@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import classNames from 'classnames';
 import { formatNoticeTime } from '@/utils/noticeDataFormetters';
-import { LinkType } from '@/types/noticeTypes';
 import ClockIcon from '@/public/images/card/clockIcon.svg';
 import LocationIcon from '@/public/images/card/locationIcon.svg';
 import PayIncrease from './payIncrease/PayIncrease';
@@ -19,9 +18,9 @@ interface CardProp {
   address: string;
   imageUrl: string;
   originalHourlyPay: number;
-  links: LinkType[];
   shopId: string;
   noticeId: string;
+  type?: string;
 }
 /**
  * 각각의 공고를 표시하는 Card 컴포넌트
@@ -38,9 +37,9 @@ export default function Card({
   address,
   imageUrl,
   originalHourlyPay,
-  links,
   shopId,
   noticeId,
+  type = 'alba',
 }: CardProp) {
   const [startDate, workHour] = formatNoticeTime(startsAt, workhour);
   return (
@@ -48,7 +47,7 @@ export default function Card({
       className={classNames(styles.cardContainer, {
         [styles.closed]: closed,
       })}
-      href={`/shops/${shopId}/notices/${noticeId}/alba`}
+      href={`/shops/${shopId}/notices/${noticeId}/${type}`}
     >
       <div className={styles.cardImg}>
         {closed && <div className={styles.closedMessage}>마감 완료</div>}
