@@ -35,19 +35,29 @@ export default function CalculateModal({
 
     const extraPay =
       weeklyWorkHour > 15
-        ? Math.floor((weeklyWorkHour / 5) * hourlyPay * additionalPay)
+        ? Math.floor(
+            (Math.min(weeklyWorkHour, 40) / 5) * hourlyPay * additionalPay,
+          )
         : 0;
     const overtimePay = Math.floor(overtime * hourlyPay * 1.5);
 
-    const weeklyTotalPay = Math.floor(
-      (weeklyWorkHour * hourlyPay + extraPay + overtimePay) *
-        ((100 - taxPercent) / 100),
-    );
     if (type === '주') {
+      const weeklyTotalPay = Math.floor(
+        (weeklyWorkHour * hourlyPay + extraPay + overtimePay) *
+          ((100 - taxPercent) / 100),
+      );
       setWeeklyPay(formatWage(weeklyTotalPay));
     }
     if (type === '월') {
-      setMonthlyPay(formatWage(Math.floor(weeklyTotalPay * MONTH_WEEK)));
+      const weeklyTotalPay = Math.floor(weeklyWorkHour * hourlyPay + extraPay);
+      setMonthlyPay(
+        formatWage(
+          Math.floor(
+            (weeklyTotalPay * MONTH_WEEK + overtimePay) *
+              ((100 - taxPercent) / 100),
+          ),
+        ),
+      );
     }
   }, [type, weeklyWorkDay, taxPercent, overtime, additionalPay]);
 
@@ -151,7 +161,7 @@ export default function CalculateModal({
                 name="tax"
                 value="소득세"
                 onClick={() => {
-                  setTaxPercent(9.32);
+                  setTaxPercent(3.3);
                 }}
               />
               <label htmlFor="income-tax">소득세</label>
@@ -164,7 +174,7 @@ export default function CalculateModal({
                 id="no-include"
                 type="radio"
                 name="additionalPay"
-                value="미포함"
+                value="주휴수당포함"
                 checked
                 onClick={() => {
                   setAdditionalPay(0);
@@ -175,7 +185,7 @@ export default function CalculateModal({
                 id="include"
                 type="radio"
                 name="additionalPay"
-                value="포함"
+                value="주휴수당미포함"
                 onClick={() => {
                   setAdditionalPay(1);
                 }}
