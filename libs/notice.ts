@@ -1,4 +1,5 @@
 import { API } from '@/utils/constants/API';
+import { FieldValue } from 'react-hook-form';
 import { instance, authInstance } from './index';
 
 interface NoticeProps {
@@ -46,17 +47,17 @@ export const getShopNotices = (shopId: NoticeProps) => {
  * @param {string} shopId
  * @returns
  */
-interface PostShopNoticeProps {
+export interface ShopNoticeProps {
   hourlyPay: number;
   startsAt: string;
   workhour: number;
   description?: string;
 }
 export const postShopNotice = (
-  shopId: NoticeProps,
-  data: PostShopNoticeProps,
+  shopId: string,
+  data: FieldValue<ShopNoticeProps>,
 ) => {
-  return authInstance.post(`${API.shop}/${shopId}/${API.notice}`, data);
+  return authInstance.post(`${API.shop}/${shopId}${API.notice}`, data);
 };
 
 /**
@@ -65,8 +66,8 @@ export const postShopNotice = (
  * @param {string} noticeId
  * @returns
  */
-export const getShopNotice = ({ shopId, noticeId }: NoticeProps) => {
-  return instance.get(`${API.shop}/${shopId}/${API.notice}/${noticeId}`);
+export const getShopNotice = (shopId: string, noticeId: string) => {
+  return instance.get(`${API.shop}/${shopId}${API.notice}/${noticeId}`);
 };
 
 /**
@@ -75,6 +76,13 @@ export const getShopNotice = ({ shopId, noticeId }: NoticeProps) => {
  * @param {string} noticeId
  * @returns
  */
-export const putShopNotice = ({ shopId, noticeId }: NoticeProps) => {
-  return authInstance.put(`${API.shop}/${shopId}/${API.notice}/${noticeId}`);
+export const putShopNotice = (
+  shopId: string,
+  noticeId: string,
+  data: FieldValue<ShopNoticeProps>,
+) => {
+  return authInstance.put(
+    `${API.shop}/${shopId}/${API.notice}/${noticeId}`,
+    data,
+  );
 };
