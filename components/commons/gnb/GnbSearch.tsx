@@ -9,7 +9,7 @@ export default function GnbSearch() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (ref.current!.value) {
-      router.push(`?keyword=${ref.current!.value}`);
+      router.push(`/?keyword=${ref.current!.value}`);
       ref.current!.value = '';
     }
   };
