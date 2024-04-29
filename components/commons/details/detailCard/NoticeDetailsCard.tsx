@@ -6,7 +6,6 @@ import LocationIcon from '@/public/images/card/locationIcon.svg';
 import { formatNoticeTime } from '@/utils/noticeDataFormetters';
 import { NoticeBaseType } from '@/types/noticeTypes';
 import findCookieValue from '@/utils/findCookieValue';
-import PayIncrease from '../../card/payIncrease/PayIncrease';
 import InfoModal from '../../modal/InfoModal';
 import ChooseModal from '../../modal/ChooseModal';
 import styles from './NoticeDetailsCard.module.scss';
@@ -37,28 +36,27 @@ export default function NoticeDetailsCard({
   const handleClickToApply = async () => {
     const cookies = document.cookie;
 
-    //비로그인 상태이면
+    // 비로그인 상태이면
     if (!cookies) {
       setInfoModalText('로그인이 필요한 서비스 입니다.');
       setIsInfoModalOpen(true);
-      return;
     } else {
       const isEmployer = findCookieValue(cookies, 'type') === 'employer';
       const isProfile = findCookieValue(cookies, 'isProfile') === 'true';
 
-      //사장님인 경우
+      // 사장님인 경우
       if (isEmployer) {
         setInfoModalText('사장님은 신청할수 없어요.');
         setIsInfoModalOpen(true);
         return;
       }
-      //프로필 미등록 상태
+      // 프로필 미등록 상태
       if (!isProfile) {
         setInfoModalText('내 프로필을 먼저 등록해 주세요.');
         setIsInfoModalOpen(true);
         return;
       }
-      //모두 충족 -> post 요청
+      // 모두 충족 -> post 요청
       try {
         const applyResponse = await authInstance.post(
           `/shops/${shopId}/notices/${noticeId}/applications`,
@@ -74,7 +72,7 @@ export default function NoticeDetailsCard({
   };
 
   const handleClickToCancelApply = async () => {
-    //신청취소
+    // 신청취소
     try {
       const status = 'canceled';
       const cancelResponse = await authInstance(

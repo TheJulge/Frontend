@@ -20,6 +20,7 @@
     }
   }
   .description {
+    word-break: break-all;
     @include body1-regular(--black);
     @include mobile {
       @include body2-regular(--black);

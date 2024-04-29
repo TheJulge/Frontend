@@ -1,4 +1,6 @@
 import EmptyTable from '@/components/table/emptytable/EmptyTable';
+import { GetServerSidePropsContext } from 'next';
+import findCookieValue from '@/utils/findCookieValue';
 import styles from './ProfileEmptypage.module.scss';
 
 interface EmptypageType {
@@ -8,13 +10,13 @@ interface EmptypageType {
   text: string;
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { req } = context;
   const cookies = req.headers.cookie;
-  const type = cookies
-    .split('; ')
-    .find((row: string) => row.startsWith('type='))
-    .split('=')[1];
+  let type = null;
+  if (cookies) {
+    type = findCookieValue(cookies, 'type');
+  }
   let title = '';
   let link = '';
   let buttonText = '';

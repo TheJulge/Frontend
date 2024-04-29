@@ -16,10 +16,10 @@ interface KakaoButtonProps {
 export default function KaKaoButton({ url, shopName }: KakaoButtonProps) {
   const handleClick = () => {
     if (!window.Kakao?.isInitialized()) {
-      Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
+      window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
     }
 
-    Kakao.Share.sendDefault({
+    window.Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
         title: 'the Julge',

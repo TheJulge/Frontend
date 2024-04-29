@@ -26,10 +26,10 @@ export function WaitingBadge() {
   );
 }
 
-export function CanceledBadge(){
-  return(
+export function CanceledBadge() {
+  return (
     <div className={styles.buttonBox}>
-       <div className={`${styles.button} ${styles.canceledButton}`}>취소</div>
+      <div className={`${styles.button} ${styles.canceledButton}`}>취소</div>
     </div>
-  )
+  );
 }

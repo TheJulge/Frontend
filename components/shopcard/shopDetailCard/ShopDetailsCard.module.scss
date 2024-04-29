@@ -2,29 +2,27 @@
 
 .container {
   width: 100%;
-  height: 356px;
-  max-width: 960px;
+  max-width: 964px;
   display: flex;
   padding: 24px;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: 30px;
   border-radius: 12px;
   border: none;
   background: var(--red10);
 
   @include tablet {
-    height: 677px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     flex-shrink: 0;
+    gap: 16px;
   }
   @include mobile {
-    height: 450px;
     display: flex;
-    padding: 12px;
+    padding: 20px;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
@@ -32,26 +30,23 @@
 
   .cardImg {
     width: 539px;
-    height: 100%;
+    height: 308px;
     position: relative !important;
     overflow: hidden;
     border-radius: 12px;
     @include tablet {
       width: 100%;
+      height: 360px;
     }
     @include mobile {
-      width: 100%;
+      height: 178px;
     }
   }
 
   .contents {
     display: flex;
     width: 346px;
-    padding-top: 16px;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    align-self: stretch;
     @include tablet {
       width: 100%;
       gap: 40px;
@@ -85,8 +80,10 @@
         }
         span {
           @include h1(--black);
+          line-height: 34px;
           @include mobile {
-            @include h1(--black);
+            @include h2(--black);
+            line-height: 29px;
           }
         }
       }
@@ -94,6 +91,9 @@
         display: flex;
         align-items: center;
         gap: 6px;
+        @include mobile {
+          gap: 3px;
+        }
         p {
           @include body1-regular(--gray50);
           @include mobile {
@@ -102,12 +102,23 @@
         }
         svg {
           fill: var(--red30);
+          @include mobile {
+            width: 16px;
+            height: 16px;
+          }
         }
       }
       .description {
         @include body1-regular(--black);
+        min-height: 78px;
+        margin-bottom: 54px;
+        word-break: break-all;
+        @include tablet {
+          min-height: auto;
+          margin-bottom: 0px;
+        }
         @include mobile {
-          @include body2-regular(--gray50);
+          @include body2-regular(--black);
         }
       }
     }
@@ -121,10 +132,18 @@
       .editLink {
         text-align: center;
         @include emptyButton;
+        @include mobile {
+          @include body2-bold(--primary);
+          padding: 10px;
+        }
       }
       .noticeEnterLink {
         text-align: center;
         @include fillButton;
+        @include mobile {
+          @include body2-bold(--white);
+          padding: 10px;
+        }
       }
     }
   }
