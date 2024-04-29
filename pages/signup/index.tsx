@@ -2,8 +2,28 @@ import styles from '@/pages/signup/signup.module.scss';
 import Link from 'next/link';
 import LogoIcon from '@/public/images/sign/mainlogo.svg';
 import SignUpForm from '@/components/sign/SignUpForm';
+import { GetServerSidePropsContext } from 'next';
+import findCookieValue from '@/utils/findCookieValue';
+import GithubLogin from '@/components/socialLogin/GithubLogin';
 
-export default function SignUp() {
+export function getServerSideProps(context: GetServerSidePropsContext) {
+  const cookies = context.req.headers.cookie;
+  let createUserData;
+
+  if (!cookies) {
+    createUserData = '';
+  } else {
+    createUserData = findCookieValue(cookies, 'createUserData');
+  }
+
+  return {
+    props: {
+      createUserData,
+    },
+  };
+}
+
+export default function SignUp({ createUserData }: any) {
   return (
     <main className={styles.background}>
       <div className={styles.container}>
@@ -11,7 +31,8 @@ export default function SignUp() {
           <LogoIcon className={styles.logoIcon} />
         </Link>
         <div className={styles.box}>
-          <SignUpForm />
+          <SignUpForm createUserData={createUserData} />
+          <GithubLogin>GitHub으로 알바하기</GithubLogin>
           <div className={styles.text}>
             이미 가입하셨나요? <Link href="/signin">로그인하기</Link>
           </div>

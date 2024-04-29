@@ -1,7 +1,9 @@
 import styles from '@/components/sign/SignUpForm.module.scss';
+import useGithubSignUp from '@/hooks/useGithubSignUp';
 import useSignUp from '@/hooks/useSignUp';
 import CheckedIcon from '@/public/images/sign/checked.svg';
 import { SIGN_ERROR_MESSAGE, SIGN_REGEX } from '@/utils/constants/SIGN';
+import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 interface Inputs {
@@ -11,7 +13,7 @@ interface Inputs {
   type: 'employee' | 'employer';
 }
 
-export default function SignUpForm() {
+export default function SignUpForm({ createUserData }: any) {
   const {
     register,
     handleSubmit,
@@ -28,6 +30,12 @@ export default function SignUpForm() {
     },
   });
   const { status, successModal, errorModal, signUp } = useSignUp();
+  const {
+    status: githubStatus,
+    successGithubModal,
+    errorGithubModal,
+    githubSignUp,
+  } = useGithubSignUp();
 
   const onSubmit: SubmitHandler<Inputs> = data => {
     const createAuthData = {
@@ -37,6 +45,12 @@ export default function SignUpForm() {
     };
     signUp(createAuthData);
   };
+
+  useEffect(() => {
+    if (createUserData !== '') {
+      githubSignUp(createUserData);
+    }
+  }, []);
 
   return (
     <form
@@ -160,7 +174,7 @@ export default function SignUpForm() {
       </div>
 
       <button
-        disabled={status === 'fetching'}
+        disabled={(status || githubStatus) === 'fetching'}
         className={styles.submitButton}
         type="submit"
       >
@@ -169,6 +183,8 @@ export default function SignUpForm() {
 
       {successModal}
       {errorModal}
+      {successGithubModal}
+      {errorGithubModal}
     </form>
   );
 }
