@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import LeftButton from '@/public/images/leftButton.svg';
 import LeftButtonOn from '@/public/images/leftButtonOn.svg';
 import RightButtonOn from '@/public/images/rightButtonOn.svg';
 import RightButton from '@/public/images/rightButton.svg';
-import styles from './Pagination.module.scss';
 import usePagination from '@/hooks/usePagenation';
+import styles from './Pagination.module.scss';
 
 /**
  * @param {Object} prop
@@ -20,8 +20,6 @@ interface PageNationProps {
 }
 
 function Pagination({ totalCount, itemCount }: PageNationProps) {
-
-
   const router = useRouter();
   const { pathname, query } = router;
   const page = parseInt(query.page as string, 10) || 1;
@@ -31,8 +29,8 @@ function Pagination({ totalCount, itemCount }: PageNationProps) {
 
   const isFirstPage = selectedPage === 1;
   const isLastPage = selectedPage === totalPages;
-  //페이지네이션 버튼 출력함수
-  const {pageNumbers} = usePagination({totalPages, page})
+  // 페이지네이션 버튼 출력함수
+  const { pageNumbers } = usePagination({ totalPages, page });
 
   const handlePageClick = async (pageNumber: number): Promise<void> => {
     setSelectedPage(pageNumber);
@@ -48,7 +46,6 @@ function Pagination({ totalCount, itemCount }: PageNationProps) {
       },
     );
   };
-
 
   return (
     <div className={styles.container}>
