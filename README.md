@@ -16,7 +16,7 @@
 
 ## 💾 배포 주소
 
-https://rolling-paper-24.netlify.app <br><br>
+https://thejulge-17.vercel.app <br><br>
 
 ## 🎀프로젝트에 대한 소개
 
@@ -89,8 +89,8 @@ https://rolling-paper-24.netlify.app <br><br>
 ### 로그인, 회원가입 (주소: /signin, /signup)
 
 - 로그인, 회원가입 폼은 react-hook-form을 사용해 비제어 컴포넌트로 구현하였습니다.
-- 로그인에 성공하면 로그인에 대한 토큰, 사용자가 알바생인지, 사장님인지에 대한 여부를 쿠키에 저장합니다. <br><br> <img src = "public\readMe\signInPage.png" width="500"> <br><br>
-- 회원이 아닐 경우 회원가입을 진행해야하고 이때 사장님, 알바생 여부를 선택해야합니다. <br><br> <img src = "public\readMe\signUpPage.png" width="500"> <br><br>
+- 로그인에 성공하면 로그인에 대한 토큰, 사용자가 알바생인지, 사장님인지에 대한 여부를 쿠키에 저장합니다. <br><br> <img src = "public\readMe\signin.png" width="500"> <br><br>
+- 회원이 아닐 경우 회원가입을 진행해야하고 이때 사장님, 알바생 여부를 선택해야합니다. <br><br> <img src = "public\readMe\signup.png" width="500"> <br><br>
 
 ### 내 프로필 등록 (주소: /profile)
 
