@@ -1,6 +1,7 @@
 import styles from '@/components/sign/SignInForm.module.scss';
 import useSignIn from '@/hooks/useSignIn';
 import { SIGN_ERROR_MESSAGE, SIGN_REGEX } from '@/utils/constants/SIGN';
+import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 interface Inputs {
@@ -8,7 +9,7 @@ interface Inputs {
   password: string;
 }
 
-export default function SignInForm() {
+export default function SignInForm({ userData }: any) {
   const {
     register,
     handleSubmit,
@@ -19,6 +20,12 @@ export default function SignInForm() {
   const onSubmit: SubmitHandler<Inputs> = data => {
     signIn(data);
   };
+
+  useEffect(() => {
+    if (userData !== '') {
+      signIn(userData);
+    }
+  }, []);
 
   return (
     <form

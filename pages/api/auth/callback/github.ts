@@ -1,5 +1,4 @@
-import { instance } from '@/libs';
-import { API } from '@/utils/constants/API';
+import { postSignIn } from '@/libs/user';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 // eslint-disable-next-line consistent-return
@@ -42,8 +41,6 @@ export default async function handler(
     return res.status(401).json({ error: '유저 정보를 못 받아왔습니다.' });
   }
 
-  console.log('userProfile', userProfile);
-
   const emailResponse = await fetch('https://api.github.com/user/emails', {
     headers: {
       Authorization: `token ${accessToken}`,
@@ -55,65 +52,37 @@ export default async function handler(
   if (!emailProfile) {
     return res.status(401).json({ error: '이메일이 없습니다.' });
   }
-  console.log('emailProfile', emailProfile);
+
   const userEmail = emailProfile.length > 0 ? emailProfile[0]?.email : '';
   const userData = {
-    email: userEmail,
-    password: userProfile.id,
+    // email: userEmail,
+    // password: userProfile.id,
+    email: 'qwer1234@qwer.com',
+    password: 'qwer1234',
   };
-  console.log('USERDATA = ', userData);
+  const createUserData = {
+    // email: userEmail,
+    // password: userProfile.id,
+    email: 'qwerqwer@qwer.com',
+    password: 'qwerqwer',
+    type: 'employee',
+  };
 
-  let loginState = 'unAuthorization';
-  let token = null;
+  const login = await postSignIn(userData);
 
-  // 1. 위 정보로 토큰을 보내서 로그인된 회원인지 체크
-  try {
-    await instance(`${API.auth}`, {
-      method: 'POST',
-      data: userData,
-    });
-    loginState = 'authorization';
-  } catch (e) {
-    loginState = 'emailCheck';
+  if (login.status === 200) {
+    res.setHeader('Set-Cookie', `userData=${JSON.stringify(userData)}; Path=/`);
+    res.writeHead(302, { Location: '/signin' });
+    res.end();
   }
 
-  if (loginState === 'emailCheck') {
-    try {
-      await instance(`${API.user}`, {
-        method: 'POST',
-        data: { ...userData, type: 'employee' },
-      });
-      loginState = 'newUserAndLogin';
-    } catch (e) {
-      loginState = 'emailDuplicate';
-    }
+  if (login.status !== 200) {
+    res.setHeader(
+      'Set-Cookie',
+      `userData=${JSON.stringify(createUserData)}; Path=/`,
+    );
+
+    res.writeHead(302, { Location: '/signup' });
+    res.end();
   }
-
-  if (loginState === 'emailDuplicate') {
-    res.redirect('/signin?error=email_duplicate');
-  }
-  if (loginState === 'newUserAndLogin') {
-    await instance(`${API.auth}`, {
-      method: 'POST',
-      data: userData,
-    });
-    loginState = 'authorization';
-  }
-  if (loginState === 'authorization') {
-    // 쿠키에 코드잇api로 받아온 토큰 저장시키고, 기존의 로그인 후 처리
-    res.redirect('/');
-  }
-
-  console.log('loginCheck', loginState);
-
-  // 로그인되면 로그인 로직 실행
-  // 이메일로 로그인한 회원이 이 로직을 실행시 비밀번호가 틀린다고 나오면
-  // 메일 체크는 회원가입으로 체크
-  // 그냥 일반 메일로 로그인했다고 모달ㅇr 알랏창으로 말해주고, 로그인창으로 다시 보냄
-
-  // 필요한 사용자 정보를 세션 쿠키에 저장하거나 다른 방법으로 처리
-  // 회원가입이 되어있는지
-
-  // 사용자 대시보드로 리다이렉션
-  res.redirect('/');
 }
