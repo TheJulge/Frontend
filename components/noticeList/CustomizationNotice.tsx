@@ -4,8 +4,6 @@ import { getCustomNotices, getPayNotices } from '@/libs/notice';
 import { Autoplay } from 'swiper/modules';
 import { CardNoticeType } from '@/types/noticeTypes';
 import { useRouter } from 'next/router';
-import { getCookieValue } from '@/utils/getCookie';
-import Link from 'next/link';
 import styles from './CustomizationNotice.module.scss';
 import Card from '../commons/card/Card';
 import 'swiper/css';
@@ -85,7 +83,6 @@ export default function CustomizationNotice({ customType }: CustomProps) {
                   address={shop.address1}
                   imageUrl={shop.imageUrl}
                   originalHourlyPay={shop.originalHourlyPay}
-                  links={item.links}
                   shopId={shop.id}
                   noticeId={notice.id}
                 />

@@ -18,9 +18,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   return {
     props: {
-      shopId: shopId,
-      noticeId: noticeId,
-      noticeData: noticeData,
+      shopId,
+      noticeId,
+      noticeData,
     },
   };
 }
