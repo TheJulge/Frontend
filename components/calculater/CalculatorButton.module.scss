@@ -1,0 +1,18 @@
+@import '@/components/commons/Button/Button.module.scss';
+
+.calculatorButton {
+  cursor: pointer;
+  border: none;
+  background-color: var(--white);
+  width: 24px;
+  height: 24px;
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+  &:hover {
+    svg {
+      fill: var(--primary);
+    }
+  }
+}

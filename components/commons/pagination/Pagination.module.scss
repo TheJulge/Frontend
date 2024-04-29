@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  justify-content: center;
+  height: 64px;
+  width: 100%;
+  margin: 0 auto;
+  align-items: center;
+  padding: 8px 12px;
+}
+
+.pageBox {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 40px;
+  cursor: pointer;
+
+  a {
+    height: 20px;
+  }
+
+  svg {
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.pageNumberBox {
+  display: flex;
+  color: var(--black);
+}
+
+.pageNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 12px;
+  text-align: center;
+
+  @media (width<=480px) {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+}
+
+.selected {
+  color: var(--white);
+  background: var(--red30);
+  border-radius: 4px;
+}

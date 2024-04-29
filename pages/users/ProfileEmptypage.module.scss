@@ -1,0 +1,23 @@
+.container {
+  margin: 0 auto;
+
+  h2 {
+    @include h1(--black);
+    margin-bottom: 32px;
+  }
+}
+
+.Box {
+  max-width: 964px;
+
+  margin: 0 auto;
+  padding: 60px 0;
+
+  @include tablet {
+    padding: 60px 32px;
+  }
+
+  @include mobile {
+    padding: 40px 12px;
+  }
+}

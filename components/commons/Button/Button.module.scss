@@ -1,0 +1,40 @@
+@mixin basicButton($cololr, $backgroundColor, $border: none) {
+  cursor: pointer;
+  display: block;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  width: 100%;
+  border-radius: 6px;
+  color: $cololr;
+  background-color: $backgroundColor;
+  border: $border;
+  // 버튼의 padding 값이 디자인마다 다르기 때문에 제거했습니다.
+}
+
+// 색 있는 버튼
+@mixin fillButton {
+  @include basicButton($cololr: var(--white), $backgroundColor: #ea3c12);
+  &:hover {
+    background-color: #c03614;
+  }
+}
+
+// 색 없는 버튼
+@mixin emptyButton {
+  @include basicButton(
+    $cololr: #ea3c12,
+    $backgroundColor: var(--white),
+    $border: 1px solid #ea3c12
+  );
+  padding: 13px;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+}
+
+// disabled 버튼
+@mixin disabledButton {
+  @include basicButton($cololr: var(--white), $backgroundColor: var(--gray40));
+}

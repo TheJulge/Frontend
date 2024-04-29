@@ -1,0 +1,67 @@
+.payInfo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  @include mobile {
+    gap: 4px;
+  }
+  .pay {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    @include h2(--black);
+  }
+  .payIncrease {
+    display: flex;
+    height: 36px;
+    padding: 12px;
+    align-items: center;
+    gap: 2px;
+    border-radius: 20px;
+    background: var(--red30);
+    &.highIncrease {
+      background: var(--red40);
+    }
+    @include mobile {
+      padding: 4px 8px;
+      height: auto;
+    }
+    span {
+      color: var(--The-julge-white, #fff);
+      text-align: center;
+      @include body2-bold(--white);
+      @include mobile {
+        @include caption(--white);
+      }
+    }
+    svg {
+      fill: var(--white);
+      @include mobile {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}
+
+.closed {
+  .pay {
+    @include h2(--gray30);
+    @include mobile {
+      @include h4-bold(--gray30);
+    }
+  }
+  .payIncrease {
+    background-color: var(--gray20);
+    @include mobile {
+      background: none;
+      span {
+        @include caption(--gray30);
+      }
+      svg {
+        fill: var(--gray20);
+      }
+    }
+  }
+}

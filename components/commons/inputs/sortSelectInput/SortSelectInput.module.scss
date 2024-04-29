@@ -1,0 +1,47 @@
+.container {
+  @include body2-bold(--black);
+  width: 105px;
+  height: 30px;
+  border-radius: 5px;
+  background: var(--gray10);
+  border: none;
+  position: relative;
+
+  .button {
+    cursor: pointer;
+    @include body2-bold(--black);
+    border-radius: 5px;
+    background: var(--gray10);
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: flex;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      background: var(--gray20);
+      .input {
+        background: var(--gray20);
+      }
+    }
+    .upIcon,
+    .downIcon {
+      width: 10px;
+      height: 10px;
+    }
+
+    .input {
+      cursor: pointer;
+      @include body2-bold(--black);
+      width: 100%;
+      border: none;
+      outline: none;
+      background: var(--gray10);
+
+      &::placeholder {
+        @include body2-bold(--black);
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.noticeSort {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  .filterButton {
+    cursor: pointer;
+    @include body2-bold(--white);
+    background-color: var(--red30);
+    line-height: 17px;
+    border-radius: 5px;
+    border: none;
+    padding: 6.5px 12px;
+    &:hover {
+      background-color: #fc6e4e;
+    }
+  }
+  .filterBox {
+    position: absolute;
+    top: 38px;
+    right: 0;
+  }
+}

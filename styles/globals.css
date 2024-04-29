@@ -3,6 +3,9 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Spoqa Han Sans Neo', sans-serif; /*글꼴 추가*/
+  color: var(--black);
+  -webkit-tap-highlight-color: transparent;
 }
 :after,
 :before {
@@ -28,9 +31,19 @@ iframe {
   border: 0;
 }
 
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
 /* color */
 :root {
+  --primary: #ea3c12;
   --black: #111322;
+  --gray60: #5a5a5a;
   --gray50: #7d7986;
   --gray40: #a4a1aa;
   --gray30: #cdc9cf;
@@ -47,4 +60,54 @@ iframe {
   --green20: #20a81e;
   --green10: #d4f7d4;
   --kakao: #fee500;
+}
+
+/* datepicker 라이브러리 */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+.react-datepicker__header {
+  background-color: var(--white) !important;
+}
+.react-datepicker__day--outside-month {
+  color: #a8a8a8 !important;
+}
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--primary) !important;
+  color: var(--white) !important;
+}
+.react-datepicker-popper[data-placement^='bottom'] .react-datepicker__triangle {
+  display: none !important;
+}
+.react-datepicker__triangle {
+  display: none;
+}
+.react-datepicker__day--selected {
+  background-color: var(--primary) !important;
+}
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item--selected {
+  background-color: var(--primary) !important;
+}
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item:hover {
+  background-color: var(--red20) !important;
+}
+.react-datepicker__day:hover {
+  background-color: var(--red20) !important;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  main {
+    flex-grow: 1;
+  }
 }

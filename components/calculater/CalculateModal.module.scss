@@ -1,0 +1,178 @@
+@mixin hideInput {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: -9999px;
+}
+@mixin focusOutline {
+  outline: dotted 1px #ccc;
+  outline-offset: 0.45rem;
+}
+@mixin toggle($padding: 10px 40px) {
+  input {
+    @include hideInput;
+  }
+  input + label {
+    cursor: pointer;
+    padding: $padding;
+    position: relative;
+    border: solid 1px #ddd;
+    background-color: #fff;
+    font-size: 16px;
+    text-align: center;
+    transition:
+      color 0.25s,
+      background-color 0.15s;
+    &:first-of-type {
+      border-radius: 4px 0 0 4px;
+      border-right: none;
+    }
+    &:last-of-type {
+      border-radius: 0 4px 4px 0;
+      border-left: none;
+    }
+  }
+  input:hover + label {
+    background-color: var(--gray10);
+  }
+  input:checked + label {
+    background-color: var(--primary);
+    color: #fff;
+
+    border-color: var(--primary);
+    z-index: 1;
+  }
+}
+
+.container {
+  width: 320px;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  padding: 20px;
+  .containerTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    h3 {
+      @include h3(--black);
+    }
+    button {
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      background: none;
+      border: none;
+    }
+  }
+  .payType {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    gap: 12px;
+    .hourlyPay {
+      display: flex;
+      width: 100%;
+      height: 32px;
+      justify-content: space-between;
+      align-items: center;
+      @include body1-regular(--black);
+    }
+    .typeRadio {
+      width: 100%;
+      height: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .toggle {
+        display: flex;
+        @include toggle(2px 8px);
+      }
+    }
+  }
+  .options {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    .workHour {
+      height: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include body1-regular(--black);
+    }
+    .workDay,
+    .overtime {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      span {
+        @include body1-regular(--black);
+      }
+      .workCon {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      input {
+        width: 40px;
+        text-align: right;
+        display: flex;
+        padding: 2px 8px;
+        border-radius: 6px;
+        border: 1px solid var(--gray30);
+        background: var(--white);
+        @include body1-regular(--black);
+      }
+      input::-webkit-inner-spin-button {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+      }
+    }
+
+    .tax {
+      width: 100%;
+      height: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      p {
+        @include body1-regular(--black);
+      }
+      .taxToggle {
+        display: flex;
+        @include toggle(2px 8px);
+      }
+    }
+    .additionalPay {
+      width: 100%;
+      height: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        @include body1-regular(--black);
+      }
+      .additionalPayToggle {
+        display: flex;
+        @include toggle(2px 8px);
+      }
+    }
+  }
+  .calculatedPay {
+    padding-top: 30px;
+    p {
+      @include h2(--black);
+      span {
+        @include h2(--primary);
+      }
+    }
+  }
+}

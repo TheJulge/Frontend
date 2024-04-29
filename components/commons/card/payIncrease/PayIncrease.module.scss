@@ -1,0 +1,100 @@
+.payInfo {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  height: 36px;
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 18px;
+    height: auto;
+  }
+  .pay {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    @include h2(--black);
+    @include mobile {
+      @include h4-bold(--black);
+    }
+  }
+  .payIncrease {
+    display: flex;
+    height: 36px;
+    padding: 12px;
+    align-items: center;
+    gap: 2px;
+    border-radius: 20px;
+    background: var(--red30);
+    &.highIncrease {
+      background: var(--red40);
+      @include mobile {
+        height: auto;
+        padding: 0;
+        gap: 2px;
+        background: none;
+      }
+    }
+    @include mobile {
+      padding-bottom: 18px;
+      position: absolute;
+      bottom: 0;
+      height: auto;
+      padding: 0;
+      gap: 2px;
+      background: none;
+    }
+    span {
+      color: var(--The-julge-white, #fff);
+      text-align: center;
+      @include body2-bold(--white);
+      @include mobile {
+        @include caption(--red40);
+      }
+    }
+    svg {
+      fill: var(--white);
+      @include mobile {
+        width: 16px;
+        height: 16px;
+        transform: translateY(-1px);
+        fill: var(--red40);
+      }
+    }
+  }
+}
+
+.closed {
+  .pay {
+    @include h2(--gray30);
+    @include mobile {
+      @include h4-bold(--gray30);
+    }
+  }
+  .payIncrease {
+    background-color: var(--gray20);
+    &.highIncrease {
+      background-color: var(--gray20);
+      @include mobile {
+        background: none;
+        span {
+          @include caption(--gray30);
+        }
+        svg {
+          fill: var(--gray20);
+        }
+      }
+    }
+    @include mobile {
+      background: none;
+      span {
+        @include caption(--gray30);
+      }
+      svg {
+        fill: var(--gray20);
+      }
+    }
+  }
+}

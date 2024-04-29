@@ -1,0 +1,29 @@
+.noticeTop {
+  background-color: var(--red10);
+  padding: 60px 0 60px 32px;
+  @include mobile {
+    padding: 40px 0 40px 12px;
+  }
+  section {
+    max-width: 964px;
+    margin: 0 auto;
+    h2 {
+      @include h1(--black);
+      margin-bottom: 31px;
+      @include mobile {
+        margin-bottom: 16px;
+        @include h3(--black);
+      }
+    }
+    .swiperNotice {
+      width: 312px;
+      @include mobile {
+        width: 171px;
+      }
+      a {
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+    }
+  }
+}

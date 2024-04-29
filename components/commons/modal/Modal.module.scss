@@ -1,0 +1,52 @@
+@import '../Button/Button.module.scss';
+
+@mixin inner($backgroundColor) {
+  width: 100%;
+  height: 100%;
+  background-color: var($backgroundColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.wrapper {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  overflow: auto;
+  outline: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+}
+
+// chooseModal, infoModal inner
+.modalInner {
+  @include inner(--white);
+  width: 298px;
+  height: 183px;
+  border-radius: 12px;
+  padding: 15px;
+  gap: 30px;
+}
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.emptyButton {
+  @include emptyButton();
+  width: 80px;
+}
+.fillButton {
+  @include fillButton();
+  width: 80px;
+}
+.body-scroll-lock {
+  overflow: hidden;
+}

@@ -1,0 +1,43 @@
+.headerMenu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 40px;
+  &:has(.notification) {
+    @include tablet {
+      gap: 12px;
+    }
+    @include mobile {
+      gap: 16px;
+    }
+  }
+}
+.headerMenu a {
+  color: #111322;
+  font-weight: 700;
+  line-height: 20px;
+  @include mobile {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  &:hover {
+    color: var(--primary);
+  }
+}
+.notification {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  & > svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  @include mobile {
+    width: 20px;
+    height: 20px;
+  }
+}

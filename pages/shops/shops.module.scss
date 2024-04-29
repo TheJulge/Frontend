@@ -1,0 +1,79 @@
+@import '../../components/commons/Button/Button.module.scss';
+
+.main {
+  background-color: var(--gray5);
+  .container {
+    max-width: 964px;
+    padding: 60px 32px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    @include tablet {
+      width: 100%;
+    }
+    @include mobile {
+      width: 100%;
+      padding: 40px 12px;
+    }
+
+    .title {
+      @include h1(--black);
+    }
+
+    .gridContainer {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      :last-child {
+        grid-column: span 2;
+      }
+      @include mobile {
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: center;
+        align-items: center;
+        :last-child {
+          grid-column: span 1;
+        }
+      }
+    }
+    .imageInput {
+      .inputTitle {
+        @include body1-regular(--black);
+      }
+      display: flex;
+      flex-direction: column;
+
+      .shopImage {
+        max-width: 100%;
+        height: 276px;
+        cursor: pointer;
+        border: 0;
+        background-color: transparent;
+        border-radius: 10px;
+        overflow: hidden;
+        .image {
+          max-width: 100%;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .flexContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .disabledButton {
+        @include disabledButton();
+        width: 351px;
+      }
+      .activeButton {
+        @include fillButton();
+        width: 351px;
+      }
+    }
+  }
+}

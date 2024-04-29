@@ -1,0 +1,22 @@
+@import '@/components/commons/Button/Button.module.scss';
+
+.shareButton {
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  &:hover {
+    svg {
+      fill: var(--primary);
+    }
+  }
+  svg {
+    width: 22px;
+    height: 22px;
+    fill: var(--gray60);
+  }
+}
