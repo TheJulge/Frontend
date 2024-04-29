@@ -4,12 +4,13 @@ import { authInstance } from '@/libs';
 import ClockIcon from '@/public/images/card/clockIcon.svg';
 import LocationIcon from '@/public/images/card/locationIcon.svg';
 import { formatNoticeTime } from '@/utils/noticeDataFormetters';
+import { NoticeBaseType } from '@/types/noticeTypes';
 import findCookieValue from '@/utils/findCookieValue';
 import PayIncrease from '../../card/payIncrease/PayIncrease';
 import InfoModal from '../../modal/InfoModal';
 import ChooseModal from '../../modal/ChooseModal';
-import { NoticeBaseType } from '@/types/noticeTypes';
 import styles from './NoticeDetailsCard.module.scss';
+import NoticeDetailsPay from './NoticeDetailsPay';
 
 interface NoticeDetailsCardProp {
   shopId: string;
@@ -98,13 +99,18 @@ export default function NoticeDetailsCard({
         {noticeDetails.closed && (
           <div className={styles.closedMessage}>마감 완료</div>
         )}
-        <Image src={shopDetails.imageUrl} alt="shop image" fill />
+        <Image
+          src={shopDetails.imageUrl}
+          alt="shop image"
+          fill
+          objectFit="cover"
+        />
       </div>
       <div className={styles.contents}>
         <div className={styles.information}>
           <div className={styles.pay}>
             <p>시급</p>
-            <PayIncrease
+            <NoticeDetailsPay
               hourlyPay={noticeDetails.hourlyPay}
               originalHourlyPay={shopDetails.originalHourlyPay}
               closed={false}

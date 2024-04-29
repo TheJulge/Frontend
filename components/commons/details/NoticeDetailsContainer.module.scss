@@ -19,7 +19,7 @@
     max-width: 960px;
     width: 100%;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
   }
 
   h1 {
@@ -27,13 +27,37 @@
     max-width: 960px;
 
     @include h1(--black);
-    span {
-      @include body1-bold(--primary);
-    }
     @include mobile {
       @include h3(--black);
-      span {
-        @include body2-bold(--primary);
+    }
+  }
+  span {
+    @include body1-bold(--primary);
+    @include mobile {
+      @include body2-bold(--primary);
+    }
+  }
+  .moreButtonWrap {
+    position: relative;
+    .moreButton {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background-color: var(--white);
+      box-shadow:
+        rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+      svg {
+        fill: var(--gray60);
+      }
+      .cancel {
+        width: 20px;
+        height: 20px;
       }
     }
   }

@@ -1,7 +1,7 @@
+import Link from 'next/link';
 import Image from 'next/image';
 import LocationIcon from '@/public/images/card/locationIcon.svg';
 import styles from './ShopDetailsCard.module.scss';
-import Link from 'next/link';
 
 interface ShopDetailsCardProps {
   shopId: string;
@@ -29,7 +29,7 @@ export default function ShopDetailsCard({
           <p className={styles.description}>{shopData.item.description}</p>
         </div>
         <div className={styles.links}>
-          <Link className={styles.editLink} href={`/shops`}>
+          <Link className={styles.editLink} href="/shops">
             편집하기
           </Link>
           <Link

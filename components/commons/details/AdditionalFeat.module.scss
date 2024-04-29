@@ -1,0 +1,30 @@
+.AdditionalFeatCon {
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  top: 45px;
+  transform: translateX(-50%);
+  width: 40px;
+  padding: 12px 0;
+  background-color: var(--white);
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 30px;
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    a {
+      display: block;
+      height: 100%;
+    }
+    svg {
+      fill: var(--gray60);
+    }
+  }
+}

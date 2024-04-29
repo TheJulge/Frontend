@@ -1,6 +1,6 @@
 import styles from '@/components/commons/inputs/sortSelectInput/SortSelectInput.module.scss';
 import DropDown from '@/components/commons/dropDown/Dropdown';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PolygonUpIcon from '@/public/images/inputs/polygonUp.svg';
 import PolygonDownIcon from '@/public/images/inputs/polygonDown.svg';
 import { useRouter } from 'next/router';
@@ -42,6 +42,25 @@ export default function SortSelectInput({
         return undefined;
     }
   };
+  useEffect(() => {
+    switch (router.query.sort) {
+      case 'time':
+        setValue('마감임박순');
+        break;
+      case 'pay':
+        setValue('시급많은순');
+        break;
+      case 'hour':
+        setValue('시간적은순');
+        break;
+      case 'shop':
+        setValue('가나다순');
+        break;
+      default:
+        setValue('마감임박순');
+        break;
+    }
+  }, [router.query.sort]);
   const handleDropDownClick = (event: React.MouseEvent) => {
     const selectedValue = (event.target as HTMLLIElement).innerText;
     setValue(selectedValue);

@@ -4,7 +4,7 @@ import {
   calculatePayIncreaseRate,
 } from '@/utils/noticeDataFormetters';
 import ArrowUpIcon from '@/public/images/card/arrowUpIcon.svg';
-import styles from './PayIncrease.module.scss';
+import styles from './NoticeDetailsPay.module.scss';
 
 interface PayIncreaseProps {
   hourlyPay: number;
@@ -19,7 +19,7 @@ interface PayIncreaseProps {
  * @returns
  */
 
-export default function PayIncrease({
+export default function NoticeDetailsPay({
   hourlyPay,
   originalHourlyPay,
   closed,
