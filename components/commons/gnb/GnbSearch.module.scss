@@ -3,11 +3,11 @@
   max-width: 450px;
   width: 100%;
   margin-left: 40px;
-  @media screen and (max-width: 1024px) {
+  @include tablet {
     max-width: 344px;
     margin-left: 32px;
   }
-  @media screen and (max-width: 768px) {
+  @include mobile {
     position: absolute;
     top: 56px;
     left: 20px;
@@ -24,7 +24,7 @@
   padding: 10px 40px;
   background-color: var(--gray10);
   font-size: 14px;
-  @media screen and (max-width: 768px) {
+  @include mobile {
     padding: 8px 32px;
     font-size: 12px;
   }
@@ -37,6 +37,14 @@
   &::-webkit-search-results-button,
   &::-webkit-search-results-decoration {
     display: none;
+  }
+  &:hover {
+    background-color: #ececec;
+  }
+  &:focus {
+    background-color: var(--white);
+    border: 2px solid var(--black);
+    padding: 8px 40px;
   }
 }
 .searchForm input::placeholder {
@@ -60,7 +68,7 @@
     width: 100%;
     height: 100%;
   }
-  @media screen and (max-width: 768px) {
+  @include mobile {
     width: 16px;
     height: 16px;
     left: 8px;

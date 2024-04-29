@@ -18,7 +18,7 @@ export default function AllNoticeCard({ noticeData }: NoticeProps) {
         const notice = item.item;
         const shop = item.item.shop.item;
         return (
-          <li key={notice.id} role="presentation">
+          <li key={notice.id}>
             <Card
               hourlyPay={notice.hourlyPay}
               startsAt={notice.startsAt}
@@ -28,7 +28,6 @@ export default function AllNoticeCard({ noticeData }: NoticeProps) {
               address={shop.address1}
               imageUrl={shop.imageUrl}
               originalHourlyPay={shop.originalHourlyPay}
-              links={item.links}
               shopId={shop.id}
               noticeId={notice.id}
             />

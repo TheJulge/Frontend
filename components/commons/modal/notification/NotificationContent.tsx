@@ -2,6 +2,7 @@ import React from 'react';
 import { getCookieValue } from '@/utils/getCookie';
 import { Alert } from '@/types/alertTypes';
 import { putAlert } from '@/libs/alert';
+import { timeChange } from '@/utils/alertDateFormet';
 import Link from 'next/link';
 import ApproveIcon from '@/public/images/ modal/approve.svg';
 import RejectIcon from '@/public/images/ modal/reject.svg';
@@ -55,7 +56,7 @@ function NotificationContent({ data, handleClose }: NotificationContentProps) {
               </div>
             </>
           )}
-          <div className={styles.time}>{time}</div>
+          <div className={styles.time}>{timeChange(time)}</div>
         </Link>
       </li>
     )
