@@ -82,7 +82,7 @@ export const putShopNotice = (
   data: FieldValue<ShopNoticeProps>,
 ) => {
   return authInstance.put(
-    `${API.shop}/${shopId}/${API.notice}/${noticeId}`,
+    `${API.shop}/${shopId}${API.notice}/${noticeId}`,
     data,
   );
 };
