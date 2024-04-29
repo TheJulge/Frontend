@@ -4,12 +4,6 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-interface CreateAuthProps {
-  email: string;
-  password: string;
-  type: 'employee' | 'employer';
-}
-
 export default function useGithubSignUp() {
   const [status, setStatus] = useState<string>('idle');
   const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
@@ -25,7 +19,7 @@ export default function useGithubSignUp() {
     router.push('/signin');
   };
 
-  const githubSignUp = async (authData: CreateAuthProps) => {
+  const githubSignUp = async (authData: any) => {
     setStatus('fetching');
     try {
       await postSignUp(authData);
@@ -55,8 +49,7 @@ export default function useGithubSignUp() {
       showModal={showErrorModal}
       handleClose={handleErrorModalClose}
     >
-      일반 로그인으로 가입한 계정입니다. 이메일과 비밀번호를 입력하여
-      로그인해주세요.
+      일반 로그인 계정입니다. 이메일과 비밀번호로 로그인해주세요.
     </CompletionModal>
   );
 

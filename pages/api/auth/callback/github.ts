@@ -55,31 +55,24 @@ export default async function handler(
 
   const userEmail = emailProfile.length > 0 ? emailProfile[0]?.email : '';
   const userData = {
-    // email: userEmail,
-    // password: userProfile.id,
-    email: 'qwer1234@qwer.com',
-    password: 'qwer1234',
+    email: userEmail,
+    password: `${userProfile.id}`,
   };
   const createUserData = {
-    // email: userEmail,
-    // password: userProfile.id,
-    email: 'qwerqwer@qwer.com',
-    password: 'qwerqwer',
+    email: userEmail,
+    password: `${userProfile.id}`,
     type: 'employee',
   };
 
-  const login = await postSignIn(userData);
-
-  if (login.status === 200) {
+  try {
+    await postSignIn(userData);
     res.setHeader('Set-Cookie', `userData=${JSON.stringify(userData)}; Path=/`);
     res.writeHead(302, { Location: '/signin' });
     res.end();
-  }
-
-  if (login.status !== 200) {
+  } catch (error) {
     res.setHeader(
       'Set-Cookie',
-      `userData=${JSON.stringify(createUserData)}; Path=/`,
+      `createUserData=${JSON.stringify(createUserData)}; Path=/`,
     );
 
     res.writeHead(302, { Location: '/signup' });
