@@ -1,50 +1,162 @@
 import Head from 'next/head';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import BasicInput from '@/components/commons/inputs/basicInput/BasicInput';
 import SelectInput from '@/components/commons/inputs/selectInput/SelectInput';
 import { ADDRESS, OPTIONS } from '@/utils/constants/SELECT';
 import MoneyInput from '@/components/commons/inputs/moneyInput/MoneyInput';
 import classNames from 'classnames';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
-// import { postShop } from '@/libs/shop';
-// import { useRouter } from 'next/router';
-import ImageInput from '@/components/commons/inputs/imageInput/ImageInput';
+import { useRouter } from 'next/router';
+import { postShop, putShop } from '@/libs/shop';
+import { GetServerSidePropsContext } from 'next';
+import { getUser } from '@/libs/user';
+import findCookieValue from '@/utils/findCookieValue';
+import CompletionModal from '@/components/commons/modal/completionModal/CompletionModal';
+import Image from 'next/image';
+import { getPresignedUrl } from '@/libs/image';
+import { instance } from '@/libs';
 import styles from './shops.module.scss';
 
-export default function Shops() {
-  // const router = useRouter();
+interface ShopData {
+  name: string;
+  category: string;
+  address1: string;
+  address2: string;
+  description: string;
+  imageUrl: string;
+  originalHourlyPay: number;
+}
+
+interface ServerSideProps {
+  shopId: string;
+  defaultValues: ShopData;
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const cookies = context.req.headers.cookie;
+
+  if (!cookies) {
+    return;
+  }
+
+  const userId = findCookieValue(cookies, 'userId');
+  const defaultValues = {
+    name: '',
+    category: '',
+    address1: '',
+    address2: '',
+    description: '',
+    imageUrl: '',
+    originalHourlyPay: '',
+  };
+  const response = await getUser(userId);
+  if (response.data.item.shop) {
+    const shop = response.data.item.shop.item;
+    const shopId = shop.id;
+    defaultValues.name = shop.name;
+    defaultValues.category = shop.category;
+    defaultValues.address1 = shop.address1;
+    defaultValues.address2 = shop.address2;
+    defaultValues.description = shop.description;
+    defaultValues.imageUrl = shop.imageUrl;
+    defaultValues.originalHourlyPay = shop.originalHourlyPay;
+    // eslint-disable-next-line consistent-return
+    return {
+      props: {
+        shopId,
+        defaultValues,
+      },
+    };
+  }
+  // eslint-disable-next-line consistent-return
+  return {
+    props: {
+      defaultValues,
+    },
+  };
+}
+const cutUrl = (url: string) => {
+  const index = url.indexOf('?');
+  if (index !== -1) {
+    return url.substring(0, index);
+  }
+  return url;
+};
+export default function Shops({ shopId, defaultValues }: ServerSideProps) {
+  const router = useRouter();
+  const [image, setImage] = useState<string>(
+    '/images/updateShop/uploadImage.png',
+  );
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [modalMessage, setModalMessage] = useState<string>('');
+  const fileInput = useRef<HTMLInputElement>(null);
   const methods = useForm<FieldValues>({
     mode: 'onBlur',
-    defaultValues: {
-      name: '',
-      category: '',
-      address1: '',
-      address2: '',
-      description: '',
-      imageUrl: '',
-      originalHourlyPay: '',
-    },
+    defaultValues,
   });
   const {
     handleSubmit,
     control,
     formState: { isValid },
+    register,
+    setValue,
   } = methods;
-  const onSubmit = async (data: FieldValues) => {
-    console.log(data);
-    // TODO 지혜님 전송할때 시급 string => number로 형 변환해야합니다!!
-    // try {
-    //   const result = await postShop(data);
-    //   if (result.data) {
-    //     alert('업로드 성공');
-    //     // router.push('/가게 정보 상세');
-    //   }
-    // } catch (e) {
-    //   alert('업로드 실패');
-    //   console.log(e);
-    // }
+
+  const handleImage = async (e: any) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    const formData = new FormData();
+    reader.readAsDataURL(file);
+    formData.append('name', file.name);
+
+    reader.onload = async (event: any) => {
+      if (reader.readyState === 2) {
+        // 파일 onLoad가 성공하면 2, 진행 중은 1, 실패는 0 반환
+        setImage(event.target.result);
+        try {
+          const presignedUrl = await getPresignedUrl(formData);
+          const res = await instance.put(presignedUrl, file);
+          if (res.status === 200) {
+            const cutImageUrl = cutUrl(presignedUrl);
+            setValue('imageUrl', cutImageUrl);
+          }
+          // eslint-disable-next-line
+        } catch {}
+      }
+    };
   };
 
+  const onSubmit = async (data: FieldValues) => {
+    if (!shopId) {
+      try {
+        const res = await postShop(data);
+        const newShopId = res.data.item.id;
+        if (res.data) {
+          setModalMessage('등록이 완료되었습니다.');
+          setShowModal(true);
+          router.push(`/shops/${newShopId}`);
+        }
+      } catch (e: any) {
+        setModalMessage(e.response.data.message);
+        setShowModal(true);
+      }
+    }
+    try {
+      const res = await putShop(shopId, data);
+      if (res.data) {
+        setModalMessage('편집이 완료되었습니다.');
+        setShowModal(true);
+        router.push(`/shops/${shopId}`);
+      }
+    } catch (e: any) {
+      setModalMessage(e.response.data.message);
+      setShowModal(true);
+    }
+  };
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
   return (
     <FormProvider {...methods}>
       <Head>
@@ -74,7 +186,34 @@ export default function Shops() {
               id="originalHourlyPay"
             />
             <div />
-            <ImageInput />
+            <div className={styles.imageInput}>
+              <label htmlFor="가게 이미지" className={styles.inputTitle}>
+                가게 이미지
+              </label>
+              <button
+                type="button"
+                className={styles.shopImage}
+                onClick={() => fileInput.current?.click()}
+              >
+                <Image
+                  className={styles.image}
+                  src={image}
+                  width={483}
+                  height={276}
+                  alt="이미지 추가하기"
+                />
+              </button>
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: 'none' }}
+                onChange={e => {
+                  register('imageUrl');
+                  handleImage(e);
+                }}
+                ref={fileInput}
+              />
+            </div>
             <div />
             <BasicInput
               labelName="가게 설명"
@@ -95,6 +234,11 @@ export default function Shops() {
             </button>
           </div>
         </div>
+        {showModal && (
+          <CompletionModal showModal={showModal} handleClose={handleModalClose}>
+            {modalMessage}
+          </CompletionModal>
+        )}
       </main>
     </FormProvider>
   );

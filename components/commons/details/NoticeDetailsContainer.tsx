@@ -51,6 +51,8 @@ export default function NoticeDetailsContainer({
             <AdditionalFeat
               shopName={shopDetails.name}
               shopAddress={shopAddress}
+              hourlyPay={noticeDetails.hourlyPay}
+              workhour={noticeDetails.workhour}
             />
           )}
         </div>

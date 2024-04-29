@@ -17,11 +17,11 @@ interface MoneyInputProps extends InputProps {
  * @param {string} formattedValue 포메팅할 값
  * @returns {string} 숫자 3자리 마다 들어간 콤마 제거된 문자열
  */
-const removeComma = (InputValue: number): string => {
-  if (typeof InputValue !== 'number') {
+const removeComma = (InputValue: string): number => {
+  if (typeof InputValue !== 'string') {
     return InputValue;
   }
-  return String(InputValue).replace(/\D/g, '');
+  return Number(InputValue.replace(/\D/g, ''));
 };
 
 const addComma = (InputValue: number): string => {
@@ -51,13 +51,13 @@ export default function MoneyInput({
   });
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
-    inputProps.onChange(removeComma(Number(event.currentTarget.value)));
+    inputProps.onChange(Number(removeComma(event.currentTarget.value)));
   };
 
   const handleBlur = () => {
-    const value = Number(removeComma(inputProps.value));
+    const value = Number(inputProps.value);
     if (value < MINIMUM_WAGE) {
-      inputProps.onChange(Number(addComma(MINIMUM_WAGE)));
+      inputProps.onChange(MINIMUM_WAGE);
     }
   };
 

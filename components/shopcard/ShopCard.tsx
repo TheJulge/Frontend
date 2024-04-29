@@ -85,7 +85,7 @@ const ShopCard = ({ data, url, address, originalHourlyPay }: CardPropsType) => {
           className={styles.button}
           onClick={() => {
             router.push({
-              pathname: `/shops/${id}/notices`,
+              pathname: `/shops/${router.query.id}/notices`,
               query: { id: router.query.id, noticeId: router.query.noticeId },
             });
           }}

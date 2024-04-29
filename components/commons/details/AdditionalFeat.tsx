@@ -1,3 +1,4 @@
+import CalculatorButton from '@/components/calculater/CalculatorButton';
 import ShareOpenButton from '@/components/share/ShareOpenButton';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import Link from 'next/link';
@@ -6,9 +7,16 @@ import styles from './AdditionalFeat.module.scss';
 interface FeatType {
   shopName: string;
   shopAddress: string;
+  hourlyPay: number;
+  workhour: number;
 }
 
-export default function AdditionalFeat({ shopName, shopAddress }: FeatType) {
+export default function AdditionalFeat({
+  shopName,
+  shopAddress,
+  hourlyPay,
+  workhour,
+}: FeatType) {
   return (
     <ul className={styles.AdditionalFeatCon}>
       <li>
@@ -22,6 +30,9 @@ export default function AdditionalFeat({ shopName, shopAddress }: FeatType) {
         >
           <MapOutlinedIcon />
         </Link>
+      </li>
+      <li>
+        <CalculatorButton hourlyPay={hourlyPay} workHour={workhour} />
       </li>
     </ul>
   );
