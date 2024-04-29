@@ -15,34 +15,36 @@ const Mypage: NextPage<MyDetailPageProps> = ({
   user,
 }) => {
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <div className={styles.profileWrraper}>
-          <div className={styles.profile}>
-            <h2>내 프로필</h2>
-            <ProfileCard data={user} />
+    <main>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          <div className={styles.profileWrraper}>
+            <div className={styles.profile}>
+              <h2>내 프로필</h2>
+              <ProfileCard data={user} />
+            </div>
           </div>
-        </div>
-        <div className={styles.tableWrraper}>
-          <div className={styles.table}>
-            <h2>신청 내역</h2>
-            {items.length !== 0 ? (
-              <EmployeeTable
-                totalCount={totalCount}
-                itemCount={itemCount}
-                items={items}
-              />
-            ) : (
-              <EmptyTable
-                text="아직 신청 내역이 없어요."
-                buttonText="공고 보러가기"
-                link="/"
-              />
-            )}
+          <div className={styles.tableWrraper}>
+            <div className={styles.table}>
+              <h2>신청 내역</h2>
+              {items.length !== 0 ? (
+                <EmployeeTable
+                  totalCount={totalCount}
+                  itemCount={itemCount}
+                  items={items}
+                />
+              ) : (
+                <EmptyTable
+                  text="아직 신청 내역이 없어요."
+                  buttonText="공고 보러가기"
+                  link="/"
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

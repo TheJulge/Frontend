@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-family: 'Spoqa Han Sans Neo', sans-serif; /*글꼴 추가*/
   color: var(--black);
+  -webkit-tap-highlight-color: transparent;
 }
 :after,
 :before {
