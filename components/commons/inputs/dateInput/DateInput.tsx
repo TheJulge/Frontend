@@ -21,7 +21,7 @@ export default function DateInput({ control }: DateInputProps) {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <label htmlFor="calendar">시작 일시*</label>
       <Controller
         control={control}
