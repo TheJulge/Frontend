@@ -32,14 +32,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     description: '',
   };
 
-  const res = await getShopNotice(shopId as string, noticeId as string);
-  const noticeData = res.data.item;
-  defaultValues.hourlyPay = noticeData.hourlyPay;
-  defaultValues.startsAt = noticeData.startsAt;
-  defaultValues.workhour = noticeData.workhour;
-  defaultValues.description = noticeData.description;
-
   if (shopId && noticeId) {
+    const res = await getShopNotice(shopId as string, noticeId as string);
+    const noticeData = res.data.item;
+    defaultValues.hourlyPay = noticeData.hourlyPay;
+    defaultValues.startsAt = noticeData.startsAt;
+    defaultValues.workhour = noticeData.workhour;
+    defaultValues.description = noticeData.description;
     return {
       props: {
         shopId,
@@ -51,6 +50,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   return {
     props: {
       shopId,
+      defaultValues,
     },
   };
 }
