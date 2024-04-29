@@ -39,6 +39,19 @@ function ProfileCard({ data }: CardPropsType) {
     return () => null;
   }, [divRef.current?.clientHeight]);
 
+  const initBioHeight = () => {
+    if (divRef.current?.scrollHeight) {
+      if (divRef.current?.scrollHeight > 150) {
+        setBioHeight(`150px`);
+      } else {
+        setBioHeight(`${divRef.current?.scrollHeight}px`);
+      }
+    }
+  };
+  useEffect(() => {
+    initBioHeight();
+  }, [divRef]);
+
   return (
     <div className={styles.container}>
       <div className={styles.informationBox}>
