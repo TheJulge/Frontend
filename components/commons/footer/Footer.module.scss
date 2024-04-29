@@ -29,6 +29,9 @@
       @include mobile {
         @include body2-regular(--gray50);
       }
+      &:hover {
+        color: var(--gray70);
+      }
     }
   }
   .footerSns {
