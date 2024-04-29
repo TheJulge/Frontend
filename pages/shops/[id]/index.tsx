@@ -73,7 +73,7 @@ export default function ShopDetails({
               <EmptyTable
                 text="공고를 등록해 보세요."
                 buttonText="공고 등록하기"
-                link=""
+                link={`/shops/${shopId}/notices`}
               />
             </>
           ) : (

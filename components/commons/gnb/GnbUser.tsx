@@ -61,7 +61,7 @@ export default function GnbUser() {
       <div className={styles.headerMenu}>
         {type === 'employee' && (
           <>
-            <Link href={isProfile ? `/users/${userId}` : `/profile`}>
+            <Link href={isProfile ? `/users/${userId}` : `/users`}>
               내 프로필
             </Link>
             <SignOutButton />
