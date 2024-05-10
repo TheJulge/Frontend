@@ -1,7 +1,7 @@
 ## 🧡 TheJulge 🧡
 
 <br>
-<img src = "public\readMe\readMeTitle.png">
+<img src = "public\readMe\readmeTitle.png">
 <br><br>
 프로젝트 개발 기간: 2024.04.13 - 2024.04.27
 
@@ -71,10 +71,16 @@ https://thejulge-17.vercel.app <br><br>
 
 - 공유 기능
 
+<img src = "public\readMe\share.png" width="200">
+
 - 시급 계산기 기능
+
+<img src = "public\readMe\calculator.png" width="200">
 
 - 깃헙 소셜 로그인
 
+<img src = "public\readMe\gitlogin.png" width="200">
+<img src = "public\readMe\gitsignup.png" width="200">
 <br><br>
 
 ## 전반적인 서비스 구성
@@ -84,7 +90,7 @@ https://thejulge-17.vercel.app <br><br>
 - 페이지에 접속하게 되면 처음 보이는 공고 리스트 페이지입니다. 비회원일 경우 공고 리스트들을 확인할 수 있지만 서비스를 이용하기 위해 회원가입과 로그인을 진행해야합니다.
 - 검색기능과 필터 기능으로 사용자가 원하는 정보를 쉽게 찾을 수 있습니다.
 
-  <img src = "public\readMe\ListPage.png" width="500">
+  <img src = "public\readMe\listPage.png" width="500">
 
 ### 로그인, 회원가입 (주소: /signin, /signup)
 
