@@ -39,7 +39,9 @@ https://thejulge-17.vercel.app <br><br>
 
 - 로그인 기능
 - 회원 가입 기능: 회원가입 시, 사용자는 알바생인지, 사장님인지 여부를 선택해야합니다.
-- 모달 : 경고나 에러처리, 알림은 커스텀 모달로 대체했습니다. <img src = "public\readMe\modal1.png" width="200"><img src = "public\readMe\modal2.png" width="200">
+- 모달 : 경고나 에러처리, 알림은 커스텀 모달로 대체했습니다.
+
+<img src = "public\readMe\modal1.png" width="200"><img src = "public\readMe\modal2.png" width="200">
 
 ### 알바생
 
