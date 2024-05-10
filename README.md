@@ -132,13 +132,13 @@ https://thejulge-17.vercel.app <br><br>
 
 ### 반응형 (Mobile)
 
-| ![listPage](public\readMe\mlist.png) | ![listPage](public\readMe\search.png) | ![listPage](public\readMe\filter.png) |
+| ![listPage](public/readMe/mlist.png) | ![listPage](public/readMe/search.png) | ![listPage](public/readMe/filter.png) |
 | --- | --- | --- |
 
-| ![postShop](public\readMe\mNoticeDetailAlba.png) | ![postNotice](public\readMe\mlist2.png) | ![postProfile](public\readMe\mlist3.png) |
+| ![postShop](public/readMe/mNoticeDetailAlba.png) | ![postNotice](public/readMe/mlist2.png) | ![postProfile](public/readMe/mlist3.png) |
 | --- | --- | --- |
 
-| ![signin](public\readMe\msignin.png) | ![signup](public\readMe\msignup.png) |  |
+| ![signin](public/readMe/msignin.png) | ![signup](public/readMe/msignup.png) |  |
 | --- | --- | --- |
 
 <br>
