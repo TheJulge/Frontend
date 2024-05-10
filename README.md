@@ -130,6 +130,8 @@ https://thejulge-17.vercel.app <br><br>
 
 ### 에러 페이지 (주소: /404)
 
+<img src = "public\readMe\404.png" width="500">
+
 ### 반응형 (Mobile)
 
 | ![listPage](public/readMe/mlist.png) | ![listPage](public/readMe/search.png) | ![listPage](public/readMe/filter.png) |
